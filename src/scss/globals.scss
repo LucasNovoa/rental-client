@@ -30,12 +30,37 @@ a {
   text-decoration: none;
 }
 
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
+p {
+  font-size: 1.8rem;
+  overflow-wrap: break-word;
+}
+
+h1 {
+  font-size: 1.222rem;
+  overflow-wrap: break-word;
+}
+
+h2 {
+  font-size: 4rem;
+  overflow-wrap: break-word;
+}
+
+h3 {
+  font-size: 2.3rem;
+  overflow-wrap: break-word;
+}
+
+h4 {
+  font-size: 1.273rem;
+  overflow-wrap: break-word;
+}
+
+h5 {
+  font-size: 1.333rem;
+  overflow-wrap: break-word;
+}
+
 h6 {
+  font-size: 1.375rem;
   overflow-wrap: break-word;
 }
