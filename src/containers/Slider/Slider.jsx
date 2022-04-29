@@ -7,7 +7,6 @@ import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai'
 
 function Slider () {
   const [hotels, setHotels] = useState([])
-  const [loading, setLoading] = useState(true)
 
   const slideLeft = (e) => {
     const slid = document.getElementById('slider')
@@ -23,7 +22,6 @@ function Slider () {
   useEffect(() => {
     axios.get('https://polar-waters-05125.herokuapp.com/api/v1/hotels').then(r => {
       setHotels(r.data.slice(0, 10))
-      setLoading(false)
     })
   }, [])
 
