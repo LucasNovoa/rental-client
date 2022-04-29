@@ -6,18 +6,18 @@
   right: 0%;
 
   &__container {
-    margin: -1px 86px 0px 86px;
-    padding: 0px 24px 0px 24px;
+    /* margin: -1px 86px 0px 86px;
+    padding: 0px 24px 0px 24px; */
 
     &__content {
       display: flex;
-      background-color: white;
+      background-color: rgba(255, 255, 255, 0.645);
       align-items: center;
       justify-content: space-between;
       padding: 16px 22px 16px 38px;
       font-size: 1.667em;
-      color: #5d5d5d;
-      border-radius: 132px;
+      color: black;
+      /* border-radius: 132px; */
       border: 1px solid rgba(0, 0, 0, 0.093);
 
       &__logo {
