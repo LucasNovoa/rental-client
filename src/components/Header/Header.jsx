@@ -11,11 +11,11 @@ function Header () {
           <img src={logo} alt='img' className='header__container__content__logo' />
           <ul className='header__container__content__ul'>
             <li>Home</li>
-            <li>About</li>
-            <li>Blog</li>
-            <li>Pages</li>
+            <li>Sobre Nosotros</li>
+            <li>Log In</li>
+            <li>Registrarse</li>
             <li><img src={bag} alt='bag' className='header__container__content__ul__bag' /></li>
-            <li><button className='header__container__content__ul__btn'>Book now</button></li>
+            <li><button className='header__container__content__ul__btn'>Reservar</button></li>
           </ul>
         </div>
       </div>
