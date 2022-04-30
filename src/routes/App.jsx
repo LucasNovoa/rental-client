@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Layout } from '../containers/Layout';
 
 import { Home } from '../pages/Home';
+import { Profile } from '../pages/Profile';
 
 function App() {
   return (

@@ -1,13 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import Card from '../../components/Card/Card'
-import axios from 'axios'
 import './slider.scss'
-import loader from '../../assets/loader.gif'
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai'
 
-function Slider () {
-  const [hotels, setHotels] = useState([])
-
+function Slider ({ hotels }) {
   const slideLeft = (e) => {
     const slid = document.getElementById('slider')
     slid.scrollLeft = slid.scrollLeft - 500
@@ -19,12 +15,6 @@ function Slider () {
     slid.scrollLeft = slid.scrollLeft + 500
   }
 
-  useEffect(() => {
-    axios.get('https://polar-waters-05125.herokuapp.com/api/v1/hotels').then(r => {
-      setHotels(r.data.slice(0, 10))
-    })
-  }, [])
-
   return (
     <section className='slider'>
       <div className='slider__container'>
@@ -35,7 +25,7 @@ function Slider () {
         <div className='slider__container__bottom'>
           <AiOutlineArrowLeft className='slider__container__bottom__btnl' onClick={slideLeft} />
           <div className='slider__container__bottom__cards' id='slider'>
-            {hotels.map(h => {
+            {hotels.slice(0, 10).map(h => {
               return <Card img={h.gallery[0].path} name={h.name} description={h.description} price={h.stars} key={h.name} />
             })}
           </div>
