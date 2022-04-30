@@ -1,20 +1,19 @@
 import React from 'react'
 import './profilecard.scss'
-import placeholder from '../../assets/p_placeholder.png'
 
 function ProfileCard ({ user }) {
   return (
     <div className='profilecard'>
       <div className='profilecard__imageContainer'>
-        <img className='profilecard__imageContainer__image' src={placeholder} alt='img' />
+        <img className='profilecard__imageContainer__image' src={user.profilePic} alt='img' />
         <a>Actualizar foto</a>
       </div>
       <div className='profilecard__divider' />
-      <div className='profilecard_data'>
-        <h3>{user.userName}</h3>
-        <h4>{user.name} {user.lastName}</h4>
-        <p>Correo@electrónico.com</p>
-        <p>Miembro desde:</p>
+      <div className='profilecard__data'>
+        <h3 className='profilecard__data__username'>{user.userName}</h3>
+        <p className='profilecard__data__name'>{user.name} {user.lastName}</p>
+        <h4 className='profilecard__data__email'>{user.email}</h4>
+        <h4 className='profilecard__data__since'>Miembro desde: {user.createdAt.split('-')[0]}</h4>
       </div>
     </div>
   )

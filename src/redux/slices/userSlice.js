@@ -3,11 +3,17 @@ import axios from 'axios'
 
 const URI = 'https://polar-waters-05125.herokuapp.com/api/v1/users'
 
-const initialState = {
-  users: [],
-  status: 'idle',
-  error: null
-}
+const initialState = [
+  {
+    id: 1,
+    name: 'Diego Armando',
+    lastName: 'Maradona',
+    userName: 'DM10',
+    email: 'dieguito_maradona@dios.com.ar',
+    profilePic: 'https://i.pinimg.com/564x/1b/c8/ff/1bc8ffcc2766f83c55deef6cc917301d.jpg',
+    createdAt: '2022-10'
+  }
+]
 
 export const getUsers = createAsyncThunk(
   'users/getUsers',
@@ -27,24 +33,14 @@ const usersSlice = createSlice({
   reducers: {},
   extraReducers (builder) {
     builder
-      .addCase(getUsers.pending, (state, action) => {
-        state.status = 'loading'
-      })
       .addCase(getUsers.fulfilled, (state, action) => {
-        state.status = 'succeeded'
-        state.users = action.payload
-      })
-      .addCase(getUsers.rejected, (state, action) => {
-        state.status = 'failed'
-        state.error = action.error.message
+        return [...state, ...action.payload]
       })
   }
 })
 
 // export const {} userSlice.actions
 
-export const selectAllUsers = (state) => state.users.users
-export const getUsersStatus = (state) => state.users.status
-export const getUsersError = (state) => state.users.error
+export const selectAllUsers = (state) => state.users
 
 export default usersSlice.reducer

@@ -2,6 +2,7 @@ import React from 'react'
 import logo from '../../assets/logotemplate.svg'
 import bag from '../../assets/bagtemplates.svg'
 import './header.scss'
+import { Link } from 'react-router-dom'
 
 function Header () {
   return (
@@ -10,7 +11,7 @@ function Header () {
         <div className='header__container__content'>
           <img src={logo} alt='img' className='header__container__content__logo' />
           <ul className='header__container__content__ul'>
-            <li>Home</li>
+            <li><Link to='/'>Home</Link></li>
             <li>Sobre Nosotros</li>
             <li>Log In</li>
             <li>Registrarse</li>
