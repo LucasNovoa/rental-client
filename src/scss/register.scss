@@ -1,0 +1,96 @@
+.registration {
+    margin: 0 auto;    
+    padding: 0 30px;
+    background-size: auto, cover;
+    justify-content:baseline;
+    display: grid;
+    grid-template-columns: 15% 70% 15%;
+    grid-template-rows: 5% 0% 0%;
+    grid-template-columns: 30% 60%, 10%;
+    
+
+    &__data {
+        margin-top: 145px;
+        max-width: 1080px;
+        display:inline;
+        position:initial;
+        top: 220px;
+        text-align: center;
+        grid-column: 2;
+        grid-row: 1;
+                
+        h1 {
+            font-size: 50px;
+            line-height: 1.161em;
+            font-weight: 700;
+            color: black;
+            margin-top: 0px;
+            margin-bottom: 16px;
+          }
+
+        &__form {
+            display: flex;
+            flex-direction: column;
+            margin: 60px 0 0;
+            margin: 0 auto;
+            width: 50%;
+            background-color: white;
+            padding: 2px;
+            border: 1px solid black;
+            border-radius: 30px;
+            box-shadow: 0 32px 72px 0 rgb(20 20 43 / 24%);
+
+            span {
+                text-align: right;
+                font-weight: bold;
+                font-size: 1.6rem;
+                margin-bottom: 30px;
+            }
+            
+            label {
+                display: block;
+                padding: 5px
+            }
+            
+            input {
+                max-height: 5px;
+                margin-bottom: 5px;
+                padding: 16px 24px;
+                border: 1px solid black;
+                border-radius: 100px;
+                background-color: #fff;
+                box-shadow: 0 2px 12px 0 rgb(20 20 43 / 8%);
+                -webkit-transition: box-shadow 300ms ease, color 300ms ease, border-color 300ms ease;
+                transition: box-shadow 300ms ease, color 300ms ease, border-color 300ms ease;
+                font-size: 16px;
+                line-height: 18px;
+            }
+            
+        }
+
+        &__buttonRow{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px 48px;
+            margin: 60px, auto;
+            
+            &__button__submit {
+                padding: 18px 28px;
+                margin-right: 26px;
+                border: none;
+                border-radius: 40px;
+                background-color: #ff3f3f;
+                color: #fff;
+                font-size: 18px;
+                line-height: 20px;
+
+                
+            }
+
+        
+        }
+    }
+}
+

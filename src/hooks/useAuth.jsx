@@ -12,9 +12,7 @@ export function ProviderAuth ({ children }) {
   return <AuthContext.Provider value={auth}>{children}</AuthContext.Provider>
 }
 
-export const useAuth = () => {
-  return useContext(AuthContext)
-}
+export const useAuth = () => useContext(AuthContext)
 
 function useProvideAuth () {
   const [user, setUser] = useState(null)
