@@ -13,8 +13,12 @@ function Header () {
           <ul className='header__container__content__ul'>
             <li><Link to='/'>Home</Link></li>
             <li>Sobre Nosotros</li>
-            <li>Log In</li>
-            <li>Registrarse</li>
+            <Link to='/login'>
+              <li>Log In</li>
+            </Link>
+            <Link to='/register'>
+              <li>Registrarse</li>
+            </Link>
             <li><img src={bag} alt='bag' className='header__container__content__ul__bag' /></li>
             <li><button className='header__container__content__ul__btn'>Reservar</button></li>
           </ul>

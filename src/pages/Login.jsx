@@ -8,7 +8,7 @@ import { useAuth } from '../hooks/useAuth'
 
 import '../scss/Login.scss'
 
-const Login = () => {
+function Login () {
   const emailRef = useRef(null)
   const passwordRef = useRef(null)
   const auth = useAuth()
