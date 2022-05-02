@@ -6,6 +6,7 @@ import { Layout } from '../containers/Layout';
 
 import { Home } from '../pages/Home';
 import { Profile } from '../pages/Profile';
+import Register from '../components/Register/Register';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Layout>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/register" element={<Register />} />
           </Routes>
         </Layout>
       </BrowserRouter>
