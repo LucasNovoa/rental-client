@@ -1,5 +1,7 @@
 import { useRef } from 'react'
 
+import { useNavigate } from 'react-router-dom'
+
 import Header from '../components/Header/Header'
 
 import { useAuth } from '../hooks/useAuth'
@@ -10,6 +12,7 @@ const Login = () => {
   const emailRef = useRef(null)
   const passwordRef = useRef(null)
   const auth = useAuth()
+  const navigate = useNavigate()
 
   const handleSubmit = (event) => {
     event.preventDefault()
@@ -20,6 +23,7 @@ const Login = () => {
     console.log(email, password)
 
     auth.signIn(email, password).then(() => {
+      navigate('/')
       console.log('Login Success')
     })
   }
