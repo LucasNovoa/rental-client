@@ -14,8 +14,8 @@ function Card ({ img, name, description, price }) {
         </div>
         <div className='card__content__divider' />
         <div className='card__content__info'>
-          <div className='card__content__info__price'><strong>${price} </strong>/night</div>
-          <button className='card__content__info__btn'>Book Now</button>
+          <div className='card__content__info__price'><strong>${price} </strong> / noche</div>
+          <button className='card__content__info__btn'>Reservar</button>
         </div>
       </div>
     </div>
