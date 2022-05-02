@@ -1,0 +1,204 @@
+.searchBar {
+    display: flex;
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    align-items: center;
+    // text-align: center;
+    background-color: white;
+    height: 95px;
+    padding: 25px;
+    border-radius: 125px;
+    
+
+    &__place {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background-color: white;
+        border: none;
+        color: #5d5d5d;
+        padding-left: 2rem;
+        width: 190px;
+
+        &__title {
+            font-weight: 520;
+            font-size: 1.5em;
+        }
+
+        &__input {
+            border: none;
+            font-weight: 600;
+            font-size: 1.667em;
+        }
+        &__input:focus {
+            outline: none;
+        }
+        &__input:hover {
+            cursor: pointer;
+        }
+        &__input::placeholder {
+            color: black;
+        }
+        &__input:focus::placeholder {
+            color: black;
+            color: #5d5d5d;
+        }
+
+        &__results {
+            position: absolute;
+            top: 100px;
+            left: 20px;
+            background-color: white;
+            width: 180px;
+            border-radius: 30px;
+            padding: 15px 0px 7px 25px;
+
+            &__name {
+                font-size: 1.667em;
+                padding-bottom: 7px;
+                background-color: white;
+                border: none;
+                font-weight: 600;
+            }
+            &__name:hover {
+                cursor: pointer;
+                color: #5d5d5d;
+            }
+        }
+    }
+
+    &__check {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background-color: white;
+        border: none;
+        width: 150px;
+
+        &__title {
+            color: #5d5d5d;
+            font-weight: 520;
+            font-size: 1.5em;
+        }
+
+        &__value {
+            font-size: 1.667em;
+        }
+
+        &__calendar {
+            position: absolute;
+            top: 302px;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 15px 25px 0px 25px;
+            background-color: white;
+            border-radius: 30px;
+            height: 405px;
+            transition: 1sec;
+        }
+    }
+    &__check:hover {
+        cursor: pointer;
+    }
+
+    &__amount {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background-color: white;
+        border: none;
+        width: 130px;
+        padding-left: 1rem;
+        padding-right: .5rem;
+
+        &__title {
+            color: #5d5d5d;
+            font-weight: 520;
+            font-size: 1.5em;
+        }
+
+        &__value {
+            font-size: 1.667em;
+        }
+
+        &__display {
+            display: flex;
+            position: absolute;
+            top: 132px;
+            left: 75%;
+            transform: translate(-50%, -50%);
+            padding: 20px 25px 20px 25px;
+            background-color: white;
+            border-radius: 30px;
+            gap: 20px;
+            
+            &__title {
+                font-size: 1.667em;
+            }
+
+            &__counter {
+                display: flex;
+
+                &__number {
+                    font-size: 1.667em;
+                    width: 30px;
+                    text-align: center;
+                }
+                
+                &__btn {
+                    font-size: 1.5em;
+                    font-weight: 500;
+                    border: none;
+                    border-radius: 5px;
+                    width: 24px;
+                    height: 24px;
+                    background: #EFF2F7;
+                }
+                &__btn:hover {
+                    background: #E1E7F0;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+    &__amount:hover {
+        cursor: pointer;
+    }
+
+    &__btn {
+        background-color: #ff3f3f;
+        padding: 18px 24px 18px 24px;
+        color: white;
+        font-size: 1.66rem;
+        font-weight: 600;
+        border-radius: 76px;
+        border: none;
+        
+      }
+
+    &__btn:hover {
+    cursor: pointer;
+    background-color: #ff3f3f;
+    transform: background-color 0.3s ease;
+    transform: translate(0, -2px);
+    }
+
+    
+
+}
+
+.rdrDefinedRangesWrapper {
+    display: none;
+    padding-top: 0px;
+    font-size: 2em;
+}
+
+.rdrDateDisplayWrapper {
+    background-color: white;
+}
+
+.rdrCalendarWrapper.rdrDateRangeWrapper {
+ font-size: 1.25em;
+}
