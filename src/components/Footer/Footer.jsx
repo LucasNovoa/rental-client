@@ -36,7 +36,7 @@ export default function Footer () {
             </div>
             <div>
               <div className='footer__container__top__grid__listTitle'>
-                Páginas
+                Links Útiles
               </div>
               <div className='footer__container__top__grid__listCont'>
                 <ul className='footer__container__top__grid__listCont__ul1'>
@@ -73,39 +73,7 @@ export default function Footer () {
                 </ul>
               </div>
             </div>
-            <div>
-              <div className='footer__container__top__grid__listUtiles'>
-                Páginas útiles
-              </div>
-              <ul className='footer__container__top__grid__ul2'>
-                <li className='footer__container__top__grid__ul2__li1'>
-                  <a href='/template-pages/start-here' className='footer__container__top__grid__ul2__li1__href'>
-                    Inicie aquí
-                  </a>
-                </li>
-                <li className='footer__container__top__grid__ul2__li2'>
-                  <a href='/template-pages/style-guide' className='footer__container__top__grid__ul2__li2__href'>
-                    Guía de estilos
-                  </a>
-                </li>
-                <li className='footer__container__top__grid__ul2__li3'>
-                  <a href='https://rentaltemplate.webflow.io/404' className='footer__container__top__grid__ul2__li3__href'>
-                    404 No encontrado
-                  </a>
-                </li>
-                <li className='footer__container__top__grid__ul2__li4'>
-                  <a href='https://rentaltemplate.webflow.io/401' className='footer__container__top__grid__ul2__li4__href'>
-                    Protección con password
-                  </a>
-                </li>
-                <li className='footer__container__top__grid__ul2__li5'>
-                  <a href='/template-pages/licenses' className='footer__container__top__grid__ul2__li5__href'>
-                    Licencias
-                  </a>
-                </li>
-
-              </ul>
-            </div>
+            <div />
             <div>
               <div className='footer__container__top__grid__listInstagram'>
                 Síguenos en Instagram

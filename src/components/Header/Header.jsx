@@ -11,8 +11,12 @@ function Header () {
         <div className='header__container__content'>
           <img src={logo} alt='img' className='header__container__content__logo' />
           <ul className='header__container__content__ul'>
-            <li><Link to='/'>Home</Link></li>
-            <li>Sobre Nosotros</li>
+            <Link to='/'>
+              <li>Home</li>
+            </Link>
+            <Link to='/about'>
+              <li>Sobre Nosotros</li>
+            </Link>
             <Link to='/login'>
               <li>Log In</li>
             </Link>

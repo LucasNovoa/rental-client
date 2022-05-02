@@ -1,7 +1,8 @@
 import './card.scss'
 import React from 'react'
+import { AiFillStar } from 'react-icons/ai'
 
-function Card ({ img, name, description, price }) {
+function Card ({ img, name, description, price, hosts, stars }) {
   return (
     <div className='card'>
       <img src={img} alt='img' className='card__image' />
@@ -9,8 +10,8 @@ function Card ({ img, name, description, price }) {
         <h3 className='card__content__title'>{name}</h3>
         <p className='card__content__description'>{description}</p>
         <div className='card__content__badges'>
-          <div className='card__content__badges__dorm'>Dormitorios</div>
-          <div className='card__content__badges__huesp'>Huespedes</div>
+          <div className='card__content__badges__stars'>{stars.split('*')[0]}<AiFillStar /> </div>
+          <div className='card__content__badges__huesp'>{hosts} Huespedes</div>
         </div>
         <div className='card__content__divider' />
         <div className='card__content__info'>
