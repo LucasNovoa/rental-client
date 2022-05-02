@@ -1,31 +1,32 @@
-import React from 'react'
+import React from 'react';
 
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import { ProviderAuth } from '../hooks/useAuth'
+import { ProviderAuth } from '../hooks/useAuth';
 
-import { Layout } from '../containers/Layout'
+import { Layout } from '../containers/Layout';
 
-import { Home } from '../pages/Home'
-import { Profile } from '../pages/Profile'
-import { Login } from '../pages/Login'
+import { Home } from '../pages/Home';
+import { Profile } from '../pages/Profile';
+import { Login } from '../pages/Login';
 
-const App = () => {
+function App() {
   return (
     <ProviderAuth>
-      <div className='App'>
+      <div className="App">
         <BrowserRouter>
           <Layout>
             <Routes>
-              <Route path='/' element={<Home />} />
-              <Route path='/profile' element={<Profile />} />
-              <Route path='/login' element={<Login />} />
+              <Route path="/" element={<Home />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/login" element={<Login />} />
+              {/* <Route path="/register" element={<Register />} /> */}
             </Routes>
           </Layout>
         </BrowserRouter>
       </div>
     </ProviderAuth>
-  )
+  );
 }
 
-export { App }
+export { App };
