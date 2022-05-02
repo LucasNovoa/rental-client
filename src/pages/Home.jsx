@@ -4,6 +4,7 @@ import AboutCompo from '../components/AboutComp/AboutCompo';
 import Header from '../components/Header/Header';
 import Presentation from '../components/Presentation/Presentation';
 import Slider from '../containers/Slider/Slider';
+import Footer from '../components/Footer/Footer';
 import { getHotels, getHotelsStatus, selectAllHotels } from '../redux/slices/hotelSlice';
 
 function Home() {
@@ -24,6 +25,7 @@ function Home() {
       <Presentation />
       <AboutCompo />
       <Slider hotels={hotels} />
+      <Footer />
     </div>
   );
 }
