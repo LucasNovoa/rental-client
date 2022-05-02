@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import React, { useState, useContext, createContext } from 'react'
 
 import axios from 'axios'
@@ -29,6 +30,10 @@ function useProvideAuth () {
     const { data: access_token } = await axios.post('http://polar-waters-05125.herokuapp.com/api/v1/auth/login', { email, password }, options)
 
     console.log(access_token)
+
+    if (access_token) {
+      Cookie.set('token', access_token.token, { expires: 5 })
+    }
   }
 
   return {
