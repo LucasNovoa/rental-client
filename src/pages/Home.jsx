@@ -6,6 +6,7 @@ import Presentation from '../components/Presentation/Presentation'
 import Slider from '../containers/Slider/Slider'
 import Footer from '../components/Footer/Footer'
 import { getHotels, getHotelsStatus, selectAllHotels } from '../redux/slices/hotelSlice'
+import { SearchBar } from '../components/SearchBar/SearchBar'
 
 function Home () {
   const dispatch = useDispatch()
@@ -22,6 +23,7 @@ function Home () {
   return (
     <div className='Home'>
       <Header />
+      <SearchBar />
       <Presentation />
       <AboutCompo />
       <Slider hotels={hotels} />
