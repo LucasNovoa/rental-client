@@ -160,7 +160,7 @@ export default function Footer () {
             <div className='footer__container__newsWrapper__wrapper__input'>
               <form>
                 <div className='footer__container__newsWrapper__wrapper__input__subscribe'>
-                  <input type='email' className='footer__container__newsWrapper__wrapper__input__subscribe__input' maxlength='256' placeholder='Introduce tu email' />
+                  <input type='email' className='footer__container__newsWrapper__wrapper__input__subscribe__input' maxLength='256' placeholder='Introduce tu email' />
                   <input type='submit' value='Suscribirse' data-wait='Por favor espere...' className='footer__container__newsWrapper__wrapper__input__subscribe__bottom' />
                 </div>
               </form>
