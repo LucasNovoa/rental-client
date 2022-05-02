@@ -1,25 +1,34 @@
-import React from 'react'
+import React from 'react';
 
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import { Layout } from '../containers/Layout'
+import { ProviderAuth } from '../hooks/useAuth';
 
-import { Home } from '../pages/Home'
-import { Profile } from '../pages/Profile'
+import { Layout } from '../containers/Layout';
 
-const App = () => {
+import { Home } from '../pages/Home';
+import { Profile } from '../pages/Profile';
+import { Login } from '../pages/Login';
+import { Hotels } from '../pages/Hotels';
+
+function App() {
   return (
-    <div className='App'>
-      <BrowserRouter>
-        <Layout>
-          <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/profile' element={<Profile />} />
-          </Routes>
-        </Layout>
-      </BrowserRouter>
-    </div>
-  )
+    <ProviderAuth>
+      <div className="App">
+        <BrowserRouter>
+          <Layout>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/hotels" element={<Hotels />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/login" element={<Login />} />
+              {/* <Route path="/register" element={<Register />} /> */}
+            </Routes>
+          </Layout>
+        </BrowserRouter>
+      </div>
+    </ProviderAuth>
+  );
 }
 
-export { App }
+export { App };
