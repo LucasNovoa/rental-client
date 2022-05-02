@@ -5,7 +5,17 @@ import 'react-date-range/dist/theme/default.css'
 import './searchBar.scss'
 import { cities } from './cities'
 
+import { useNavigate } from 'react-router-dom'
+
 const SearchBar = () => {
+  // PROVISORIO ---->
+  const navigate = useNavigate()
+  const handleSearch = (e) => {
+    e.preventDefault()
+    navigate('/hotels/')
+  }
+  // -------------->
+
   const [results, setResults] = useState(false)
   const [startDate, setStartDate] = useState(new Date())
   const [endDate, setEndDate] = useState(startDate)
@@ -144,7 +154,7 @@ const SearchBar = () => {
               </div>
             </div>}
         </div>
-        <button className='searchBar__btn'>Buscar</button>
+        <button className='searchBar__btn' onClick={handleSearch}>Buscar</button>
       </div>
 
     </div>

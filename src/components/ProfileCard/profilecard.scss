@@ -15,6 +15,9 @@
     align-items: center;
 
     &__image {
+      width: 200px;
+      height: 200px;
+      object-fit: none;
       border-radius: 100%;
     }
   }

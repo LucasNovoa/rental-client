@@ -40,7 +40,11 @@
       align-items: stretch;
       justify-content: start;
 
-      &__dorm {
+      &__stars {
+        display: flex;
+        width: 70px;
+        justify-content: space-evenly;
+        align-items: center;
         padding: 14px;
         margin-right: 14px;
         font-size: 1.5rem;
