@@ -1,28 +1,26 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import Footer from '../components/Footer/Footer'
 import Header from '../components/Header/Header'
-import ProfileCard from '../components/ProfileCard/ProfileCard'
-import ProfileDetail from '../components/ProfileDetail/ProfileDetail'
-import { getUsers, getUsersStatus, selectAllUsers } from '../redux/slices/userSlice'
+import ProfileContainer from '../containers/ProfileContainer/ProfileContainer'
+import { getUsers, selectAllUsers } from '../redux/slices/userSlice'
 
 const Profile = () => {
   const dispatch = useDispatch()
 
   const users = useSelector(selectAllUsers)
-  const usersStatus = useSelector(getUsersStatus)
 
   useEffect(() => {
-    if (usersStatus === 'idle') {
-      dispatch(getUsers())
-    }
-  }, [usersStatus, dispatch])
+    dispatch(getUsers())
+  }, [dispatch])
 
-  console.log(users)
+  console.log(users[0])
+
   return (
     <div className='Profile'>
       <Header />
-      <ProfileCard user={users[0]} />
-      <ProfileDetail user={users[0]} />
+      <ProfileContainer user={users[0]} />
+      <Footer />
     </div>
   )
 }

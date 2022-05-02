@@ -9,7 +9,7 @@ import { Layout } from '../containers/Layout'
 import { Home } from '../pages/Home'
 import { Profile } from '../pages/Profile'
 import { Login } from '../pages/Login'
-import Register from '../pages/Register'
+import { Hotels } from '../pages/Hotels'
 
 function App () {
   return (
@@ -19,9 +19,10 @@ function App () {
           <Layout>
             <Routes>
               <Route path='/' element={<Home />} />
+              <Route path='/hotels/' element={<Hotels />} />
               <Route path='/profile' element={<Profile />} />
               <Route path='/login' element={<Login />} />
-              <Route path='/register' element={<Register />} />
+              {/* <Route path="/register" element={<Register />} /> */}
             </Routes>
           </Layout>
         </BrowserRouter>

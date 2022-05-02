@@ -36,7 +36,7 @@ export default function Footer () {
             </div>
             <div>
               <div className='footer__container__top__grid__listTitle'>
-                Páginas
+                Links Útiles
               </div>
               <div className='footer__container__top__grid__listCont'>
                 <ul className='footer__container__top__grid__listCont__ul1'>
@@ -50,71 +50,30 @@ export default function Footer () {
                       Acerca de ...
                     </a>
                   </li>
-                  <li className='footer__container__top__grid__listCont__ul1__li3'>
-                    <a href='/blog' className='footer__container__top__grid__listCont__ul1__li3__href'>
-                      Blog
-                    </a>
-                  </li>
-                  <li className='footer__container__top__grid__listCont__ul1__li4'>
-                    <a href='https://rentaltemplate.webflow.io/blog/glamping-101-everything-you-need-to-know-about-glamping' className='footer__container__top__grid__listCont__ul1__li4__href'>
-                      Entrada al Blog
-                    </a>
-                  </li>
                   <li className='footer__container__top__grid__listCont__ul1__li5'>
                     <a href='/contact' className='footer__container__top__grid__listCont__ul1__li5__href'>
                       Contáctanos
                     </a>
                   </li>
                   <li className='footer__container__top__grid__listCont__ul1__li6'>
-                    <a href='/rooms' className='footer__container__top__grid__listCont__ul1__li6__href'>
-                      Habitaciones
+                    <a href='/hotels' className='footer__container__top__grid__listCont__ul1__li6__href'>
+                      Ver Hoteles
                     </a>
                   </li>
-                  <li className='footer__container__top__grid__listCont__ul1__li7'>
-                    <a href='https://rentaltemplate.webflow.io/product/family-rustic-cabin' className='footer__container__top__grid__listCont__ul1__li7__href'>
-                      Habitación individual
+                  <li className='footer__container__top__grid__ul2__li6'>
+                    <a href='/register' className='footer__container__top__grid__ul2__li6__href'>
+                      Registrarse
+                    </a>
+                  </li>
+                  <li className='login'>
+                    <a href='/template-pages/changelog' className='footer__container__top__grid__ul2__li6__href'>
+                      Log In
                     </a>
                   </li>
                 </ul>
               </div>
             </div>
-            <div>
-              <div className='footer__container__top__grid__listUtiles'>
-                Páginas útiles
-              </div>
-              <ul className='footer__container__top__grid__ul2'>
-                <li className='footer__container__top__grid__ul2__li1'>
-                  <a href='/template-pages/start-here' className='footer__container__top__grid__ul2__li1__href'>
-                    Inicie aquí
-                  </a>
-                </li>
-                <li className='footer__container__top__grid__ul2__li2'>
-                  <a href='/template-pages/style-guide' className='footer__container__top__grid__ul2__li2__href'>
-                    Guía de estilos
-                  </a>
-                </li>
-                <li className='footer__container__top__grid__ul2__li3'>
-                  <a href='https://rentaltemplate.webflow.io/404' className='footer__container__top__grid__ul2__li3__href'>
-                    404 No encontrado
-                  </a>
-                </li>
-                <li className='footer__container__top__grid__ul2__li4'>
-                  <a href='https://rentaltemplate.webflow.io/401' className='footer__container__top__grid__ul2__li4__href'>
-                    Protección con password
-                  </a>
-                </li>
-                <li className='footer__container__top__grid__ul2__li5'>
-                  <a href='/template-pages/licenses' className='footer__container__top__grid__ul2__li5__href'>
-                    Licencias
-                  </a>
-                </li>
-                <li className='footer__container__top__grid__ul2__li6'>
-                  <a href='/template-pages/changelog' className='footer__container__top__grid__ul2__li6__href'>
-                    Registrarse
-                  </a>
-                </li>
-              </ul>
-            </div>
+            <div />
             <div>
               <div className='footer__container__top__grid__listInstagram'>
                 Síguenos en Instagram
