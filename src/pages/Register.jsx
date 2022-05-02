@@ -17,7 +17,7 @@ function Register () {
     birthDate: '',
     password: '',
     repeatPassword: '',
-    profilePic: ''
+    profilePic: 'https://www.nicepng.com/png/detail/933-9332131_profile-picture-default-png.png'
   })
 
   function handleChange (e) {
@@ -35,6 +35,7 @@ function Register () {
     if (input.name.length >= 1 && input.lastName.length >= 1 && input.userName.length >= 1 && input.password.length >= 1) {
       dispatch(postUser(input))
 
+      // eslint-disable-next-line no-undef
       alert('User Created Successfully')
       setInput({
         name: '',
@@ -44,8 +45,9 @@ function Register () {
         birthDate: '',
         password: '',
         repeatPassword: '',
-        profilePic: ''
+        profilePic: 'https://images-ext-1.discordapp.net/external/P8I_PanYzrNyOtLaGFi2svOw_odBwa1eNGDXVBvTOVc/https/www.nicepng.com/png/detail/933-9332131_profile-picture-default-png.png?width=755&height=662'
       })
+    // eslint-disable-next-line no-undef
     } else { alert('Complete the missing info') }
   }
 
