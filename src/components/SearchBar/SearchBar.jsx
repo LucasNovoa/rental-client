@@ -136,7 +136,7 @@ const SearchBar = () => {
           </button>
           {renderAmount &&
             <div className='searchBar__amount__display'>
-              <h5 className='searchBar__amount__display__title'>Adultos</h5>
+              <h5 className='searchBar__amount__display__title'>Huéspedes</h5>
               <div className='searchBar__amount__display__counter'>
                 <button name='-' onClick={handleAmount} className='searchBar__amount__display__counter__btn'>-</button>
                 <h5 className='searchBar__amount__display__counter__number'>{amount}</h5>
