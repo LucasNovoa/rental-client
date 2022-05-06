@@ -10,6 +10,7 @@ import { Home } from '../pages/Home'
 import { Profile } from '../pages/Profile'
 import { Login } from '../pages/Login'
 import { Hotels } from '../pages/Hotels'
+import Register from '../pages/Register'
 
 function App () {
   return (
@@ -22,7 +23,7 @@ function App () {
               <Route path='/hotels/' element={<Hotels />} />
               <Route path='/profile' element={<Profile />} />
               <Route path='/login' element={<Login />} />
-              {/* <Route path="/register" element={<Register />} /> */}
+              <Route path='/register' element={<Register />} />
             </Routes>
           </Layout>
         </BrowserRouter>
