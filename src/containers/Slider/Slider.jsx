@@ -7,15 +7,12 @@ function Slider ({ hotels }) {
   const slideLeft = (e) => {
     const slid = document.getElementById('slider')
     slid.scrollLeft -= 500
-    console.log('click')
   }
 
   const slideRight = (e) => {
     const slid = document.getElementById('slider')
     slid.scrollLeft += 500
   }
-
-  console.log(hotels[0])
 
   return (
     <section className='slider'>
@@ -27,7 +24,7 @@ function Slider ({ hotels }) {
         <div className='slider__container__bottom'>
           <AiOutlineArrowLeft className='slider__container__bottom__btnl' onClick={slideLeft} />
           <div className='slider__container__bottom__cards' id='slider'>
-            {hotels.slice(10, 20).map((h) => <Card img={h.gallery[0].path} name={h.name} description={h.description} price={h.price} key={h.id} hosts={h.maxPax} stars={h.stars} />)}
+            {hotels.slice(10, 20).map((h) => <Card img={h.mainImage} name={h.name} description={h.description} price={h.price} key={h.id} hosts={h.maxPax} stars={h.stars} />)}
           </div>
           <AiOutlineArrowRight className='slider__container__bottom__btnr' onClick={slideRight} />
         </div>
