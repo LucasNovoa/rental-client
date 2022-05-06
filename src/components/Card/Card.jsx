@@ -10,7 +10,7 @@ function Card ({ img, name, description, price, hosts, stars }) {
         <h3 className='card__content__title'>{name}</h3>
         <p className='card__content__description'>{description}</p>
         <div className='card__content__badges'>
-          <div className='card__content__badges__stars'>{stars.split('*')[0]}<AiFillStar /> </div>
+          <div className='card__content__badges__stars'>{stars}<AiFillStar /> </div>
           <div className='card__content__badges__huesp'>{hosts} Huespedes</div>
         </div>
         <div className='card__content__divider' />
