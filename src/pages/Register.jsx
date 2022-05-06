@@ -1,24 +1,35 @@
+/* eslint-disable no-undef */
 import '../scss/register.scss'
 import { useDispatch } from 'react-redux'
 import React, { useState } from 'react'
 import { postUser } from '../redux/slices/userSlice'
 import Header from '../components/Header/Header'
+import '../scss/RegisterType.scss'
+import swal from 'sweetalert'
+import { useNavigate } from 'react-router-dom'
 
 function Register () {
   const dispatch = useDispatch()
-
+  const navigateTo = useNavigate()
   // eslint-disable-next-line no-unused-vars
   const [errors, setErrors] = useState({})
   const [input, setInput] = useState({
-    name: '',
+    typePerson: '',
+    firstName: '',
     lastName: '',
-    userName: '',
+    organization: '',
     email: '',
-    birthDate: '',
     password: '',
-    repeatPassword: '',
-    profilePic: 'https://www.nicepng.com/png/detail/933-9332131_profile-picture-default-png.png'
+    repeatPass: '',
+    image: ''
   })
+
+  function handleType (e) {
+    e.preventDefault()
+    setInput({
+      typePerson: e.target.value
+    })
+  }
 
   function handleChange (e) {
     e.preventDefault()
@@ -31,96 +42,136 @@ function Register () {
 
   function handleSubmit (e) {
     e.preventDefault()
-
-    if (input.name.length >= 1 && input.lastName.length >= 1 && input.userName.length >= 1 && input.password.length >= 1) {
-      dispatch(postUser(input))
-
-      // eslint-disable-next-line no-undef
-      alert('User Created Successfully')
-      setInput({
-        name: '',
-        lastName: '',
-        userName: '',
-        email: '',
-        birthDate: '',
-        password: '',
-        repeatPassword: '',
-        profilePic: 'https://images-ext-1.discordapp.net/external/P8I_PanYzrNyOtLaGFi2svOw_odBwa1eNGDXVBvTOVc/https/www.nicepng.com/png/detail/933-9332131_profile-picture-default-png.png?width=755&height=662'
-      })
-    // eslint-disable-next-line no-undef
-    } else { alert('Complete the missing info') }
+    if (input.typePerson === 'natural') {
+      if (!input.email || !input.password || !input.firstName || !input.lastName || !input.repeatPass) {
+        swal({
+          title: 'Error',
+          text: 'Complete la información faltante',
+          icon: 'error',
+          button: 'Ok!'
+        })
+      } else {
+        dispatch(postUser(input))
+        swal({
+          title: 'Éxito',
+          text: '¡Usuario creado con éxito!',
+          icon: 'success',
+          button: 'Ok!'
+        })
+        setInput({
+          firstName: '',
+          lastName: '',
+          email: '',
+          password: '',
+          repeatPass: '',
+          image: ''
+        })
+        navigateTo('/login')
+      }
+    } else if (input.typePerson === 'legal') {
+      if (!input.email || !input.password || !input.organization || !input.repeatPass) {
+        swal({
+          title: 'Error',
+          text: 'Complete la información faltante',
+          icon: 'error',
+          button: 'Ok!'
+        })
+      } else {
+        dispatch(postUser(input))
+        swal({
+          title: 'Éxito',
+          text: '¡Usuario creado con éxito!',
+          icon: 'success',
+          button: 'Ok!'
+        })
+        setInput({
+          organization: '',
+          email: '',
+          password: '',
+          repeatPass: '',
+          image: ''
+        })
+        navigateTo('/login')
+      }
+    }
   }
 
   return (
-    <>
-      <Header />
-      <section className='registration'>
+    console.log(input),
+      <>
+        <Header />
+        {!input.typePerson &&
+          <section className='welcome'>
+            <div className='welcome__data'>
+              <h2>¡Bienvenido!</h2>
+              <h3>¿Eres una persona o una empresa?</h3>
+              <button type='submit' value='natural' onClick={e => handleType(e)}>Soy una persona</button>
+              <button type='submit' value='legal' onClick={e => handleType(e)}>Represento a una empresa</button>
+            </div>
+          </section>}
+        {input.typePerson &&
+          <section className='registration'>
 
-        <div className='registration__data'>
-          <h1>User Register</h1>
-          <form className='registration__data__form' onSubmit={e => handleSubmit(e)}>
-            <label>
-              <span>Name: </span>
-              <br />
-              <input name='name' placeholder='Name...' type='text' onChange={(e) => handleChange(e)} />
-            </label>
+            <div className='registration__data'>
+              <h1>Registro</h1>
+              <form className='registration__data__form' onSubmit={e => handleSubmit(e)}>
+                <br />
+                {input.typePerson === 'natural' &&
+                  <>
+                    <label>
+                      <span>Nombre: </span>
+                      <br />
+                      <input name='firstName' placeholder='Nombre...' type='text' onChange={(e) => handleChange(e)} />
+                    </label>
+                    <label>
+                      <span>Apellido/s: </span>
+                      <br />
+                      <input name='lastName' placeholder='Apellido/s...' type='text' onChange={(e) => handleChange(e)} />
+                    </label>
+                  </>}
+                {input.typePerson === 'legal' &&
+                  <label>
+                    <span>Empresa: </span>
+                    <br />
+                    <input name='organization' placeholder='Empresa...' type='text' onChange={(e) => handleChange(e)} />
 
-            <label>
-              <span>Last name: </span>
-              <br />
-              <input name='lastName' placeholder='Last name...' type='text' onChange={(e) => handleChange(e)} />
+                  </label>}
 
-            </label>
+                <label>
+                  <span>Email: </span>
+                  <br />
+                  <input name='email' placeholder='Email...' type='text' onChange={(e) => handleChange(e)} />
 
-            <label>
-              <span>User name: </span>
-              <br />
-              <input name='userName' placeholder='User name...' type='text' onChange={(e) => handleChange(e)} />
+                </label>
+                <label>
+                  <span>Contraseña: </span>
+                  <br />
+                  <input name='password' placeholder='Contraseña...' type='password' onChange={(e) => handleChange(e)} />
 
-            </label>
+                </label>
 
-            <label>
-              <span>Email: </span>
-              <br />
-              <input name='email' placeholder='Email...' type='text' onChange={(e) => handleChange(e)} />
+                <label>
+                  <span>Repita Contraseña: </span>
+                  <br />
+                  <input name='repeatPass' placeholder='Repita Contraseña...' type='password' onChange={(e) => handleChange(e)} />
 
-            </label>
+                </label>
 
-            <label>
-              <span>Birth date: </span>
-              <br />
-              <input name='birthDate' placeholder='Date of Birth...' type='text' onChange={(e) => handleChange(e)} />
+                <label>
+                  <span>Elija su foto de perfil: </span>
+                  <br />
+                  <input placeholder='Foto de perfil...' name='image' type='text' onChange={(e) => handleChange(e)} />
 
-            </label>
+                </label>
+                <br />
 
-            <label>
-              <span>Password: </span>
-              <br />
-              <input name='password' placeholder='Choose Password...' type='password' onChange={(e) => handleChange(e)} />
-
-            </label>
-
-            <label>
-              <span>Repeat Password: </span>
-              <br />
-              <input name='repeatPassword' placeholder='Repeat Password...' type='password' onChange={(e) => handleChange(e)} />
-
-            </label>
-
-            <label>
-              <span>Select your Profile Picture</span>
-              <br />
-              <input placeholder='Profile Picture...' name='profilePic' type='text' onChange={(e) => handleChange(e)} />
-
-            </label>
-
-          </form>
-          <div className='registration__data__buttonRow'>
-            <button className='registration__data__buttonRow__button__submit' type='submit' onClick={(e) => handleSubmit(e)}>Register!</button>
-          </div>
-        </div>
-      </section>
-    </>
+              </form>
+              <div className='registration__data__buttonRow'>
+                <button className='registration__data__buttonRow__button__submit' type='submit' onClick={(e) => handleSubmit(e)}>Registrarse</button>
+              </div>
+            </div>
+          </section>}
+      </>
   )
 }
 
