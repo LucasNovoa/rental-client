@@ -1,9 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './hotelcard.scss'
 import { FiShare2 } from 'react-icons/fi'
-import { MdFavoriteBorder, MdFavorite } from 'react-icons/md'
+import { MdFavoriteBorder } from 'react-icons/md'
+import Share from '../Share/Share'
 
 const HotelCard = ({ hotel }) => {
+  const [share, setShare] = useState(false)
+  const handleShare = () => {
+    setShare(!share)
+  }
+
   return (
     <section className='hotelcard'>
       <div className='hotelcard__container'>
@@ -11,7 +17,8 @@ const HotelCard = ({ hotel }) => {
           <div className='hotelcard__container__data__title'>
             <h3 className='hotelcard__container__data__title__text'>{hotel.name}</h3>
             <div className='hotelcard__container__data__title__anchors'>
-              <a className='hotelcard__container__data__title__anchors__a'><FiShare2 />Compartir</a>
+              <a className='hotelcard__container__data__title__anchors__a' onClick={handleShare}><FiShare2 />Compartir</a>
+              {share && <Share hotel={hotel} />}
               <a className='hotelcard__container__data__title__anchors__a'><MdFavoriteBorder />Favoritos</a>
             </div>
           </div>
