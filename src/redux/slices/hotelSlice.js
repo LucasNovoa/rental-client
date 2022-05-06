@@ -46,5 +46,6 @@ const hotelsSlice = createSlice({
 export const selectAllHotels = (state) => state.hotels.hotels
 export const getHotelsStatus = (state) => state.hotels.status
 export const getHotelsError = (state) => state.hotels.error
+export const selectHotelByName = (state, hotelName) => state.hotels.hotels.find(hotel => hotel.name === hotelName)
 
 export default hotelsSlice.reducer
