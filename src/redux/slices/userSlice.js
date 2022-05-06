@@ -2,11 +2,12 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
 
-const URI = 'https://polar-waters-05125.herokuapp.com/api/v1/users'
+const URI = 'https://rental-app-server.herokuapp.com/api/v1/users'
 
 const initialState = {
   users: [{
     id: 1,
+    typePerson: '',
     name: 'Diego Armando',
     lastName: 'Maradona',
     userName: 'DM10',
