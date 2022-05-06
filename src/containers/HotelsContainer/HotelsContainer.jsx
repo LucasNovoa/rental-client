@@ -19,7 +19,7 @@ export const HotelsContainer = () => {
   return (
     <section className='hotelscontainer'>
       <div className='hotelscontainer__cards'>
-        {filteredHotels.map((h) => <Card img={h.gallery[0].path} name={h.name} description={h.description} price={h.price} key={h.id} hosts={h.maxPax} stars={h.stars} />)})
+        {filteredHotels.map((h) => <Card img={h.mainImage} name={h.name} description={h.description} price={h.price} key={h.id} hosts={h.maxPax} stars={h.stars} />)})
       </div>
       <Pagination page={page} setPage={setPage} maxPage={maxPage} />
     </section>

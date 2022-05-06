@@ -67,7 +67,7 @@ export default function Footer () {
                   </li>
                   <li className='login'>
                     <a href='/template-pages/changelog' className='footer__container__top__grid__ul2__li6__href'>
-                      Log In
+                      Ingresar
                     </a>
                   </li>
                 </ul>
