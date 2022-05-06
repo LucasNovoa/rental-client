@@ -42,32 +42,57 @@ function Register () {
 
   function handleSubmit (e) {
     e.preventDefault()
-
-    if (!input.email || !input.password) {
-      swal({
-        title: 'Error',
-        text: 'Complete la información faltante',
-        icon: 'error',
-        button: 'Ok!'
-      })
-    } else {
-      dispatch(postUser(input))
-      swal({
-        title: 'Éxito',
-        text: '¡Usuario creado con éxito!',
-        icon: 'success',
-        button: 'Ok!'
-      })
-      setInput({
-        firstName: '',
-        lastName: '',
-        organization: '',
-        email: '',
-        password: '',
-        repeatPass: '',
-        image: ''
-      })
-      navigateTo('/login')
+    if (input.typePerson === 'natural') {
+      if (!input.email || !input.password || !input.firstName || !input.lastName || !input.repeatPass) {
+        swal({
+          title: 'Error',
+          text: 'Complete la información faltante',
+          icon: 'error',
+          button: 'Ok!'
+        })
+      } else {
+        dispatch(postUser(input))
+        swal({
+          title: 'Éxito',
+          text: '¡Usuario creado con éxito!',
+          icon: 'success',
+          button: 'Ok!'
+        })
+        setInput({
+          firstName: '',
+          lastName: '',
+          email: '',
+          password: '',
+          repeatPass: '',
+          image: ''
+        })
+        navigateTo('/login')
+      }
+    } else if (input.typePerson === 'legal') {
+      if (!input.email || !input.password || !input.organization || !input.repeatPass) {
+        swal({
+          title: 'Error',
+          text: 'Complete la información faltante',
+          icon: 'error',
+          button: 'Ok!'
+        })
+      } else {
+        dispatch(postUser(input))
+        swal({
+          title: 'Éxito',
+          text: '¡Usuario creado con éxito!',
+          icon: 'success',
+          button: 'Ok!'
+        })
+        setInput({
+          organization: '',
+          email: '',
+          password: '',
+          repeatPass: '',
+          image: ''
+        })
+        navigateTo('/login')
+      }
     }
   }
 
@@ -96,19 +121,19 @@ function Register () {
                     <label>
                       <span>Nombre: </span>
                       <br />
-                      <input name='firstName' placeholder='Name...' type='text' onChange={(e) => handleChange(e)} />
+                      <input name='firstName' placeholder='Nombre...' type='text' onChange={(e) => handleChange(e)} />
                     </label>
                     <label>
                       <span>Apellido/s: </span>
                       <br />
-                      <input name='lastName' placeholder='Last name...' type='text' onChange={(e) => handleChange(e)} />
+                      <input name='lastName' placeholder='Apellido/s...' type='text' onChange={(e) => handleChange(e)} />
                     </label>
                   </>}
                 {input.typePerson === 'legal' &&
                   <label>
                     <span>Empresa: </span>
                     <br />
-                    <input name='organization' placeholder='Organization name...' type='text' onChange={(e) => handleChange(e)} />
+                    <input name='organization' placeholder='Empresa...' type='text' onChange={(e) => handleChange(e)} />
 
                   </label>}
 
@@ -121,21 +146,21 @@ function Register () {
                 <label>
                   <span>Contraseña: </span>
                   <br />
-                  <input name='password' placeholder='Choose Password...' type='password' onChange={(e) => handleChange(e)} />
+                  <input name='password' placeholder='Contraseña...' type='password' onChange={(e) => handleChange(e)} />
 
                 </label>
 
                 <label>
                   <span>Repita Contraseña: </span>
                   <br />
-                  <input name='repeatPass' placeholder='Repeat Password...' type='password' onChange={(e) => handleChange(e)} />
+                  <input name='repeatPass' placeholder='Repita Contraseña...' type='password' onChange={(e) => handleChange(e)} />
 
                 </label>
 
                 <label>
                   <span>Elija su foto de perfil: </span>
                   <br />
-                  <input placeholder='Profile Picture...' name='image' type='text' onChange={(e) => handleChange(e)} />
+                  <input placeholder='Foto de perfil...' name='image' type='text' onChange={(e) => handleChange(e)} />
 
                 </label>
                 <br />
