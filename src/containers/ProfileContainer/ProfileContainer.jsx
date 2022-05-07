@@ -8,6 +8,7 @@ const ProfileContainer = ({ user }) => {
     <section className='profileContainer'>
       <ProfileCard user={user} />
       <ProfileDetail user={user} />
+      <button>Publica tu alojamiento!</button>
     </section>
   )
 }

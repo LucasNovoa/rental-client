@@ -1,9 +1,10 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import Footer from '../components/Footer/Footer'
+import ProfileFooter from '../components/ProfileFooter/ProfileFooter'
 import Header from '../components/Header/Header'
 import ProfileContainer from '../containers/ProfileContainer/ProfileContainer'
 import { getUsers, selectAllUsers } from '../redux/slices/userSlice'
+import Loader from '../components/Loader/Loader'
 
 const Profile = () => {
   const dispatch = useDispatch()
@@ -14,14 +15,17 @@ const Profile = () => {
     dispatch(getUsers())
   }, [dispatch])
 
-  console.log(users[0])
+  console.log(users.find(e => e.id === 51))
+  const user = users.find(e => e.id === 51)
 
   return (
-    <div className='Profile'>
-      <Header />
-      <ProfileContainer user={users[0]} />
-      <Footer />
-    </div>
+    !user
+      ? <Loader />
+      : <div className='Profile'>
+        <Header />
+        <ProfileContainer user={user} />
+        <ProfileFooter />
+        </div>
   )
 }
 
