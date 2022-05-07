@@ -25,7 +25,7 @@ function useProvideAuth () {
   }
 
   const signIn = async (email, password) => {
-    const { data: access_token } = await axios.post('http://polar-waters-05125.herokuapp.com/api/v1/auth/login', { email, password }, options)
+    const { data: access_token } = await axios.post('http://rental-app-server.herokuapp.com/api/v1/auth/login', { email, password }, options)
 
     console.log(access_token.token)
 

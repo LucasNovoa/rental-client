@@ -9,16 +9,18 @@ function Header () {
     <header className='header'>
       <div className='header__container'>
         <div className='header__container__content'>
-          <img src={logo} alt='img' className='header__container__content__logo' />
+          <Link to='/'>
+            <img src={logo} alt='img' className='header__container__content__logo' />
+          </Link>
           <ul className='header__container__content__ul'>
             <Link to='/'>
-              <li>Home</li>
+              <li>Inicio</li>
             </Link>
             <Link to='/about'>
               <li>Sobre Nosotros</li>
             </Link>
             <Link to='/login'>
-              <li>Log In</li>
+              <li>Ingresar</li>
             </Link>
             <Link to='/register'>
               <li>Registrarse</li>
