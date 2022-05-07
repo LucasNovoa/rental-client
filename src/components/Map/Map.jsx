@@ -10,11 +10,11 @@ import { AiFillStar } from 'react-icons/ai'
 const key = 'pk.eyJ1IjoicGFzY3VjaCIsImEiOiJjbDJzcjVzOWEwMWhsM2RvOXM4c2x3ZDExIn0.MHtq4GI2KxqTHUqG58MfiQ'
 const style = 'mapbox://styles/pascuch/cl2tk7qqo000s14o177zcb02u'
 
-export default function Map ({ width, height }) {
+export default function Map ({ width, height, place }) {
   const [selectedLocation, setSelectedLocation] = useState({})
   const parse = JSON.parse(JSON.stringify(api))
 
-  const lugar = parse.hotels.filter(e => e.countryCity.includes('Buenos Aires'))
+  const lugar = parse.hotels.filter(e => e.countryCity.includes(place))
 
   const coordinates = lugar.map(e => ({ longitude: e.longitude, latitude: e.latitude }))
 
@@ -26,6 +26,14 @@ export default function Map ({ width, height }) {
     zoom: 11.5
   })
 
+  useEffect(() => {
+    setViewState({
+      latitude: center.latitude,
+      longitude: center.longitude,
+      zoom: 12
+    })
+  }, [place])
+
   return (
     <div className='map'>
       <ReactMapGL
@@ -34,6 +42,8 @@ export default function Map ({ width, height }) {
         onMove={e => setViewState(e.viewState)}
         mapStyle={style}
         style={{ width, height }}
+        maxZoom={15.5}
+        minZoom={3}
       >
         {lugar.map(el => (
           <div key={el.id}>
