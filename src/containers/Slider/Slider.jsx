@@ -7,7 +7,6 @@ function Slider ({ hotels }) {
   const slideLeft = (e) => {
     const slid = document.getElementById('slider')
     slid.scrollLeft -= 500
-    console.log('click')
   }
 
   const slideRight = (e) => {
