@@ -20,11 +20,8 @@ function Login () {
     const email = emailRef.current.value
     const password = passwordRef.current.value
 
-    console.log(email, password)
-
     auth.signIn(email, password).then(() => {
       navigate('/')
-      console.log('Login Success')
     })
   }
 
