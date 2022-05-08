@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 
 import Header from '../components/Header/Header'
 
@@ -30,16 +30,18 @@ function Login () {
       <Header />
       <form className='Login' onSubmit={handleSubmit}>
         <label className='Login__Label' htmlFor='email-address'>
-          <span>Email</span>
-          <input type='email' name='' required placeholder='Email Address' ref={emailRef} />
+          <span>Correo Electrónico</span>
+          <input type='email' name='' required placeholder='Correo Electrónico' ref={emailRef} />
         </label>
 
         <label className='Login__Label' htmlFor='password'>
-          <span>Password</span>
-          <input type='password' name='' required placeholder='Password' ref={passwordRef} />
+          <span>Contraseña</span>
+          <input type='password' name='' required placeholder='Contraseña' ref={passwordRef} />
         </label>
 
-        <button type='submit'>Sign In</button>
+        <button type='submit'>Ingresar</button>
+
+        <Link to='/passwordRecovery'>Te olvidaste la contraseña?</Link>
       </form>
     </>
   )

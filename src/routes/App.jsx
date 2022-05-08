@@ -15,6 +15,8 @@ import Register from '../pages/Register'
 
 import { About } from '../pages/About'
 
+import { PasswordRecovery } from '../pages/PasswordRecovery'
+
 function App () {
   return (
     <ProviderAuth>
@@ -28,6 +30,7 @@ function App () {
             <Route path='/hotel/:name' element={<Hotel />} />
             <Route path='/register' element={<Register />} />
             <Route path='/about' element={<About />} />
+            <Route path='/passwordRecovery' element={<PasswordRecovery />} />
           </Routes>
         </Layout>
       </BrowserRouter>
