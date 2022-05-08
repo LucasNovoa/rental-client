@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-indent */
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useAuth } from '../../hooks/useAuth'
 import logo from '../../assets/logotemplate.svg'
 import bag from '../../assets/bagtemplates.svg'
@@ -7,13 +7,19 @@ import './header.scss'
 import { Link } from 'react-router-dom'
 
 function Header () {
+  const [userInfo, setUserInfo] = useState(null)
+
   const auth = useAuth()
 
-  const userData = {
-    name: auth?.user?.firstName || auth?.user?.organization,
-    email: auth?.user?.email,
-    image: `https://ui-avatars.com/api/?name=${auth?.user?.name || auth?.user?.organization}`
-  }
+  useEffect(() => {
+    const userJSON = window.localStorage.getItem('user')
+
+    if (userJSON) {
+      const user = JSON.parse(userJSON)
+
+      setUserInfo(user)
+    }
+  }, [])
 
   return (
     <header className='header'>
@@ -31,24 +37,24 @@ function Header () {
             </Link>
 
             {
-              !userData.name
+              !userInfo
                 ? <Link to='/login'>
                   <li>Ingresar</li>
                   </Link>
 
-                : <Link to='/profile'><li>{userData.name}</li></Link>
+                : <Link to='/profile'><li>{userInfo?.name || userInfo?.organization}</li></Link>
             }
 
             {
-              !userData.name
+              !userInfo
                 ? <Link to='/register'>
                   <li>Registrarse</li>
                   </Link>
-                : <Link to='/profile'><li><img src={userData.image} alt='' /></li></Link>
+                : <Link to='/profile'><li><img src={`https://ui-avatars.com/api/?name=${userInfo?.firstName || userInfo?.organization}`} alt='' /></li></Link>
             }
 
             {
-              userData.name && <li><button onClick={() => auth.logout()}>Cerrar Sesión</button></li>
+              userInfo && <li><button onClick={() => auth.logout()}>Cerrar Sesión</button></li>
             }
 
             <li><img src={bag} alt='bag' className='header__container__content__ul__bag' /></li>

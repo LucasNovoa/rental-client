@@ -38,11 +38,14 @@ function useProvideAuth () {
       const { data: user } = await axios.get(`http://rental-app-server.herokuapp.com/api/v1/users/${userId}`)
 
       setUser(user)
+
+      window.localStorage.setItem('user', JSON.stringify(user))
     }
   }
 
   const logout = () => {
     Cookie.remove('token')
+    window.localStorage.removeItem('user')
     setUser(null)
     delete axios.defaults.headers.Authorization
     window.location.href = '/login'
