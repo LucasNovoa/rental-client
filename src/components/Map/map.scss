@@ -1,0 +1,79 @@
+.map {
+    display: flex;
+    justify-content: center;
+
+    &__btn {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+    }
+    &__btn:hover {
+        transform: scale(1.15)
+    }
+
+}
+
+.popup {
+    h5 {
+        margin-top: 10px;
+        width: 150px;
+    }
+    
+    p {
+        font-size: 1.4rem;
+    }
+    
+    img {
+        border-radius: 8px;
+        width: 150px;
+    }
+
+    &__stars {
+        display: flex;
+        justify-content: center;
+        margin-top: 6px;
+        font-size: 1.5rem;
+    }
+
+    &__btn {
+        background-color: transparent;
+        border: none;
+
+        &__name {
+            font-size: 1.5rem;
+        }
+        &__name:hover {
+            cursor: pointer;
+            text-decoration: underline;
+        }
+    }
+    &__btn:focus {
+        outline: none;
+    }
+}
+
+
+
+.mapboxgl-map { 
+    // width: 90vw; 
+    // height: 400; 
+    margin-top: 70px;
+    border-radius: 30px;
+}
+
+.mapboxgl-control-container {
+    display: none;
+}
+
+.mapboxgl-popup-content {
+    box-shadow: none !important;
+    border-radius: 13px !important;
+    text-align: center;
+}
+
+
+
+.prueba {
+    font-size: .18rem;
+    color: transparent;
+}

@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import React, { useState, useContext, createContext } from 'react'
+import React, { useState, useEffect, useContext, createContext } from 'react'
 
 import axios from 'axios'
 
@@ -17,29 +17,43 @@ export const useAuth = () => useContext(AuthContext)
 function useProvideAuth () {
   const [user, setUser] = useState(null)
 
-  const options = {
-    headers: {
-      accept: '*/*',
-      'Content-Type': 'application/json'
+  const signIn = async (email, password) => {
+    const options = {
+      headers: {
+        accept: '*/*',
+        'Content-Type': 'application/json'
+      }
+    }
+
+    const { data: access_token } = await axios.post('http://rental-app-server.herokuapp.com/api/v1/auth/login', { email, password }, options)
+
+    if (access_token) {
+      const token = access_token.token
+      const userId = access_token.user.id
+
+      Cookie.set('token', token, { expires: 5 })
+
+      axios.defaults.headers.Authorization = `Bearer ${token}`
+
+      const { data: user } = await axios.get(`http://rental-app-server.herokuapp.com/api/v1/users/${userId}`)
+
+      setUser(user)
+
+      window.localStorage.setItem('user', JSON.stringify(user))
     }
   }
 
-  const signIn = async (email, password) => {
-    const { data: access_token } = await axios.post('http://rental-app-server.herokuapp.com/api/v1/auth/login', { email, password }, options)
-
-    console.log(access_token.token)
-
-    console.log(access_token.user)
-
-    if (access_token) {
-      Cookie.set('token', access_token.token, { expires: 5 })
-
-      axios.defaults.headers.Authorization = `Bearer ${access_token.token}`
-    }
+  const logout = () => {
+    Cookie.remove('token')
+    window.localStorage.removeItem('user')
+    setUser(null)
+    delete axios.defaults.headers.Authorization
+    window.location.href = '/login'
   }
 
   return {
     user,
-    signIn
+    signIn,
+    logout
   }
 }

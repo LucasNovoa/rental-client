@@ -17,21 +17,19 @@ import CreateHotel from '../components/CreateHotel/CreateHotel'
 function App () {
   return (
     <ProviderAuth>
-      <div className='App'>
-        <BrowserRouter>
-          <Layout>
-            <Routes>
-              <Route path='/' element={<Home />} />
-              <Route path='/hotels/' element={<Hotels />} />
-              <Route path='/profile' element={<Profile />} />
-              <Route path='/login' element={<Login />} />
-              <Route path='/hotel/:name' element={<Hotel />} />
-              <Route path='/register' element={<Register />} />
-              <Route path='create' element={<CreateHotel />} />
-            </Routes>
-          </Layout>
-        </BrowserRouter>
-      </div>
+      <BrowserRouter>
+        <Layout>
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/hotels/' element={<Hotels />} />
+            <Route path='/profile' element={<Profile />} />
+            <Route path='/login' element={<Login />} />
+            <Route path='/hotel/:name' element={<Hotel />} />
+            <Route path='/register' element={<Register />} />
+            <Route path='./create' element={<CreateHotel />} />
+          </Routes>
+        </Layout>
+      </BrowserRouter>
     </ProviderAuth>
   )
 }
