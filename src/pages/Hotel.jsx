@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import Footer from '../components/Footer/Footer'
 import Header from '../components/Header/Header'
+import Amenities from '../components/Amenities/Amenities'
 import HotelCard from '../components/HotelCard/HotelCard'
 import { selectHotelByName } from '../redux/slices/hotelSlice'
 
@@ -14,6 +15,7 @@ const Hotel = () => {
     <div className='hotel'>
       <Header />
       <HotelCard hotel={hotel} />
+      <Amenities />
       <Footer />
     </div>
   )
