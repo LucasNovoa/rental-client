@@ -1,0 +1,87 @@
+@import "./vars";
+
+.About {
+  &__Us {
+    padding: 250px 0;
+    background-image: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.4) 4%,
+        rgba(0, 0, 0, 0.6) 64%,
+        #000
+      ),
+      url("../assets/images/about-us1.jpg");
+
+    article {
+      color: white;
+      text-align: center;
+
+      h1 {
+        font-size: 6rem;
+        margin-bottom: 20px;
+      }
+
+      p {
+        width: 700px;
+        margin: 0 auto;
+        line-height: 2;
+        font-size: 2rem;
+      }
+    }
+  }
+
+  &__Text {
+    display: flex;
+
+    article {
+      text-align: center;
+      padding: 50px 7.5%;
+      h2 {
+        font-size: 3.5rem;
+        margin-bottom: 20px;
+      }
+      p {
+        font-size: 2rem;
+        line-height: 1.5;
+      }
+    }
+  }
+
+  &__Images {
+    margin: 25px 15%;
+
+    display: flex;
+
+    img {
+      object-fit: cover;
+      border-radius: 25px;
+    }
+
+    .left {
+      margin-right: 25px;
+      width: 40%;
+      img {
+        height: 100%;
+        width: 100%;
+
+        box-shadow: $shadow-04;
+      }
+    }
+
+    .right {
+      width: 60%;
+      display: flex;
+      flex-wrap: wrap;
+      img:first-child {
+        width: calc(50% - 12.5px);
+        margin-right: 25px;
+      }
+      img:nth-child(2) {
+        width: calc(50% - 12.5px);
+      }
+      img:last-child {
+        margin-top: 25px;
+        width: 100%;
+      }
+    }
+  }
+}
