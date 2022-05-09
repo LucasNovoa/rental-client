@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import Card from '../../components/Card/Card'
+import Loader from '../../components/Loader/Loader'
 import Pagination from '../../components/Pagination/Pagination'
 import { getHotelsError, getHotelsStatus, selectAllHotels } from '../../redux/slices/hotelSlice'
 import './hotelscontainer.scss'
@@ -15,12 +16,12 @@ export const HotelsContainer = () => {
 
   useEffect(() => {
     setPage(0)
-  }, (hotels))
+  }, [hotels])
 
   const filteredHotels = hotels.slice(page * 8, page * 8 + 8)
   let content
   if (status === 'loading') {
-    content = <p>Loading...</p>
+    content = <Loader />
   } else if (status === 'succeeded') {
     content = filteredHotels.map((h) => <Card img={h.mainImage} name={h.name} description={h.description} price={h.price} key={h.id} hosts={h.maxPax} stars={h.stars} />)
   } else if (status === 'failed') {

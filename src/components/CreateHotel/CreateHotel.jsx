@@ -81,7 +81,6 @@ function CreateHotel ({ userId }) {
   function handleSubmit (e) {
     e.preventDefault()
 
-    console.log(input)
     dispatch(postHotel(input))
 
     swal({

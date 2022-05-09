@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import ReactMapGL, { Marker, Popup } from 'react-map-gl'
 import getCenter from 'geolib/es/getCenter'
-import api from '../../../api.json'
 import './map.scss'
 import 'mapbox-gl/dist/mapbox-gl.css'
 import { FaMapMarkerAlt } from 'react-icons/fa'
@@ -35,8 +34,6 @@ export default function Map ({ width, height, hotels }) {
       zoom: 12
     })
   }, [hotels])
-
-  console.log(selectedLocation)
 
   return (
     <div className='map'>

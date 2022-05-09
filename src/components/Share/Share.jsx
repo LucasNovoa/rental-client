@@ -6,7 +6,6 @@ const Share = ({ hotel }) => {
   const message = `Mirá el hotel ${hotel.name}, re cheto para caer con la vagancia!`
   const url = window.location.href
 
-  console.log(message)
   const handleFacebook = (e) => {
     e.preventDefault()
     window.open(`https://www.facebook.com/dialog/feed?app_id=145634995501895&link=${url}&redirect_uri=${url}`, 'Share Hotel', 'width=300', 'height=300', 'scrollbars=NO')

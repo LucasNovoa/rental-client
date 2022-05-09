@@ -90,8 +90,6 @@ const SearchBar = () => {
     }
   }
 
-  console.log(cities)
-
   return (
     <div>
       <div className='searchBar'>
