@@ -90,7 +90,7 @@ const SearchBar = () => {
     }
   }
 
-  // console.log(hotels[0])
+  console.log(cities)
 
   return (
     <div>
