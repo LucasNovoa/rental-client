@@ -18,7 +18,6 @@ const Amenities = (props) => {
             let visible = false
             if (arreglo.includes(e)) visible = true
             const icon = `../assets/iconsAmenities/${e}.svg`
-            console.log(icon)
             return (
               <React.Fragment key={index}>
                 <div>

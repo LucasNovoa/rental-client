@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from 'react'
 import { useAuth } from '../../hooks/useAuth'
 import logo from '../../assets/logotemplate.svg'
-import bag from '../../assets/bagtemplates.svg'
 import './header.scss'
 import { Link } from 'react-router-dom'
 

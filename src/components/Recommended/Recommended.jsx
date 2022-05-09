@@ -42,7 +42,6 @@ export default function Recommended () {
         hotels={filteredHotels}
       />
     )
-    // console.log(filteredHotels)
   } else if (status === 'failed') {
     content = <p>{error}</p>
   }
