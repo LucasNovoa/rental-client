@@ -97,81 +97,80 @@ function Register () {
   }
 
   return (
-    console.log(input),
-      <>
-        <Header />
-        {!input.typePerson &&
-          <section className='welcome'>
-            <div className='welcome__data'>
-              <h2>¡Bienvenido!</h2>
-              <h3>¿Eres una persona o una empresa?</h3>
-              <button type='submit' value='natural' onClick={e => handleType(e)}>Soy una persona</button>
-              <button type='submit' value='legal' onClick={e => handleType(e)}>Represento a una empresa</button>
-            </div>
-          </section>}
-        {input.typePerson &&
-          <section className='registration'>
+    <>
+      <Header />
+      {!input.typePerson &&
+        <section className='welcome'>
+          <div className='welcome__data'>
+            <h2>¡Bienvenido!</h2>
+            <h3>¿Eres una persona o una empresa?</h3>
+            <button type='submit' value='natural' onClick={e => handleType(e)}>Soy una persona</button>
+            <button type='submit' value='legal' onClick={e => handleType(e)}>Represento a una empresa</button>
+          </div>
+        </section>}
+      {input.typePerson &&
+        <section className='registration'>
 
-            <div className='registration__data'>
-              <h1>Registro</h1>
-              <form className='registration__data__form' onSubmit={e => handleSubmit(e)}>
-                <br />
-                {input.typePerson === 'natural' &&
-                  <>
-                    <label>
-                      <span>Nombre: </span>
-                      <br />
-                      <input name='firstName' placeholder='Nombre...' type='text' onChange={(e) => handleChange(e)} />
-                    </label>
-                    <label>
-                      <span>Apellido/s: </span>
-                      <br />
-                      <input name='lastName' placeholder='Apellido/s...' type='text' onChange={(e) => handleChange(e)} />
-                    </label>
-                  </>}
-                {input.typePerson === 'legal' &&
+          <div className='registration__data'>
+            <h1>Registro</h1>
+            <form className='registration__data__form' onSubmit={e => handleSubmit(e)}>
+              <br />
+              {input.typePerson === 'natural' &&
+                <>
                   <label>
-                    <span>Empresa: </span>
+                    <span>Nombre: </span>
                     <br />
-                    <input name='organization' placeholder='Empresa...' type='text' onChange={(e) => handleChange(e)} />
-
-                  </label>}
-
+                    <input name='firstName' placeholder='Nombre...' type='text' onChange={(e) => handleChange(e)} />
+                  </label>
+                  <label>
+                    <span>Apellido/s: </span>
+                    <br />
+                    <input name='lastName' placeholder='Apellido/s...' type='text' onChange={(e) => handleChange(e)} />
+                  </label>
+                </>}
+              {input.typePerson === 'legal' &&
                 <label>
-                  <span>Email: </span>
+                  <span>Empresa: </span>
                   <br />
-                  <input name='email' placeholder='Email...' type='text' onChange={(e) => handleChange(e)} />
+                  <input name='organization' placeholder='Empresa...' type='text' onChange={(e) => handleChange(e)} />
 
-                </label>
-                <label>
-                  <span>Contraseña: </span>
-                  <br />
-                  <input name='password' placeholder='Contraseña...' type='password' onChange={(e) => handleChange(e)} />
+                </label>}
 
-                </label>
-
-                <label>
-                  <span>Repita Contraseña: </span>
-                  <br />
-                  <input name='repeatPass' placeholder='Repita Contraseña...' type='password' onChange={(e) => handleChange(e)} />
-
-                </label>
-
-                <label>
-                  <span>Elija su foto de perfil: </span>
-                  <br />
-                  <input placeholder='Foto de perfil...' name='image' type='text' onChange={(e) => handleChange(e)} />
-
-                </label>
+              <label>
+                <span>Email: </span>
                 <br />
+                <input name='email' placeholder='Email...' type='text' onChange={(e) => handleChange(e)} />
 
-              </form>
-              <div className='registration__data__buttonRow'>
-                <button className='registration__data__buttonRow__button__submit' type='submit' onClick={(e) => handleSubmit(e)}>Registrarse</button>
-              </div>
+              </label>
+              <label>
+                <span>Contraseña: </span>
+                <br />
+                <input name='password' placeholder='Contraseña...' type='password' onChange={(e) => handleChange(e)} />
+
+              </label>
+
+              <label>
+                <span>Repita Contraseña: </span>
+                <br />
+                <input name='repeatPass' placeholder='Repita Contraseña...' type='password' onChange={(e) => handleChange(e)} />
+
+              </label>
+
+              <label>
+                <span>Elija su foto de perfil: </span>
+                <br />
+                <input placeholder='Foto de perfil...' name='image' type='text' onChange={(e) => handleChange(e)} />
+
+              </label>
+              <br />
+
+            </form>
+            <div className='registration__data__buttonRow'>
+              <button className='registration__data__buttonRow__button__submit' type='submit' onClick={(e) => handleSubmit(e)}>Registrarse</button>
             </div>
-          </section>}
-      </>
+          </div>
+        </section>}
+    </>
   )
 }
 

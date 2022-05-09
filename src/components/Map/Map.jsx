@@ -31,8 +31,6 @@ export default function Map ({ width, height, hotels }) {
     })
   }, [hotels])
 
-  // console.log(selectedLocation)
-
   return (
     <div className='map'>
       <ReactMapGL

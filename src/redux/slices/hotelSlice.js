@@ -26,7 +26,6 @@ export const postHotel = createAsyncThunk(
   'users/createHotel',
   async (payload) => {
     try {
-      console.log(payload)
       const response = await axios.post(URI, payload)
 
       return response.data

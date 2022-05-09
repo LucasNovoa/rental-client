@@ -25,7 +25,7 @@ const HotelCard = ({ hotel }) => {
           <div className='hotelcard__container__data__sec'>
             <p className='hotelcard__container__data__sec__span'>Lorem ipsum dolor sit amet consectetur adipiscing elit etiam cras tellus sit tempor amet, nascetur quam ornare proin platea diam amet, Lorem ipsum dolor sit amet consectetur adipiscing elit etiam cras tellus sit tempor amet, nascetur quam ornare proin platea diam amet</p>
             <div className='hotelcard__container__data__sec__buttons'>
-              <p className='hotelcard__container__data__sec__span'>{hotel.stars} ★ {hotel.city}, {hotel.country}</p>
+              <p className='hotelcard__container__data__sec__span'>{hotel.stars} ★ {hotel.City.name}, {hotel.Country.name}</p>
               {/*     <button className='hotelcard__container__data__sec__buttons__btn'>Compartir</button>
               <button className='hotelcard__container__data__sec__buttons__btn'>Agregar a Favoritos</button> */}
             </div>

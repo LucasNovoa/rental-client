@@ -26,6 +26,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+        margin-bottom: 20px;
         &__text {
           font-size: 62px;
           line-height: 1.161em;
@@ -61,6 +62,7 @@
         flex-direction: column;
 
         &__span {
+          margin-bottom: 30px;
           color: white;
           font-size: 18px;
           line-height: 1.667em;

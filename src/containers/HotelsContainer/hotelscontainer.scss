@@ -6,6 +6,7 @@
   padding: 350px 24px 318px 0px;
 
   &__cards {
+    min-height: 800px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
   }
