@@ -39,11 +39,11 @@ function CreateHotel ({ userId, submit }) {
     description: 'Hotel Default',
     stars: 3,
     price: 250,
-    CountryId: 2,
+    CountryId: 1,
     CityId: 2,
     address: 'Prueba 1234',
-    latitude: 0,
-    longitude: 0,
+    latitude: -34.8018600249921,
+    longitude: -58.391113872821535,
     guests: 5,
     children: 2,
     email: 'prueba@mail.com',
@@ -84,7 +84,7 @@ function CreateHotel ({ userId, submit }) {
     dispatch(postHotel(input))
 
     submit(e)
-    navigateTo('/about')
+    window.location.reload()
 
     swal({
       title: 'Éxito',

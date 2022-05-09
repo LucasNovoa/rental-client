@@ -2,7 +2,7 @@
     background-color: white;
     // position: center;
     margin: 0 auto;    
-    padding: 0 30px;
+    padding: 0 30px 180px;
     text-align: center;
     align-items: center;
 
@@ -25,7 +25,13 @@
         align-items: center;
         height: 400px;
         background-color: white;
-        padding: 2px;
+        padding: 2px 0 30px;
+
+        select {
+            padding: 9px 18px;
+            border-radius: 15px;
+            font-size: 1.6rem;
+        }
 
         span {
             text-align: right;
@@ -59,9 +65,11 @@
     }
 
     &__previous {
-        position: absolute;
+        position: relative;
+        top:115px;
+        right: 120px;
         padding: 18px 28px;
-        margin-right: 26px;
+        margin-right: 0px;
         margin-bottom: 10px;
         border: none;
         border-radius: 40px;
@@ -73,6 +81,7 @@
 
     &__next {
         position: absolute;
+        bottom: -30px;
         padding: 18px 28px;
         margin-right: 26px;
         margin-bottom: 10px;
@@ -86,6 +95,7 @@
 
     &__submit {
         position: absolute;
+        bottom: -30px;
         padding: 18px 28px;
         margin-right: 26px;
         margin-bottom: 10px;

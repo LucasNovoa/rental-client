@@ -15,7 +15,7 @@ function Slider ({ hotels }) {
   if (status === 'loading') {
     content = <Loader />
   } else if (status === 'succeeded') {
-    content = hotels.slice(10, 20).map((h) => <Card img={h.mainImage} name={h.name} description={h.description} price={h.price} key={h.id} hosts={h.maxPax} stars={h.stars} />)
+    content = hotels?.slice(10, 20).map((h) => <Card img={h.mainImage} name={h.name} description={h.description} price={h.price} key={h.id} hosts={h.maxPax} stars={h.stars} />)
   } else if (status === 'failed') {
     content = <p>{error}</p>
   }
