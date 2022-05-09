@@ -3,11 +3,11 @@ import { useSelector } from 'react-redux'
 import Card from '../../components/Card/Card'
 import Loader from '../../components/Loader/Loader'
 import Pagination from '../../components/Pagination/Pagination'
-import { getHotelsError, getHotelsStatus, selectAllHotels } from '../../redux/slices/hotelSlice'
+import { getHotelsError, getHotelsStatus, selectAllHotels, selectFilteredHotels } from '../../redux/slices/hotelSlice'
 import './hotelscontainer.scss'
 
 export const HotelsContainer = () => {
-  const hotels = useSelector(selectAllHotels)
+  const hotels = useSelector(selectFilteredHotels)
   const status = useSelector(getHotelsStatus)
   const error = useSelector(getHotelsError)
   const [page, setPage] = useState(0)

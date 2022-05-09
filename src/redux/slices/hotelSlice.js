@@ -52,6 +52,7 @@ const hotelsSlice = createSlice({
       .addCase(getHotels.fulfilled, (state, action) => {
         state.status = 'succeeded'
         state.hotels = action.payload
+        state.filteredHotels = action.payload
       })
       .addCase(getHotels.rejected, (state, action) => {
         state.status = 'failed'
@@ -76,6 +77,8 @@ const hotelsSlice = createSlice({
 export const selectAllHotels = (state) => state.hotels.hotels
 export const getHotelsStatus = (state) => state.hotels.status
 export const getHotelsError = (state) => state.hotels.error
+export const selectFilteredHotels = (state) => state.hotels.filteredHotels
+
 export const selectHotelByName = (state, hotelName) => state.hotels.hotels.find(hotel => hotel.name === hotelName)
 
 export const { filterHotels } = hotelsSlice.actions
