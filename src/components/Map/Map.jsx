@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import ReactMapGL, { Marker, Popup } from 'react-map-gl'
 import getCenter from 'geolib/es/getCenter'
-import api from '../../../api.json'
 import './map.scss'
 import 'mapbox-gl/dist/mapbox-gl.css'
 import { FaMapMarkerAlt } from 'react-icons/fa'
@@ -13,10 +12,6 @@ const style = 'mapbox://styles/pascuch/cl2tk7qqo000s14o177zcb02u'
 
 export default function Map ({ width, height, hotels }) {
   const [selectedLocation, setSelectedLocation] = useState({})
-
-  // const parse = JSON.parse(JSON.stringify(api))
-
-  // const lugar = parse.hotels.filter(e => e.countryCity.includes(place))
 
   const coordinates = hotels.map(e => ({ longitude: e.longitude, latitude: e.latitude }))
 
@@ -36,7 +31,7 @@ export default function Map ({ width, height, hotels }) {
     })
   }, [hotels])
 
-  console.log(selectedLocation)
+  // console.log(selectedLocation)
 
   return (
     <div className='map'>
