@@ -21,6 +21,20 @@ export const getHotels = createAsyncThunk(
   }
 )
 
+export const postHotel = createAsyncThunk(
+  'users/createHotel',
+  async (payload) => {
+    try {
+      console.log(payload)
+      const response = await axios.post(URI, payload)
+
+      return response.data
+    } catch (error) {
+      return error.message
+    }
+  }
+)
+
 const hotelsSlice = createSlice({
   name: 'hotels',
   initialState,
@@ -37,6 +51,17 @@ const hotelsSlice = createSlice({
       .addCase(getHotels.rejected, (state, action) => {
         state.status = 'failed'
         state.error = action.error.message
+      })
+      .addCase(postHotel.pending, (state) => {
+        state.status = 'loading'
+      })
+      .addCase(postHotel.fulfilled, (state, action) => {
+        state.status = 'succeeded'
+        state.hotels = action.payload
+      })
+      .addCase(postHotel.rejected, (state, action) => {
+        state.status = 'failed'
+        state.hotels = action.payload
       })
   }
 })

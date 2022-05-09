@@ -1,5 +1,5 @@
 .profilecard {
-  border: 1px solid rgb(221, 221, 221);
+  border: 2.5px solid rgb(221, 221, 221);
   width: 258px;
   display: flex;
   flex-direction: column;
@@ -17,7 +17,7 @@
     &__image {
       width: 200px;
       height: 200px;
-      object-fit: none;
+      object-fit:cover;
       border-radius: 100%;
     }
   }

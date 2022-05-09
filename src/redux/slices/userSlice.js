@@ -6,14 +6,18 @@ const URI = 'https://rental-app-server.herokuapp.com/api/v1/users'
 
 const initialState = {
   users: [{
-    id: 1,
     typePerson: '',
-    name: 'Diego Armando',
-    lastName: 'Maradona',
-    userName: 'DM10',
-    email: 'dieguito_maradona@dios.com.ar',
-    profilePic: 'https://i.pinimg.com/564x/1b/c8/ff/1bc8ffcc2766f83c55deef6cc917301d.jpg',
-    createdAt: '2022-10'
+    firstName: '',
+    lastName: '',
+    organization: '',
+    email: '',
+    password: '',
+    repeatPassword: '',
+    role: '',
+    image: '',
+    favHotels: [],
+    isSubscribed: false,
+    createdAt: ''
   }],
   status: 'idle',
   error: null

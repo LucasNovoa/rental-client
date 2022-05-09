@@ -1,27 +1,29 @@
-import { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import Footer from '../components/Footer/Footer'
+import { useEffect, useState } from 'react'
+import ProfileFooter from '../components/ProfileFooter/ProfileFooter'
 import Header from '../components/Header/Header'
 import ProfileContainer from '../containers/ProfileContainer/ProfileContainer'
-import { getUsers, selectAllUsers } from '../redux/slices/userSlice'
+import Loader from '../components/Loader/Loader'
 
 const Profile = () => {
-  const dispatch = useDispatch()
-
-  const users = useSelector(selectAllUsers)
+  const [userInfo, setUserInfo] = useState(null)
 
   useEffect(() => {
-    dispatch(getUsers())
-  }, [dispatch])
+    const userJSON = window.localStorage.getItem('user')
+    if (userJSON) {
+      const user = JSON.parse(userJSON)
 
-  console.log(users[0])
+      setUserInfo(user)
+    }
+  }, [])
 
   return (
-    <div className='Profile'>
-      <Header />
-      <ProfileContainer user={users[0]} />
-      <Footer />
-    </div>
+    !userInfo
+      ? <Loader />
+      : <div className='Profile'>
+        <Header />
+        <ProfileContainer user={userInfo} />
+        <ProfileFooter />
+      </div>
   )
 }
 

@@ -1,6 +1,38 @@
 .profileContainer {
-  display: flex;
-  align-items: flex-start;
+  display: grid;
+  // grid-template-rows: 20% 60% 20%;
+  grid-template-columns: 20% 60% 20%;
   justify-content: center;
-  padding: 150px 24px 318px 0px;
+  padding: 150px 30px 318px 40px;
+
+  button {
+    position:relative;
+    left: 20px;
+    grid-column: 1;
+    max-width:max-content;
+    padding: 18px 38px;
+    margin-right: 26px;
+    border: 1px white;
+    border-radius: 40px;
+    background-color: #ff3f3f;
+    color: #fff;
+    font-size: 18px;
+    line-height: 20px;
+  }
+
+  button:hover{
+    background-color: rgb(250, 243, 243);
+    color: red;
+    border: solid 2px black;
+  }
+
+  .publication {
+    box-shadow: 0 32px 72px 0 rgb(20 20 43 / 24%);
+    border: 2px solid black;
+    border-radius: 25px;
+    grid-column: 2;
+    display: block;
+    width: 70%;
+    }
+  
 }
