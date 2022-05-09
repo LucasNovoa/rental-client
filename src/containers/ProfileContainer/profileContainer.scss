@@ -9,15 +9,15 @@
     height: 450px;
   }
 
-  button {
-    position:relative;
-    left: 20px;
+  &__button {
+    position:absolute;
+    top: 75%;
+    margin-left: 20px;
     grid-column: 1;
     grid-row: 2;
     height: 80px;
     max-width:max-content;
-    padding: 18px 38px;
-    margin-top: 320px;
+    padding: 18px 38px;    
     border: 1px white;
     border-radius: 40px;
     background-color: #ff3f3f;

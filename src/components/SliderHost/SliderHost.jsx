@@ -23,7 +23,7 @@ function SliderHost ({ hotels }) {
         <div className='slider__container__bottom'>
           <AiOutlineArrowLeft className='slider__container__bottom__btnl' onClick={slideLeft} />
           <div className='slider__container__bottom__cards' id='slider'>
-            {hotels.slice(10, 20).map((h) => <Card img={h.mainImage} name={h.name} description={h.description} price={h.price} key={h.id} hosts={h.maxPax} stars={h.stars} />)}
+            {hotels.map((h) => <Card img={h.mainImage} name={h.name} description={h.description} price={h.price} key={h.id} hosts={h.maxPax} stars={h.stars} />)}
           </div>
           <AiOutlineArrowRight className='slider__container__bottom__btnr' onClick={slideRight} />
         </div>

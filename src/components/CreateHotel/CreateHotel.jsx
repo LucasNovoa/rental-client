@@ -7,8 +7,10 @@ import { postHotel } from '../../redux/slices/hotelSlice'
 import { selectAllCountries, getCountries, getCountriesStatus } from '../../redux/slices/countrySlice'
 import { selectAllCities, getCities, getCitiesStatus } from '../../redux/slices/citySlice'
 
-function CreateHotel ({ userId, unmount }) {
+function CreateHotel ({ userId, submit }) {
   const dispatch = useDispatch()
+
+  const navigateTo = useNavigate()
 
   const countries = useSelector(selectAllCountries)
   const countryIdStatus = useSelector(getCountriesStatus)
@@ -28,7 +30,6 @@ function CreateHotel ({ userId, unmount }) {
     }
   }, [cityIdStatus, dispatch])
 
-  const navigateTo = useNavigate()
   // eslint-disable-next-line no-unused-vars
   const [errors, setErrors] = useState({})
   const [next, setNext] = useState(1)
@@ -82,13 +83,15 @@ function CreateHotel ({ userId, unmount }) {
     e.preventDefault()
     dispatch(postHotel(input))
 
+    submit(e)
+    navigateTo('/about')
+
     swal({
       title: 'Éxito',
       text: '¡Usuario alojamiento publicado éxito!',
       icon: 'success',
       button: 'Ok!'
     })
-    navigateTo('/profile')
 
     setInput({
       name: 'Hotel',
@@ -112,7 +115,6 @@ function CreateHotel ({ userId, unmount }) {
       otherImage: 'https://t-cf.bstatic.com/xdata/images/hotel/max1024x768/111161887.jpg?k=f40f9e8069050aadccfca8f6c6de541ef2f3dda9a203ac0052290703d49fed98&o=&hp=1',
       UserId: userId
     })
-    unmount()
   }
 
   return (

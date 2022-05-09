@@ -17,7 +17,8 @@
     }
 
     &__form {
-        margin: 60px auto;
+        position: relative;
+        margin: 0px auto;
         width:300px;
         display: flex;
         flex-direction: column;
@@ -58,6 +59,7 @@
     }
 
     &__previous {
+        position: absolute;
         padding: 18px 28px;
         margin-right: 26px;
         margin-bottom: 10px;
@@ -70,6 +72,20 @@
     }
 
     &__next {
+        position: absolute;
+        padding: 18px 28px;
+        margin-right: 26px;
+        margin-bottom: 10px;
+        border: none;
+        border-radius: 40px;
+        background-color: #ff3f3f;
+        color: #fff;
+        font-size: 18px;
+        line-height: 20px;
+    }
+
+    &__submit {
+        position: absolute;
         padding: 18px 28px;
         margin-right: 26px;
         margin-bottom: 10px;

@@ -18,8 +18,8 @@ const ProfileContainer = ({ user }) => {
       {post === false &&
         <ProfileDetail user={user} />}
       {post === false &&
-        <button onClick={e => handleCreate(e)}>Publica tu alojamiento!</button>}
-      {post === true && <CreateHotel className='profileContainer__create' userId={user.id} />}
+        <button className='profileContainer__button' onClick={e => handleCreate(e)}>Publica tu alojamiento!</button>}
+      {post === true && <CreateHotel className='profileContainer__create' userId={user.id} submit={handleCreate} />}
     </section>
   )
 }
