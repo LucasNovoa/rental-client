@@ -11,6 +11,7 @@ const ProfileContainer = ({ user }) => {
     e.preventDefault()
     setPost(!post)
   }
+
   return (
     <section className='profileContainer'>
       <ProfileCard user={user} />

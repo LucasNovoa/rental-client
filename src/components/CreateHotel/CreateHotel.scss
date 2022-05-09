@@ -1,9 +1,10 @@
 .publication {    
     background-color: white;
-    position: center;
+    // position: center;
     margin: 0 auto;    
     padding: 0 30px;
-    justify-content:baseline;
+    text-align: center;
+    align-items: center;
 
     h1 {
         font-size: 40px;
@@ -12,11 +13,12 @@
         color: black;
         margin-top: 10px;
         margin-bottom: 10px;
+        text-align: center;
     }
 
     &__form {
         margin: 60px auto;
-        width:100%;
+        width:300px;
         display: flex;
         flex-direction: column;
         align-items: center;

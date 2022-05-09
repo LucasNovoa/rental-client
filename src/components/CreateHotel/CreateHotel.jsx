@@ -7,7 +7,7 @@ import { postHotel } from '../../redux/slices/hotelSlice'
 import { selectAllCountries, getCountries, getCountriesStatus } from '../../redux/slices/countrySlice'
 import { selectAllCities, getCities, getCitiesStatus } from '../../redux/slices/citySlice'
 
-function CreateHotel ({ userId }) {
+function CreateHotel ({ userId, unmount }) {
   const dispatch = useDispatch()
 
   const countries = useSelector(selectAllCountries)
@@ -80,8 +80,6 @@ function CreateHotel ({ userId }) {
 
   function handleSubmit (e) {
     e.preventDefault()
-
-    console.log(input)
     dispatch(postHotel(input))
 
     swal({
@@ -90,6 +88,8 @@ function CreateHotel ({ userId }) {
       icon: 'success',
       button: 'Ok!'
     })
+    navigateTo('/profile')
+
     setInput({
       name: 'Hotel',
       description: 'Hotel Default',
@@ -112,7 +112,7 @@ function CreateHotel ({ userId }) {
       otherImage: 'https://t-cf.bstatic.com/xdata/images/hotel/max1024x768/111161887.jpg?k=f40f9e8069050aadccfca8f6c6de541ef2f3dda9a203ac0052290703d49fed98&o=&hp=1',
       UserId: userId
     })
-    navigateTo('/profile')
+    unmount()
   }
 
   return (
