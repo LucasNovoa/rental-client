@@ -3,6 +3,7 @@ import './hotelcard.scss'
 import { FiShare2 } from 'react-icons/fi'
 import { MdFavoriteBorder } from 'react-icons/md'
 import Share from '../Share/Share'
+import UserHotelCard from '../UserHotelCard/UserHotelCard'
 
 const HotelCard = ({ hotel }) => {
   const [share, setShare] = useState(false)
@@ -38,6 +39,7 @@ const HotelCard = ({ hotel }) => {
           <img className='hotelcard__container__images__room' src={hotel.roomImage} alt='roomImg' />
           <img className='hotelcard__container__images__other' src={hotel.otherImage} alt='otherImg' />
         </div>
+        <UserHotelCard userId={hotel.UserId} />
       </div>
     </section>
   )

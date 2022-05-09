@@ -1,5 +1,5 @@
 .hotelcard {
-  padding: 222px 24px 318px 24px;
+  padding: 222px 24px 0px 24px;
   background-image: linear-gradient(
       180deg,
       rgba(0, 0, 0, 0.4),
@@ -7,7 +7,8 @@
       black
     ),
     url("../../assets/images/fondoHotel.jpeg");
-  background-size: cover;
+  background-size: 100vw 63.8vw;
+  background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -26,7 +27,6 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        margin-bottom: 20px;
         &__text {
           font-size: 62px;
           line-height: 1.161em;
@@ -62,7 +62,7 @@
         flex-direction: column;
 
         &__span {
-          margin-bottom: 30px;
+          margin-bottom: 10px;
           color: white;
           font-size: 18px;
           line-height: 1.667em;
@@ -74,28 +74,12 @@
           display: flex;
           align-items: center;
           justify-content: space-between;
-
-          &__btn {
-            background-color: #ff3f3f;
-            padding: 18px 24px 18px 24px;
-            color: white;
-            font-weight: 600;
-            border-radius: 76px;
-            border: none;
-          }
-
-          &__btn:hover {
-            cursor: pointer;
-            background-color: #ff3f3f;
-            transform: background-color 0.3s ease;
-            transform: translate(0, -2px);
-          }
         }
       }
     }
 
     &__images {
-      margin-top: 20px;
+      margin-top: 5px;
       padding: 10px;
       display: grid;
       height: 600px;
