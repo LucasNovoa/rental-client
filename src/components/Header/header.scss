@@ -63,6 +63,27 @@
           transform: scale(0.95);
           transition: opacity 0.2s ease;
         }
+
+        &__userLogo {
+          border-radius: 100%;
+          transform: scale(.8);
+        }
+        &__userLogo:hover {
+          opacity: 90%;
+        }
+
+        &__cerrarSesion {
+          margin-left: 32px;
+          text-decoration: none;
+          color: black;
+          border: none;
+          background-color: transparent;
+        }
+        &__cerrarSesion:hover {
+          cursor: pointer;
+          color: red;
+          transition: color 0.3s linear;
+        }
       }
     }
   }
