@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import React, { useState, useEffect, useContext, createContext } from 'react'
+import React, { useState, useContext, createContext } from 'react'
 
 import axios from 'axios'
 
@@ -43,7 +43,7 @@ function useProvideAuth () {
     }
   }
 
-  const reset = async (email) => {
+  const recovery = async (email) => {
     const options = {
       headers: {
         accept: '*/*',
@@ -52,6 +52,17 @@ function useProvideAuth () {
     }
 
     await axios.post('http://rental-app-server.herokuapp.com/api/v1/auth/recovery', { email }, options)
+  }
+
+  const changePass = async (token, newPassword) => {
+    const options = {
+      headers: {
+        accept: '*/*',
+        'Content-Type': 'application/json'
+      }
+    }
+
+    await axios.post('http://rental-app-server.herokuapp.com/api/v1/auth/change-password', { token, newPassword }, options)
   }
 
   const logout = () => {
@@ -66,6 +77,7 @@ function useProvideAuth () {
     user,
     signIn,
     logout,
-    reset
+    recovery,
+    changePass
   }
 }

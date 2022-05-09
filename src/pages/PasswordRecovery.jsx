@@ -22,7 +22,7 @@ const PasswordRecovery = () => {
 
     const email = emailRef.current.value
 
-    auth.reset(email).then(() => {
+    auth.recovery(email).then(() => {
       navigate('/changePassword')
     })
   }
