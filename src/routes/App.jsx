@@ -17,6 +17,8 @@ import { About } from '../pages/About'
 
 import { PasswordRecovery } from '../pages/PasswordRecovery'
 
+import { ChangePassword } from '../pages/ChangePassword'
+
 function App () {
   return (
     <ProviderAuth>
@@ -31,6 +33,7 @@ function App () {
             <Route path='/register' element={<Register />} />
             <Route path='/about' element={<About />} />
             <Route path='/passwordRecovery' element={<PasswordRecovery />} />
+            <Route path='/changePassword' element={<ChangePassword />} />
           </Routes>
         </Layout>
       </BrowserRouter>
