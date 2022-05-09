@@ -14,6 +14,12 @@ import Hotel from '../pages/Hotel'
 import Register from '../pages/Register'
 import CreateHotel from '../components/CreateHotel/CreateHotel'
 
+import { About } from '../pages/About'
+
+import { PasswordRecovery } from '../pages/PasswordRecovery'
+
+import { ChangePassword } from '../pages/ChangePassword'
+
 function App () {
   return (
     <ProviderAuth>
@@ -27,6 +33,9 @@ function App () {
             <Route path='/hotel/:name' element={<Hotel />} />
             <Route path='/register' element={<Register />} />
             <Route path='/create' element={<CreateHotel />} />
+            <Route path='/about' element={<About />} />
+            <Route path='/passwordRecovery' element={<PasswordRecovery />} />
+            <Route path='/changePassword' element={<ChangePassword />} />
           </Routes>
         </Layout>
       </BrowserRouter>

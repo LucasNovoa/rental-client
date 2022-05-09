@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import React, { useState, useEffect, useContext, createContext } from 'react'
+import React, { useState, useContext, createContext } from 'react'
 
 import axios from 'axios'
 
@@ -43,6 +43,28 @@ function useProvideAuth () {
     }
   }
 
+  const recovery = async (email) => {
+    const options = {
+      headers: {
+        accept: '*/*',
+        'Content-Type': 'application/json'
+      }
+    }
+
+    await axios.post('http://rental-app-server.herokuapp.com/api/v1/auth/recovery', { email }, options)
+  }
+
+  const changePass = async (token, newPassword) => {
+    const options = {
+      headers: {
+        accept: '*/*',
+        'Content-Type': 'application/json'
+      }
+    }
+
+    await axios.post('http://rental-app-server.herokuapp.com/api/v1/auth/change-password', { token, newPassword }, options)
+  }
+
   const logout = () => {
     Cookie.remove('token')
     window.localStorage.removeItem('user')
@@ -54,6 +76,8 @@ function useProvideAuth () {
   return {
     user,
     signIn,
-    logout
+    logout,
+    recovery,
+    changePass
   }
 }
