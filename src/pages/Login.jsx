@@ -41,7 +41,7 @@ function Login () {
 
         <button type='submit'>Ingresar</button>
 
-        <Link to='/passwordRecovery'>Te olvidaste la contraseña?</Link>
+        <Link to='/passwordRecovery'>¿Te olvidaste la contraseña?</Link>
       </form>
     </>
   )
