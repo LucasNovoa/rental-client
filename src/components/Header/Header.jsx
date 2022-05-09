@@ -41,7 +41,7 @@ function Header () {
                 ? <Link to='/login'>
                   <li>Ingresar</li>
                   </Link>
-                  
+
                 : null
                 // <Link to='/profile'><li >{userInfo?.name || userInfo?.organization}</li></Link>
             }
@@ -55,7 +55,7 @@ function Header () {
                 ? <Link to='/register'>
                   <li>Registrarse</li>
                   </Link>
-                : <Link to='/profile'><li ><img className='header__container__content__ul__userLogo' src={`https://ui-avatars.com/api/?name=${userInfo?.firstName || userInfo?.organization}`} alt='' /></li></Link>
+                : <Link to='/profile'><li><img className='header__container__content__ul__userLogo' src={`https://ui-avatars.com/api/?name=${userInfo?.firstName || userInfo?.organization}`} alt='' /></li></Link>
             }
 
             {/* <li><img src={bag} alt='bag' className='header__container__content__ul__bag' /></li> */}
