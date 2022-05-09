@@ -45,7 +45,7 @@ const SearchBar = () => {
     if (!e.target.value) {
       setResults(false)
     } else {
-      const filter = cities.filter(el => el.name.toLowerCase().includes(e.target.value.toLowerCase()))
+      const filter = cities?.filter(el => el.name.toLowerCase().includes(e.target.value.toLowerCase()))
       setResults(filter.splice(0, 5))
     }
   }

@@ -18,7 +18,7 @@ export const HotelsContainer = () => {
     setPage(0)
   }, [hotels])
 
-  const filteredHotels = hotels.slice(page * 8, page * 8 + 8)
+  const filteredHotels = hotels?.slice(page * 8, page * 8 + 8)
   let content
   if (status === 'loading') {
     content = <Loader />
