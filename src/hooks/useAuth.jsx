@@ -43,6 +43,17 @@ function useProvideAuth () {
     }
   }
 
+  const reset = async (email) => {
+    const options = {
+      headers: {
+        accept: '*/*',
+        'Content-Type': 'application/json'
+      }
+    }
+
+    await axios.post('http://rental-app-server.herokuapp.com/api/v1/auth/recovery', { email }, options)
+  }
+
   const logout = () => {
     Cookie.remove('token')
     window.localStorage.removeItem('user')
@@ -54,6 +65,7 @@ function useProvideAuth () {
   return {
     user,
     signIn,
-    logout
+    logout,
+    reset
   }
 }
