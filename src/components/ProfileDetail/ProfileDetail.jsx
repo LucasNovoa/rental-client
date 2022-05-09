@@ -4,7 +4,6 @@ import { AiFillStar } from 'react-icons/ai'
 import React from 'react'
 
 const ProfileDetail = ({ user }) => {
-  console.log(user)
   return (
     <div className='profiledetail'>
       <h2 className='profiledetail__title'>¡Hola {user.firstName} {user.lastName}!</h2>

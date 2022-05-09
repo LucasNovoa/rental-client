@@ -1,8 +1,9 @@
 .profileContainer {
   display: grid;
-  grid-template-columns: 30% 10% 60%;
+  // grid-template-rows: 20% 60% 20%;
+  grid-template-columns: 20% 60% 20%;
   justify-content: center;
-  padding: 150px 30px 318px 30px;
+  padding: 150px 30px 318px 40px;
 
   button {
     position:relative;
@@ -24,4 +25,14 @@
     color: red;
     border: solid 2px black;
   }
+
+  .publication {
+    box-shadow: 0 32px 72px 0 rgb(20 20 43 / 24%);
+    border: 2px solid black;
+    border-radius: 25px;
+    grid-column: 2;
+    display: block;
+    width: 70%;
+    }
+  
 }

@@ -46,6 +46,10 @@ function Header () {
             }
 
             {
+              userInfo && <li><button onClick={() => auth.logout()}>Cerrar Sesión</button></li>
+            }
+
+{
               !userInfo
                 ? <Link to='/register'>
                   <li>Registrarse</li>
@@ -53,11 +57,7 @@ function Header () {
                 : <Link to='/profile'><li><img src={`https://ui-avatars.com/api/?name=${userInfo?.firstName || userInfo?.organization}`} alt='' /></li></Link>
             }
 
-            {
-              userInfo && <li><button onClick={() => auth.logout()}>Cerrar Sesión</button></li>
-            }
-
-            <li><img src={bag} alt='bag' className='header__container__content__ul__bag' /></li>
+            {/* <li><img src={bag} alt='bag' className='header__container__content__ul__bag' /></li> */}
             <li><button className='header__container__content__ul__btn'>Reservar</button></li>
           </ul>
         </div>
