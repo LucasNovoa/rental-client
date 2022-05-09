@@ -41,11 +41,12 @@ function Header () {
                   <li>Ingresar</li>
                   </Link>
 
-                : <Link to='/profile'><li>{userInfo?.name || userInfo?.organization}</li></Link>
+                : null
+                // <Link to='/profile'><li >{userInfo?.name || userInfo?.organization}</li></Link>
             }
 
             {
-              userInfo && <li><button onClick={() => auth.logout()}>Cerrar Sesión</button></li>
+              userInfo && <li><button className='header__container__content__ul__cerrarSesion' onClick={() => auth.logout()}>Cerrar Sesión</button></li>
             }
 
 {
@@ -53,7 +54,7 @@ function Header () {
                 ? <Link to='/register'>
                   <li>Registrarse</li>
                   </Link>
-                : <Link to='/profile'><li><img src={`https://ui-avatars.com/api/?name=${userInfo?.firstName || userInfo?.organization}`} alt='' /></li></Link>
+                : <Link to='/profile'><li><img className='header__container__content__ul__userLogo' src={`https://ui-avatars.com/api/?name=${userInfo?.firstName || userInfo?.organization}`} alt='' /></li></Link>
             }
 
             {/* <li><img src={bag} alt='bag' className='header__container__content__ul__bag' /></li> */}

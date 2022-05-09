@@ -264,3 +264,5 @@ postgres_data
 .vscode
 
 # End of https://www.toptal.com/developers/gitignore/api/node,android,windows,macos,linux
+# Local Netlify folder
+.netlify

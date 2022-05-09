@@ -13,10 +13,6 @@ const style = 'mapbox://styles/pascuch/cl2tk7qqo000s14o177zcb02u'
 export default function Map ({ width, height, hotels }) {
   const [selectedLocation, setSelectedLocation] = useState({})
 
-  // const parse = JSON.parse(JSON.stringify(api))
-
-  // const lugar = parse.hotels.filter(e => e.countryCity.includes(place))
-
   const coordinates = hotels.map(e => ({ longitude: e.longitude, latitude: e.latitude }))
 
   const center = getCenter(coordinates)
