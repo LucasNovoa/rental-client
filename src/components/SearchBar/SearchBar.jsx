@@ -1,20 +1,26 @@
 import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { DateRangePicker } from 'react-date-range'
 import 'react-date-range/dist/styles.css'
 import 'react-date-range/dist/theme/default.css'
 import './searchBar.scss'
-import { cities } from './cities'
-
+import { filterHotels } from '../../redux/slices/hotelSlice'
+import { selectAllCities } from '../../redux/slices/citySlice'
 import { useNavigate } from 'react-router-dom'
 
 const SearchBar = () => {
   // PROVISORIO ---->
   const navigate = useNavigate()
+  const dispatch = useDispatch()
+
   const handleSearch = (e) => {
     e.preventDefault()
+    dispatch(filterHotels(place))
     navigate('/hotels/')
   }
   // -------------->
+
+  const cities = useSelector(selectAllCities)
 
   const [results, setResults] = useState(false)
   const [startDate, setStartDate] = useState(new Date())
@@ -39,7 +45,7 @@ const SearchBar = () => {
     if (!e.target.value) {
       setResults(false)
     } else {
-      const filter = cities.filter(el => el.toLowerCase().includes(e.target.value.toLowerCase()))
+      const filter = cities.filter(el => el.name.toLowerCase().includes(e.target.value.toLowerCase()))
       setResults(filter.splice(0, 5))
     }
   }
@@ -84,6 +90,8 @@ const SearchBar = () => {
     }
   }
 
+  console.log(cities)
+
   return (
     <div>
       <div className='searchBar'>
@@ -102,12 +110,12 @@ const SearchBar = () => {
             {results &&
               <div className='searchBar__place__results'>
                 {results?.map(e =>
-                  <div key={e}>
+                  <div key={e.name}>
                     <button
                       className='searchBar__place__results__name'
-                      value={e}
+                      value={e.name}
                       onClick={handlePlaceSelect}
-                    >{e}
+                    >{e.name}
                     </button>
                   </div>
                 )}

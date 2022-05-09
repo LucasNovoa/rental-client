@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import ReactMapGL, { Marker, Popup } from 'react-map-gl'
 import getCenter from 'geolib/es/getCenter'
 import api from '../../../api.json'
@@ -10,13 +11,14 @@ import { AiFillStar } from 'react-icons/ai'
 const key = 'pk.eyJ1IjoicGFzY3VjaCIsImEiOiJjbDJzcjVzOWEwMWhsM2RvOXM4c2x3ZDExIn0.MHtq4GI2KxqTHUqG58MfiQ'
 const style = 'mapbox://styles/pascuch/cl2tk7qqo000s14o177zcb02u'
 
-export default function Map ({ width, height, place }) {
+export default function Map ({ width, height, hotels }) {
   const [selectedLocation, setSelectedLocation] = useState({})
-  const parse = JSON.parse(JSON.stringify(api))
 
-  const lugar = parse.hotels.filter(e => e.countryCity.includes(place))
+  // const parse = JSON.parse(JSON.stringify(api))
 
-  const coordinates = lugar.map(e => ({ longitude: e.longitude, latitude: e.latitude }))
+  // const lugar = parse.hotels.filter(e => e.countryCity.includes(place))
+
+  const coordinates = hotels.map(e => ({ longitude: e.longitude, latitude: e.latitude }))
 
   const center = getCenter(coordinates)
 
@@ -32,7 +34,9 @@ export default function Map ({ width, height, place }) {
       longitude: center.longitude,
       zoom: 12
     })
-  }, [place])
+  }, [hotels])
+
+  console.log(selectedLocation)
 
   return (
     <div className='map'>
@@ -45,7 +49,7 @@ export default function Map ({ width, height, place }) {
         maxZoom={15.5}
         minZoom={3}
       >
-        {lugar.map(el => (
+        {hotels.map(el => (
           <div key={el.id}>
             <Marker
               latitude={el.latitude}
@@ -67,10 +71,12 @@ export default function Map ({ width, height, place }) {
                     offsetTop={40}
                   >
                     <div className='popup'>
-                      <img src={selectedLocation.image} alt='img' />
-                      <button className='popup__btn'>
-                        <h5 className='popup__btn__name'> {selectedLocation.name}</h5>
-                      </button>
+                      <img src={selectedLocation.mainImage} alt='img' />
+                      <Link to={`/hotel/${selectedLocation.name}`} className='link'>
+                        <button className='popup__btn'>
+                          <h5 className='popup__btn__name'> {selectedLocation.name}</h5>
+                        </button>
+                      </Link>
                       {selectedLocation.stars === 1 && <div className='popup__stars'><AiFillStar /></div>}
                       {selectedLocation.stars === 2 && <div className='popup__stars'><AiFillStar /> <AiFillStar /></div>}
                       {selectedLocation.stars === 3 && <div className='popup__stars'><AiFillStar /> <AiFillStar /><AiFillStar /></div>}

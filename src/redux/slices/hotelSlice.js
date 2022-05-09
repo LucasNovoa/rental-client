@@ -5,6 +5,7 @@ const URI = 'https://rental-app-server.herokuapp.com/api/v1/hotels'
 
 const initialState = {
   hotels: [],
+  filteredHotels: [],
   status: 'idle',
   error: null
 }
@@ -38,7 +39,12 @@ export const postHotel = createAsyncThunk(
 const hotelsSlice = createSlice({
   name: 'hotels',
   initialState,
-  reducers: {},
+  reducers: {
+    filterHotels: (state, action) => {
+      const filter = state.hotels.filter(e => e.City.name === action.payload)
+      state.filteredHotels = filter
+    }
+  },
   extraReducers (builder) {
     builder
       .addCase(getHotels.pending, (state, action) => {
@@ -72,5 +78,7 @@ export const selectAllHotels = (state) => state.hotels.hotels
 export const getHotelsStatus = (state) => state.hotels.status
 export const getHotelsError = (state) => state.hotels.error
 export const selectHotelByName = (state, hotelName) => state.hotels.hotels.find(hotel => hotel.name === hotelName)
+
+export const { filterHotels } = hotelsSlice.actions
 
 export default hotelsSlice.reducer
