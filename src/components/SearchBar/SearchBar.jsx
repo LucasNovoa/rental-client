@@ -6,9 +6,13 @@ import 'react-date-range/dist/theme/default.css'
 import './searchBar.scss'
 import { filterHotels } from '../../redux/slices/hotelSlice'
 import { selectAllCities } from '../../redux/slices/citySlice'
+import { filter, selectAllFilters } from '../../redux/slices/filterSlice'
 import { useNavigate } from 'react-router-dom'
 
 const SearchBar = () => {
+  const cities = useSelector(selectAllCities)
+  const filters = useSelector(selectAllFilters)
+
   // PROVISORIO ---->
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -16,11 +20,18 @@ const SearchBar = () => {
   const handleSearch = (e) => {
     e.preventDefault()
     dispatch(filterHotels(place))
+    dispatch(filter({
+      city: place,
+      checkIn: startDate.toLocaleDateString(),
+      checkOut: endDate.toLocaleDateString(),
+      guests: amount
+    }))
+    setRenderCalendar(false)
+    setRenderAmount(false)
+    // setRenderRes(false)
     navigate('/hotels/')
   }
   // -------------->
-
-  const cities = useSelector(selectAllCities)
 
   const [results, setResults] = useState(false)
   const [startDate, setStartDate] = useState(new Date())
@@ -29,10 +40,10 @@ const SearchBar = () => {
   const [renderAmount, setRenderAmount] = useState(false)
   const [amount, setAmount] = useState(0)
 
-  const [place, setPlace] = useState('')
-  const [start, setStart] = useState('Desde cuándo?')
-  const [end, setEnd] = useState('Hasta cuándo?')
-  const [guests, setGuests] = useState('Cuántos?')
+  const [place, setPlace] = useState(filters.city)
+  const [start, setStart] = useState(filters.checkIn)
+  const [end, setEnd] = useState(filters.checkOut)
+  const [guests, setGuests] = useState(filters.guests)
 
   const selectionRange = {
     startDate,
@@ -45,7 +56,7 @@ const SearchBar = () => {
     if (!e.target.value) {
       setResults(false)
     } else {
-      const filter = cities.filter(el => el.name.toLowerCase().includes(e.target.value.toLowerCase()))
+      const filter = cities?.filter(el => el.name.toLowerCase().includes(e.target.value.toLowerCase()))
       setResults(filter.splice(0, 5))
     }
   }
@@ -65,13 +76,13 @@ const SearchBar = () => {
   const handleCalendarRender = () => {
     setRenderAmount(false)
     setResults(false)
-    setRenderCalendar(true)
+    setRenderCalendar(!renderCalendar)
   }
 
   const handleAmountRender = () => {
     setRenderCalendar(false)
     setResults(false)
-    setRenderAmount(true)
+    setRenderAmount(!renderAmount)
   }
 
   const handleFocus = () => {

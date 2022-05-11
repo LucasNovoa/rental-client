@@ -40,7 +40,15 @@ const hotelsSlice = createSlice({
   initialState,
   reducers: {
     filterHotels: (state, action) => {
-      const filter = state.hotels.filter(e => e.City.name === action.payload)
+      console.log(action.payload)
+      const { city, checkIn, checkOut, guests, highestPrice, stars } = action.payload
+      const lower = city && city.toLowerCase()
+
+      const filter = state.hotels.filter(e =>
+        e.City.name.toLowerCase().includes(lower) &&
+        e.guests >= guests
+      )
+
       state.filteredHotels = filter
     }
   },
