@@ -21,14 +21,14 @@ const SearchBar = () => {
     e.preventDefault()
     dispatch(filterHotels(place))
     dispatch(filter({
-      city: place,
+      cityId,
+      cityName: place,
       checkIn: startDate.toLocaleDateString(),
       checkOut: endDate.toLocaleDateString(),
       guests: amount
     }))
     setRenderCalendar(false)
     setRenderAmount(false)
-    // setRenderRes(false)
     navigate('/hotels/')
   }
   // -------------->
@@ -40,10 +40,12 @@ const SearchBar = () => {
   const [renderAmount, setRenderAmount] = useState(false)
   const [amount, setAmount] = useState(0)
 
-  const [place, setPlace] = useState(filters.city)
+  const [place, setPlace] = useState(filters.cityName || '')
   const [start, setStart] = useState(filters.checkIn)
   const [end, setEnd] = useState(filters.checkOut)
-  const [guests, setGuests] = useState(filters.guests)
+  const [guests, setGuests] = useState(filters.guests ? `${filters.guests} huéspedes` : 'Cuántos?')
+
+  const cityId = cities.find(e => e.name === place) && cities.find(e => e.name === place).id
 
   const selectionRange = {
     startDate,
