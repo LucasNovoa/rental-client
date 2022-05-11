@@ -32,8 +32,8 @@ function Home () {
       <SearchBar />
       <Presentation />
       <Recommended />
-      <AboutCompo />
       <Slider hotels={hotels} />
+      <AboutCompo />
       <Footer />
     </div>
   )

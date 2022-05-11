@@ -32,7 +32,7 @@ export const HotelsContainer = () => {
     <section className='hotelscontainer'>
       <div className='hotelscontainer__cards'>
         {content}
-        {filteredHotels.map((h) => <Card img={h.mainImage} name={h.name} description={h.description} price={h.price} key={h.id} hosts={h.maxPax} stars={h.stars} />)})
+        {filteredHotels.map((h) => <Card img={h.mainImage} name={h.name} description={h.description} price={h.price} key={h.id} hosts={h.maxPax} stars={h.stars} />)}
       </div>
       <Pagination page={page} setPage={setPage} maxPage={maxPage} />
     </section>
