@@ -1,12 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  city: '',
+  cityId: 0,
+  cityName: '',
   checkIn: 'Desde...',
   checkOut: 'Hasta...',
-  guests: 1,
-  highestPrice: '999999',
-  stars: 'All'
+  guests: 0,
+  highestPrice: 999999,
+  stars: 0
 }
 
 const filterSlice = createSlice({
@@ -15,7 +16,8 @@ const filterSlice = createSlice({
   reducers: {
     filter: (state, action) => {
     //   console.log(action.payload.checkIn)
-      if (action.payload.city) state.city = action.payload.city
+      if (action.payload.cityId) state.cityId = action.payload.cityId
+      if (action.payload.cityName) state.cityName = action.payload.cityName
       if (action.payload.checkIn) state.checkIn = action.payload.checkIn
       if (action.payload.checkOut) state.checkOut = action.payload.checkOut
       if (action.payload.guests) state.guests = action.payload.guests
