@@ -26,7 +26,7 @@ function Login () {
   }
 
   const googleLogin = () => {
-    window.open('https://rental-app-server.herokuapp.com/api/v1/auth/google')
+    window.open('https://rental-app-server.herokuapp.com/api/v1/auth/google', '_self')
   }
 
   return (
