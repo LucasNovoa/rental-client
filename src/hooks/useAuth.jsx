@@ -74,14 +74,7 @@ function useProvideAuth () {
   }
 
   const signInGoogle = async () => {
-    const options = {
-      headers: {
-        accept: '*/*',
-        'Content-Type': 'application/json'
-      }
-    }
-
-    const { data: access_token } = await axios.get('https://rental-app-server.herokuapp.com/api/v1/auth/google', options)
+    const { data: access_token } = await axios.get('https://rental-app-server.herokuapp.com/api/v1/auth/google')
 
     if (access_token) {
       const token = access_token.token
