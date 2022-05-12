@@ -74,6 +74,8 @@ function useProvideAuth () {
   }
 
   const signInGoogle = async () => {
+    window.open('https://o-auth-video-backend.herokuapp.com/auth/google', '_self')
+
     const options = {
       headers: {
         accept: '*/*',
