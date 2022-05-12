@@ -10,6 +10,7 @@ const ProfileDetail = ({ user }) => {
   const dispatch = useDispatch()
   const hotels = useSelector(selectAllHotels)
   const hotelIdStatus = useSelector(getHotelsStatus)
+  const hostHotels = hotels?.filter(e => e.UserId === user.id)
 
   useEffect(() => {
     if (hotelIdStatus === 'idle') {
@@ -28,10 +29,11 @@ const ProfileDetail = ({ user }) => {
       <div className='profiledetail__divider' />
       <p className='profiledetail__eva'>Evaluaciones hechas por vos</p>
       <div className='profiledetail__divider' />
-      {hotels.length < 1 && <Loader />}
-      <div>
-        <SliderHost hotels={hotels?.filter(e => e.UserId === user.id)} />
-      </div>
+      {!hotels && <Loader />}
+      {hostHotels.length > 0 &&
+        <div>
+          <SliderHost hotels={hotels?.filter(e => e.UserId === user.id)} />
+        </div>}
     </div>
   )
 }
