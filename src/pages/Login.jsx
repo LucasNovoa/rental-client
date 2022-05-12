@@ -1,5 +1,7 @@
 import { useRef } from 'react'
 
+import { GoogleLogin } from 'react-google-login'
+
 import { useNavigate, Link } from 'react-router-dom'
 
 import Header from '../components/Header/Header'
@@ -13,6 +15,10 @@ function Login () {
   const passwordRef = useRef(null)
   const auth = useAuth()
   const navigate = useNavigate()
+
+  const responseGoogle = (res) => {
+    console.log(res)
+  }
 
   const handleSubmit = (event) => {
     event.preventDefault()
@@ -39,10 +45,16 @@ function Login () {
           <input type='password' name='' required placeholder='Contraseña' ref={passwordRef} />
         </label>
 
-        <button type='submit'>Ingresar</button>
+        <button className='btn' type='submit'>Ingresar</button>
+
+        <GoogleLogin
+          className='google' clientId='673120548612-hukb89n0hg4lhlpr3jkjf1g2l2cb2j3n.apps.googleusercontent.com' onSuccess={responseGoogle} onFailure={responseGoogle} cookiePolicy='single_host_origin'
+        />
 
         <Link to='/passwordRecovery'>¿Te olvidaste la contraseña?</Link>
+
       </form>
+
     </>
   )
 }
