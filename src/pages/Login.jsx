@@ -14,6 +14,10 @@ function Login () {
   const auth = useAuth()
   const navigate = useNavigate()
 
+  const responseGoogle = (res) => {
+    console.log(res)
+  }
+
   const handleSubmit = (event) => {
     event.preventDefault()
 
@@ -39,10 +43,12 @@ function Login () {
           <input type='password' name='' required placeholder='Contraseña' ref={passwordRef} />
         </label>
 
-        <button type='submit'>Ingresar</button>
+        <button className='btn' type='submit'>Ingresar</button>
 
         <Link to='/passwordRecovery'>¿Te olvidaste la contraseña?</Link>
+
       </form>
+
     </>
   )
 }
