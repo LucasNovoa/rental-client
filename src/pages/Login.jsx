@@ -14,10 +14,6 @@ function Login () {
   const auth = useAuth()
   const navigate = useNavigate()
 
-  const responseGoogle = (res) => {
-    console.log(res)
-  }
-
   const handleSubmit = (event) => {
     event.preventDefault()
 
@@ -48,6 +44,8 @@ function Login () {
         <Link to='/passwordRecovery'>¿Te olvidaste la contraseña?</Link>
 
       </form>
+
+      <button className='btn' type='submit' onClick={() => auth.signInGoogle()}>Ingresar con Google</button>
 
     </>
   )

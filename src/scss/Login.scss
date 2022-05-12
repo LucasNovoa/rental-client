@@ -34,27 +34,6 @@
     }
   }
 
-  .btn {
-    color: white;
-    font-weight: bold;
-    background-color: $primary-color;
-    box-shadow: $shadow-04;
-    font-size: 1.6rem;
-    border-radius: 100px;
-    padding: 20px 48px;
-    display: block;
-    margin: 60px auto;
-    border: none;
-    outline: none;
-    cursor: pointer;
-  }
-
-  .google {
-    margin-bottom: 60px;
-    cursor: pointer;
-    margin-left: calc(50% - 90.32px);
-  }
-
   a {
     display: block;
     text-align: center;
@@ -63,4 +42,19 @@
     margin-bottom: 60px;
     color: crimson;
   }
+}
+
+button {
+  color: white;
+  font-weight: bold;
+  background-color: $primary-color;
+  box-shadow: $shadow-04;
+  font-size: 1.6rem;
+  border-radius: 100px;
+  padding: 20px 48px;
+  display: block;
+  margin: 60px auto;
+  border: none;
+  outline: none;
+  cursor: pointer;
 }
