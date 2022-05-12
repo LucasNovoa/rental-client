@@ -1,5 +1,5 @@
 .slider {
-  padding-top: 200;
+  margin-top: 120px;
   padding-bottom: 0;
   overflow: hidden;
   display: flex;
@@ -44,6 +44,7 @@
       display: flex;
       align-items: center;
       min-width: 100%;
+
       &__cards {
         min-width: 85%;
         width: 90%;
@@ -54,6 +55,7 @@
         align-items: center;
         overflow-x: scroll;
         scroll-behavior: smooth;
+        transform: scale(.85);
       }
       ::-webkit-scrollbar {
         display: none;

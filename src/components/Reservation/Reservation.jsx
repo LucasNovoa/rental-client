@@ -1,15 +1,15 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { DateRangePicker } from 'react-date-range'
 import 'react-date-range/dist/styles.css'
 import 'react-date-range/dist/theme/default.css'
-import './searchBar.scss'
+import './Reservation.scss'
 import { filterHotels } from '../../redux/slices/hotelSlice'
 import { selectAllCities } from '../../redux/slices/citySlice'
 import { filter, selectAllFilters } from '../../redux/slices/filterSlice'
 import { useNavigate } from 'react-router-dom'
 
-const SearchBar = () => {
+const Reservation = () => {
   const cities = useSelector(selectAllCities)
   const filters = useSelector(selectAllFilters)
 
@@ -23,8 +23,8 @@ const SearchBar = () => {
     dispatch(filter({
       cityId,
       cityName: place,
-      checkIn: startDate,
-      checkOut: endDate,
+      checkIn: startDate.toLocaleDateString(),
+      checkOut: endDate.toLocaleDateString(),
       guests: amount
     }))
     setRenderCalendar(false)
@@ -44,6 +44,11 @@ const SearchBar = () => {
   const [start, setStart] = useState(dateFormat(filters.checkIn))
   const [end, setEnd] = useState(dateFormat(filters.checkOut))
   const [guests, setGuests] = useState(filters.guests ? `${filters.guests} huéspedes` : 'Cuántos?')
+
+  useEffect(() => {
+    setStart(dateFormat(filters.checkIn))
+    setEnd(dateFormat(filters.checkOut))
+  }, [filters])
 
   const cityId = cities.find(e => e.name === place) && cities.find(e => e.name === place).id
 
@@ -104,43 +109,16 @@ const SearchBar = () => {
   }
 
   return (
-    <div>
-      <div className='searchBar'>
+    <div className='reservationContainer'>
+      <div className='reservation'>
         <div>
-          <div className='searchBar__place'>
-            <label><h5 className='searchBar__place__title'>Lugar</h5></label>
-            <input
-              className='searchBar__place__input'
-              placeholder='A dónde vas?'
-              onFocus={handleFocus}
-              onChange={handleChange}
-              value={place}
-            />
-          </div>
-          <div>
-            {results &&
-              <div className='searchBar__place__results'>
-                {results?.map(e =>
-                  <div key={e.name}>
-                    <button
-                      className='searchBar__place__results__name'
-                      value={e.name}
-                      onClick={handlePlaceSelect}
-                    >{e.name}
-                    </button>
-                  </div>
-                )}
-              </div>}
-          </div>
-        </div>
-        <div>
-          <button className='searchBar__check' onClick={handleCalendarRender}>
-            <h5 className='searchBar__check__title'>Check-in</h5>
-            <h5 className='searchBar__check__value'>{start}</h5>
+          <button className='reservation__check' onClick={handleCalendarRender}>
+            <h5 className='reservation__check__title'>Check-in</h5>
+            <h5 className='reservation__check__value'>{start}</h5>
           </button>
-          <div>
+          {/* <div>
             {renderCalendar &&
-              <div className='searchBar__check__calendar'>
+              <div className='reservation__check__calendar'>
                 <DateRangePicker
                   ranges={[selectionRange]}
                   minDate={new Date()}
@@ -152,39 +130,37 @@ const SearchBar = () => {
                   direction='horizontal'
                 />
               </div>}
-          </div>
+          </div> */}
         </div>
-        <button className='searchBar__check' onClick={handleCalendarRender}>
-          <h5 className='searchBar__check__title'>Check-out</h5>
-          <h5 className='searchBar__check__value'>{end}</h5>
+        <button className='reservation__check' onClick={handleCalendarRender}>
+          <h5 className='reservation__check__title'>Check-out</h5>
+          <h5 className='reservation__check__value'>{end}</h5>
         </button>
         <div>
-          <button className='searchBar__amount' onClick={handleAmountRender}>
-            <h5 className='searchBar__amount__title'>Huéspedes</h5>
-            <h5 className='searchBar__amount__value'>{guests}</h5>
+          <button className='reservation__amount' onClick={handleAmountRender}>
+            <h5 className='reservation__amount__title'>Huéspedes</h5>
+            <h5 className='reservation__amount__value'>{guests}</h5>
           </button>
           {renderAmount &&
-            <div className='searchBar__amount__display'>
-              <h5 className='searchBar__amount__display__title'>Huéspedes</h5>
-              <div className='searchBar__amount__display__counter'>
-                <button name='-' onClick={handleAmount} className='searchBar__amount__display__counter__btn'>-</button>
-                <h5 className='searchBar__amount__display__counter__number'>{amount}</h5>
-                <button name='+' onClick={handleAmount} className='searchBar__amount__display__counter__btn'>+</button>
+            <div className='reservation__amount__display'>
+              <h5 className='reservation__amount__display__title'>Huéspedes</h5>
+              <div className='reservation__amount__display__counter'>
+                <button name='-' onClick={handleAmount} className='reservation__amount__display__counter__btn'>-</button>
+                <h5 className='reservation__amount__display__counter__number'>{amount}</h5>
+                <button name='+' onClick={handleAmount} className='reservation__amount__display__counter__btn'>+</button>
               </div>
             </div>}
         </div>
-        <button className='searchBar__btn' onClick={handleSearch}>Buscar</button>
+        <button className='reservation__btn' onClick={handleSearch}>Reservar</button>
       </div>
 
     </div>
   )
 }
 
-export { SearchBar }
+export default Reservation
 
 function dateFormat (date) {
-  if (date === 'Desde...' || date === 'Hasta...') return date
-
   const arr = date.toLocaleString('es-AR').split(' ')[0].split('/')
   let month = ''
 
