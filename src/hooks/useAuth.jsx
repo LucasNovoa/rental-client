@@ -73,31 +73,11 @@ function useProvideAuth () {
     window.location.href = '/login'
   }
 
-  const signInGoogle = async () => {
-    const { data: access_token } = await axios.get('https://rental-app-server.herokuapp.com/api/v1/auth/google')
-
-    if (access_token) {
-      const token = access_token.token
-      const userId = access_token.user.id
-
-      Cookie.set('token', token, { expires: 5 })
-
-      axios.defaults.headers.Authorization = `Bearer ${token}`
-
-      const { data: user } = await axios.get(`https://rental-app-server.herokuapp.com/api/v1/users/${userId}`)
-
-      setUser(user)
-
-      window.localStorage.setItem('user', JSON.stringify(user))
-    }
-  }
-
   return {
     user,
     signIn,
     logout,
     recovery,
-    changePass,
-    signInGoogle
+    changePass
   }
 }

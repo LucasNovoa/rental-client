@@ -25,6 +25,10 @@ function Login () {
     })
   }
 
+  const googleLogin = () => {
+    window.open('https://rental-app-server.herokuapp.com/api/v1/auth/google')
+  }
+
   return (
     <>
       <Header />
@@ -45,7 +49,7 @@ function Login () {
 
       </form>
 
-      <button className='btn' type='submit' onClick={() => auth.signInGoogle()}>Ingresar con Google</button>
+      <button className='btn' type='submit' onClick={googleLogin}>Ingresar con Google</button>
 
     </>
   )
