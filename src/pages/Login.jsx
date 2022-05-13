@@ -25,6 +25,12 @@ function Login () {
     })
   }
 
+  const handleGoogleSubmit = (event) => {
+    event.preventDefault()
+
+    auth.signInGoogle()
+  }
+
   return (
     <>
       <Header />
@@ -39,13 +45,13 @@ function Login () {
           <input type='password' name='' required placeholder='Contraseña' ref={passwordRef} />
         </label>
 
-        <button className='button' type='submit'>Ingresar</button>
+        <button className='buttonLoginPage' type='submit'>Ingresar</button>
 
         <Link to='/passwordRecovery'>¿Te olvidaste la contraseña?</Link>
 
       </form>
 
-      <button className='button' type='submit' onClick={() => auth.signInGoogle()}>Ingresar con Google</button>
+      <button className='buttonLoginPage' type='submit' onClick={handleGoogleSubmit}>Ingresar con Google</button>
 
     </>
   )
