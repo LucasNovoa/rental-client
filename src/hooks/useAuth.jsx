@@ -74,7 +74,7 @@ function useProvideAuth () {
   }
 
   const signInGoogle = async () => {
-    window.open('https://rental-app-server.herokuapp.com/api/v1/auth/google', '_self')
+    window.open('https://rental-app-server.herokuapp.com/api/v1/auth/google')
 
     const options = {
       headers: {
