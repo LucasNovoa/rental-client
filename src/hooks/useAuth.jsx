@@ -62,7 +62,7 @@ function useProvideAuth () {
       }
     }
 
-    await axios.post('http://localhost:3000/api/v1/auth/change-password', { token, newPassword }, options)
+    await axios.post('https://rental-app-server.herokuapp.com/api/v1/auth/change-password', { token, newPassword }, options)
   }
 
   const logout = () => {
@@ -74,7 +74,7 @@ function useProvideAuth () {
   }
 
   const signInGoogle = async () => {
-    window.open('http://localhost:3001/api/v1/auth/google', '_self')
+    window.open('https://rental-app-server.herokuapp.com/api/v1/auth/google', '_self')
 
     const options = {
       headers: {
@@ -83,7 +83,7 @@ function useProvideAuth () {
       }
     }
 
-    const { data: access_token } = await axios.get('http://localhost:3001/api/v1/auth/getGoogleUser', options)
+    const { data: access_token } = await axios.get('https://rental-app-server.herokuapp.com/api/v1/auth/getGoogleUser', options)
 
     if (access_token) {
       const token = access_token.token
@@ -93,7 +93,7 @@ function useProvideAuth () {
 
       axios.defaults.headers.Authorization = `Bearer ${token}`
 
-      const { data: user } = await axios.get(`http://localhost:3001/api/v1/users/${userId}`)
+      const { data: user } = await axios.get(`https://rental-app-server.herokuapp.com/api/v1/users/${userId}`)
 
       setUser(user)
 
