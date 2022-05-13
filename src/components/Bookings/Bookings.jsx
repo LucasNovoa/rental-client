@@ -1,9 +1,11 @@
 // import { useDispatch, useSelector } from 'react-redux'
 import React from 'react'
 import './bookings.scss'
+import { useNavigate } from 'react-router'
 
 function Bookings ({ setBook, book, bookings }) {
   const hotel = bookings.find(e => e.id === book)
+  const navigateTo = useNavigate()
 
   const arrivePre = hotel.checkIn.substring(0, 10)
   const departPre = hotel.checkOut.substring(0, 10)
@@ -38,6 +40,11 @@ function Bookings ({ setBook, book, bookings }) {
     setBook(0)
   }
 
+  function handlePay (e) {
+    e.preventDefault()
+    // navigateTo(hotel.)
+  }
+
   return (
     <div className='booking'>
       <button onClick={e => handleClick(e)}> X </button>
@@ -50,6 +57,7 @@ function Bookings ({ setBook, book, bookings }) {
         <p>Check-Out: {depart}</p>
         <p>Precio por noche: ${hotel.pricePerNight}</p>
         <p>Estado: {hotel.paidOut === true ? 'Pago Completado' : 'Pago Pendiente'}</p>
+        {hotel.paidOut === false && <button onClick={e => handlePay(e)}>Pagar ahora</button>}
         <p>Método de pago: {hotel.payMethod}</p>
         <p>Cantidad de Noches: {hotel.nights}</p>
       </div>
