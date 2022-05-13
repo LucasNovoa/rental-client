@@ -79,6 +79,10 @@ function CreateHotel ({ userId, submit }) {
     })
   }
 
+  function handleQuit (e) {
+    submit(e)
+  }
+
   function handleSubmit (e) {
     e.preventDefault()
     dispatch(postHotel(input))
@@ -122,6 +126,7 @@ function CreateHotel ({ userId, submit }) {
       <div className='publication'>
         <h1>Nuevo Alojamiento</h1>
         <form className='publication__form'>
+          <br />
           <br />
           {next === 1 &&
             <>
@@ -246,6 +251,8 @@ function CreateHotel ({ userId, submit }) {
           <button className='publication__next' type='submit' onClick={e => handleNext(e)}>Siguiente</button>}
         {next === 4 &&
           <button className='publication__submit' type='submit' onClick={e => handleSubmit(e)}>Publicar</button>}
+
+        <button className='publication__quit' type='submit' onClick={e => handleQuit(e)}> X </button>
       </div>
 
     </>

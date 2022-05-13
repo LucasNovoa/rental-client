@@ -1,9 +1,9 @@
 .profileContainer {
   display: grid;
   grid-template-rows: 10% 80% 10%;
-  grid-template-columns: 20vw 60vw 20vw;
+  grid-template-columns: 20vw 80vw 0vw;
   justify-content: center;
-  padding: 150px 30px 318px 40px;
+  padding: 150px 30px 0px 40px;
 
   .profilecard {
     grid-column: 1;
@@ -13,22 +13,23 @@
   }
 
   .profiledetail {
-    position: sticky;
+    margin-top: 40px;
     grid-column: 2;
     grid-row: 1;
-    padding: 0px 30px 318px 40px;
+    width: 100%;
+    // padding: 0px 30px 318px 50px;
+    padding: 0 3vw;
   }
 
   &__button {
-    position:sticky;
-    align-self:flex-end;
-    // top: 75%;
-    margin-left: 35px;
+    margin-top: 95%;
+    margin-left: 3vw;
     grid-column: 1;
     grid-row: 2;
     height: 60px;
-    max-width:max-content;
-    padding: 18px 38px;    
+    // width: 15vw;
+    width: fit-content;
+    padding: 18px 30px;    
     border: 1px white;
     border-radius: 40px;
     background-color: #ff3f3f;
@@ -64,7 +65,7 @@
       color: black;
       margin-top: 10px;
       margin-bottom: 10px;
-      margin-left: 10%
+      margin-left: 20%
     }
 
     &__form {
@@ -73,7 +74,6 @@
       box-shadow: 0 32px 72px 0 rgb(20 20 43 / 24%);
       border: 2px solid grey;
       border-radius: 15px;
-      position: center;
       text-align: center;
       grid-row: 2;
       grid-column: 2;
@@ -88,13 +88,17 @@
       text-align: right;
       font-weight: bold;
       font-size: 1.6rem;
-      margin-bottom: 30px;
+      margin-bottom: 0px;
+    }
+
+    label:first-child{
+      padding-top: 20px
     }
   
     label {
       display: block;
       padding: 5px;
-      margin-bottom: 10px
+      margin-bottom: 20px
     }
   
     input {
@@ -121,6 +125,7 @@
     color: #fff;
     font-size: 18px;
     line-height: 20px;
+    max-width: 150px;
   }
 
   &__next {
@@ -132,6 +137,7 @@
     color: #fff;
     font-size: 18px;
     line-height: 20px;
+    max-width: 150px;
   }
 
   &__submit {
@@ -143,6 +149,20 @@
     color: #fff;
     font-size: 18px;
     line-height: 20px;
+    max-width: 150px;
+  }
+
+  &__quit {
+    grid-row: 1;
+    grid-column: 3;
+    border: none;
+    border-radius: 40px;
+    background-color: #ff3f3f;
+    color: #fff;
+    font-size: 18px;
+    line-height: 20px;
+    max-width: 30px;
+    max-height: 30px;
   }
   }
   

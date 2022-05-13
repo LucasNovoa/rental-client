@@ -11,7 +11,7 @@ import Map from '../components/Map/Map'
 const Hotel = () => {
   const { name } = useParams()
   const hotel = useSelector((state) => selectHotelByName(state, name))
-  console.log(hotel)
+  // console.log(hotel)
   return (
     <div className='hotel'>
       <Header />

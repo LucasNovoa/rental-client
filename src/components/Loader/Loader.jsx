@@ -5,9 +5,9 @@ import './Loader.scss'
 export default function Loader () {
   return (
     <>
-      <Header />
-      <div>
-        <div className='lds-roller'><div /><div /><div /><div /><div /><div /><div /><div /></div>
+      <div className='loader'>
+        <Header />
+        <div className='loader__lds-roller'><div /><div /><div /><div /><div /><div /><div /><div /></div>
       </div>
     </>
   )
