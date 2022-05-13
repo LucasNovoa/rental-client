@@ -1,8 +1,7 @@
-import '../UserBookingCard/userbookingcard.scss'
-import React from 'react'
-import { Link } from 'react-router-dom'
+import './userbookingcard.scss'
+import React, { useState } from 'react'
 
-function Card ({ img, name, price, checkIn, checkOut, setBook, paid }) {
+function Card ({ img, name, price, checkIn, checkOut, setBook, paid, id, book }) {
   const arrivePre = checkIn.substring(0, 10)
   const departPre = checkOut.substring(0, 10)
 
@@ -31,24 +30,29 @@ function Card ({ img, name, price, checkIn, checkOut, setBook, paid }) {
     return arr[2] + ' ' + month + ' ' + arr[0]
   }
 
+  function handleClick () {
+    setBook(id)
+  }
+
   return (
+
     <div className={paid === true ? 'bookingcard' : 'pending'}>
-      <div onClick={e => setBook(e)} className='link'>
-        <img src={img} alt='img' className='card__image' />
+      <div onClick={handleClick} id={id} className='link'>
+        <img src={img} alt='img' id={id} className='card__image' />
         <div className='card__content'>
           <h3 className='card__content__title'>{name}</h3>
           <div className='card__content__badges'>
             <ul className='card__content__badges__ul'>
               {paid === false
                 ? <>
-                  <li className='card__content__badges__huesp'><p>Pendiente de Pago</p></li>
-                  <li><div className='card__content__badges__huesp'>Check-In: {arrive}</div></li>
-                  <li><div className='card__content__badges__huesp'>Check-Out: {depart}</div></li>
+                  <li className='card__content__badges__book'><p>Pendiente de Pago</p></li>
+                  <li><div className='card__content__badges__book'>Check-In: {arrive}</div></li>
+                  <li><div className='card__content__badges__book'>Check-Out: {depart}</div></li>
                   </>
                 : <>
-                  <li className='card__content__badges__huesp'><p>Precio por noche: ${price}</p></li>
-                  <li><div className='card__content__badges__huesp'>Check-In: {arrive}</div></li>
-                  <li><div className='card__content__badges__huesp'>Check-Out: {depart}</div></li>
+                  <li className='card__content__badges__book'><p>Precio por noche: ${price}</p></li>
+                  <li><div className='card__content__badges__book'>Check-In: {arrive}</div></li>
+                  <li><div className='card__content__badges__book'>Check-Out: {depart}</div></li>
                   </>}
             </ul>
           </div>

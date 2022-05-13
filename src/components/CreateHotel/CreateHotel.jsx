@@ -2,7 +2,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import React, { useState, useEffect } from 'react'
 import swal from 'sweetalert'
 import { useNavigate } from 'react-router-dom'
-import './CreateHotel.scss'
 import { postHotel } from '../../redux/slices/hotelSlice'
 import { selectAllCountries, getCountries, getCountriesStatus } from '../../redux/slices/countrySlice'
 import { selectAllCities, getCities, getCitiesStatus } from '../../redux/slices/citySlice'
@@ -165,6 +164,7 @@ function CreateHotel ({ userId, submit }) {
               </label>
               <label>
                 <span>Ciudad: </span>
+                <br />
                 <select name='CityId' onChange={e => handleChange(e)}>
                   <option name='CityId' key='' value='all'>Ciudades</option>
                   {cities.map(g => (

@@ -22,14 +22,13 @@
   }
 
   &__button {
-    margin-top: 95%;
+    position:sticky;
+    margin-top: 300px;
     margin-left: 3vw;
     grid-column: 1;
     grid-row: 2;
     height: 60px;
-    // width: 15vw;
-    width: fit-content;
-    padding: 18px 30px;    
+    width: 15vw;
     border: 1px white;
     border-radius: 40px;
     background-color: #ff3f3f;
@@ -48,9 +47,10 @@
     border-radius: 25px;
     grid-column: 2;
     grid-row:2;
-    width: 100%;
+    width: 80%;
     max-height: 80%;
     margin: 0 auto;
+    margin-right: 200px;
     background-size: 100%, cover;
     display: grid;
     grid-template-rows: 10% 82% 8%;
@@ -70,7 +70,7 @@
 
     &__form {
       width: 80%;
-      margin-left: 10%;
+      margin-left: 5%;
       box-shadow: 0 32px 72px 0 rgb(20 20 43 / 24%);
       border: 2px solid grey;
       border-radius: 15px;
@@ -82,6 +82,7 @@
       padding: 9px 18px;
       border-radius: 15px;
       font-size: 1.6rem;
+      width: 80%;
     }
 
     span {

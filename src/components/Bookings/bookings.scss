@@ -1,4 +1,49 @@
 .booking {
-    height: 300px;
-    width: 500px;
+    background-color: antiquewhite;
+    opacity: 85%;
+    border: 2px solid rgb(174, 174, 174);
+    border-radius: 20px;
+    height: 400px;
+    width: 70%;
+    margin: 0 auto;
+    margin-top: 100px;
+    display: grid;
+    grid-template-columns: 30% 70% 0;
+    grid-template-rows: 5% 95% 0;
+    padding-bottom: 0;
+    overflow: hidden;
+
+    h1{
+        text-align: center;
+    }
+
+    p {
+        text-align: center;
+        padding: 8px;
+    }
+
+    button {
+        grid-column: 2;
+        grid-row: 1;
+        width: 20px;
+        margin-left: 95%
+    }
+
+    &__image {
+        grid-column: 1;
+        grid-row: 1;
+        
+        img{
+            border: 1px solid grey;
+            border-radius: 20px 0 20px 0;
+        }
+    }
+
+    &__info {
+        // padding-top: 40px;
+        grid-column: 2;
+        grid-row: 2;
+        align-self: center;
+        // margin: 0 30px
+    }
 }

@@ -21,11 +21,10 @@ const ProfileDetail = ({ user }) => {
     }
   }, [])
 
-  function handleBook (e) {
-    e.preventDefault()
-    console.log('hola')
-    setBook(1)
-  }
+  // function handleBook (e) {
+  //   // e.preventDefault()
+  //   setBook(e)
+  // }
 
   return (
     <div className='profiledetail'>
@@ -35,21 +34,21 @@ const ProfileDetail = ({ user }) => {
         <h2 className='profiledetail__title'>¡Hola {user.organization}!</h2>}
       <p className='profiledetail__date'> Se registró en {user.createdAt.split('-')[0]}</p>
       {/* <h3 className='profiledetail__stars'> <AiFillStar /> 0 evaluaciones </h3> */}
-      <div className='profiledetail__divider' />
-      <p className='profiledetail__eva'>Evaluaciones hechas por vos</p>
+      {/* <div className='profiledetail__divider' />
+      <p className='profiledetail__eva'>Evaluaciones hechas por vos</p> */}
       <div className='profiledetail__divider' />
       {!hotels && <Loader />}
       {hostHotels.length > 0
         ? <div>
           <SliderHost className='profiledetail__slider' hotels={hostHotels} />
           <div className='profiledetail__divider' />
-        </div>
+          </div>
         : <h1>No tienes alojamientos en alquiler</h1>}
       <div className='profiledetail__divider' />
       {user?.Bookings.length > 0 &&
         <div>
-          {book === 1 && <Bookings />}
-          {book === 0 && <SliderBooking hotels={hotels} user={user} bookings={bookings} setBook={handleBook} book={book} />}
+          {book !== 0 && <Bookings setBook={setBook} book={book} bookings={bookings} user={user} />}
+          {book === 0 && <SliderBooking hotels={hotels} user={user} bookings={bookings} setBook={setBook} book={book} />}
         </div>}
     </div>
   )
