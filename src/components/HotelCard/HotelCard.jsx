@@ -11,6 +11,8 @@ const HotelCard = ({ hotel }) => {
     setShare(!share)
   }
 
+  console.log(hotel)
+
   return (
     <section className='hotelcard'>
       <div className='hotelcard__container'>

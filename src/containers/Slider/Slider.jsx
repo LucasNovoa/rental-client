@@ -3,20 +3,26 @@ import Card from '../../components/Card/Card'
 import './slider.scss'
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai'
 import { useSelector } from 'react-redux'
-import { getHotelsError, getHotelsStatus } from '../../redux/slices/hotelSlice'
 import Loader from '../../components/Loader/Loader'
+import { useGetHotelsQuery, selectAllHotels } from '../../redux/services/apiServices'
 
-function Slider ({ hotels }) {
-  const status = useSelector(getHotelsStatus)
-  const error = useSelector(getHotelsError)
+function Slider () {
+  const hotels = useSelector(selectAllHotels)
+
+  const {
+    isLoading,
+    isSuccess,
+    isError,
+    error
+  } = useGetHotelsQuery()
 
   let content
 
-  if (status === 'loading') {
+  if (isLoading) {
     content = <Loader />
-  } else if (status === 'succeeded') {
-    content = hotels?.slice(10, 20).map((h) => <Card img={h.mainImage} name={h.name} description={h.description} price={h.price} key={h.id} hosts={h.maxPax} stars={h.stars} />)
-  } else if (status === 'failed') {
+  } else if (isSuccess) {
+    content = hotels.slice(10, 20).map((h) => <Card img={h.mainImage} name={h.name} description={h.description} price={h.price} key={h.id} hosts={h.maxPax} stars={h.stars} />)
+  } else if (isError) {
     content = <p>{error}</p>
   }
 

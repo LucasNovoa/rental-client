@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import swal from 'sweetalert'
 import { useNavigate } from 'react-router-dom'
 import './CreateHotel.scss'
-import { postHotel } from '../../redux/slices/hotelSlice'
+/* import { postHotel } from '../../redux/slices/hotelSlice' */
 import { selectAllCountries, getCountries, getCountriesStatus } from '../../redux/slices/countrySlice'
 import { selectAllCities, getCities, getCitiesStatus } from '../../redux/slices/citySlice'
 

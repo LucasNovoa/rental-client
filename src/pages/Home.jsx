@@ -1,30 +1,29 @@
-import { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 import AboutCompo from '../components/AboutComp/AboutCompo'
 import Header from '../components/Header/Header'
 import Presentation from '../components/Presentation/Presentation'
 import Slider from '../containers/Slider/Slider'
 import Footer from '../components/Footer/Footer'
-import { getHotels, getHotelsStatus, selectAllHotels } from '../redux/slices/hotelSlice'
-import { getCities, getCitiesStatus } from '../redux/slices/citySlice'
+/* import { getHotels, getHotelsStatus, selectAllHotels } from '../redux/slices/hotelSlice'
+import { getCities, getCitiesStatus } from '../redux/slices/citySlice' */
 import { SearchBar } from '../components/SearchBar/SearchBar'
 import Recommended from '../components/Recommended/Recommended'
+/* import Recommended from '../components/Recommended/Recommended' */
 
 function Home () {
-  const dispatch = useDispatch()
+/*   const dispatch = useDispatch()
 
   const hotels = useSelector(selectAllHotels)
   const hotelStatus = useSelector(getHotelsStatus)
-  const citiesStatus = useSelector(getCitiesStatus)
+  const citiesStatus = useSelector(getCitiesStatus) */
 
-  useEffect(() => {
+  /* useEffect(() => {
     if (hotelStatus === 'idle') {
       dispatch(getHotels())
     }
     if (citiesStatus === 'idle') {
       dispatch(getCities())
     }
-  }, [hotelStatus, citiesStatus, dispatch])
+  }, [hotelStatus, citiesStatus, dispatch]) */
 
   return (
     <div className='Home'>
@@ -33,7 +32,7 @@ function Home () {
       <Presentation />
       <Recommended />
       <AboutCompo />
-      <Slider hotels={hotels} />
+      <Slider />
       <Footer />
     </div>
   )

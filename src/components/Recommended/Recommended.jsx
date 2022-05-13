@@ -1,13 +1,18 @@
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
-import { getHotelsError, getHotelsStatus, selectAllHotels } from '../../redux/slices/hotelSlice'
+import { selectAllHotels, useGetHotelsQuery } from '../../redux/services/apiServices'
 import Map from '../Map/Map'
 import './recommended.scss'
 
 export default function Recommended () {
   const hotels = useSelector(selectAllHotels)
-  const status = useSelector(getHotelsStatus)
-  const error = useSelector(getHotelsError)
+
+  const {
+    isLoading,
+    isSuccess,
+    isError,
+    error
+  } = useGetHotelsQuery()
 
   const place1 = 'Montevideo'
   const place2 = 'San Carlos de Bariloche'
@@ -30,9 +35,9 @@ export default function Recommended () {
   }
 
   let content
-  if (status === 'loading') {
+  if (isLoading) {
     content = <p>Loading...</p>
-  } else if (status === 'succeeded') {
+  } else if (isSuccess) {
     const filteredHotels = hotels.filter(e => e.City.name.includes(selectedPlace))
     content = (
       <Map
@@ -42,7 +47,7 @@ export default function Recommended () {
         hotels={filteredHotels}
       />
     )
-  } else if (status === 'failed') {
+  } else if (isError) {
     content = <p>{error}</p>
   }
 

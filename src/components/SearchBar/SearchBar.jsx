@@ -1,26 +1,32 @@
 import { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { DateRangePicker } from 'react-date-range'
 import 'react-date-range/dist/styles.css'
 import 'react-date-range/dist/theme/default.css'
 import './searchBar.scss'
-import { filterHotels } from '../../redux/slices/hotelSlice'
-import { selectAllCities } from '../../redux/slices/citySlice'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation, useSearchParams, createSearchParams } from 'react-router-dom'
+import { selectAllCities } from '../../redux/services/apiServices'
 
 const SearchBar = () => {
-  // PROVISORIO ---->
-  const navigate = useNavigate()
-  const dispatch = useDispatch()
-
-  const handleSearch = (e) => {
-    e.preventDefault()
-    dispatch(filterHotels(place))
-    navigate('/hotels/')
-  }
-  // -------------->
-
   const cities = useSelector(selectAllCities)
+
+  const [searchParams, setSearchParams] = useSearchParams()
+  const navigate = useNavigate()
+  const location = useLocation()
+
+  const handleSearch = async (e) => {
+    e.preventDefault()
+    const encodePlace = encodeURI(place)
+    if (location.pathname === '/hotels/') {
+      setSearchParams({ name: place })
+    }
+    navigate({
+      pathname: '/hotels',
+      search: createSearchParams({
+        name: encodePlace
+      }).toString()
+    })
+  }
 
   const [results, setResults] = useState(false)
   const [startDate, setStartDate] = useState(new Date())
@@ -167,8 +173,6 @@ const SearchBar = () => {
   )
 }
 
-export { SearchBar }
-
 function dateFormat (date) {
   const arr = date.toLocaleString('es-AR').split(' ')[0].split('/')
   let month = ''
@@ -190,3 +194,4 @@ function dateFormat (date) {
 
   return arr[0] + ' ' + month + ' ' + arr[2]
 }
+export { SearchBar }

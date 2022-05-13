@@ -1,15 +1,27 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
+import { useLocation } from 'react-router'
 import Card from '../../components/Card/Card'
 import Loader from '../../components/Loader/Loader'
 import Pagination from '../../components/Pagination/Pagination'
-import { getHotelsError, getHotelsStatus, selectAllHotels, selectFilteredHotels } from '../../redux/slices/hotelSlice'
+import { apiSlice } from '../../redux/api/apiSlice'
+import { selectAllHotels, useGetHotelsQuery } from '../../redux/services/apiServices'
 import './hotelscontainer.scss'
 
 export const HotelsContainer = () => {
-  const hotels = useSelector(selectFilteredHotels)
-  const status = useSelector(getHotelsStatus)
-  const error = useSelector(getHotelsError)
+  const filters = useLocation().search.split('?').splice(1).map(f => f.split('='))
+
+  const hotels = filters.length >= 1 ? useSelector(selectAllHotels).filter(h => h.City.name === decodeURI(decodeURI(filters[0][1]))) : useSelector(selectAllHotels)
+
+  const {
+    isLoading,
+    isSuccess,
+    isError,
+    error
+  } = useGetHotelsQuery()
+
+  console.log(isLoading)
+
   const [page, setPage] = useState(0)
 
   const maxPage = hotels.length / 10
@@ -19,12 +31,14 @@ export const HotelsContainer = () => {
   }, [hotels])
 
   const filteredHotels = hotels?.slice(page * 8, page * 8 + 8)
+
   let content
-  if (status === 'loading') {
+
+  if (isLoading) {
     content = <Loader />
-  } else if (status === 'succeeded') {
+  } else if (isSuccess) {
     content = filteredHotels.map((h) => <Card img={h.mainImage} name={h.name} description={h.description} price={h.price} key={h.id} hosts={h.maxPax} stars={h.stars} />)
-  } else if (status === 'failed') {
+  } else if (isError) {
     content = <p>{error}</p>
   }
 
