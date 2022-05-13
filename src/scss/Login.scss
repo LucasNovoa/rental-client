@@ -7,6 +7,7 @@
   margin-bottom: 30px;
 
   padding: 0 30px;
+  position: relative;
 
   border: 1px solid black;
   border-radius: 24px;
@@ -33,20 +34,6 @@
     }
   }
 
-  button {
-    color: white;
-    font-weight: bold;
-    background-color: $primary-color;
-    box-shadow: $shadow-04;
-    font-size: 1.6rem;
-    border-radius: 100px;
-    padding: 20px 48px;
-    display: block;
-    margin: 60px auto;
-    border: none;
-    outline: none;
-  }
-
   a {
     display: block;
     text-align: center;
@@ -55,4 +42,19 @@
     margin-bottom: 60px;
     color: crimson;
   }
+}
+
+button {
+  color: white;
+  font-weight: bold;
+  background-color: $primary-color;
+  box-shadow: $shadow-04;
+  font-size: 1.6rem;
+  border-radius: 100px;
+  padding: 20px 48px;
+  display: block;
+  margin: 60px auto;
+  border: none;
+  outline: none;
+  cursor: pointer;
 }

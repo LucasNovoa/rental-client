@@ -22,6 +22,19 @@ export const getHotels = createAsyncThunk(
   }
 )
 
+export const getFilteredHotels = createAsyncThunk(
+  'hotels/getFilteredHotels',
+  async (payload) => {
+    try {
+      const response = await axios.post(`${URI}/filter`, payload)
+
+      return response.data
+    } catch (error) {
+      return error.message
+    }
+  }
+)
+
 export const postHotel = createAsyncThunk(
   'users/createHotel',
   async (payload) => {
@@ -40,7 +53,7 @@ const hotelsSlice = createSlice({
   initialState,
   reducers: {
     filterHotels: (state, action) => {
-      console.log(action.payload)
+
       const { city, checkIn, checkOut, guests, highestPrice, stars } = action.payload
       const lower = city && city.toLowerCase()
 
@@ -66,6 +79,17 @@ const hotelsSlice = createSlice({
         state.status = 'failed'
         state.error = action.error.message
       })
+      .addCase(getFilteredHotels.pending, (state, action) => {
+        state.status = 'loading'
+      })
+      .addCase(getFilteredHotels.fulfilled, (state, action) => {
+        state.status = 'succeeded'
+        state.filteredHotels = action.payload
+      })
+      .addCase(getFilteredHotels.rejected, (state, action) => {
+        state.status = 'failed'
+        state.error = action.error.message
+      })
       .addCase(postHotel.pending, (state) => {
         state.status = 'loading'
       })
@@ -85,6 +109,7 @@ const hotelsSlice = createSlice({
 export const selectAllHotels = (state) => state.hotels.hotels
 export const getHotelsStatus = (state) => state.hotels.status
 export const getHotelsError = (state) => state.hotels.error
+
 export const selectFilteredHotels = (state) => state.hotels.filteredHotels
 
 export const selectHotelByName = (state, hotelName) => state.hotels.hotels.find(hotel => hotel.name === hotelName)

@@ -39,10 +39,14 @@ function Login () {
           <input type='password' name='' required placeholder='Contraseña' ref={passwordRef} />
         </label>
 
-        <button type='submit'>Ingresar</button>
+        <button className='btn' type='submit'>Ingresar</button>
 
         <Link to='/passwordRecovery'>¿Te olvidaste la contraseña?</Link>
+
       </form>
+
+      <button className='btn' type='submit' onClick={() => auth.signInGoogle()}>Ingresar con Google</button>
+
     </>
   )
 }

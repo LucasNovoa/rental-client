@@ -73,11 +73,16 @@ function useProvideAuth () {
     window.location.href = '/login'
   }
 
+  const signInGoogle = async () => {
+    window.open('https://rental-app-server.herokuapp.com/api/v1/auth/google', '_self')
+  }
+
   return {
     user,
     signIn,
     logout,
     recovery,
-    changePass
+    changePass,
+    signInGoogle
   }
 }

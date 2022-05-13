@@ -5,7 +5,7 @@ import Header from '../components/Header/Header'
 import { SearchBar } from '../components/SearchBar/SearchBar'
 import FilterSort from '../components/FilterSort/FilterSort'
 import { HotelsContainer } from '../containers/HotelsContainer/HotelsContainer'
-import { filterHotels, getHotels, getHotelsStatus } from '../redux/slices/hotelSlice'
+import { getHotels, getHotelsStatus, getFilteredHotels } from '../redux/slices/hotelSlice'
 import { getCities, getCitiesStatus } from '../redux/slices/citySlice'
 import { selectAllFilters } from '../redux/slices/filterSlice'
 
@@ -23,8 +23,11 @@ export const Hotels = () => {
     if (citiesStatus === 'idle') {
       dispatch(getCities())
     }
-    dispatch(filterHotels(filters))
-  }, [hotelStatus, citiesStatus, filters, dispatch])
+    dispatch(getFilteredHotels({
+      guests: filters.guests,
+      CityId: filters.cityId
+    }))
+  }, [citiesStatus, filters, dispatch])
 
   return (
     <div className='hotels'>
