@@ -19,6 +19,14 @@
       font-size: 1.6rem;
     }
 
+    a:hover {
+      cursor:pointer;
+    }
+
+    input {
+      width: 130%;
+    }
+
     &__image {
       width: 200px;
       height: 200px;

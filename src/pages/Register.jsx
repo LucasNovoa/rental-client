@@ -120,7 +120,7 @@ function Register () {
                   <label>
                     <span>Nombre: </span>
                     <br />
-                    <input name='firstName' htmlFor='firstName' placeholder='Nombre...' type='text' onChange={(e) => handleChange(e)} />
+                    <input name='firstName' placeholder='Nombre...' type='text' onChange={(e) => handleChange(e)} />
                   </label>
                   <label>
                     <span>Apellido/s: </span>
