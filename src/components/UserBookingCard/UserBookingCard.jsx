@@ -1,7 +1,7 @@
 import './userbookingcard.scss'
 import React, { useState } from 'react'
 
-function Card ({ img, name, price, checkIn, checkOut, setBook, paid, id, book }) {
+function Card ({ img, name, price, checkIn, checkOut, setBook, paid, id, book, canceled }) {
   const arrivePre = checkIn.substring(0, 10)
   const departPre = checkOut.substring(0, 10)
 
@@ -43,17 +43,24 @@ function Card ({ img, name, price, checkIn, checkOut, setBook, paid, id, book })
           <h3 className='card__content__title'>{name}</h3>
           <div className='card__content__badges'>
             <ul className='card__content__badges__ul'>
-              {paid === false
-                ? <>
+              {paid === false && canceled === false &&
+                <>
                   <li className='card__content__badges__book'><p>Pendiente de Pago</p></li>
                   <li><div className='card__content__badges__book'>Check-In: {arrive}</div></li>
                   <li><div className='card__content__badges__book'>Check-Out: {depart}</div></li>
-                  </>
-                : <>
+                </>}
+              {paid === true &&
+                <>
                   <li className='card__content__badges__book'><p>Precio por noche: ${price}</p></li>
                   <li><div className='card__content__badges__book'>Check-In: {arrive}</div></li>
                   <li><div className='card__content__badges__book'>Check-Out: {depart}</div></li>
-                  </>}
+                </>}
+              {canceled === true &&
+                <>
+                  <li className='card__content__badges__book'><p>CANCELADO</p></li>
+                  <li><div className='card__content__badges__book'>Check-In: {arrive}</div></li>
+                  <li><div className='card__content__badges__book'>Check-Out: {depart}</div></li>
+                </>}
             </ul>
           </div>
         </div>

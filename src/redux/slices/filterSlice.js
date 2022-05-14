@@ -5,7 +5,7 @@ const initialState = {
   cityName: '',
   checkIn: 'Desde...',
   checkOut: 'Hasta...',
-  guests: 0,
+  guests: 1,
   highestPrice: 999999,
   stars: 0
 }
