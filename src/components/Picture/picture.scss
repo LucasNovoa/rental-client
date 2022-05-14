@@ -1,0 +1,120 @@
+.cd-intro-content h1,
+.cd-intro-content input,
+.cd-intro-content .cd-btn {
+  opacity: 0;
+  animation-delay: 0.3s;
+  animation-fill-mode: forwards;
+}
+
+.cd-intro-content {
+  // border: 2px solid grey;
+  margin-top: 90px;
+  border-radius: 15px;
+}
+
+.button {
+  background-color: #ff3f3f;
+  padding: 8px 20px 8px 20px;
+  color: white;
+  font-weight: 600;
+  border-radius: 76px;
+  border: none;
+  margin-left: 30%;
+  font-size: 1.4rem;
+  animation: fadeIn 1s
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.button:hover {
+  cursor: pointer;
+}
+
+.bouncy.cd-intro-content h1 {
+  font-size: 1.6rem;
+  text-align: center;
+  margin: 0 auto;
+  padding: 0 0 0 5px ;
+  animation-name: cd-bounce-right;
+}
+
+.bouncy.cd-intro-content input {
+  position: center;
+  width: 15vw;
+  height: 40px;
+  font-size: 1.6rem;
+  border: 1px solid grey;
+  margin: 10px auto;
+  border-radius: 15px;
+  text-align: center;
+
+  animation-name: cd-bounce-left;
+}
+
+.bouncy.cd-intro-content h1,
+.bouncy.cd-intro-content input {
+  animation-duration: 0.6s;
+}
+
+.bouncy.cd-intro-content .cd-btn {
+  animation-name: cd-bounce-rotate;
+  animation-duration: 0.5s;
+}
+
+.bouncy.cd-intro-content .cd-btn.main-action {
+  animation-delay: 0.4s;
+}
+
+@keyframes cd-bounce-right {
+  0% {
+    opacity: .2;
+    transform: translateX(-200px);
+  }
+  60% {
+    opacity: .7;
+    transform: translateX(15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes cd-bounce-left {
+  0% {
+    opacity: .2;
+    transform: translateX(200px);
+  }
+  60% {
+    opacity: .7;
+    transform: translateX(-15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes cd-bounce-rotate {
+  0% {
+    opacity: .2;
+    transform: perspective(800px) rotateX(-80deg);
+  }
+  20% {
+    opacity: 1;
+  }
+  60% {
+    transform: perspective(800px) rotateX(20deg);
+  }
+  100% {
+    opacity: 1;
+    transform: perspective(800px) rotateX(0);
+  }
+}
