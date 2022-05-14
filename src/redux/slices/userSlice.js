@@ -35,6 +35,18 @@ export const getUsers = createAsyncThunk(
   }
 )
 
+// export const updateUser = createAsyncThunk(
+//   'users/updateUser',
+//   async (payload) => {
+//     try {
+//       const response = await axios.patch(`${URI}/${}`, payload)
+//       return response.date
+//     } catch (error) {
+//       return error.message
+//     }
+//   }
+// )
+
 export const postUser = createAsyncThunk(
   'users/createUser',
   async (payload) => {

@@ -11,6 +11,7 @@ function ProfileCard ({ user }) {
   }
 
   return (
+  // console.log(localStorage.getItem('user.image')),
     <div className='profilecard'>
       <div className='profilecard__imageContainer'>
 
@@ -21,7 +22,7 @@ function ProfileCard ({ user }) {
             <a onClick={e => handleClick(e)}>Actualizar foto</a>
           </>}
         {on &&
-          <Picture setOn={setOn} />}
+          <Picture user={user} setOn={setOn} />}
       </div>
       <div className='profilecard__divider' />
       <div className='profilecard__data'>

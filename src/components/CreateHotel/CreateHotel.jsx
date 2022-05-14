@@ -1,15 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux'
 import React, { useState, useEffect } from 'react'
 import swal from 'sweetalert'
-import { useNavigate } from 'react-router-dom'
 import { postHotel } from '../../redux/slices/hotelSlice'
 import { selectAllCountries, getCountries, getCountriesStatus } from '../../redux/slices/countrySlice'
 import { selectAllCities, getCities, getCitiesStatus } from '../../redux/slices/citySlice'
 
 function CreateHotel ({ userId, submit }) {
   const dispatch = useDispatch()
-
-  const navigateTo = useNavigate()
 
   const countries = useSelector(selectAllCountries)
   const countryIdStatus = useSelector(getCountriesStatus)
@@ -121,141 +118,142 @@ function CreateHotel ({ userId, submit }) {
   }
 
   return (
-    <>
-      <div className='publication'>
-        <h1>Nuevo Alojamiento</h1>
-        <form className='publication__form'>
-          <br />
-          <br />
-          {next === 1 &&
-            <>
-              <label>
-                <span>Nombre del Alojamiento: </span>
-                <br />
-                <input name='name' placeholder='Nombre del alojamiento...' type='text' onChange={(e) => handleChange(e)} />
-              </label>
-              <label>
-                <span>Descripción: </span>
-                <br />
-                <input name='description' placeholder='Descripción...' type='text' onChange={(e) => handleChange(e)} />
-              </label>
-              <label>
-                <span>Estrellas: </span>
-                <br />
-                <input name='stars' placeholder='Estrellas...' type='number' onChange={(e) => handleChange(e)} />
-              </label>
-              <label>
-                <span>Precio: </span>
-                <br />
-                <input name='price' placeholder='Precio...' type='number' onChange={(e) => handleChange(e)} />
-              </label>
-            </>}
-          {next === 2 &&
-            <>
-              <label>
-                <span>País: </span>
-                <br />
-                <select name='CountryId' onChange={e => handleChange(e)}>
-                  <option name='CountryId' key='' value='all'>Países</option>
-                  {countries.map(g => (
-                    <option value={g.id} key={g.name}>{g.name}</option>
-                  ))}
-                </select>
-              </label>
-              <label>
-                <span>Ciudad: </span>
-                <br />
-                <select name='CityId' onChange={e => handleChange(e)}>
-                  <option name='CityId' key='' value='all'>Ciudades</option>
-                  {cities.map(g => (
-                    <option value={g.id} key={g.name}>{g.name}</option>
-                  ))}
-                </select>
-              </label>
-              <label>
-                <span>Dirección: </span>
-                <br />
-                <input name='address' placeholder='Dirección...' type='text' onChange={(e) => handleChange(e)} />
-              </label>
-              <label>
-                <span>Latitud: </span>
-                <br />
-                <input name='latitude' placeholder='Latitud...' type='number' onChange={(e) => handleChange(e)} />
-              </label>
-              <label>
-                <span>Longitud: </span>
-                <br />
-                <input name='longitude' placeholder='Longitud...' type='number' onChange={(e) => handleChange(e)} />
-              </label>
-            </>}
-          {next === 3 &&
-            <>
-              <label>
-                <span>Huéspedes: </span>
-                <br />
-                <input name='guests' placeholder='Huéspedes...' type='number' onChange={(e) => handleChange(e)} />
-              </label>
-              <label>
-                <span>Niños: </span>
-                <br />
-                <input name='children' placeholder='Niños...' type='number' onChange={(e) => handleChange(e)} />
-              </label>
-              <label>
-                <span>Email: </span>
-                <br />
-                <input name='email' placeholder='Email...' type='text' onChange={(e) => handleChange(e)} />
-              </label>
-              <label>
-                <span>Teléfono: </span>
-                <br />
-                <input name='phone' placeholder='Teléfono...' type='text' onChange={(e) => handleChange(e)} />
-              </label>
-              <label>
-                <span>Web: </span>
-                <br />
-                <input name='web' placeholder='Web...' type='text' onChange={(e) => handleChange(e)} />
-              </label>
-            </>}
+    console.log(input),
+      <>
+        <div className='publication'>
+          <h1>Nuevo Alojamiento</h1>
+          <form className='publication__form' onSubmit={e => handleSubmit(e)}>
+            <br />
+            <br />
+            {next === 1 &&
+              <>
+                <label>
+                  <span>Nombre del Alojamiento: </span>
+                  <br />
+                  <input name='name' placeholder='Nombre del alojamiento...' type='text' onChange={(e) => handleChange(e)} />
+                </label>
+                <label>
+                  <span>Descripción: </span>
+                  <br />
+                  <input name='description' placeholder='Descripción...' type='text' onChange={(e) => handleChange(e)} />
+                </label>
+                <label>
+                  <span>Estrellas: </span>
+                  <br />
+                  <input name='stars' placeholder='Estrellas...' type='number' onChange={(e) => handleChange(e)} />
+                </label>
+                <label>
+                  <span>Precio: </span>
+                  <br />
+                  <input name='price' placeholder='Precio...' type='number' onChange={(e) => handleChange(e)} />
+                </label>
+              </>}
+            {next === 2 &&
+              <>
+                <label>
+                  <span>País: </span>
+                  <br />
+                  <select name='CountryId' onChange={e => handleChange(e)}>
+                    <option name='CountryId' key='' value='all'>Países</option>
+                    {countries.map(g => (
+                      <option value={g.id} key={g.name}>{g.name}</option>
+                    ))}
+                  </select>
+                </label>
+                <label>
+                  <span>Ciudad: </span>
+                  <br />
+                  <select name='CityId' onChange={e => handleChange(e)}>
+                    <option name='CityId' key='' value='all'>Ciudades</option>
+                    {cities.map(g => (
+                      <option value={g.id} key={g.name}>{g.name}</option>
+                    ))}
+                  </select>
+                </label>
+                <label>
+                  <span>Dirección: </span>
+                  <br />
+                  <input name='address' placeholder='Dirección...' type='text' onChange={(e) => handleChange(e)} />
+                </label>
+                <label>
+                  <span>Latitud: </span>
+                  <br />
+                  <input name='latitude' placeholder='Latitud...' type='number' onChange={(e) => handleChange(e)} />
+                </label>
+                <label>
+                  <span>Longitud: </span>
+                  <br />
+                  <input name='longitude' placeholder='Longitud...' type='number' onChange={(e) => handleChange(e)} />
+                </label>
+              </>}
+            {next === 3 &&
+              <>
+                <label>
+                  <span>Huéspedes: </span>
+                  <br />
+                  <input name='guests' placeholder='Huéspedes...' type='number' onChange={(e) => handleChange(e)} />
+                </label>
+                <label>
+                  <span>Niños: </span>
+                  <br />
+                  <input name='children' placeholder='Niños...' type='number' onChange={(e) => handleChange(e)} />
+                </label>
+                <label>
+                  <span>Email: </span>
+                  <br />
+                  <input name='email' placeholder='Email...' type='text' onChange={(e) => handleChange(e)} />
+                </label>
+                <label>
+                  <span>Teléfono: </span>
+                  <br />
+                  <input name='phone' placeholder='Teléfono...' type='text' onChange={(e) => handleChange(e)} />
+                </label>
+                <label>
+                  <span>Web: </span>
+                  <br />
+                  <input name='web' placeholder='Web...' type='text' onChange={(e) => handleChange(e)} />
+                </label>
+              </>}
+            {next === 4 &&
+              <>
+                <label>
+                  <span>Imagen principal: </span>
+                  <br />
+                  <input name='mainImage' placeholder='Imagen principal...' type='text' onChange={(e) => handleChange(e)} />
+                </label>
+                <label>
+                  <span>Imagen de la habitación: </span>
+                  <br />
+                  <input name='roomImage' placeholder='Imagen de la habitación...' type='text' onChange={(e) => handleChange(e)} />
+                </label>
+                <label>
+                  <span>Imagen del bar: </span>
+                  <br />
+                  <input name='barImage' placeholder='Imagen del bar...' type='text' onChange={(e) => handleChange(e)} />
+                </label>
+                <label>
+                  <span>Imagen de las comodidades: </span>
+                  <br />
+                  <input name='amenitiesImage' placeholder='Imagen de las comodidades...' type='text' onChange={(e) => handleChange(e)} />
+                </label>
+                <label>
+                  <span>Otra imagen: </span>
+                  <br />
+                  <input name='otherImage' placeholder='Otra imagen...' type='text' onChange={(e) => handleChange(e)} />
+                </label>
+              </>}
+          </form>
+          {next > 1 && next < 5 &&
+            <button className='publication__previous' type='submit' onClick={e => handlePrevious(e)}>Anterior</button>}
+          {next < 4 &&
+            <button className='publication__next' type='submit' onClick={e => handleNext(e)}>Siguiente</button>}
           {next === 4 &&
-            <>
-              <label>
-                <span>Imagen principal: </span>
-                <br />
-                <input name='mainImage' placeholder='Imagen principal...' type='text' onChange={(e) => handleChange(e)} />
-              </label>
-              <label>
-                <span>Imagen de la habitación: </span>
-                <br />
-                <input name='roomImage' placeholder='Imagen de la habitación...' type='text' onChange={(e) => handleChange(e)} />
-              </label>
-              <label>
-                <span>Imagen del bar: </span>
-                <br />
-                <input name='barImage' placeholder='Imagen del bar...' type='text' onChange={(e) => handleChange(e)} />
-              </label>
-              <label>
-                <span>Imagen de las comodidades: </span>
-                <br />
-                <input name='amenitiesImage' placeholder='Imagen de las comodidades...' type='text' onChange={(e) => handleChange(e)} />
-              </label>
-              <label>
-                <span>Otra imagen: </span>
-                <br />
-                <input name='otherImage' placeholder='Otra imagen...' type='text' onChange={(e) => handleChange(e)} />
-              </label>
-            </>}
-        </form>
-        {next > 1 && next < 5 &&
-          <button className='publication__previous' type='submit' onClick={e => handlePrevious(e)}>Anterior</button>}
-        {next < 4 &&
-          <button className='publication__next' type='submit' onClick={e => handleNext(e)}>Siguiente</button>}
-        {next === 4 &&
-          <button className='publication__submit' type='submit' onClick={e => handleSubmit(e)}>Publicar</button>}
+            <button className='publication__submit' type='submit' onClick={e => handleSubmit(e)}>Publicar</button>}
 
-        <button className='publication__quit' type='submit' onClick={e => handleQuit(e)}> X </button>
-      </div>
+          <button className='publication__quit' type='submit' onClick={e => handleQuit(e)}> X </button>
+        </div>
 
-    </>
+      </>
 
   )
 }

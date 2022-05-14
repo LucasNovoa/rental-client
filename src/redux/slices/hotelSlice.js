@@ -36,7 +36,7 @@ export const getFilteredHotels = createAsyncThunk(
 )
 
 export const postHotel = createAsyncThunk(
-  'users/createHotel',
+  'hotels/createHotel',
   async (payload) => {
     try {
       const response = await axios.post(URI, payload)
@@ -53,7 +53,6 @@ const hotelsSlice = createSlice({
   initialState,
   reducers: {
     filterHotels: (state, action) => {
-
       const { city, checkIn, checkOut, guests, highestPrice, stars } = action.payload
       const lower = city && city.toLowerCase()
 
