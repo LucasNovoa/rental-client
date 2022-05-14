@@ -4,7 +4,7 @@ import Footer from '../components/Footer/Footer'
 import Header from '../components/Header/Header'
 import Amenities from '../components/Amenities/Amenities'
 import HotelCard from '../components/HotelCard/HotelCard'
-import { useGetHotelsByNameQuery } from '../redux/services/apiServices'
+import { useGetHotelsByNameQuery } from '../redux/services/hotelsServices'
 import Loader from '../components/Loader/Loader'
 
 const Hotel = () => {

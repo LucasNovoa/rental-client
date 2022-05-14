@@ -1,5 +1,7 @@
 import { useRef } from 'react'
 
+import { FcGoogle } from 'react-icons/fc'
+
 import { useNavigate, Link } from 'react-router-dom'
 
 import Header from '../components/Header/Header'
@@ -39,10 +41,13 @@ function Login () {
           <input type='password' name='' required placeholder='Contraseña' ref={passwordRef} />
         </label>
 
-        <button type='submit'>Ingresar</button>
+        <button className='buttonLoginPage' type='submit'>Ingresar</button>
 
-        <Link to='/passwordRecovery'>¿Te olvidaste la contraseña?</Link>
+        <button className='buttonLoginPageGG' type='submit' onClick={() => auth.signInGoogle()}> <FcGoogle /> Ingresar con Google</button>
+        <Link to='/passwordRecovery'> ¿Te olvidaste la contraseña?</Link>
+
       </form>
+
     </>
   )
 }

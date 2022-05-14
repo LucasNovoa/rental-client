@@ -1,13 +1,10 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios'
+import React from 'react'
 import './userhotelcard.scss'
+import { useSelector } from 'react-redux'
+import { selectUserById } from '../../redux/services/usersServices'
 
 const UserHotelCard = ({ userId }) => {
-  const [user, setUser] = useState({})
-  useEffect(() => {
-    axios.get(`https://rental-app-server.herokuapp.com/api/v1/users/${userId}`).then(r => setUser(r.data))
-    console.log(user)
-  }, [])
+  const user = useSelector(state => selectUserById(state, Number(userId)))
 
   return (
     <div className='userhotelcard'>

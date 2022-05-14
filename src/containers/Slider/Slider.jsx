@@ -4,7 +4,7 @@ import './slider.scss'
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai'
 import { useSelector } from 'react-redux'
 import Loader from '../../components/Loader/Loader'
-import { useGetHotelsQuery, selectAllHotels } from '../../redux/services/apiServices'
+import { useGetHotelsQuery, selectAllHotels } from '../../redux/services/hotelsServices'
 
 function Slider () {
   const hotels = useSelector(selectAllHotels)
@@ -21,19 +21,19 @@ function Slider () {
   if (isLoading) {
     content = <Loader />
   } else if (isSuccess) {
-    content = hotels.slice(10, 20).map((h) => <Card img={h.mainImage} name={h.name} description={h.description} price={h.price} key={h.id} hosts={h.maxPax} stars={h.stars} />)
+    content = hotels.filter(h => h.stars === 5).slice(0, 10).map((h) => <Card img={h.mainImage} name={h.name} description={h.description} price={h.price} key={h.id} hosts={h.maxPax} stars={h.stars} />)
   } else if (isError) {
     content = <p>{error}</p>
   }
 
   const slideLeft = (e) => {
     const slid = document.getElementById('slider')
-    slid.scrollLeft -= 500
+    slid.scrollLeft -= 700
   }
 
   const slideRight = (e) => {
     const slid = document.getElementById('slider')
-    slid.scrollLeft += 500
+    slid.scrollLeft += 700
   }
 
   return (
@@ -44,11 +44,15 @@ function Slider () {
           <button className='slider__container__top__btn'>Ver todos</button>
         </div>
         <div className='slider__container__bottom'>
-          <AiOutlineArrowLeft className='slider__container__bottom__btnl' onClick={slideLeft} />
+          <div className='bgfadel'>
+            <AiOutlineArrowLeft className='slider__container__bottom__btnl' onClick={slideLeft} />
+          </div>
           <div className='slider__container__bottom__cards' id='slider'>
             {content}
           </div>
-          <AiOutlineArrowRight className='slider__container__bottom__btnr' onClick={slideRight} />
+          <div className='bgfader'>
+            <AiOutlineArrowRight className='slider__container__bottom__btnr' onClick={slideRight} />
+          </div>
         </div>
       </div>
     </section>

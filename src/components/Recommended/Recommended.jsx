@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
-import { selectAllHotels, useGetHotelsQuery } from '../../redux/services/apiServices'
+import { selectAllHotels, useGetHotelsQuery } from '../../redux/services/hotelsServices'
 import Map from '../Map/Map'
 import './recommended.scss'
 

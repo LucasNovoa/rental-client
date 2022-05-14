@@ -1,0 +1,18 @@
+.container {
+    margin-top: 300px;
+
+    &__filter {
+        display: flex;
+        justify-content: center;
+
+        &__price {
+            display: flex;
+            margin-right: 50px;
+        }
+
+        &__stars {
+            display: flex;
+        }
+
+    }
+}

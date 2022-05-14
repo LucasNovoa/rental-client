@@ -10,11 +10,6 @@ import { apiSlice } from '../api/apiSlice'
 export const store = configureStore({
   reducer: {
     [apiSlice.reducerPath]: apiSlice.reducer
-    /*     hotels: hotelSlice */
-    /* users: usersReducer,
-    hotels: hotelsReducer,
-    countries: countriesReducer,
-    cities: citiesReducer */
   },
   middleware: getDefaultMiddleware => getDefaultMiddleware().concat(apiSlice.middleware)
 })

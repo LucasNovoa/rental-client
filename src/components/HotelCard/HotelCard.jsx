@@ -4,6 +4,9 @@ import { FiShare2 } from 'react-icons/fi'
 import { MdFavoriteBorder } from 'react-icons/md'
 import Share from '../Share/Share'
 import UserHotelCard from '../UserHotelCard/UserHotelCard'
+import { Calendar } from 'react-date-range'
+import Amenities from '../Amenities/Amenities'
+import Map from '../Map/Map'
 
 const HotelCard = ({ hotel }) => {
   const [share, setShare] = useState(false)
@@ -43,6 +46,9 @@ const HotelCard = ({ hotel }) => {
         </div>
         <UserHotelCard userId={hotel.UserId} />
       </div>
+      <Calendar />
+      <Amenities />
+      <Map width='50vw' height={400} hotels={[hotel]} />
     </section>
   )
 }

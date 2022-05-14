@@ -5,7 +5,7 @@ import 'react-date-range/dist/styles.css'
 import 'react-date-range/dist/theme/default.css'
 import './searchBar.scss'
 import { useNavigate, useLocation, useSearchParams, createSearchParams } from 'react-router-dom'
-import { selectAllCities } from '../../redux/services/apiServices'
+import { selectAllCities } from '../../redux/services/hotelsServices'
 
 const SearchBar = () => {
   const cities = useSelector(selectAllCities)
@@ -24,7 +24,8 @@ const SearchBar = () => {
       pathname: '/hotels',
       search: createSearchParams({
         name: encodePlace
-      }).toString()
+      }).toString(),
+      state: { ho: 'la' }
     })
   }
 
@@ -39,6 +40,13 @@ const SearchBar = () => {
   const [start, setStart] = useState('Desde cuándo?')
   const [end, setEnd] = useState('Hasta cuándo?')
   const [guests, setGuests] = useState('Cuántos?')
+
+  const [filters, setFilters] = useState({
+    place: '',
+    start: 'Desde cuándo?',
+    end: 'Hasta cuándo?',
+    guests: 'Cuántos?'
+  })
 
   const selectionRange = {
     startDate,
