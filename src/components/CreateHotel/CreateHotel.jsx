@@ -2,17 +2,17 @@ import { useDispatch, useSelector } from 'react-redux'
 import React, { useState, useEffect } from 'react'
 import swal from 'sweetalert'
 import { useNavigate } from 'react-router-dom'
-/* import { postHotel } from '../../redux/slices/hotelSlice'
- import { selectAllCountries, getCountries, getCountriesStatus } from '../../redux/slices/countrySlice'
-import { selectAllCities, getCities, getCitiesStatus } from '../../redux/slices/citySlice' */
+import { postHotel } from '../../redux/slices/hotelSlice'
+import { selectAllCountries, getCountries, getCountriesStatus } from '../../redux/slices/countrySlice'
+import { selectAllCities, getCities, getCitiesStatus } from '../../redux/slices/citySlice'
 
 function CreateHotel ({ userId, submit }) {
   const dispatch = useDispatch()
 
   const navigateTo = useNavigate()
 
-  /*   const countries = useSelector(selectAllCountries)
-  const countryIdStatus = useSelector(getCountriesStatus) */
+  const countries = useSelector(selectAllCountries)
+  const countryIdStatus = useSelector(getCountriesStatus)
 
   /*   useEffect(() => {
     if (countryIdStatus === 'idle') {
@@ -81,7 +81,6 @@ function CreateHotel ({ userId, submit }) {
   function handleQuit (e) {
     submit(e)
   }
-  /*
   function handleSubmit (e) {
     e.preventDefault()
     dispatch(postHotel(input))
@@ -249,8 +248,8 @@ function CreateHotel ({ userId, submit }) {
           <button className='publication__previous' type='submit' onClick={e => handlePrevious(e)}>Anterior</button>}
         {next < 4 &&
           <button className='publication__next' type='submit' onClick={e => handleNext(e)}>Siguiente</button>}
-        {/* {next === 4 &&
-          <button className='publication__submit' type='submit' onClick={e => handleSubmit(e)}>Publicar</button>} */}
+        {next === 4 &&
+          <button className='publication__submit' type='submit' onClick={e => handleSubmit(e)}>Publicar</button>}
 
         <button className='publication__quit' type='submit' onClick={e => handleQuit(e)}> X </button>
       </div>

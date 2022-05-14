@@ -9,6 +9,7 @@ import Loader from '../components/Loader/Loader'
 
 const Hotel = () => {
   const { name } = useParams()
+<<<<<<< HEAD
 
   const {
     data: hotel,
@@ -29,6 +30,10 @@ const Hotel = () => {
     content = <p>{error}</p>
   }
 
+=======
+  const hotel = useSelector((state) => selectHotelByName(state, name))
+  // console.log(hotel)
+>>>>>>> e2dd7724acc9ddbd46b8697452eba42bdf24c38e
   return (
     <div className='hotel'>
       <Header />

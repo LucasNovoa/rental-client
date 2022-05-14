@@ -1,7 +1,7 @@
 import './profiledetail.scss'
 import SliderHost from '../SliderHost/SliderHost'
-/* import { selectAllHotels, getHotels, getHotelsStatus } from '../../redux/slices/hotelSlice'
- */import React, { useEffect, useState } from 'react'
+import { selectAllHotels, getHotels, getHotelsStatus } from '../../redux/slices/hotelSlice'
+import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import Loader from '../Loader/Loader'
 import SliderBooking from '../SliderBooking/SliderBooking'
@@ -9,18 +9,17 @@ import Bookings from '../Bookings/Bookings'
 
 const ProfileDetail = ({ user }) => {
   const dispatch = useDispatch()
-  /*   const hotels = useSelector(selectAllHotels)
-const hotelIdStatus = useSelector(getHotelsStatus) */
+  const hotels = useSelector(selectAllHotels)
+  const hotelIdStatus = useSelector(getHotelsStatus)
   const hostHotels = user?.Hotels
   const bookings = user?.Bookings
   const [book, setBook] = useState(0)
 
-  /*   useEffect(() => {
+  useEffect(() => {
     if (hotelIdStatus === 'idle') {
       dispatch(getHotels())
     }
   }, [])
- */
   // function handleBook (e) {
   //   // e.preventDefault()
   //   setBook(e)
@@ -37,7 +36,7 @@ const hotelIdStatus = useSelector(getHotelsStatus) */
       {/* <div className='profiledetail__divider' />
       <p className='profiledetail__eva'>Evaluaciones hechas por vos</p> */}
       <div className='profiledetail__divider' />
-      {/*       {!hotels && <Loader />} */}
+      {!hotels && <Loader />}
       {hostHotels.length > 0
         ? <div>
           <SliderHost className='profiledetail__slider' hotels={hostHotels} />
