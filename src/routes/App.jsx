@@ -12,7 +12,7 @@ import { Login } from '../pages/Login'
 import { Hotels } from '../pages/Hotels'
 import Hotel from '../pages/Hotel'
 import Register from '../pages/Register'
-import CreateHotel from '../components/CreateHotel/CreateHotel'
+import Loader from '../components/Loader/Loader'
 
 import { About } from '../pages/About'
 
@@ -32,7 +32,7 @@ function App () {
             <Route path='/login' element={<Login />} />
             <Route path='/hotel/:name' element={<Hotel />} />
             <Route path='/register' element={<Register />} />
-            <Route path='/create' element={<CreateHotel />} />
+            <Route path='/loader' element={<Loader />} />
             <Route path='/about' element={<About />} />
             <Route path='/passwordRecovery' element={<PasswordRecovery />} />
             <Route path='/changePassword' element={<ChangePassword />} />

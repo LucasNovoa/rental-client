@@ -23,8 +23,14 @@ function Login () {
     const password = passwordRef.current.value
 
     auth.signIn(email, password).then(() => {
-      navigate('/')
+      navigate('/profile')
     })
+  }
+
+  const handleGoogleSubmit = (event) => {
+    event.preventDefault()
+
+    auth.signInGoogle()
   }
 
   return (

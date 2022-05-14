@@ -2,33 +2,33 @@ import { useDispatch, useSelector } from 'react-redux'
 import React, { useState, useEffect } from 'react'
 import swal from 'sweetalert'
 import { useNavigate } from 'react-router-dom'
-import './CreateHotel.scss'
-/* import { postHotel } from '../../redux/slices/hotelSlice' */
-import { selectAllCountries, getCountries, getCountriesStatus } from '../../redux/slices/countrySlice'
-import { selectAllCities, getCities, getCitiesStatus } from '../../redux/slices/citySlice'
+/* import { postHotel } from '../../redux/slices/hotelSlice'
+ import { selectAllCountries, getCountries, getCountriesStatus } from '../../redux/slices/countrySlice'
+import { selectAllCities, getCities, getCitiesStatus } from '../../redux/slices/citySlice' */
 
-function CreateHotel ({ userId }) {
+function CreateHotel ({ userId, submit }) {
   const dispatch = useDispatch()
 
-  const countries = useSelector(selectAllCountries)
-  const countryIdStatus = useSelector(getCountriesStatus)
+  const navigateTo = useNavigate()
 
-  useEffect(() => {
+  /*   const countries = useSelector(selectAllCountries)
+  const countryIdStatus = useSelector(getCountriesStatus) */
+
+  /*   useEffect(() => {
     if (countryIdStatus === 'idle') {
       dispatch(getCountries())
     }
   }, [countryIdStatus, dispatch])
 
   const cities = useSelector(selectAllCities)
-  const cityIdStatus = useSelector(getCitiesStatus)
+  const cityIdStatus = useSelector(getCitiesStatus) */
 
-  useEffect(() => {
+  /*   useEffect(() => {
     if (cityIdStatus === 'idle') {
       dispatch(getCities())
     }
-  }, [cityIdStatus, dispatch])
+  }, [cityIdStatus, dispatch]) */
 
-  const navigateTo = useNavigate()
   // eslint-disable-next-line no-unused-vars
   const [errors, setErrors] = useState({})
   const [next, setNext] = useState(1)
@@ -38,11 +38,11 @@ function CreateHotel ({ userId }) {
     description: 'Hotel Default',
     stars: 3,
     price: 250,
-    CountryId: 2,
+    CountryId: 1,
     CityId: 2,
     address: 'Prueba 1234',
-    latitude: 0,
-    longitude: 0,
+    latitude: -34.8018600249921,
+    longitude: -58.391113872821535,
     guests: 5,
     children: 2,
     email: 'prueba@mail.com',
@@ -78,10 +78,16 @@ function CreateHotel ({ userId }) {
     })
   }
 
+  function handleQuit (e) {
+    submit(e)
+  }
+  /*
   function handleSubmit (e) {
     e.preventDefault()
-
     dispatch(postHotel(input))
+
+    submit(e)
+    window.location.reload()
 
     swal({
       title: 'Éxito',
@@ -89,6 +95,7 @@ function CreateHotel ({ userId }) {
       icon: 'success',
       button: 'Ok!'
     })
+
     setInput({
       name: 'Hotel',
       description: 'Hotel Default',
@@ -111,14 +118,14 @@ function CreateHotel ({ userId }) {
       otherImage: 'https://t-cf.bstatic.com/xdata/images/hotel/max1024x768/111161887.jpg?k=f40f9e8069050aadccfca8f6c6de541ef2f3dda9a203ac0052290703d49fed98&o=&hp=1',
       UserId: userId
     })
-    navigateTo('/profile')
   }
-
+ */
   return (
     <>
       <div className='publication'>
         <h1>Nuevo Alojamiento</h1>
         <form className='publication__form'>
+          <br />
           <br />
           {next === 1 &&
             <>
@@ -150,18 +157,19 @@ function CreateHotel ({ userId }) {
                 <br />
                 <select name='CountryId' onChange={e => handleChange(e)}>
                   <option name='CountryId' key='' value='all'>Países</option>
-                  {countries.map(g => (
+                  {/*  {countries.map(g => (
                     <option value={g.id} key={g.name}>{g.name}</option>
-                  ))}
+                  ))} */}
                 </select>
               </label>
               <label>
                 <span>Ciudad: </span>
+                <br />
                 <select name='CityId' onChange={e => handleChange(e)}>
                   <option name='CityId' key='' value='all'>Ciudades</option>
-                  {cities.map(g => (
+                  {/* {cities.map(g => (
                     <option value={g.id} key={g.name}>{g.name}</option>
-                  ))}
+                  ))} */}
                 </select>
               </label>
               <label>
@@ -241,8 +249,10 @@ function CreateHotel ({ userId }) {
           <button className='publication__previous' type='submit' onClick={e => handlePrevious(e)}>Anterior</button>}
         {next < 4 &&
           <button className='publication__next' type='submit' onClick={e => handleNext(e)}>Siguiente</button>}
-        {next === 4 &&
-          <button className='publication__submit' type='submit' onClick={e => handleSubmit(e)}>Publicar</button>}
+        {/* {next === 4 &&
+          <button className='publication__submit' type='submit' onClick={e => handleSubmit(e)}>Publicar</button>} */}
+
+        <button className='publication__quit' type='submit' onClick={e => handleQuit(e)}> X </button>
       </div>
 
     </>

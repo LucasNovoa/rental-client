@@ -10,7 +10,11 @@ function ProfileCard ({ user }) {
       </div>
       <div className='profilecard__divider' />
       <div className='profilecard__data'>
-        {user.typePerson === 'legal' && <h3 className='profilecard__data__username'>{user.organization}</h3>}
+        {user.typePerson === 'legal' &&
+          <>
+            <p className='profilecard__data__name'>{user.organization}</p>
+            <p className='profilecard__data__email'>{user.email}</p>
+          </>}
         {user.typePerson === 'natural' &&
           <>
             <p className='profilecard__data__name'>{user.firstName} {user.lastName}</p>

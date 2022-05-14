@@ -3,6 +3,7 @@ import ProfileFooter from '../components/ProfileFooter/ProfileFooter'
 import Header from '../components/Header/Header'
 import ProfileContainer from '../containers/ProfileContainer/ProfileContainer'
 import Loader from '../components/Loader/Loader'
+import '../scss/profile.scss'
 
 const Profile = () => {
   const [userInfo, setUserInfo] = useState(null)
@@ -18,12 +19,12 @@ const Profile = () => {
 
   return (
     !userInfo
-      ? <Loader />
+      ? <Loader className='loader' />
       : <div className='Profile'>
         <Header />
         <ProfileContainer user={userInfo} />
         <ProfileFooter />
-      </div>
+        </div>
   )
 }
 

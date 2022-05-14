@@ -10,6 +10,8 @@ import { useAuth } from '../hooks/useAuth'
 
 import '../scss/PasswordRecovery.scss'
 
+import swal from 'sweetalert'
+
 const PasswordRecovery = () => {
   const auth = useAuth()
 
@@ -23,7 +25,13 @@ const PasswordRecovery = () => {
     const email = emailRef.current.value
 
     auth.recovery(email).then(() => {
-      navigate('/changePassword')
+      swal({
+        title: 'Éxito',
+        text: '¡Revisa tu email!',
+        icon: 'success',
+        button: 'Ok!'
+      })
+      navigate('/login')
     })
   }
 
