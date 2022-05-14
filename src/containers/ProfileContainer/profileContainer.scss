@@ -21,21 +21,21 @@
     padding: 0 3vw;
   }
 
-  &__button {
-    position:sticky;
-    margin-top: 300px;
-    margin-left: 3vw;
-    grid-column: 1;
-    grid-row: 2;
-    height: 60px;
-    width: 15vw;
-    border: 1px white;
-    border-radius: 40px;
-    background-color: #ff3f3f;
-    color: #fff;
-    font-size: 18px;
-    line-height: 20px;
-  }
+  // &__button {
+  //   position:sticky;
+  //   margin-top: 300px;
+  //   margin-left: 3vw;
+  //   grid-column: 1;
+  //   grid-row: 2;
+  //   height: 60px;
+  //   width: 15vw;
+  //   border: 1px white;
+  //   border-radius: 40px;
+  //   background-color: #ff3f3f;
+  //   color: #fff;
+  //   font-size: 18px;
+  //   line-height: 20px;
+  // }
 
   button:hover{
     background-color: rgb(250, 243, 243);
