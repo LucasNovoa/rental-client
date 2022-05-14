@@ -7,10 +7,10 @@ import CreateHotel from '../../components/CreateHotel/CreateHotel'
 const ProfileContainer = ({ user }) => {
   const [post, setPost] = useState(false)
 
-  // function handleCreate (e) {
-  //   e.preventDefault()
-  //   setPost(!post)
-  // }
+  function handleCreate (e) {
+    e.preventDefault()
+    setPost(!post)
+  }
 
   return (
     <section className='profileContainer'>
