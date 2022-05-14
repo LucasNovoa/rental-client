@@ -88,6 +88,8 @@ function useProvideAuth () {
     if (access_token) {
       const token = access_token.token
       const userId = access_token.user.id
+      console.log(token, 'token')
+      console.log(userId, 'userId')
 
       Cookie.set('token', token, { expires: 5 })
 
