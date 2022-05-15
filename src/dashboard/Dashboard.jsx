@@ -13,6 +13,7 @@ const Dashboard = () => {
 
   const arrayData = [...typePerson, ...rolePerson]
 
+  // eslint-disable-next-line no-sequences
   const countOccurrences = (arr) => arr.reduce((prev, curr) => ((prev[curr] = ++prev[curr] || 1), prev), {})
 
   const data = {
