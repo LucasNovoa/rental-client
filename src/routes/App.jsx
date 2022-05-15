@@ -13,6 +13,7 @@ import { Hotels } from '../pages/Hotels'
 import Hotel from '../pages/Hotel'
 import Register from '../pages/Register'
 import Loader from '../components/Loader/Loader'
+import { Dashboard } from '../dashboard/Dashboard'
 
 import { About } from '../pages/About'
 
@@ -36,6 +37,7 @@ function App () {
             <Route path='/about' element={<About />} />
             <Route path='/passwordRecovery' element={<PasswordRecovery />} />
             <Route path='/changePassword' element={<ChangePassword />} />
+            <Route path='/dashboard' element={<Dashboard />} />
           </Routes>
         </Layout>
       </BrowserRouter>
