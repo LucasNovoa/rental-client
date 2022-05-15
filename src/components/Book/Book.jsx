@@ -32,8 +32,8 @@ function Book ({ setRes, res, bookHotel }) {
         <p className='booking__info__p'><strong>Precio por noche:</strong> ${bookHotel.price}</p>
         <p className='booking__info__p'><strong>Cantidad de Noches:</strong> {hotel.nights}</p>
         <div className='booking__info__btns'>
-          <button className='booking__info__btns__white' onClick={e => handlePay(e)}>Pagar ahora</button>
-          <button className='booking__info__btns__red' onClick={e => handleClick(e)}> Pagar más tarde </button>
+          <button className='booking__info__btns__red' onClick={e => handlePay(e)}>Pagar ahora</button>
+          <button className='booking__info__btns__white' onClick={e => handleClick(e)}> Pagar más tarde </button>
         </div>
       </div>
     </div>

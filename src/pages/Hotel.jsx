@@ -29,13 +29,14 @@ const Hotel = () => {
     nights: 1
   })
 
+  const decodeName = decodeURI(name)
   const {
     data: hotel,
     isLoading,
     isSuccess,
     isError,
     error
-  } = useGetHotelsByNameQuery(name)
+  } = useGetHotelsByNameQuery(decodeName)
 
   const closeModal = () => {
     setRes({

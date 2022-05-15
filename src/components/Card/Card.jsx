@@ -4,9 +4,11 @@ import { AiFillStar } from 'react-icons/ai'
 import { Link } from 'react-router-dom'
 
 function Card ({ img, name, description, price, hosts, stars, filters = {} }) {
+  const encodeName = encodeURI(name)
+  console.log(encodeName)
   return (
     <div className='card'>
-      <Link to={`/hotel/${name}`} state={filters} className='link'>
+      <Link to={`/hotel/${encodeName}`} state={filters} className='link'>
         <img src={img} alt='img' className='card__image' />
         <div className='card__content'>
           <h3 className='card__content__title'>{name}</h3>

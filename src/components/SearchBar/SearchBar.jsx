@@ -1,20 +1,28 @@
 import { useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { DateRangePicker } from 'react-date-range'
 import 'react-date-range/dist/styles.css'
 import 'react-date-range/dist/theme/default.css'
 import './searchBar.scss'
 import { useNavigate } from 'react-router-dom'
 import { selectAllCities } from '../../redux/services/hotelsServices'
+import { selectReservation, updateReservation } from '../../redux/slices/reservationSlice'
 
 const SearchBar = () => {
   const cities = useSelector(selectAllCities)
   const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   const handleSearch = (e) => {
     e.preventDefault()
+    dispatch(updateReservation({
+      cityName: filters.city
+    }))
     navigate('/hotels', { state: filters })
   }
+
+  const reservation = useSelector(selectReservation)
+  console.log(reservation)
 
   const [results, setResults] = useState(false)
   const [startDate, setStartDate] = useState(new Date())
@@ -56,11 +64,10 @@ const SearchBar = () => {
   const handleSelect = ranges => {
     setStartDate(ranges.selection.startDate)
     setEndDate(ranges.selection.endDate)
-    setFilters({
-      ...filters,
+    dispatch(updateReservation({
       checkIn: dateFormat(ranges.selection.startDate),
       checkOut: dateFormat(ranges.selection.endDate)
-    })
+    }))
   }
 
   const handleCalendarRender = () => {
@@ -84,12 +91,18 @@ const SearchBar = () => {
     if (e.target.name === '-') {
       if (amount === 1) return
       if (amount > 1) setAmount(amount - 1)
+      dispatch(updateReservation({
+        guests: amount - 1
+      }))
       setFilters({
         ...filters,
         guests: amount - 1
       })
     } else {
       setAmount(amount + 1)
+      dispatch(updateReservation({
+        guests: amount + 1
+      }))
       setFilters({
         ...filters,
         guests: amount + 1
@@ -131,7 +144,7 @@ const SearchBar = () => {
         <div>
           <button className='searchBar__check' onClick={handleCalendarRender}>
             <h5 className='searchBar__check__title'>Check-in</h5>
-            <h5 className='searchBar__check__value'>{filters.checkIn ?? 'Desde..'}</h5>
+            <h5 className='searchBar__check__value'>{reservation.checkIn}</h5>
           </button>
           <div>
             {renderCalendar &&
@@ -151,7 +164,7 @@ const SearchBar = () => {
         </div>
         <button className='searchBar__check' onClick={handleCalendarRender}>
           <h5 className='searchBar__check__title'>Check-out</h5>
-          <h5 className='searchBar__check__value'>{filters.checkOut ?? 'Hasta...'}</h5>
+          <h5 className='searchBar__check__value'>{reservation.checkOut}</h5>
         </button>
         <div>
           <button className='searchBar__amount' onClick={handleAmountRender}>
