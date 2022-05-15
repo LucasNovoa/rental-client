@@ -67,7 +67,7 @@ const Reservation = ({ res, setRes, hotel, filters }) => {
       cityName: hotel.City.name,
       checkIn: start,
       checkOut: end,
-      guests: filters.guests,
+      guests,
       open: true,
       nights: totalNights
     })

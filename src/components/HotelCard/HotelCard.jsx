@@ -23,7 +23,7 @@ const HotelCard = ({ hotel }) => {
             </div>
           </div>
           <div className='hotelcard__container__data__sec'>
-            <p className='hotelcard__container__data__sec__span'>Lorem ipsum dolor sit amet consectetur adipiscing elit etiam cras tellus sit tempor amet, nascetur quam ornare proin platea diam amet, Lorem ipsum dolor sit amet consectetur adipiscing elit etiam cras tellus sit tempor amet, nascetur quam ornare proin platea diam amet</p>
+            <p className='hotelcard__container__data__sec__span'>{hotel.description}</p>
             <div className='hotelcard__container__data__sec__buttons'>
               <p className='hotelcard__container__data__sec__span'>{hotel.stars} ★ {hotel.City.name}, {hotel.Country.name}</p>
             </div>

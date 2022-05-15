@@ -12,22 +12,22 @@ import Book from '../components/Book/Book'
 import Loader from '../components/Loader/Loader'
 import { useGetHotelsByNameQuery } from '../redux/services/hotelsServices'
 import OwnerCard from '../components/OwnerCard/OwnerCard'
+import Modal from 'react-modal'
 
 const Hotel = () => {
   const location = useLocation()
   const filters = location.state
+  const { name } = useParams()
 
   const [res, setRes] = useState({
-    name: '',
-    cityName: '',
-    checkIn: '',
-    checkOut: '',
-    guests: 0,
+    name,
+    cityName: filters.city ?? '',
+    checkIn: filters.checkIn ?? '',
+    checkOut: filters.checkIn ?? '',
+    guests: filters.guests ?? 1,
     open: false,
     nights: 1
   })
-
-  const { name } = useParams()
 
   const {
     data: hotel,
@@ -37,8 +37,15 @@ const Hotel = () => {
     error
   } = useGetHotelsByNameQuery(name)
 
+  const closeModal = () => {
+    setRes({
+      ...res,
+      open: false
+    })
+  }
+
   let content
-  console.log(hotel)
+
   if (isLoading) {
     content = <Loader />
   } else if (isSuccess) {
@@ -48,14 +55,19 @@ const Hotel = () => {
         <Reservation res={res} setRes={setRes} hotel={entities[ids]} filters={filters} />
         <div className='hotel__details'>
           <OwnerCard userId={entities[ids].UserId} />
-          {!res.open &&
-            <>
-              <Calendar filters={filters} />
-              <Amenities hotels={entities[ids]} />
-              <Map width='50vw' height={400} hotels={[entities[ids]]} />
-            </>}
-          {res.open &&
-            <Book setRes={setRes} res={res} bookHotel={entities[ids]} />}
+          <>
+            <Calendar filters={filters} />
+            <Amenities hotels={entities[ids]} />
+            <Map width='50vw' height={400} hotels={[entities[ids]]} zoom='15' />
+          </>
+          <Modal
+            isOpen={res.open}
+            onRequestClose={closeModal}
+            className='hotel__modal'
+            overlayClassName='hotel__overlay'
+          >
+            <Book setRes={setRes} res={res} bookHotel={entities[ids]} />
+          </Modal>
         </div>
       </div>
     )

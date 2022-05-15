@@ -16,6 +16,7 @@
   color: black;
 }
 .Login {
+  font-size: 1rem;
   background-color: white;
   width: 400px;
   margin: 0 auto;
@@ -29,17 +30,18 @@
   box-shadow: $shadow-05;
 
   &__Label {
+    font-size: 1rem;
     display: flex;
     flex-direction: column;
     margin: 60px 0 0;
 
     span {
       font-weight: bold;
-      font-size: 1.6rem;
+      font-size: 1.1rem;
       margin-bottom: 30px;
     }
     input {
-      font-size: 1.6rem;
+      font-size: 1rem;
       box-shadow: $shadow-03;
       padding: 16px 14px;
       border-radius: 100px;
@@ -52,7 +54,7 @@
     display: block;
     text-align: center;
     text-decoration: underline;
-    font-size: 1.8rem;
+    font-size: 1rem;
     margin-bottom: 60px;
     color: crimson;
   }
@@ -63,7 +65,7 @@
   font-weight: bold;
   background-color: $primary-color;
   box-shadow: $shadow-04;
-  font-size: 1.6rem;
+  font-size: 1rem;
   border-radius: 100px;
   padding: 20px 48px;
   display: flex;
@@ -81,7 +83,7 @@
   font-weight: bold;
   background-color: white;
   box-shadow: $shadow-04;
-  font-size: 1.6rem;
+  font-size: 1rem;
   border-radius: 100px;
   padding: 20px 48px;
   display: flex;

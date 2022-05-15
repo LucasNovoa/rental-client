@@ -5,7 +5,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   align-items: center;
-  // text-align: center;
+  font-size: 1rem;
   background-color: white;
   height: 95px;
   padding: 25px;
@@ -21,16 +21,17 @@
     color: #5d5d5d;
     padding-left: 2rem;
     width: 190px;
+    font-size: 1rem;
 
     &__title {
       font-weight: 520;
-      font-size: 1.5em;
+      font-size: 1.3rem;
     }
 
     &__input {
+      font-size: 1.2rem;
       border: none;
       font-weight: 600;
-      font-size: 1.667em;
     }
     &__input:focus {
       outline: none;
@@ -56,7 +57,7 @@
       box-shadow: 0 2px 12px 0 rgba(20, 20, 43, 0.164);
 
       &__name {
-        font-size: 1.667em;
+        font-size: 1rem;
         padding-bottom: 7px;
         background-color: white;
         border: none;
@@ -80,11 +81,11 @@
     &__title {
       color: #5d5d5d;
       font-weight: 520;
-      font-size: 1.5em;
+      font-size: 1.3rem;
     }
 
     &__value {
-      font-size: 1.667em;
+      font-size: 1.2rem;
     }
 
     &__calendar {
@@ -117,11 +118,11 @@
     &__title {
       color: #5d5d5d;
       font-weight: 520;
-      font-size: 1.5em;
+      font-size: 1.3rem;
     }
 
     &__value {
-      font-size: 1.667em;
+      font-size: 1.2rem;
     }
 
     &__display {
@@ -150,7 +151,7 @@
         }
 
         &__btn {
-          font-size: 1.5em;
+          font-size: 1rem;
           font-weight: 500;
           border: none;
           border-radius: 5px;
@@ -173,7 +174,7 @@
     background-color: #ff3f3f;
     padding: 18px 24px 18px 24px;
     color: white;
-    font-size: 1.66rem;
+    font-size: 1.3rem;
     font-weight: 600;
     border-radius: 76px;
     border: none;

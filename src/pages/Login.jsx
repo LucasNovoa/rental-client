@@ -51,7 +51,7 @@ function Login () {
         <button className='buttonLoginPage' type='submit'>Ingresar</button>
 
         <button className='buttonLoginPageGG' type='submit' onClick={() => auth.signInGoogle()}> <FcGoogle /> Ingresar con Google</button>
-        <Link to='/passwordRecovery'> ¿Te olvidaste la contraseña?</Link>
+        <Link to='/passwordRecovery'> Olvidé mi contraseña</Link>
 
       </form>
       <Footer />

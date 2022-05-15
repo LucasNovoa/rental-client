@@ -1,4 +1,3 @@
-// import { useDispatch, useSelector } from 'react-redux'
 import React from 'react'
 import './book.scss'
 
@@ -19,23 +18,25 @@ function Book ({ setRes, res, bookHotel }) {
   }
 
   return (
-    console.log(hotel.checkIn),
-      <div className='booking'>
-        <button className='booking__close' onClick={e => handleClick(e)}> Cerrar </button>
-        <div className='booking__image'>
-          <img src={bookHotel.mainImage} />
-        </div>
-        <div className='booking__info'>
-          <h2>{hotel.name}</h2>
-          <p>Check-In: {hotel.checkIn}</p>
-          <p>Check-Out: {hotel.checkOut}</p>
-          <p>Ciudad: {bookHotel.City.name}</p>
-          <p>Estado: Pago Pendiente</p>
-          <p>Precio por noche: ${bookHotel.price}</p>
-          <p>Cantidad de Noches: {hotel.nights}</p>
-          <button className='booking__info__pay' onClick={e => handlePay(e)}>Pagar ahora</button>
+    <div className='booking'>
+      <div className='booking__image'>
+        <img src={bookHotel.mainImage} />
+      </div>
+      <div className='booking__info'>
+        <h2 className='booking__info__title'><strong>Resumen pre-reserva</strong></h2>
+        <h3 className='booking__info__hotel'><strong>{hotel.name}</strong></h3>
+        <p className='booking__info__p'><strong>Check-In:</strong> {hotel.checkIn}</p>
+        <p className='booking__info__p'><strong>Check-Out:</strong> {hotel.checkOut}</p>
+        <p className='booking__info__p'><strong>Ciudad:</strong> {bookHotel.City.name}</p>
+        <p className='booking__info__p'><strong>Estado:</strong> Pago Pendiente</p>
+        <p className='booking__info__p'><strong>Precio por noche:</strong> ${bookHotel.price}</p>
+        <p className='booking__info__p'><strong>Cantidad de Noches:</strong> {hotel.nights}</p>
+        <div className='booking__info__btns'>
+          <button className='booking__info__btns__white' onClick={e => handlePay(e)}>Pagar ahora</button>
+          <button className='booking__info__btns__red' onClick={e => handleClick(e)}> Pagar más tarde </button>
         </div>
       </div>
+    </div>
   )
 }
 

@@ -10,7 +10,7 @@ import { AiFillStar } from 'react-icons/ai'
 const key = 'pk.eyJ1IjoicGFzY3VjaCIsImEiOiJjbDJzcjVzOWEwMWhsM2RvOXM4c2x3ZDExIn0.MHtq4GI2KxqTHUqG58MfiQ'
 const style = 'mapbox://styles/pascuch/cl2tk7qqo000s14o177zcb02u'
 
-export default function Map ({ width, height, hotels }) {
+export default function Map ({ width, height, hotels, zoom = 11.5 }) {
   const [selectedLocation, setSelectedLocation] = useState({})
 
   const coordinates = hotels.map(e => ({ longitude: e.longitude, latitude: e.latitude }))
@@ -20,14 +20,14 @@ export default function Map ({ width, height, hotels }) {
   const [viewState, setViewState] = useState({
     latitude: center.latitude,
     longitude: center.longitude,
-    zoom: 11.5
+    zoom
   })
 
   useEffect(() => {
     setViewState({
       latitude: center.latitude,
       longitude: center.longitude,
-      zoom: 12
+      zoom
     })
   }, [hotels])
 
@@ -39,7 +39,7 @@ export default function Map ({ width, height, hotels }) {
         onMove={e => setViewState(e.viewState)}
         mapStyle={style}
         style={{ width, height }}
-        maxZoom={15.5}
+        maxZoom={100}
         minZoom={3}
       >
         {hotels.map(el => (
