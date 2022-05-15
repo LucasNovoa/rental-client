@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-import React, { useState } from 'react'
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import Footer from "../components/Footer/Footer";
@@ -13,18 +12,18 @@ import Map from "../components/Map/Map";
 import Reservation from "../components/Reservation/Reservation";
 import Calendar from "../components/Calendar/Calendar";
 import "../scss/Hotel.scss";
-import Book from '../components/Book/Book'
+import Book from "../components/Book/Book";
 
 const Hotel = () => {
   const [res, setRes] = useState({
-    name: '',
-    cityName: '',
-    checkIn: '',
-    checkOut: '',
+    name: "",
+    cityName: "",
+    checkIn: "",
+    checkOut: "",
     guests: 0,
     open: false,
-    nights: 1
-  })
+    nights: 1,
+  });
   const { name } = useParams();
   const hotel = useSelector((state) => selectHotelByName(state, name));
   // console.log(hotel)
@@ -35,17 +34,16 @@ const Hotel = () => {
       <HotelCard hotel={hotel} />
 
       <Reservation res={res} setRes={setRes} hotel={hotel} />
-      <div className='hotel__details'>
-        {!res.open &&
+      <div className="hotel__details">
+        {!res.open && (
           <>
             <Calendar />
             <Amenities />
-            <Map width='50vw' height={400} hotels={[hotel]} />
-
-          </>}
+            <Map width="50vw" height={400} hotels={[hotel]} />
+          </>
+        )}
         <Resenas data={datos} />
-        {res.open &&
-          <Book setRes={setRes} res={res} bookHotel={hotel} />}
+        {res.open && <Book setRes={setRes} res={res} bookHotel={hotel} />}
       </div>
       <Footer />
     </div>
