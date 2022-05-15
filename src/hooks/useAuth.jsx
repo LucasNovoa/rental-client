@@ -74,7 +74,11 @@ function useProvideAuth () {
   }
 
   const signInGoogle = async () => {
-    window.open('https://rental-app-server.herokuapp.com/api/v1/auth/google')
+    const url = 'https://rental-app-server.herokuapp.com/api/v1/auth/google'
+
+    const strWindowFeatures = 'toolbar=no,menubar=no,scrollbars=yes,resizable=yes,top=100,left=100,width=400,height=600'
+
+    window.open(url, '_blank', strWindowFeatures)
 
     const options = {
       headers: {
@@ -88,6 +92,8 @@ function useProvideAuth () {
     if (access_token) {
       const token = access_token.token
       const userId = access_token.user.id
+      console.log(token, 'token')
+      console.log(userId, 'userId')
 
       Cookie.set('token', token, { expires: 5 })
 

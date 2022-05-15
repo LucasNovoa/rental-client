@@ -4,12 +4,11 @@ import { DateRangePicker } from 'react-date-range'
 import 'react-date-range/dist/styles.css'
 import 'react-date-range/dist/theme/default.css'
 import './Reservation.scss'
-import { filterHotels } from '../../redux/slices/hotelSlice'
 import { selectAllCities } from '../../redux/slices/citySlice'
-import { filter, selectAllFilters } from '../../redux/slices/filterSlice'
+import { selectAllFilters } from '../../redux/slices/filterSlice'
 import { useNavigate } from 'react-router-dom'
 
-const Reservation = () => {
+const Reservation = ({ res, setRes, hotel }) => {
   const cities = useSelector(selectAllCities)
   const filters = useSelector(selectAllFilters)
 
@@ -17,20 +16,6 @@ const Reservation = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
-  const handleSearch = (e) => {
-    e.preventDefault()
-    dispatch(filterHotels(place))
-    dispatch(filter({
-      cityId,
-      cityName: place,
-      checkIn: startDate.toLocaleDateString(),
-      checkOut: endDate.toLocaleDateString(),
-      guests: amount
-    }))
-    setRenderCalendar(false)
-    setRenderAmount(false)
-    navigate('/hotels/')
-  }
   // -------------->
 
   const [results, setResults] = useState(false)
@@ -41,7 +26,7 @@ const Reservation = () => {
   const [amount, setAmount] = useState(filters.guests)
 
   const [place, setPlace] = useState(filters.cityName || '')
-  const [start, setStart] = useState(dateFormat(filters.checkIn))
+  const [start, setStart] = useState(dateFormat(filters.checkIn || ''))
   const [end, setEnd] = useState(dateFormat(filters.checkOut))
   const [guests, setGuests] = useState(filters.guests ? `${filters.guests} huéspedes` : 'Cuántos?')
 
@@ -58,27 +43,7 @@ const Reservation = () => {
     key: 'selection'
   }
 
-  const handleChange = (e) => {
-    setPlace(e.target.value)
-    if (!e.target.value) {
-      setResults(false)
-    } else {
-      const filter = cities?.filter(el => el.name.toLowerCase().includes(e.target.value.toLowerCase()))
-      setResults(filter.splice(0, 5))
-    }
-  }
-
-  const handlePlaceSelect = (e) => {
-    setResults(false)
-    setPlace(e.target.value)
-  }
-
-  const handleSelect = ranges => {
-    setStartDate(ranges.selection.startDate)
-    setEndDate(ranges.selection.endDate)
-    setStart(dateFormat(ranges.selection.startDate))
-    setEnd(dateFormat(ranges.selection.endDate))
-  }
+  const totalNights = end.split(' ')[0] - start.split(' ')[0]
 
   const handleCalendarRender = () => {
     setRenderAmount(false)
@@ -92,11 +57,6 @@ const Reservation = () => {
     setRenderAmount(!renderAmount)
   }
 
-  const handleFocus = () => {
-    setRenderCalendar(false)
-    setRenderAmount(false)
-  }
-
   const handleAmount = (e) => {
     if (e.target.name === '-') {
       if (amount === 1) return
@@ -108,6 +68,19 @@ const Reservation = () => {
     }
   }
 
+  const handleSearch = (e) => {
+    e.preventDefault()
+    setRes({
+      name: hotel.name,
+      cityName: hotel.City.name,
+      checkIn: start,
+      checkOut: end,
+      guests: filters.guests,
+      open: true,
+      nights: totalNights
+    })
+  }
+
   return (
     <div className='reservationContainer'>
       <div className='reservation'>
@@ -116,21 +89,6 @@ const Reservation = () => {
             <h5 className='reservation__check__title'>Check-in</h5>
             <h5 className='reservation__check__value'>{start}</h5>
           </button>
-          {/* <div>
-            {renderCalendar &&
-              <div className='reservation__check__calendar'>
-                <DateRangePicker
-                  ranges={[selectionRange]}
-                  minDate={new Date()}
-                  onChange={handleSelect}
-                  rangeColors={['#ff3f3f']}
-                  showDateDisplay={false}
-                  dateDisplayFormat='d MMM yyyy'
-                  months={2}
-                  direction='horizontal'
-                />
-              </div>}
-          </div> */}
         </div>
         <button className='reservation__check' onClick={handleCalendarRender}>
           <h5 className='reservation__check__title'>Check-out</h5>

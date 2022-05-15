@@ -1,12 +1,27 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './profilecard.scss'
+import Picture from '../Picture/Picture.jsx'
 
 function ProfileCard ({ user }) {
+  const [on, setOn] = useState(false)
+
+  function handleClick (e) {
+    e.preventDefault()
+    setOn(true)
+  }
+
   return (
     <div className='profilecard'>
       <div className='profilecard__imageContainer'>
-        <img className='profilecard__imageContainer__image' src={user.image} alt='img' />
-        <a>Actualizar foto</a>
+
+        {!on &&
+          <>
+            <img className='profilecard__imageContainer__image' src={user.image} alt='img' />
+            <br />
+            <a onClick={e => handleClick(e)}>Actualizar foto</a>
+          </>}
+        {on &&
+          <Picture setOn={setOn} />}
       </div>
       <div className='profilecard__divider' />
       <div className='profilecard__data'>
