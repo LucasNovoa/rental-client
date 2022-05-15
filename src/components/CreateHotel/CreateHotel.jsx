@@ -2,32 +2,32 @@ import { useDispatch, useSelector } from 'react-redux'
 import React, { useState, useEffect } from 'react'
 import swal from 'sweetalert'
 import { useNavigate } from 'react-router-dom'
-import { postHotel } from '../../redux/slices/hotelSlice'
-import { selectAllCountries, getCountries, getCountriesStatus } from '../../redux/slices/countrySlice'
+/* import { postHotel } from '../../redux/slices/hotelSlice'
+ *//* import { selectAllCountries, getCountries, getCountriesStatus } from '../../redux/slices/countrySlice'
 import { selectAllCities, getCities, getCitiesStatus } from '../../redux/slices/citySlice'
-
+ */
 function CreateHotel ({ userId, submit }) {
   const dispatch = useDispatch()
 
   const navigateTo = useNavigate()
 
-  const countries = useSelector(selectAllCountries)
+  /*   const countries = useSelector(selectAllCountries)
   const countryIdStatus = useSelector(getCountriesStatus)
-
-  useEffect(() => {
+ */
+  /*   useEffect(() => {
     if (countryIdStatus === 'idle') {
       dispatch(getCountries())
     }
   }, [countryIdStatus, dispatch])
 
   const cities = useSelector(selectAllCities)
-  const cityIdStatus = useSelector(getCitiesStatus)
+  const cityIdStatus = useSelector(getCitiesStatus) */
 
-  useEffect(() => {
+  /*   useEffect(() => {
     if (cityIdStatus === 'idle') {
       dispatch(getCities())
     }
-  }, [cityIdStatus, dispatch])
+  }, [cityIdStatus, dispatch]) */
 
   // eslint-disable-next-line no-unused-vars
   const [errors, setErrors] = useState({})
@@ -81,7 +81,6 @@ function CreateHotel ({ userId, submit }) {
   function handleQuit (e) {
     submit(e)
   }
-
   function handleSubmit (e) {
     e.preventDefault()
     dispatch(postHotel(input))
@@ -157,9 +156,9 @@ function CreateHotel ({ userId, submit }) {
                 <br />
                 <select name='CountryId' onChange={e => handleChange(e)}>
                   <option name='CountryId' key='' value='all'>Países</option>
-                  {countries.map(g => (
+                  {/*  {countries.map(g => (
                     <option value={g.id} key={g.name}>{g.name}</option>
-                  ))}
+                  ))} */}
                 </select>
               </label>
               <label>
@@ -167,9 +166,9 @@ function CreateHotel ({ userId, submit }) {
                 <br />
                 <select name='CityId' onChange={e => handleChange(e)}>
                   <option name='CityId' key='' value='all'>Ciudades</option>
-                  {cities.map(g => (
+                  {/* {cities.map(g => (
                     <option value={g.id} key={g.name}>{g.name}</option>
-                  ))}
+                  ))} */}
                 </select>
               </label>
               <label>

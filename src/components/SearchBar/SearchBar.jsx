@@ -4,48 +4,34 @@ import { DateRangePicker } from 'react-date-range'
 import 'react-date-range/dist/styles.css'
 import 'react-date-range/dist/theme/default.css'
 import './searchBar.scss'
-import { filterHotels } from '../../redux/slices/hotelSlice'
-import { selectAllCities } from '../../redux/slices/citySlice'
-import { filter, selectAllFilters } from '../../redux/slices/filterSlice'
 import { useNavigate } from 'react-router-dom'
+import { selectAllCities } from '../../redux/services/hotelsServices'
+import { selectReservation, updateReservation } from '../../redux/slices/reservationSlice'
 
 const SearchBar = () => {
   const cities = useSelector(selectAllCities)
-  const filters = useSelector(selectAllFilters)
-
-  // PROVISORIO ---->
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
   const handleSearch = (e) => {
     e.preventDefault()
-    dispatch(filterHotels(place))
-    dispatch(filter({
-      cityId,
-      cityName: place,
-      checkIn: startDate,
-      checkOut: endDate,
-      guests: amount
+    dispatch(updateReservation({
+      cityName: filters.city
     }))
-    setRenderCalendar(false)
-    setRenderAmount(false)
-    navigate('/hotels/')
+    navigate('/hotels', { state: filters })
   }
-  // -------------->
+
+  const reservation = useSelector(selectReservation)
+  console.log(reservation)
 
   const [results, setResults] = useState(false)
   const [startDate, setStartDate] = useState(new Date())
   const [endDate, setEndDate] = useState(startDate)
   const [renderCalendar, setRenderCalendar] = useState(false)
   const [renderAmount, setRenderAmount] = useState(false)
-  const [amount, setAmount] = useState(filters.guests)
+  const [amount, setAmount] = useState(1)
 
-  const [place, setPlace] = useState(filters.cityName || '')
-  const [start, setStart] = useState(dateFormat(filters.checkIn))
-  const [end, setEnd] = useState(dateFormat(filters.checkOut))
-  const [guests, setGuests] = useState(filters.guests ? `${filters.guests} huéspedes` : 'Cuántos?')
-
-  const cityId = cities.find(e => e.name === place) && cities.find(e => e.name === place).id
+  const [filters, setFilters] = useState({})
 
   const selectionRange = {
     startDate,
@@ -53,8 +39,12 @@ const SearchBar = () => {
     key: 'selection'
   }
 
-  const handleChange = (e) => {
-    setPlace(e.target.value)
+  const handleCity = (e) => {
+    setFilters({
+      ...filters,
+      city: e.target.value
+    })
+    console.log(filters.city)
     if (!e.target.value) {
       setResults(false)
     } else {
@@ -65,14 +55,19 @@ const SearchBar = () => {
 
   const handlePlaceSelect = (e) => {
     setResults(false)
-    setPlace(e.target.value)
+    setFilters({
+      ...filters,
+      city: e.target.value
+    })
   }
 
   const handleSelect = ranges => {
     setStartDate(ranges.selection.startDate)
     setEndDate(ranges.selection.endDate)
-    setStart(dateFormat(ranges.selection.startDate))
-    setEnd(dateFormat(ranges.selection.endDate))
+    dispatch(updateReservation({
+      checkIn: dateFormat(ranges.selection.startDate),
+      checkOut: dateFormat(ranges.selection.endDate)
+    }))
   }
 
   const handleCalendarRender = () => {
@@ -96,10 +91,22 @@ const SearchBar = () => {
     if (e.target.name === '-') {
       if (amount === 1) return
       if (amount > 1) setAmount(amount - 1)
-      setGuests(amount - 1 + ' huéspedes')
+      dispatch(updateReservation({
+        guests: amount - 1
+      }))
+      setFilters({
+        ...filters,
+        guests: amount - 1
+      })
     } else {
       setAmount(amount + 1)
-      setGuests(amount + 1 + ' huéspedes')
+      dispatch(updateReservation({
+        guests: amount + 1
+      }))
+      setFilters({
+        ...filters,
+        guests: amount + 1
+      })
     }
   }
 
@@ -110,11 +117,12 @@ const SearchBar = () => {
           <div className='searchBar__place'>
             <label><h5 className='searchBar__place__title'>Lugar</h5></label>
             <input
+              name='city'
               className='searchBar__place__input'
               placeholder='A dónde vas?'
               onFocus={handleFocus}
-              onChange={handleChange}
-              value={place}
+              onChange={handleCity}
+              value={filters.city}
             />
           </div>
           <div>
@@ -136,7 +144,7 @@ const SearchBar = () => {
         <div>
           <button className='searchBar__check' onClick={handleCalendarRender}>
             <h5 className='searchBar__check__title'>Check-in</h5>
-            <h5 className='searchBar__check__value'>{start}</h5>
+            <h5 className='searchBar__check__value'>{reservation.checkIn}</h5>
           </button>
           <div>
             {renderCalendar &&
@@ -156,12 +164,12 @@ const SearchBar = () => {
         </div>
         <button className='searchBar__check' onClick={handleCalendarRender}>
           <h5 className='searchBar__check__title'>Check-out</h5>
-          <h5 className='searchBar__check__value'>{end}</h5>
+          <h5 className='searchBar__check__value'>{reservation.checkOut}</h5>
         </button>
         <div>
           <button className='searchBar__amount' onClick={handleAmountRender}>
             <h5 className='searchBar__amount__title'>Huéspedes</h5>
-            <h5 className='searchBar__amount__value'>{guests}</h5>
+            <h5 className='searchBar__amount__value'>{filters.guests ?? 'Cuantos...'}</h5>
           </button>
           {renderAmount &&
             <div className='searchBar__amount__display'>
@@ -180,11 +188,7 @@ const SearchBar = () => {
   )
 }
 
-export { SearchBar }
-
 function dateFormat (date) {
-  if (date === 'Desde...' || date === 'Hasta...') return date
-
   const arr = date.toLocaleString('es-AR').split(' ')[0].split('/')
   let month = ''
 
@@ -205,3 +209,4 @@ function dateFormat (date) {
 
   return arr[0] + ' ' + month + ' ' + arr[2]
 }
+export { SearchBar }

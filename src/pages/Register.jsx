@@ -7,6 +7,7 @@ import Header from '../components/Header/Header'
 import '../scss/RegisterType.scss'
 import swal from 'sweetalert'
 import { useNavigate } from 'react-router-dom'
+import Footer from '../components/Footer/Footer'
 
 function Register () {
   const dispatch = useDispatch()
@@ -170,6 +171,7 @@ function Register () {
             </div>
           </div>
         </section>}
+      <Footer />
     </>
   )
 }
