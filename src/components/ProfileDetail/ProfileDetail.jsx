@@ -1,37 +1,47 @@
 import './profiledetail.scss'
 import SliderHost from '../SliderHost/SliderHost'
-import { selectAllHotels, getHotels, getHotelsStatus } from '../../redux/slices/hotelSlice'
-import React, { useEffect, useState } from 'react'
+/* import { selectAllHotels, getHotels, getHotelsStatus } from '../../redux/slices/hotelSlice'
+ */import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import Loader from '../Loader/Loader'
 import SliderBooking from '../SliderBooking/SliderBooking'
 import Bookings from '../Bookings/Bookings'
+import { selectAllHotels, useGetHotelsQuery } from '../../redux/services/hotelsServices'
 
 const ProfileDetail = ({ user, post, setPost }) => {
   const dispatch = useDispatch()
   const hotels = useSelector(selectAllHotels)
-  const hotelIdStatus = useSelector(getHotelsStatus)
   const hostHotels = user?.Hotels
   const bookings = user?.Bookings
   const [book, setBook] = useState(0)
 
-  useEffect(() => {
+  const {
+    isLoading,
+    isSuccess,
+    isError,
+    error
+  } = useGetHotelsQuery()
+
+  let content
+
+  if (isLoading) {
+    content = <Loader />
+  } else if (isSuccess) {
+    content = <h1>Hola</h1>
+  } else if (isError) {
+    content = <p>{error}</p>
+  }
+
+  /* useEffect(() => {
     if (hotelIdStatus === 'idle') {
       dispatch(getHotels())
     }
   }, [])
-<<<<<<< HEAD
-  // function handleBook (e) {
-  //   // e.preventDefault()
-  //   setBook(e)
-  // }
-=======
-
+ */
   function handleCreate (e) {
     e.preventDefault()
     setPost(!post)
   }
->>>>>>> 91cc200bfe522f2108704f985b620e6d318feb59
 
   return (
     <div className='profiledetail'>
@@ -44,18 +54,19 @@ const ProfileDetail = ({ user, post, setPost }) => {
       {post === false &&
         <button className='profiledetail__post' onClick={e => handleCreate(e)}>Publica tu alojamiento!</button>}
       <div className='profiledetail__divider' />
-      {!hotels && <Loader />}
+      {content}
       {hostHotels.length > 0
         ? <div>
           <SliderHost className='profiledetail__slider' hotels={hostHotels} />
           <div className='profiledetail__divider' />
-        </div>
+          </div>
         : <h1>No tienes alojamientos en alquiler</h1>}
       <div className='profiledetail__divider' />
       {user?.Bookings.length > 0 &&
         <div>
           {book !== 0 && <Bookings setBook={setBook} book={book} bookings={bookings} user={user} />}
           {book === 0 && <SliderBooking hotels={hotels} user={user} bookings={bookings} setBook={setBook} book={book} />}
+
         </div>}
     </div>
   )

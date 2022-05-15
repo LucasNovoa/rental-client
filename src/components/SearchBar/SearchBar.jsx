@@ -4,29 +4,16 @@ import { DateRangePicker } from 'react-date-range'
 import 'react-date-range/dist/styles.css'
 import 'react-date-range/dist/theme/default.css'
 import './searchBar.scss'
-import { useNavigate, useLocation, useSearchParams, createSearchParams } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { selectAllCities } from '../../redux/services/hotelsServices'
 
 const SearchBar = () => {
   const cities = useSelector(selectAllCities)
-
-  const [searchParams, setSearchParams] = useSearchParams()
   const navigate = useNavigate()
-  const location = useLocation()
 
-  const handleSearch = async (e) => {
+  const handleSearch = (e) => {
     e.preventDefault()
-    const encodePlace = encodeURI(place)
-    if (location.pathname === '/hotels/') {
-      setSearchParams({ name: place })
-    }
-    navigate({
-      pathname: '/hotels',
-      search: createSearchParams({
-        name: encodePlace
-      }).toString(),
-      state: { ho: 'la' }
-    })
+    navigate('/hotels', { state: filters })
   }
 
   const [results, setResults] = useState(false)
@@ -34,19 +21,9 @@ const SearchBar = () => {
   const [endDate, setEndDate] = useState(startDate)
   const [renderCalendar, setRenderCalendar] = useState(false)
   const [renderAmount, setRenderAmount] = useState(false)
-  const [amount, setAmount] = useState(0)
+  const [amount, setAmount] = useState(1)
 
-  const [place, setPlace] = useState('')
-  const [start, setStart] = useState('Desde cuándo?')
-  const [end, setEnd] = useState('Hasta cuándo?')
-  const [guests, setGuests] = useState('Cuántos?')
-
-  const [filters, setFilters] = useState({
-    place: '',
-    start: 'Desde cuándo?',
-    end: 'Hasta cuándo?',
-    guests: 'Cuántos?'
-  })
+  const [filters, setFilters] = useState({})
 
   const selectionRange = {
     startDate,
@@ -54,8 +31,12 @@ const SearchBar = () => {
     key: 'selection'
   }
 
-  const handleChange = (e) => {
-    setPlace(e.target.value)
+  const handleCity = (e) => {
+    setFilters({
+      ...filters,
+      city: e.target.value
+    })
+    console.log(filters.city)
     if (!e.target.value) {
       setResults(false)
     } else {
@@ -66,26 +47,32 @@ const SearchBar = () => {
 
   const handlePlaceSelect = (e) => {
     setResults(false)
-    setPlace(e.target.value)
+    setFilters({
+      ...filters,
+      city: e.target.value
+    })
   }
 
   const handleSelect = ranges => {
     setStartDate(ranges.selection.startDate)
     setEndDate(ranges.selection.endDate)
-    setStart(dateFormat(ranges.selection.startDate))
-    setEnd(dateFormat(ranges.selection.endDate))
+    setFilters({
+      ...filters,
+      checkIn: dateFormat(ranges.selection.startDate),
+      checkOut: dateFormat(ranges.selection.endDate)
+    })
   }
 
   const handleCalendarRender = () => {
     setRenderAmount(false)
     setResults(false)
-    setRenderCalendar(true)
+    setRenderCalendar(!renderCalendar)
   }
 
   const handleAmountRender = () => {
     setRenderCalendar(false)
     setResults(false)
-    setRenderAmount(true)
+    setRenderAmount(!renderAmount)
   }
 
   const handleFocus = () => {
@@ -97,10 +84,16 @@ const SearchBar = () => {
     if (e.target.name === '-') {
       if (amount === 1) return
       if (amount > 1) setAmount(amount - 1)
-      setGuests(amount - 1 + ' huéspedes')
+      setFilters({
+        ...filters,
+        guests: amount - 1
+      })
     } else {
       setAmount(amount + 1)
-      setGuests(amount + 1 + ' huéspedes')
+      setFilters({
+        ...filters,
+        guests: amount + 1
+      })
     }
   }
 
@@ -111,11 +104,12 @@ const SearchBar = () => {
           <div className='searchBar__place'>
             <label><h5 className='searchBar__place__title'>Lugar</h5></label>
             <input
+              name='city'
               className='searchBar__place__input'
               placeholder='A dónde vas?'
               onFocus={handleFocus}
-              onChange={handleChange}
-              value={place}
+              onChange={handleCity}
+              value={filters.city}
             />
           </div>
           <div>
@@ -137,7 +131,7 @@ const SearchBar = () => {
         <div>
           <button className='searchBar__check' onClick={handleCalendarRender}>
             <h5 className='searchBar__check__title'>Check-in</h5>
-            <h5 className='searchBar__check__value'>{start}</h5>
+            <h5 className='searchBar__check__value'>{filters.checkIn ?? 'Desde..'}</h5>
           </button>
           <div>
             {renderCalendar &&
@@ -157,12 +151,12 @@ const SearchBar = () => {
         </div>
         <button className='searchBar__check' onClick={handleCalendarRender}>
           <h5 className='searchBar__check__title'>Check-out</h5>
-          <h5 className='searchBar__check__value'>{end}</h5>
+          <h5 className='searchBar__check__value'>{filters.checkOut ?? 'Hasta...'}</h5>
         </button>
         <div>
           <button className='searchBar__amount' onClick={handleAmountRender}>
             <h5 className='searchBar__amount__title'>Huéspedes</h5>
-            <h5 className='searchBar__amount__value'>{guests}</h5>
+            <h5 className='searchBar__amount__value'>{filters.guests ?? 'Cuantos...'}</h5>
           </button>
           {renderAmount &&
             <div className='searchBar__amount__display'>

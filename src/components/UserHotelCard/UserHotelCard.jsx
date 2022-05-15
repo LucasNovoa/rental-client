@@ -1,22 +1,23 @@
-import React from 'react'
 import './userhotelcard.scss'
-import { useSelector } from 'react-redux'
-import { selectUserById } from '../../redux/services/usersServices'
+import React from 'react'
+import { AiFillStar } from 'react-icons/ai'
+import { Link } from 'react-router-dom'
 
-const UserHotelCard = ({ userId }) => {
-  const user = useSelector(state => selectUserById(state, Number(userId)))
-
+function Card ({ img, name, guests, stars }) {
   return (
-    <div className='userhotelcard'>
-      <div className='userhotelcard__data'>
-        <div className='userhotelcard__data__info'>
-          <h3 className='userhotelcard__data__info__name'>Anfitrión: {user.firstName} {user.lastName}</h3>
-          <p>Email: {user.email}</p>
+    <div className='card'>
+      <Link to={`/hotel/${name}`} className='link'>
+        <img src={img} alt='img' className='card__image' />
+        <div className='card__content'>
+          <h3 className='card__content__title'>{name}</h3>
+          <div className='card__content__badges'>
+            <div className='card__content__badges__stars'>{stars}<AiFillStar /> </div>
+            <div className='card__content__badges__huesp'>{guests} Huespedes</div>
+          </div>
         </div>
-        <img src={user.image} alt='profilePic' className='userhotelcard__data__image' />
-      </div>
+      </Link>
     </div>
   )
 }
 
-export default UserHotelCard
+export default Card

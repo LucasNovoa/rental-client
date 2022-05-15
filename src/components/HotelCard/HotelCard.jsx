@@ -3,18 +3,12 @@ import './hotelcard.scss'
 import { FiShare2 } from 'react-icons/fi'
 import { MdFavoriteBorder } from 'react-icons/md'
 import Share from '../Share/Share'
-import UserHotelCard from '../UserHotelCard/UserHotelCard'
-import { Calendar } from 'react-date-range'
-import Amenities from '../Amenities/Amenities'
-import Map from '../Map/Map'
 
 const HotelCard = ({ hotel }) => {
   const [share, setShare] = useState(false)
   const handleShare = () => {
     setShare(!share)
   }
-
-  console.log(hotel)
 
   return (
     <section className='hotelcard'>
@@ -32,8 +26,6 @@ const HotelCard = ({ hotel }) => {
             <p className='hotelcard__container__data__sec__span'>Lorem ipsum dolor sit amet consectetur adipiscing elit etiam cras tellus sit tempor amet, nascetur quam ornare proin platea diam amet, Lorem ipsum dolor sit amet consectetur adipiscing elit etiam cras tellus sit tempor amet, nascetur quam ornare proin platea diam amet</p>
             <div className='hotelcard__container__data__sec__buttons'>
               <p className='hotelcard__container__data__sec__span'>{hotel.stars} ★ {hotel.City.name}, {hotel.Country.name}</p>
-              {/*     <button className='hotelcard__container__data__sec__buttons__btn'>Compartir</button>
-              <button className='hotelcard__container__data__sec__buttons__btn'>Agregar a Favoritos</button> */}
             </div>
           </div>
         </div>
@@ -44,11 +36,7 @@ const HotelCard = ({ hotel }) => {
           <img className='hotelcard__container__images__room' src={hotel.roomImage} alt='roomImg' />
           <img className='hotelcard__container__images__other' src={hotel.otherImage} alt='otherImg' />
         </div>
-        <UserHotelCard userId={hotel.UserId} />
       </div>
-      <Calendar />
-      <Amenities />
-      <Map width='50vw' height={400} hotels={[hotel]} />
     </section>
   )
 }

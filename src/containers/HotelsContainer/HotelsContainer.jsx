@@ -1,33 +1,22 @@
-import React, { useEffect, useState, useMemo } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useLocation } from 'react-router'
 import Card from '../../components/Card/Card'
 import Loader from '../../components/Loader/Loader'
 import Pagination from '../../components/Pagination/Pagination'
 import { selectAllHotels, useGetHotelsQuery } from '../../redux/services/hotelsServices'
-import { createSelector } from '@reduxjs/toolkit'
 import './hotelscontainer.scss'
 
 export const HotelsContainer = () => {
   const location = useLocation()
-  const city = location.search.length > 0 ? decodeURI(decodeURI(useLocation().search.split('?')[1].slice(5))) : ''
+  const filters = location.state
 
-  const hotels = city.length > 0 ? useSelector(selectAllHotels).filter(h => h.City.name === decodeURI(decodeURI(city))) : useSelector(selectAllHotels)
-  /* const selectHotelsForCity = useMemo(() => {
-    const emptyArray = []
-    return createSelector(
-      res => res.data,
-      (res, city) => city,
-      (data, city) => Object.values(data.entities)?.filter(hotel => hotel.City.name === city) ?? emptyArray
-    )
-  }) */
-
-  /*   const { hotelsForCity } = useGetHotelsQuery(undefined, {
-    selectFromResult: result => ({
-      ...result,
-      hotelsForCity: selectHotelsForCity(result, city)
-    })
-  }) */
+  const hotels = useSelector(selectAllHotels).filter(function (hotel) {
+    for (const key in filters) {
+      if (hotel[key] === undefined || hotel[key] !== filters[key]) { return false }
+    }
+    return true
+  })
 
   const {
     isLoading,
@@ -50,7 +39,7 @@ export const HotelsContainer = () => {
   if (isLoading) {
     content = <Loader />
   } else if (isSuccess) {
-    content = filteredHotels.map((h) => <Card img={h.mainImage} name={h.name} description={h.description} price={h.price} key={h.id} hosts={h.maxPax} stars={h.stars} />)
+    content = filteredHotels.map((h) => <Card img={h.mainImage} name={h.name} description={h.description} price={h.price} key={h.id} hosts={h.maxPax} stars={h.stars} filters={filters} />)
   } else if (isError) {
     content = <p>{error}</p>
   }

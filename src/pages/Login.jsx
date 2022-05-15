@@ -3,6 +3,7 @@ import { useRef } from 'react'
 import { FcGoogle } from 'react-icons/fc'
 
 import { useNavigate, Link } from 'react-router-dom'
+import Footer from '../components/Footer/Footer'
 
 import Header from '../components/Header/Header'
 
@@ -34,7 +35,7 @@ function Login () {
   }
 
   return (
-    <>
+    <section className='bg'>
       <Header />
       <form className='Login' onSubmit={handleSubmit}>
         <label className='Login__Label' htmlFor='email-address'>
@@ -53,8 +54,8 @@ function Login () {
         <Link to='/passwordRecovery'> ¿Te olvidaste la contraseña?</Link>
 
       </form>
-
-    </>
+      <Footer />
+    </section>
   )
 }
 

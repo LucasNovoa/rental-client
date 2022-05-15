@@ -2,18 +2,18 @@ import { useDispatch, useSelector } from 'react-redux'
 import React, { useState, useEffect } from 'react'
 import swal from 'sweetalert'
 import { useNavigate } from 'react-router-dom'
-import { postHotel } from '../../redux/slices/hotelSlice'
-import { selectAllCountries, getCountries, getCountriesStatus } from '../../redux/slices/countrySlice'
+/* import { postHotel } from '../../redux/slices/hotelSlice'
+ *//* import { selectAllCountries, getCountries, getCountriesStatus } from '../../redux/slices/countrySlice'
 import { selectAllCities, getCities, getCitiesStatus } from '../../redux/slices/citySlice'
-
+ */
 function CreateHotel ({ userId, submit }) {
   const dispatch = useDispatch()
 
   const navigateTo = useNavigate()
 
-  const countries = useSelector(selectAllCountries)
+  /*   const countries = useSelector(selectAllCountries)
   const countryIdStatus = useSelector(getCountriesStatus)
-
+ */
   /*   useEffect(() => {
     if (countryIdStatus === 'idle') {
       dispatch(getCountries())
@@ -118,7 +118,7 @@ function CreateHotel ({ userId, submit }) {
       UserId: userId
     })
   }
- */
+
   return (
     <>
       <div className='publication'>

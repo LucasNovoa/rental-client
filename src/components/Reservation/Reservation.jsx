@@ -4,35 +4,27 @@ import { DateRangePicker } from 'react-date-range'
 import 'react-date-range/dist/styles.css'
 import 'react-date-range/dist/theme/default.css'
 import './Reservation.scss'
-import { selectAllCities } from '../../redux/slices/citySlice'
-import { selectAllFilters } from '../../redux/slices/filterSlice'
 import { useNavigate } from 'react-router-dom'
+import { selectAllCities } from '../../redux/services/hotelsServices'
 
-const Reservation = ({ res, setRes, hotel }) => {
+const Reservation = ({ res, setRes, hotel, filters }) => {
   const cities = useSelector(selectAllCities)
-  const filters = useSelector(selectAllFilters)
-
-  // PROVISORIO ---->
-  const navigate = useNavigate()
-  const dispatch = useDispatch()
-
-  // -------------->
 
   const [results, setResults] = useState(false)
   const [startDate, setStartDate] = useState(new Date())
   const [endDate, setEndDate] = useState(startDate)
   const [renderCalendar, setRenderCalendar] = useState(false)
   const [renderAmount, setRenderAmount] = useState(false)
-  const [amount, setAmount] = useState(filters.guests)
+  const [amount, setAmount] = useState(filters.guests ?? 1)
 
-  const [place, setPlace] = useState(filters.cityName || '')
-  const [start, setStart] = useState(dateFormat(filters.checkIn || ''))
-  const [end, setEnd] = useState(dateFormat(filters.checkOut))
+  const [place, setPlace] = useState(filters.cityName ?? '')
+  const [start, setStart] = useState(dateFormat(filters.checkIn ?? ''))
+  const [end, setEnd] = useState(dateFormat(filters.checkOut ?? ''))
   const [guests, setGuests] = useState(filters.guests ? `${filters.guests} huéspedes` : 'Cuántos?')
 
   useEffect(() => {
-    setStart(dateFormat(filters.checkIn))
-    setEnd(dateFormat(filters.checkOut))
+    setStart(filters.checkIn ? dateFormat(filters.checkIn) : 'Desde...')
+    setEnd(filters.checkOut ? dateFormat(filters.checkOut) : 'Hasta...')
   }, [filters])
 
   const cityId = cities.find(e => e.name === place) && cities.find(e => e.name === place).id

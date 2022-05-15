@@ -7,18 +7,18 @@ import CreateHotel from '../../components/CreateHotel/CreateHotel'
 const ProfileContainer = ({ user }) => {
   const [post, setPost] = useState(false)
 
-  // function handleCreate (e) {
-  //   e.preventDefault()
-  //   setPost(!post)
-  // }
+  function handleCreate (e) {
+    e.preventDefault()
+    setPost(!post)
+  }
 
   return (
     <section className='profileContainer'>
       <ProfileCard user={user} />
       {post === false &&
         <ProfileDetail user={user} setPost={setPost} post={post} />}
-      {/* {post === false &&
-        <button className='profileContainer__button' onClick={e => handleCreate(e)}>Publica tu alojamiento!</button>} */}
+      {post === false &&
+        <button className='profileContainer__button' onClick={e => handleCreate(e)}>Publica tu alojamiento!</button>}
       {post === true && <CreateHotel className='profileContainer__create' userId={user.id} submit={handleCreate} />}
     </section>
   )

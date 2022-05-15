@@ -1,28 +1,15 @@
 import { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { DateRangePicker } from 'react-date-range'
 import 'react-date-range/dist/styles.css'
 import 'react-date-range/dist/theme/default.css'
 import './Calendar.scss'
-import { filterHotels } from '../../redux/slices/hotelSlice'
-import { selectAllCities } from '../../redux/slices/citySlice'
-import { filter, selectAllFilters } from '../../redux/slices/filterSlice'
-import { useNavigate } from 'react-router-dom'
 
-const Calendar = () => {
-  const filters = useSelector(selectAllFilters)
-
+const Calendar = ({ filters }) => {
   const dispatch = useDispatch()
 
-  const [startDate, setStartDate] = useState(filters.checkIn === 'Desde...' ? new Date() : filters.checkIn)
-  const [endDate, setEndDate] = useState(filters.checkOut === 'Hasta...' ? startDate : filters.checkOut)
-
-  useEffect(() => {
-    dispatch(filter({
-      checkIn: startDate,
-      checkOut: endDate
-    }))
-  }, [startDate, endDate])
+  const [startDate, setStartDate] = useState(filters.checkIn ?? new Date())
+  const [endDate, setEndDate] = useState(filters.checkOut ?? startDate)
 
   const selectionRange = {
     startDate,
@@ -38,7 +25,7 @@ const Calendar = () => {
   return (
     <div className='calendarContainer'>
       <div className='calendar__check__calendar'>
-          <h3>Check In - Check Out</h3>
+        <h3>Check In - Check Out</h3>
         <DateRangePicker
           ranges={[selectionRange]}
           minDate={new Date()}
