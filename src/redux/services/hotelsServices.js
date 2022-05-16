@@ -36,20 +36,47 @@ export const extendedApiSlice = apiSlice.injectEndpoints({
           ...result.ids.map(id => ({ type: 'City', id }))
         ]
       }
-    })
+    }),
+    getCountries: builder.query({
+      query: () => '/countries',
+      transformResponse: responseData => {
+        return hotelsAdapter.setAll(initialState, responseData)
+      },
+      provideTags: (result, error, arg) => {
+        return [
+          ...result.ids.map(id => ({ type: 'Country', id }))
+        ]
+      }
+    }),
+    addHotel: builder.mutation({
+      query: hotel => ({
+        url: '/hotels',
+        method: 'POST',
+        body: {
+          ...hotel
+        }
+      })
+    }),
+    invalidateTags: [
+      { type: 'Hotel', id: 'LIST' }
+    ]
+
   })
 })
 
 export const {
   useGetHotelsQuery,
   useGetHotelsByNameQuery,
-  useGetCitiesQuery
+  useGetCitiesQuery,
+  useGetCountriesQuery,
+  useAddHotelMutation
 } = extendedApiSlice
 
 // Selectors
 
 export const selectHotelsResult = extendedApiSlice.endpoints.getHotels.select()
 export const selectCitiesResult = extendedApiSlice.endpoints.getCities.select()
+export const selectCountriesResult = extendedApiSlice.endpoints.getCountries.select()
 
 const selectHotelsData = createSelector(
   selectHotelsResult,
@@ -65,6 +92,13 @@ const selectCitiesData = createSelector(
   }
 )
 
+const selectCountriesData = createSelector(
+  selectCountriesResult,
+  countriesResult => {
+    return countriesResult.data
+  }
+)
+
 export const {
   selectAll: selectAllHotels,
   selectById: selectHotelById,
@@ -76,3 +110,9 @@ export const {
   selectById: selectCityById,
   selectIds: selectCityIds
 } = hotelsAdapter.getSelectors(state => selectCitiesData(state) ?? initialState)
+
+export const {
+  selectAll: selectAllCountries,
+  selectById: selectCountryById,
+  selectIds: selectCountryIds
+} = hotelsAdapter.getSelectors(state => selectCountriesData(state) ?? initialState)
