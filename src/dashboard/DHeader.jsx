@@ -10,7 +10,8 @@ import logo from '../assets/logotemplate.svg'
 const navigation = [
   { name: 'Inicio', href: '/', current: false },
   { name: 'Dashboard', href: '/dashboard', current: false },
-  { name: 'Users', href: '/dashboard/users', current: false }
+  { name: 'Usuarios', href: '/dashboard/users', current: false },
+  { name: 'Hoteles', href: '/dashboard/hotels', current: false }
 ]
 
 function classNames (...classes) {
