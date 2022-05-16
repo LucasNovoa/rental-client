@@ -20,7 +20,8 @@ const initialState = {
     createdAt: ''
   }],
   status: 'idle',
-  error: null
+  error: null,
+  user: {}
 }
 
 export const getUsers = createAsyncThunk(
@@ -35,12 +36,12 @@ export const getUsers = createAsyncThunk(
   }
 )
 
-// export const updateUser = createAsyncThunk(
-//   'users/updateUser',
-//   async (payload) => {
+// export const getUser = createAsyncThunk(
+//   'users/getUser',
+//   async (id) => {
 //     try {
-//       const response = await axios.patch(`${URI}/${}`, payload)
-//       return response.date
+//       const response = await axios.get(`${URI}/${id}`)
+//       return response.data
 //     } catch (error) {
 //       return error.message
 //     }
@@ -76,6 +77,17 @@ const usersSlice = createSlice({
         state.status = 'failed'
         state.error = action.error.message
       })
+      // .addCase(getUser.pending, (state) => {
+      //   state.status = 'loading'
+      // })
+      // .addCase(getUser.fulfilled, (state, action) => {
+      //   state.status = 'succeeded'
+      //   state.users = action.payload
+      // })
+      // .addCase(getUser.rejected, (state, action) => {
+      //   state.status = 'failed'
+      //   state.error = action.error.message
+      // })
       .addCase(postUser.pending, (state) => {
         state.status = 'loading'
       })
@@ -89,9 +101,9 @@ const usersSlice = createSlice({
       })
   }
 })
-
-// export const {} userSlice.actions
-
+export const getUsersStatus = (state) => state.users.status
 export const selectAllUsers = (state) => state.users.users
+
+export const userById = (state, userId) => state.users.users.find(e => e.id === userId)
 
 export default usersSlice.reducer

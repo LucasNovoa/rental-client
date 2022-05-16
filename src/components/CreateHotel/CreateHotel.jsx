@@ -8,6 +8,8 @@ import { selectAllCities, getCities, getCitiesStatus } from '../../redux/slices/
 function CreateHotel ({ userId, submit }) {
   const dispatch = useDispatch()
 
+  const amenitiesList = ['WiFi', 'TV', 'Calefacción', 'Chimenea', 'Cocina', 'Estacionamiento', 'Jacuzzi', 'Sala de Juegos', 'Refrigerador', 'Alquiler de Autos', 'Ascensor', 'Bañera', 'Cama King Size', 'Cócteles', 'Desayunos', 'Botones', 'Piscina', 'Servicio a la habitación']
+
   const countries = useSelector(selectAllCountries)
   const countryIdStatus = useSelector(getCountriesStatus)
 
@@ -42,6 +44,7 @@ function CreateHotel ({ userId, submit }) {
     longitude: -58.391113872821535,
     guests: 5,
     children: 2,
+    amenities: [],
     email: 'prueba@mail.com',
     phone: '11 4444 5555',
     web: 'prueba.com.ar',
@@ -75,6 +78,14 @@ function CreateHotel ({ userId, submit }) {
     })
   }
 
+  function handleCheck (e) {
+    e.preventDefault()
+    setInput({
+      ...input,
+      [e.target.name]: [...input.amenities, e.target.value]
+    })
+  }
+
   function handleQuit (e) {
     submit(e)
   }
@@ -84,7 +95,7 @@ function CreateHotel ({ userId, submit }) {
     dispatch(postHotel(input))
 
     submit(e)
-    window.location.reload()
+    // window.location.reload()
 
     swal({
       title: 'Éxito',
@@ -127,30 +138,36 @@ function CreateHotel ({ userId, submit }) {
             <br />
             {next === 1 &&
               <>
-                <label>
+                <label className='publication__form__input'>
                   <span>Nombre del Alojamiento: </span>
                   <br />
                   <input name='name' placeholder='Nombre del alojamiento...' type='text' onChange={(e) => handleChange(e)} />
                 </label>
-                <label>
+                <label className='publication__form__description'>
                   <span>Descripción: </span>
                   <br />
-                  <input name='description' placeholder='Descripción...' type='text' onChange={(e) => handleChange(e)} />
+                  <textarea maxLength='210' name='description' placeholder='Descripción...' type='text' onChange={(e) => handleChange(e)} />
                 </label>
-                <label>
-                  <span>Estrellas: </span>
+                <label className='publication__form__input'>
+                  <span>Email: </span>
                   <br />
-                  <input name='stars' placeholder='Estrellas...' type='number' onChange={(e) => handleChange(e)} />
+                  <input name='email' placeholder='Email...' type='text' onChange={(e) => handleChange(e)} />
                 </label>
-                <label>
-                  <span>Precio: </span>
+                <label className='publication__form__input'>
+                  <span>Teléfono: </span>
                   <br />
-                  <input name='price' placeholder='Precio...' type='number' onChange={(e) => handleChange(e)} />
+                  <input name='phone' placeholder='Teléfono...' type='text' onChange={(e) => handleChange(e)} />
                 </label>
+                <label className='publication__form__input'>
+                  <span>Web: </span>
+                  <br />
+                  <input name='web' placeholder='Web...' type='text' onChange={(e) => handleChange(e)} />
+                </label>
+
               </>}
             {next === 2 &&
               <>
-                <label>
+                <label className='publication__form__input'>
                   <span>País: </span>
                   <br />
                   <select name='CountryId' onChange={e => handleChange(e)}>
@@ -160,27 +177,27 @@ function CreateHotel ({ userId, submit }) {
                     ))}
                   </select>
                 </label>
-                <label>
+                <label className='publication__form__input'>
                   <span>Ciudad: </span>
                   <br />
                   <select name='CityId' onChange={e => handleChange(e)}>
                     <option name='CityId' key='' value='all'>Ciudades</option>
-                    {cities.map(g => (
+                    {cities.filter(e => e.CountryId === parseInt(input.CountryId)).map(g => (
                       <option value={g.id} key={g.name}>{g.name}</option>
                     ))}
                   </select>
                 </label>
-                <label>
+                <label className='publication__form__input'>
                   <span>Dirección: </span>
                   <br />
                   <input name='address' placeholder='Dirección...' type='text' onChange={(e) => handleChange(e)} />
                 </label>
-                <label>
+                <label className='publication__form__input'>
                   <span>Latitud: </span>
                   <br />
                   <input name='latitude' placeholder='Latitud...' type='number' onChange={(e) => handleChange(e)} />
                 </label>
-                <label>
+                <label className='publication__form__input'>
                   <span>Longitud: </span>
                   <br />
                   <input name='longitude' placeholder='Longitud...' type='number' onChange={(e) => handleChange(e)} />
@@ -188,55 +205,60 @@ function CreateHotel ({ userId, submit }) {
               </>}
             {next === 3 &&
               <>
-                <label>
+                <label className='publication__form__input'>
                   <span>Huéspedes: </span>
                   <br />
                   <input name='guests' placeholder='Huéspedes...' type='number' onChange={(e) => handleChange(e)} />
                 </label>
-                <label>
+                <label className='publication__form__input'>
                   <span>Niños: </span>
                   <br />
                   <input name='children' placeholder='Niños...' type='number' onChange={(e) => handleChange(e)} />
                 </label>
-                <label>
-                  <span>Email: </span>
+                <label className='publication__form__input'>
+                  <span>Estrellas: </span>
                   <br />
-                  <input name='email' placeholder='Email...' type='text' onChange={(e) => handleChange(e)} />
+                  <input name='stars' placeholder='Estrellas...' type='number' onChange={(e) => handleChange(e)} />
                 </label>
-                <label>
-                  <span>Teléfono: </span>
+                <label className='publication__form__input'>
+                  <span>Precio: </span>
                   <br />
-                  <input name='phone' placeholder='Teléfono...' type='text' onChange={(e) => handleChange(e)} />
+                  <input name='price' placeholder='Precio...' type='number' onChange={(e) => handleChange(e)} />
                 </label>
-                <label>
-                  <span>Web: </span>
+                <label className='publication__form__input'>
+                  <span>Seleccione las Amenities: </span>
                   <br />
-                  <input name='web' placeholder='Web...' type='text' onChange={(e) => handleChange(e)} />
+                  <br />
+                  <div className='publication__form__check'>
+                    {amenitiesList.map(e => (
+                      <><p>{e}</p><br /><input className='publication__form__check__box' key={e} type='checkbox' name='amenities' value={e} onChange={e => handleCheck(e)} /></>
+                    ))}
+                  </div>
                 </label>
               </>}
             {next === 4 &&
               <>
-                <label>
+                <label className='publication__form__input'>
                   <span>Imagen principal: </span>
                   <br />
                   <input name='mainImage' placeholder='Imagen principal...' type='text' onChange={(e) => handleChange(e)} />
                 </label>
-                <label>
+                <label className='publication__form__input'>
                   <span>Imagen de la habitación: </span>
                   <br />
                   <input name='roomImage' placeholder='Imagen de la habitación...' type='text' onChange={(e) => handleChange(e)} />
                 </label>
-                <label>
+                <label className='publication__form__input'>
                   <span>Imagen del bar: </span>
                   <br />
                   <input name='barImage' placeholder='Imagen del bar...' type='text' onChange={(e) => handleChange(e)} />
                 </label>
-                <label>
+                <label className='publication__form__input'>
                   <span>Imagen de las comodidades: </span>
                   <br />
                   <input name='amenitiesImage' placeholder='Imagen de las comodidades...' type='text' onChange={(e) => handleChange(e)} />
                 </label>
-                <label>
+                <label className='publication__form__input'>
                   <span>Otra imagen: </span>
                   <br />
                   <input name='otherImage' placeholder='Otra imagen...' type='text' onChange={(e) => handleChange(e)} />

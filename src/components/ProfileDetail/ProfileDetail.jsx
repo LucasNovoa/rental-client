@@ -28,28 +28,29 @@ const ProfileDetail = ({ user, post, setPost }) => {
 
   return (
     <div className='profiledetail'>
-      {!user.organization &&
-        <h2 className='profiledetail__title'>¡Hola {user.firstName} {user.lastName}!</h2>}
-      {user.organization &&
-        <h2 className='profiledetail__title'>¡Hola {user.organization}!</h2>}
-      <p className='profiledetail__date'> Se registró en {user.createdAt.split('-')[0]}</p>
-      {user.role === 'owner' ? <h3>Propietario</h3> : <h3>Huésped</h3>}
+      {!user?.organization &&
+        <h2 className='profiledetail__title'>¡Hola {user?.firstName} {user?.lastName}!</h2>}
+      {user?.organization &&
+        <h2 className='profiledetail__title'>¡Hola {user?.organization}!</h2>}
+      {/* <p className='profiledetail__date'> Se registró en {user?.createdAt.split('-')[0]}</p> */}
+      {user?.role === 'owner' ? <h3>Propietario</h3> : <h3>Huésped</h3>}
       {post === false &&
         <button className='profiledetail__post' onClick={e => handleCreate(e)}>Publica tu alojamiento!</button>}
       <div className='profiledetail__divider' />
       {!hotels && <Loader />}
-      {hostHotels.length > 0
+      {hostHotels?.length > 0
         ? <div>
           <SliderHost className='profiledetail__slider' hotels={hostHotels} />
           <div className='profiledetail__divider' />
         </div>
         : <h1>No tienes alojamientos en alquiler</h1>}
       <div className='profiledetail__divider' />
-      {user?.Bookings.length > 0 &&
-        <div>
+      {bookings?.length > 0
+        ? <div>
           {book !== 0 && <Bookings setBook={setBook} book={book} bookings={bookings} user={user} />}
           {book === 0 && <SliderBooking hotels={hotels} user={user} bookings={bookings} setBook={setBook} book={book} />}
-        </div>}
+        </div>
+        : <h1>No tienes Reservas</h1>}
     </div>
   )
 }

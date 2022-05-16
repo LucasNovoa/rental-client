@@ -5,6 +5,7 @@ import hotelsReducer from '../slices/hotelSlice'
 import countriesReducer from '../slices/countrySlice'
 import citiesReducer from '../slices/citySlice'
 import filterReducer from '../slices/filterSlice'
+import userIdReducer from '../slices/userIdSlice'
 
 export const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ export const store = configureStore({
     hotels: hotelsReducer,
     countries: countriesReducer,
     cities: citiesReducer,
-    filter: filterReducer
+    filter: filterReducer,
+    userId: userIdReducer
   }
 })
