@@ -27,6 +27,7 @@ export default function Picture ({ user, setOn }) {
     // console.log(image)
 
     setOn(false)
+    window.location.reload()
   }
 
   function handleClose (e) {

@@ -95,7 +95,7 @@ function CreateHotel ({ userId, submit }) {
     dispatch(postHotel(input))
 
     submit(e)
-    // window.location.reload()
+    window.location.reload()
 
     swal({
       title: 'Éxito',
