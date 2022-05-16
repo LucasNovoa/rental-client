@@ -8,9 +8,9 @@
   &__cards {
     min-height: 800px;
     display: grid;
+    gap: 50px;
     grid-template-columns: repeat(4, 1fr);
-    // grid-template-columns: repeat(auto-fill, 400px);
-    transform: scale(.82);
+    transform: scale(0.82);
     justify-content: center;
   }
 }

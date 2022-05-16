@@ -1,9 +1,30 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import axios from 'axios'
+import { createEntityAdapter, createSlice } from '@reduxjs/toolkit'
+import { apiSlice } from '../api/apiSlice'
 
-const URI = 'https://rental-app-server.herokuapp.com/api/v1/hotels'
+const filteredHotelAdapter = createEntityAdapter()
 
-const initialState = {
+const initialState = filteredHotelAdapter.getInitialState()
+
+const hotelSlice = createSlice({
+  name: 'hotels',
+  initialState,
+  reducers: {},
+  extraReducers: (builder) => {
+    builder.filterHotels(
+      apiSlice.endpoints.getHotels
+    )
+  }
+})
+
+/* export const { filterHotels } = hotelSlice.actions
+
+export default hotelSlice.reducer */
+
+/* import axios from 'axios' */
+
+// const URI = 'https://rental-app-server.herokuapp.com/api/v1/hotels'
+
+/* const initialState = {
   hotels: [],
   filteredHotels: [],
   status: 'idle',
@@ -116,3 +137,4 @@ export const selectHotelByName = (state, hotelName) => state.hotels.hotels.find(
 export const { filterHotels } = hotelsSlice.actions
 
 export default hotelsSlice.reducer
+ */

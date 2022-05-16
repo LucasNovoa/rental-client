@@ -24,7 +24,13 @@ const ProfileContainer = ({ user }) => {
     <section className='profileContainer'>
       <ProfileCard user={currentUser?.userId} />
       {post === false &&
+<<<<<<< HEAD
         <ProfileDetail user={currentUser?.userId} setPost={setPost} post={post} />}
+=======
+        <ProfileDetail user={user} setPost={setPost} post={post} />}
+      {post === false &&
+        <button className='profileContainer__button' onClick={e => handleCreate(e)}>Publica tu alojamiento!</button>}
+>>>>>>> 66bc72189f8d6ba248efa9aeb753c936321bd203
       {post === true && <CreateHotel className='profileContainer__create' userId={user.id} submit={handleCreate} />}
     </section>
   )

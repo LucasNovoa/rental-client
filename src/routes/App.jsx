@@ -13,6 +13,8 @@ import { Hotels } from '../pages/Hotels'
 import Hotel from '../pages/Hotel'
 import Register from '../pages/Register'
 import Loader from '../components/Loader/Loader'
+import { Dashboard } from '../dashboard/Dashboard'
+import DUsers from '../dashboard/DUsers'
 
 import { About } from '../pages/About'
 
@@ -36,6 +38,8 @@ function App () {
             <Route path='/about' element={<About />} />
             <Route path='/passwordRecovery' element={<PasswordRecovery />} />
             <Route path='/changePassword' element={<ChangePassword />} />
+            <Route path='/dashboard' element={<Dashboard />} />
+            <Route path='/dashboard/users' element={<DUsers />} />
           </Routes>
         </Layout>
       </BrowserRouter>

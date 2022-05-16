@@ -4,29 +4,29 @@ import swal from 'sweetalert'
 import { postHotel } from '../../redux/slices/hotelSlice'
 import { selectAllCountries, getCountries, getCountriesStatus } from '../../redux/slices/countrySlice'
 import { selectAllCities, getCities, getCitiesStatus } from '../../redux/slices/citySlice'
-
+ */
 function CreateHotel ({ userId, submit }) {
   const dispatch = useDispatch()
 
   const amenitiesList = ['WiFi', 'TV', 'Calefacción', 'Chimenea', 'Cocina', 'Estacionamiento', 'Jacuzzi', 'Sala de Juegos', 'Refrigerador', 'Alquiler de Autos', 'Ascensor', 'Bañera', 'Cama King Size', 'Cócteles', 'Desayunos', 'Botones', 'Piscina', 'Servicio a la habitación']
 
-  const countries = useSelector(selectAllCountries)
+  /*   const countries = useSelector(selectAllCountries)
   const countryIdStatus = useSelector(getCountriesStatus)
-
-  useEffect(() => {
+ */
+  /*   useEffect(() => {
     if (countryIdStatus === 'idle') {
       dispatch(getCountries())
     }
   }, [countryIdStatus, dispatch])
 
   const cities = useSelector(selectAllCities)
-  const cityIdStatus = useSelector(getCitiesStatus)
+  const cityIdStatus = useSelector(getCitiesStatus) */
 
-  useEffect(() => {
+  /*   useEffect(() => {
     if (cityIdStatus === 'idle') {
       dispatch(getCities())
     }
-  }, [cityIdStatus, dispatch])
+  }, [cityIdStatus, dispatch]) */
 
   // eslint-disable-next-line no-unused-vars
   const [errors, setErrors] = useState({})
@@ -89,7 +89,6 @@ function CreateHotel ({ userId, submit }) {
   function handleQuit (e) {
     submit(e)
   }
-
   function handleSubmit (e) {
     e.preventDefault()
     dispatch(postHotel(input))

@@ -5,10 +5,46 @@
   left: 0%;
   right: 0%;
 
-  &__container {
-    /* margin: -1px 86px 0px 86px;
-    padding: 0px 24px 0px 24px; */
+  p {
+    font-size: 1.8rem;
+    overflow-wrap: break-word;
+  }
 
+  h1 {
+    font-size: 1.222rem;
+    overflow-wrap: break-word;
+  }
+
+  h2 {
+    font-size: 4rem;
+    overflow-wrap: break-word;
+  }
+
+  h3 {
+    font-size: 2.3rem;
+    overflow-wrap: break-word;
+  }
+
+  h4 {
+    font-size: 1.273rem;
+    overflow-wrap: break-word;
+  }
+
+  h5 {
+    font-size: 1.333rem;
+    overflow-wrap: break-word;
+  }
+
+  h6 {
+    font-size: 1.375rem;
+    overflow-wrap: break-word;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  &__container {
     &__content {
       display: flex;
       background-color: rgba(255, 255, 255, 0.645);
@@ -17,7 +53,6 @@
       padding: 16px 22px 16px 38px;
       font-size: 1.667em;
       color: black;
-      /* border-radius: 132px; */
       border: 1px solid rgba(0, 0, 0, 0.093);
 
       &__logo {
@@ -29,6 +64,7 @@
         justify-content: end;
         align-items: center;
         list-style: none;
+        font-size: 1rem;
 
         li {
           margin-left: 32px;
@@ -66,7 +102,7 @@
 
         &__userLogo {
           border-radius: 100%;
-          transform: scale(.8);
+          transform: scale(0.8);
         }
         &__userLogo:hover {
           opacity: 90%;

@@ -33,7 +33,7 @@ const Profile = () => {
         <Header />
         <ProfileContainer user={userInfo} />
         <ProfileFooter />
-        </div>
+      </div>
   )
 }
 
