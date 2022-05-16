@@ -4,20 +4,22 @@ import { Bar } from 'react-chartjs-2'
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 
-export const DChart = ({ chartData }) => {
+export const DChart = ({ chartData, titleText }) => {
   return (
     <>
       <Bar
         data={chartData}
         options={{
-          title: {
-            display: true,
-            text: 'Users',
-            fontSize: 20
-          },
-          legend: {
-            display: true,
-            position: 'right'
+          responsive: true,
+          plugins: {
+            title: {
+              display: true,
+              text: titleText
+            },
+            legend: {
+              display: true,
+              position: 'top'
+            }
           }
         }}
       />

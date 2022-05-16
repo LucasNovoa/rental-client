@@ -16,8 +16,7 @@ export default function DFormUser () {
       organization: formData.get('organization'),
       email: formData.get('email'),
       password: formData.get('password'),
-      repeatPass: formData.get('repeatPass'),
-      image: formData.get('image')
+      repeatPass: formData.get('repeatPass')
     }
 
     console.log(data)
@@ -96,12 +95,6 @@ export default function DFormUser () {
                 Repetir contraseña
               </label>
               <input type='password' name='repeatPass' id='repeatPass' className='mt-1 focus:ring-red-600 focus:border-red-600 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md' />
-            </div>
-            <div className='col-span-6'>
-              <label htmlFor='image' className='block text-sm font-medium text-gray-700'>
-                Image
-              </label>
-              <input type='text' name='image' id='image' className='mt-1 focus:ring-red-600 focus:border-red-600 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md' placeholder='Copy the image address...' />
             </div>
           </div>
         </div>
