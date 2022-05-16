@@ -16,12 +16,23 @@ export const extendedApiSliceUser = apiSlice.injectEndpoints({
         { type: 'User', id: 'LIST' },
         ...result.ids.map(id => ({ type: 'User', id }))
       ]
+    }),
+    getUserDetail: builder.query({
+      query: id => `/users/${id}`,
+      transformResponse: responseData => {
+        const formatedData = { 0: responseData }
+        return usersAdapter.setAll(initialState, formatedData)
+      },
+      provideTags: (result, error, arg) => [
+        ...result.ids.map(id => ({ type: 'User', id }))
+      ]
     })
   })
 })
 
 export const {
-  useGetUsersQuery
+  useGetUsersQuery,
+  useGetUserDetailQuery
 } = extendedApiSliceUser
 
 // Selectors

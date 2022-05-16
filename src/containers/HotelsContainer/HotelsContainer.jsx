@@ -10,7 +10,6 @@ import './hotelscontainer.scss'
 export const HotelsContainer = () => {
   const location = useLocation()
   const filters = location.state
-  const { city, guests } = filters
 
   /* const hotels = useSelector(selectAllHotels).filter(function (hotel) {
     for (const key in filters) {
@@ -19,7 +18,7 @@ export const HotelsContainer = () => {
     return true
   }) */
 
-  const hotels = useSelector(selectAllHotels).filter(hotel => hotel.City.name === city)
+  const hotels = filters ? useSelector(selectAllHotels).filter(hotel => hotel.City.name === filters.city) : useSelector(selectAllHotels)
 
   const {
     isLoading,
