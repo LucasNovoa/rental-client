@@ -49,7 +49,7 @@ export default function DHotels () {
                 <thead className='bg-gray-50'>
                   <tr>
                     <th scope='col' className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'>
-                      # ID
+                      ID
                     </th>
                     <th scope='col' className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'>
                       País
@@ -81,11 +81,7 @@ export default function DHotels () {
                   {hotels?.map((hotel) => (
                     <tr key={hotel?.id}>
                       <td className='px-6 py-4 whitespace-nowrap'>
-                        <div className='flex items-center'>
-                          <div className='flex-shrink-0 h-10 w-10'>
-                            <img className='h-10 w-10 rounded-full' src={`https://ui-avatars.com/api/?background=ff3f3f&color=fff&bold=true&name=${hotel?.id}`} alt='' />
-                          </div>
-                        </div>
+                        <div className='px-3 inline-flex text-sm leading-5 font-semibold rounded-full bg-red-100 text-red-800 border-red-800 border-2'>{hotel?.id}</div>
                       </td>
                       <td className='px-6 py-4 whitespace-nowrap'>
                         <div className='text-sm font-medium text-gray-700'>{hotel?.Country.name}</div>
@@ -107,19 +103,19 @@ export default function DHotels () {
                         </div>
                       </td>
                       <td className='px-6 py-4 whitespace-nowrap'>
-                        <div className='px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800'>${hotel?.price}</div>
+                        <div className='px-3 inline-flex text-sm leading-5 font-semibold rounded-full bg-green-100 text-green-800'>$ {hotel?.price}</div>
                       </td>
                       <td className='px-6 py-4 whitespace-nowrap'>
                         {!hotel?.isBanned
-                          ? <span className='px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800'>Activo</span>
-                          : <span className='px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800'>Penalizado</span>}
+                          ? <span className='px-3 inline-flex text-sm leading-5 font-semibold rounded-full bg-green-100 text-green-800'>Activo</span>
+                          : <span className='px-3 inline-flex text-sm leading-5 font-semibold rounded-full bg-red-100 text-red-800'>Penalizado</span>}
                       </td>
                       <td className='px-6 py-4 whitespace-nowrap'>
                         <div className='flex items-center'>
                           <div className='ml-4'>
                             <div className='text-sm font-medium text-gray-700'>{hotel?.email}</div>
                             <div className='text-sm font-medium text-gray-700'>{hotel?.phone}</div>
-                            <div className='text-sm font-medium text-red-500 underline'><a href={hotel?.web}>Click Aquí</a></div>
+                            <div className='px-2 inline-flex text-sm leading-5 font-semibold rounded-full bg-red-100 text-red-800'><a href={hotel?.web}>Click Aquí</a></div>
                           </div>
                         </div>
                       </td>
