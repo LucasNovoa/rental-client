@@ -9,7 +9,7 @@ function Card ({ img, name, price, checkIn, checkOut, setBook, paid, id, book, c
   const depart = dateFormat(departPre)
 
   function dateFormat (date) {
-    const arr = date.toLocaleString('es-AR').split(' ')[0].split('-')
+    const arr = date.toLocaleString('es-AR').split(' ')[0].split('/')
     let month = ''
 
     switch (arr[1]) {
@@ -39,27 +39,27 @@ function Card ({ img, name, price, checkIn, checkOut, setBook, paid, id, book, c
     <div className={paid === true ? 'bookingcard' : 'pending'}>
       <div onClick={handleClick} id={id} className='link'>
         <img src={img} alt='img' id={id} className='card__image' />
-        <div className='card__content'>
-          <h3 className='card__content__title'>{name}</h3>
-          <div className='card__content__badges'>
-            <ul className='card__content__badges__ul'>
+        <div className='bookingcard__content'>
+          <h2 className='bookingcard__content__title'>{name}</h2>
+          <div className='bookingcard__content__badges'>
+            <ul className='bookingcard__content__badges__ul'>
               {paid === false && canceled === false &&
                 <>
-                  <li className='card__content__badges__book'><p>Pendiente de Pago</p></li>
-                  <li><div className='card__content__badges__book'>Check-In: {arrive}</div></li>
-                  <li><div className='card__content__badges__book'>Check-Out: {depart}</div></li>
+                  <li className='pending__content__badges__ul__book'><p>Pendiente de Pago</p></li>
+                  <li><div className='pending__content__badges__ul__book'>Check-In: {arrive}</div></li>
+                  <li><div className='pending__content__badges__ul__book'>Check-Out: {depart}</div></li>
                 </>}
               {paid === true &&
                 <>
-                  <li className='card__content__badges__book'><p>Precio por noche: ${price}</p></li>
-                  <li><div className='card__content__badges__book'>Check-In: {arrive}</div></li>
-                  <li><div className='card__content__badges__book'>Check-Out: {depart}</div></li>
+                  <li className='bookingcard__content__badges__ul__book'><p>Precio por noche: ${price}</p></li>
+                  <li><div className='bookingcard__content__badges__ul__book'>Check-In: {arrive}</div></li>
+                  <li><div className='bookingcard__content__badges__ul__book'>Check-Out: {depart}</div></li>
                 </>}
               {canceled === true &&
                 <>
-                  <li className='card__content__badges__book'><p>CANCELADO</p></li>
-                  <li><div className='card__content__badges__book'>Check-In: {arrive}</div></li>
-                  <li><div className='card__content__badges__book'>Check-Out: {depart}</div></li>
+                  <li className='bookingcard__content__badges__book'><p>CANCELADO</p></li>
+                  <li><div className='bookingcard__content__badges__ul__book'>Check-In: {arrive}</div></li>
+                  <li><div className='bookingcard__content__badges__ul__book'>Check-Out: {depart}</div></li>
                 </>}
             </ul>
           </div>
