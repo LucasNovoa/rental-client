@@ -36,7 +36,7 @@ export default function DFormUser ({ setOpen, setAlert, user }) {
           active: true,
           message: 'Usuario agregado correctamente',
           type: 'success',
-          autoClose: false
+          autoClose: true
         })
         setOpen(false)
       }).catch((error) => {
@@ -44,7 +44,7 @@ export default function DFormUser ({ setOpen, setAlert, user }) {
           active: true,
           message: error.message,
           type: 'error',
-          autoClose: false
+          autoClose: true
         })
       })
     }
@@ -136,8 +136,8 @@ export default function DFormUser ({ setOpen, setAlert, user }) {
                 autoComplete='isBanned-name'
                 className='mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-red-600 focus:border-red-600 sm:text-sm'
               >
-                <option selected={user?.isBanned === true} value='true'>Verdadero</option>
                 <option selected={user?.isBanned === false} value='false'>Falso</option>
+                <option selected={user?.isBanned === true} value='true'>Verdadero</option>
               </select>
             </div>
             <div className='col-span-6 sm:col-span-3'>
@@ -150,8 +150,8 @@ export default function DFormUser ({ setOpen, setAlert, user }) {
                 autoComplete='isSuscribed-name'
                 className='mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-red-600 focus:border-red-600 sm:text-sm'
               >
-                <option selected={user?.isSuscribed === true} value='true'>Verdadero</option>
                 <option selected={user?.isSuscribed === false} value='false'>Falso</option>
+                <option selected={user?.isSuscribed === true} value='true'>Verdadero</option>
               </select>
             </div>
           </div>
