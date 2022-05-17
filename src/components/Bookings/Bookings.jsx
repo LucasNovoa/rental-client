@@ -60,6 +60,7 @@ function Bookings ({ setBook, book, bookings }) {
         <p>Cantidad de Noches: {hotel.nights}</p>
         {hotel.paidOut === false && hotel.isCancelled === false && <button className='booking__info__pay' onClick={e => handlePay(e)}>Pagar ahora</button>}
         {hotel.isCancelled === true && <p>RESERVA CANCELADA</p>}
+        {hotel.paidOut === true && hotel.isCancelled === false && <button className='booking__info__pay' onClick={e => hndleReview(e)}>Deja tu reseña!</button>}
       </div>
     </div>
   )

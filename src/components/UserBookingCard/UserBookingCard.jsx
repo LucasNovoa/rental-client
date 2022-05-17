@@ -9,7 +9,7 @@ function Card ({ img, name, price, checkIn, checkOut, setBook, paid, id, book, c
   const depart = dateFormat(departPre)
 
   function dateFormat (date) {
-    const arr = date.toLocaleString('es-AR').split(' ')[0].split('-')
+    const arr = date.toLocaleString('es-AR').split(' ')[0].split('/')
     let month = ''
 
     switch (arr[1]) {
@@ -40,7 +40,7 @@ function Card ({ img, name, price, checkIn, checkOut, setBook, paid, id, book, c
       <div onClick={handleClick} id={id} className='link'>
         <img src={img} alt='img' id={id} className='card__image' />
         <div className='card__content'>
-          <h3 className='card__content__title'>{name}</h3>
+          <h1 className='card__content__title'>{name}</h1>
           <div className='card__content__badges'>
             <ul className='card__content__badges__ul'>
               {paid === false && canceled === false &&

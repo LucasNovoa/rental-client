@@ -8,13 +8,7 @@ import { selectUserById, useGetUserDetailQuery } from '../../redux/services/user
 import Loader from '../../components/Loader/Loader'
 
 const ProfileContainer = ({ user }) => {
-  const dispatch = useDispatch()
   const [post, setPost] = useState(false)
-  const currentUser = useSelector((state) => state.userId)
-
-  useEffect(() => {
-    dispatch(getUser(user?.id))
-  }, [dispatch])
 
   const {
     data: userForId,
