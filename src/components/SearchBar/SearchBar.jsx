@@ -7,22 +7,29 @@ import './searchBar.scss'
 import { useNavigate } from 'react-router-dom'
 import { selectAllCities } from '../../redux/services/hotelsServices'
 import { selectReservation, updateReservation } from '../../redux/slices/reservationSlice'
+import { selectFilters, updateFilters } from '../../redux/slices/filtersSlice'
 
 const SearchBar = () => {
+  const reservation = useSelector(selectReservation)
+  const filters = useSelector(selectFilters)
   const cities = useSelector(selectAllCities)
+
   const navigate = useNavigate()
   const dispatch = useDispatch()
-
-  const handleSearch = (e) => {
+  console.log(updateFilters)
+  console.log(updateReservation)
+  const handleSearch = async (e) => {
     e.preventDefault()
-    dispatch(updateReservation({
-      cityName: filters.city
-    }))
-    navigate('/hotels', { state: filters })
-  }
 
-  const reservation = useSelector(selectReservation)
-  console.log(reservation)
+    await dispatch(updateReservation({
+      cityName: place
+    }))
+    await dispatch(updateFilters({
+      ...inputFilters
+    }))
+    navigate('/hotels', { replace: true })
+    console.log('clic')
+  }
 
   const [results, setResults] = useState(false)
   const [startDate, setStartDate] = useState(new Date())
@@ -30,8 +37,14 @@ const SearchBar = () => {
   const [renderCalendar, setRenderCalendar] = useState(false)
   const [renderAmount, setRenderAmount] = useState(false)
   const [amount, setAmount] = useState(1)
+  const [place, setPlace] = useState(filters.city)
 
-  const [filters, setFilters] = useState({})
+  const [inputFilters, setInputFilters] = useState({
+    city: '',
+    otherFilters: {
+      guests: 1
+    }
+  })
 
   const selectionRange = {
     startDate,
@@ -40,11 +53,10 @@ const SearchBar = () => {
   }
 
   const handleCity = (e) => {
-    setFilters({
-      ...filters,
+    setInputFilters({
+      ...inputFilters,
       city: e.target.value
     })
-    console.log(filters.city)
     if (!e.target.value) {
       setResults(false)
     } else {
@@ -55,8 +67,9 @@ const SearchBar = () => {
 
   const handlePlaceSelect = (e) => {
     setResults(false)
-    setFilters({
-      ...filters,
+    setPlace(e.target.value)
+    setInputFilters({
+      ...inputFilters,
       city: e.target.value
     })
   }
@@ -94,18 +107,25 @@ const SearchBar = () => {
       dispatch(updateReservation({
         guests: amount - 1
       }))
-      setFilters({
-        ...filters,
-        guests: amount - 1
+      setInputFilters({
+        ...inputFilters,
+        otherFilters: {
+          ...inputFilters.otherFilters,
+          guests: amount - 1
+        }
       })
     } else {
       setAmount(amount + 1)
       dispatch(updateReservation({
         guests: amount + 1
       }))
-      setFilters({
-        ...filters,
-        guests: amount + 1
+
+      setInputFilters({
+        ...inputFilters,
+        otherFilters: {
+          ...inputFilters.otherFilters,
+          guests: amount + 1
+        }
       })
     }
   }
@@ -122,7 +142,7 @@ const SearchBar = () => {
               placeholder='A dónde vas?'
               onFocus={handleFocus}
               onChange={handleCity}
-              value={filters.city}
+              value={inputFilters.city}
             />
           </div>
           <div>
@@ -169,7 +189,7 @@ const SearchBar = () => {
         <div>
           <button className='searchBar__amount' onClick={handleAmountRender}>
             <h5 className='searchBar__amount__title'>Huéspedes</h5>
-            <h5 className='searchBar__amount__value'>{filters.guests ?? 'Cuantos...'}</h5>
+            <h5 className='searchBar__amount__value'>{amount}</h5>
           </button>
           {renderAmount &&
             <div className='searchBar__amount__display'>

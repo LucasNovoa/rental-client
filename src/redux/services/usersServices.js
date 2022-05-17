@@ -26,11 +26,24 @@ export const extendedApiSliceUser = apiSlice.injectEndpoints({
       provideTags: (result, error, arg) => [
         ...result.ids.map(id => ({ type: 'User', id }))
       ]
+    }),
+    addNewUser: builder.query({
+      query: user => ({
+        url: '/users',
+        method: 'POST',
+        body: {
+          ...user
+        }
+      }),
+      invalidateTags: [
+        { type: 'User', id: 'LIST' }
+      ]
     })
   })
 })
 
 export const {
+  useAddNewUserQuery,
   useGetUsersQuery,
   useGetUserDetailQuery
 } = extendedApiSliceUser

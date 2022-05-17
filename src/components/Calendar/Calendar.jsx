@@ -1,15 +1,16 @@
 import { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { DateRangePicker } from 'react-date-range'
+import { selectReservation, updateReservation } from '../../redux/slices/reservationSlice'
 import 'react-date-range/dist/styles.css'
 import 'react-date-range/dist/theme/default.css'
 import './Calendar.scss'
 
 const Calendar = ({ filters }) => {
   const dispatch = useDispatch()
-
-  const [startDate, setStartDate] = useState(filters.checkIn ?? new Date())
-  const [endDate, setEndDate] = useState(filters.checkOut ?? startDate)
+  const reservations = useSelector(selectReservation)
+  const [startDate, setStartDate] = useState(reservations.checkIn !== 'Desde...' ? reservations.checkIn : new Date())
+  const [endDate, setEndDate] = useState(reservations.checkOut !== 'Hasta...' ? reservations.checkOut : startDate)
 
   const selectionRange = {
     startDate,
@@ -20,6 +21,10 @@ const Calendar = ({ filters }) => {
   const handleSelect = ranges => {
     setStartDate(ranges.selection.startDate)
     setEndDate(ranges.selection.endDate)
+    dispatch(updateReservation({
+      checkIn: dateFormat(ranges.selection.startDate),
+      checkOut: dateFormat(ranges.selection.endDate)
+    }))
   }
 
   return (

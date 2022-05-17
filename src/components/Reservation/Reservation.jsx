@@ -6,16 +6,19 @@ import 'react-date-range/dist/theme/default.css'
 import './Reservation.scss'
 import { useNavigate } from 'react-router-dom'
 import { selectAllCities } from '../../redux/services/hotelsServices'
+import { selectReservation, updateReservation } from '../../redux/slices/reservationSlice'
 
 const Reservation = ({ res, setRes, hotel, filters }) => {
   const cities = useSelector(selectAllCities)
-
+  const reservations = useSelector(selectReservation)
+  const dispatch = useDispatch()
+  console.log(reservations)
   const [results, setResults] = useState(false)
   const [startDate, setStartDate] = useState(new Date())
   const [endDate, setEndDate] = useState(startDate)
   const [renderCalendar, setRenderCalendar] = useState(false)
   const [renderAmount, setRenderAmount] = useState(false)
-  const [amount, setAmount] = useState(filters.guests ?? 1)
+  const [amount, setAmount] = useState(reservations.guests ?? 1)
 
   const [place, setPlace] = useState(filters.cityName ?? '')
   const [start, setStart] = useState(dateFormat(filters.checkIn ?? ''))
@@ -43,7 +46,7 @@ const Reservation = ({ res, setRes, hotel, filters }) => {
     setRenderCalendar(!renderCalendar)
   }
 
-  const handleAmountRender = () => {
+  /*   const handleAmountRender = () => {
     setRenderCalendar(false)
     setResults(false)
     setRenderAmount(!renderAmount)
@@ -53,12 +56,12 @@ const Reservation = ({ res, setRes, hotel, filters }) => {
     if (e.target.name === '-') {
       if (amount === 1) return
       if (amount > 1) setAmount(amount - 1)
-      setGuests(amount - 1 + ' huéspedes')
+      dispatch(updateReservation(amount - 1))
     } else {
       setAmount(amount + 1)
-      setGuests(amount + 1 + ' huéspedes')
+      dispatch(updateReservation(amount + 1))
     }
-  }
+  } */
 
   const handleSearch = (e) => {
     e.preventDefault()
@@ -79,25 +82,25 @@ const Reservation = ({ res, setRes, hotel, filters }) => {
         <div>
           <button className='reservation__check' onClick={handleCalendarRender}>
             <h5 className='reservation__check__title'>Check-in</h5>
-            <h5 className='reservation__check__value'>{start}</h5>
+            <h5 className='reservation__check__value'>{reservations.checkIn}</h5>
           </button>
         </div>
         <button className='reservation__check' onClick={handleCalendarRender}>
           <h5 className='reservation__check__title'>Check-out</h5>
-          <h5 className='reservation__check__value'>{end}</h5>
+          <h5 className='reservation__check__value'>{reservations.checkOut}</h5>
         </button>
         <div>
-          <button className='reservation__amount' onClick={handleAmountRender}>
+          <button className='reservation__amount'>
             <h5 className='reservation__amount__title'>Huéspedes</h5>
-            <h5 className='reservation__amount__value'>{guests}</h5>
+            <h5 className='reservation__amount__value'>{reservations.guests}</h5>
           </button>
           {renderAmount &&
             <div className='reservation__amount__display'>
               <h5 className='reservation__amount__display__title'>Huéspedes</h5>
               <div className='reservation__amount__display__counter'>
-                <button name='-' onClick={handleAmount} className='reservation__amount__display__counter__btn'>-</button>
-                <h5 className='reservation__amount__display__counter__number'>{amount}</h5>
-                <button name='+' onClick={handleAmount} className='reservation__amount__display__counter__btn'>+</button>
+                <button name='-' className='reservation__amount__display__counter__btn'>-</button>
+                <h5 className='reservation__amount__display__counter__number'>{reservations.guests}</h5>
+                <button name='+' className='reservation__amount__display__counter__btn'>+</button>
               </div>
             </div>}
         </div>
