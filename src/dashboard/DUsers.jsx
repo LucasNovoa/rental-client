@@ -104,7 +104,7 @@ export default function DUsers () {
                       <span className='sr-only'>Editar</span>
                     </th>
                     <th scope='col' className='relative px-6 py-3'>
-                      <span className='sr-only'>Eliminar</span>
+                      <button className='sr-only'>Eliminar</button>
                     </th>
                   </tr>
                 </thead>
@@ -135,7 +135,7 @@ export default function DUsers () {
                       </td>
                       <td className='px-6 py-4 whitespace-nowrap text-sm text-gray-500 capitalize'>{person?.role}</td>
                       <td className='px-6 py-4 whitespace-nowrap text-right text-sm font-medium'>
-                        <a href='#' className='text-indigo-600 hover:text-indigo-900'>
+                        <a href={`/dashboard/users/${person?.id}`} className='text-indigo-600 hover:text-indigo-900'>
                           Editar
                         </a>
                       </td>

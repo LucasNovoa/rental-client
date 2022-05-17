@@ -13,6 +13,7 @@ export default function DFormUser ({ setOpen, setAlert }) {
       typePerson: formData.get('typePerson'),
       firstName: formData.get('firstName'),
       lastName: formData.get('lastName'),
+      image: formData.get('image'),
       organization: formData.get('organization'),
       email: formData.get('email'),
       password: formData.get('password'),
@@ -82,6 +83,12 @@ export default function DFormUser ({ setOpen, setAlert }) {
                 Last Name
               </label>
               <input type='text' name='lastName' id='lastName' className='mt-1 focus:ring-red-600 focus:border-red-600 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md' />
+            </div>
+            <div className='col-span-6'>
+              <label htmlFor='image' className='block text-sm font-medium text-gray-700'>
+                Imagen de Perfil
+              </label>
+              <input type='text' name='image' id='image' className='mt-1 focus:ring-red-600 focus:border-red-600 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md' />
             </div>
             <div className='col-span-6'>
               <label htmlFor='organization' className='block text-sm font-medium text-gray-700'>
