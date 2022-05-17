@@ -1,4 +1,6 @@
 import DHeader from './DHeader'
+import DModal from './DModal'
+import DPagination from './DPagination'
 
 import { useState, useEffect } from 'react'
 import { PlusIcon } from '@heroicons/react/solid'
@@ -8,6 +10,16 @@ import axios from 'axios'
 export default function DHotels () {
   const [open, setOpen] = useState(false)
   const [hotels, setHotels] = useState([])
+
+  const [currentPage, setCurrentPage] = useState(1)
+  const [hotelsPerPage] = useState(25)
+
+  const indexOfLastHotel = currentPage * hotelsPerPage
+  const indexOfFirstHotel = indexOfLastHotel - hotelsPerPage
+  const currentHotels = hotels?.slice(indexOfFirstHotel, indexOfLastHotel)
+
+  const paginateFront = () => setCurrentPage(currentPage + 1)
+  const paginateBack = () => setCurrentPage(currentPage - 1)
 
   useEffect(() => {
     async function getHotels () {
@@ -42,6 +54,13 @@ export default function DHotels () {
             </span>
           </div>
         </div>
+        <DPagination
+          thingsPerPage={hotelsPerPage}
+          totalThings={hotels?.length}
+          currentPage={currentPage}
+          paginateBack={paginateBack}
+          paginateFront={paginateFront}
+        />
         <div className='-my-2 sm:-mx-6 lg:-mx-8'>
           <div className='py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8'>
             <div className='shadow border-b border-gray-200 sm:rounded-lg'>
@@ -78,10 +97,10 @@ export default function DHotels () {
                   </tr>
                 </thead>
                 <tbody className='bg-white divide-y divide-gray-200'>
-                  {hotels?.map((hotel) => (
+                  {currentHotels?.map((hotel) => (
                     <tr key={hotel?.id}>
                       <td className='px-6 py-4 whitespace-nowrap'>
-                        <div className='px-3 inline-flex text-sm leading-5 font-semibold rounded-full bg-red-100 text-red-800 border-red-800 border-2'>{hotel?.id}</div>
+                        <div className='px-3 inline-flex text-sm leading-5 font-semibold rounded-full bg-blue-100 text-blue-800 border-blue-800 border-2'>{hotel?.id}</div>
                       </td>
                       <td className='px-6 py-4 whitespace-nowrap'>
                         <div className='text-sm font-medium text-gray-700'>{hotel?.Country.name}</div>
@@ -115,7 +134,7 @@ export default function DHotels () {
                           <div className='ml-4'>
                             <div className='text-sm font-medium text-gray-700'>{hotel?.email}</div>
                             <div className='text-sm font-medium text-gray-700'>{hotel?.phone}</div>
-                            <div className='px-2 inline-flex text-sm leading-5 font-semibold rounded-full bg-red-100 text-red-800'><a href={hotel?.web}>Click Aquí</a></div>
+                            <div className='text-sm font-medium text-blue-700 underline'><a href={hotel?.web}>Click Aquí</a></div>
                           </div>
                         </div>
                       </td>
@@ -137,6 +156,9 @@ export default function DHotels () {
           </div>
         </div>
       </div>
+      <DModal open={open} setOpen={setOpen}>
+        Hola
+      </DModal>
     </>
   )
 }

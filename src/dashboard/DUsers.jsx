@@ -1,5 +1,6 @@
 import DHeader from './DHeader'
 
+import DPagination from './DPagination'
 import DFormUser from './DFormUser'
 
 import { useState, useEffect } from 'react'
@@ -11,6 +12,16 @@ import axios from 'axios'
 export default function DUsers () {
   const [open, setOpen] = useState(false)
   const [users, setUsers] = useState([])
+
+  const [currentPage, setCurrentPage] = useState(1)
+  const [usersPerPage] = useState(15)
+
+  const indexOfLastUser = currentPage * usersPerPage
+  const indexOfFirstUser = indexOfLastUser - usersPerPage
+  const currentUsers = users?.slice(indexOfFirstUser, indexOfLastUser)
+
+  const paginateFront = () => setCurrentPage(currentPage + 1)
+  const paginateBack = () => setCurrentPage(currentPage - 1)
 
   useEffect(() => {
     async function getUsers () {
@@ -45,6 +56,13 @@ export default function DUsers () {
             </span>
           </div>
         </div>
+        <DPagination
+          thingsPerPage={usersPerPage}
+          totalThings={users?.length}
+          currentPage={currentPage}
+          paginateBack={paginateBack}
+          paginateFront={paginateFront}
+        />
         <div className='-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8'>
           <div className='py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8'>
             <div className='shadow overflow-hidden border-b border-gray-200 sm:rounded-lg'>
@@ -72,7 +90,7 @@ export default function DUsers () {
                   </tr>
                 </thead>
                 <tbody className='bg-white divide-y divide-gray-200'>
-                  {users?.map((person) => (
+                  {currentUsers?.map((person) => (
                     <tr key={person?.email}>
                       <td className='px-6 py-4 whitespace-nowrap'>
                         <div className='flex items-center'>
