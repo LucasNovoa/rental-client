@@ -51,6 +51,10 @@
 
         &__ul {
           list-style-type: none;
+
+          &__book {
+            font-size: 1.2rem;
+          }
         }
   
         &__stars {
@@ -100,7 +104,7 @@
     cursor: pointer;
   }
 
-.bookingcard {
+.pending {
     display: inline-block;
     border: 1px solid #fff;
     border-radius: 24px;
@@ -151,8 +155,12 @@
         align-items: stretch;
         justify-content: start;
 
-        ul {
+        &__ul {
           list-style-type: none;
+          
+          &__book {
+            font-size: 1.2rem;
+          }
         }
   
         &__stars {

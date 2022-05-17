@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { selectReservation } from '../../redux/slices/reservationSlice'
 import './book.scss'
 
 function Book ({ setRes, res, bookHotel }) {
   const { name, checkIn, checkOut, guests, cityName } = useSelector(selectReservation)
+  const [pay, setPay] = useState(false)
 
   function handleClick (e) {
     e.preventDefault()
@@ -14,9 +15,17 @@ function Book ({ setRes, res, bookHotel }) {
     })
   }
 
+  function handleConfirm (e) {
+    e.preventDefault()
+    setPay(true)
+    // aca iría el post del booking
+  }
+
   function handlePay (e) {
     e.preventDefault()
     // window.open(`${hotel.initPointMP}`)
+    // aca habría que llamar al último elemento de Bookings del usuario, la propiedad initPointMP
+    // user.Bookings[user.Bookings.length - 1].initPointMP
   }
   return (
     <div className='booking'>
@@ -33,8 +42,17 @@ function Book ({ setRes, res, bookHotel }) {
         <p className='booking__info__p'><strong>Precio por noche:</strong> ${bookHotel.price}</p>
         <p className='booking__info__p'><strong>Cantidad de Noches:</strong> </p>
         <div className='booking__info__btns'>
-          <button className='booking__info__btns__red' onClick={e => handlePay(e)}>Pagar ahora</button>
-          <button className='booking__info__btns__white' onClick={e => handleClick(e)}> Pagar más tarde </button>
+          {!pay &&
+            <>
+              <button className='booking__info__btns__red' onClick={e => handleClick(e)}>Cancelar</button>
+              <button className='booking__info__btns__red' onClick={e => handleConfirm(e)}>Confirmar</button>
+            </>}
+          {pay &&
+            <>
+              <button className='booking__info__btns__red' onClick={e => handlePay(e)}> Pagar ahora </button>
+              <button className='booking__info__btns__red' onClick={e => handleClick(e)}> Pagar más tarde </button>
+            </>}
+
         </div>
       </div>
     </div>

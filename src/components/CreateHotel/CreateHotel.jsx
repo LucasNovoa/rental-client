@@ -80,7 +80,7 @@ function CreateHotel ({ userId, submit }) {
     try {
       await addNewHotel({ body: input })
       submit(e)
-      window.location.reload()
+      // window.location.reload()
 
       swal({
         title: 'Éxito',
@@ -214,7 +214,7 @@ function CreateHotel ({ userId, submit }) {
                   <br />
                   <input name='price' placeholder='Precio...' type='number' onChange={(e) => handleChange(e)} />
                 </label>
-                <label className='publication__form__input'>
+                <label className='publication__form__check'>
                   <span>Seleccione las Amenities: </span>
                   <br />
                   <br />

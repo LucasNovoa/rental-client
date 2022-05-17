@@ -203,7 +203,6 @@ const SearchBar = () => {
         </div>
         <button className='searchBar__btn' onClick={handleSearch}>Buscar</button>
       </div>
-
     </div>
   )
 }
