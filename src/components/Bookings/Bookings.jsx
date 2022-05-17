@@ -3,7 +3,7 @@ import React from 'react'
 import './bookings.scss'
 import { useNavigate } from 'react-router'
 
-function Bookings ({ setBook, book, bookings }) {
+function Bookings ({ setBook, book, bookings, rev, setRev }) {
   const hotel = bookings.find(e => e.id === book)
 
   const arrivePre = hotel.checkIn.substring(0, 10)
@@ -41,16 +41,22 @@ function Bookings ({ setBook, book, bookings }) {
 
   function handlePay (e) {
     e.preventDefault()
-    window.open(`${hotel.initPointMP}`)
+    window.open(`${hotel.initPointMP}`, '_self')
+  }
+
+  function handleReview (e) {
+    e.preventDefault()
+    setBook(0)
+    setRev(1)
   }
 
   return (
-    <div className='booking'>
-      <button className='booking__close' onClick={e => handleClick(e)}> Cerrar </button>
-      <div className='booking__image'>
-        <img src={hotel.mainImage} />
+    <div className='bookingCard'>
+      <button className='bookingCard__close' onClick={e => handleClick(e)}> Cerrar </button>
+      <div className='bookingCard__image'>
+        <img className='bookingCard__image__img' src={hotel.mainImage} />
       </div>
-      <div className='booking__info'>
+      <div className='bookingCard__info'>
         <h1>{hotel.hotelName}</h1>
         <p>Check-In: {arrive}</p>
         <p>Check-Out: {depart}</p>
@@ -58,9 +64,9 @@ function Bookings ({ setBook, book, bookings }) {
         <p>Estado: {hotel.paidOut === true ? 'Pago Completado' : 'Pago Pendiente'}</p>
         <p>Método de pago: {hotel.payMethod}</p>
         <p>Cantidad de Noches: {hotel.nights}</p>
-        {hotel.paidOut === false && hotel.isCancelled === false && <button className='booking__info__pay' onClick={e => handlePay(e)}>Pagar ahora</button>}
+        {hotel.paidOut === false && hotel.isCancelled === false && <button className='bookingCard__info__pay' onClick={e => handlePay(e)}>Pagar ahora</button>}
         {hotel.isCancelled === true && <p>RESERVA CANCELADA</p>}
-        {hotel.paidOut === true && hotel.isCancelled === false && <button className='booking__info__pay' onClick={e => hndleReview(e)}>Deja tu reseña!</button>}
+        {hotel.paidOut === true && hotel.isCancelled === false && <button setRev={setRev} className='bookingCard__info__pay' onClick={e => handleReview(e)}>Deja tu reseña!</button>}
       </div>
     </div>
   )

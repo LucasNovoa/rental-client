@@ -7,6 +7,7 @@ import Loader from '../Loader/Loader'
 import SliderBooking from '../SliderBooking/SliderBooking'
 import Bookings from '../Bookings/Bookings'
 import { selectAllHotels, useGetHotelsQuery } from '../../redux/services/hotelsServices'
+import Reviews from '../Reviews/Reviews.jsx'
 
 const ProfileDetail = ({ user, post, setPost }) => {
   const dispatch = useDispatch()
@@ -14,6 +15,7 @@ const ProfileDetail = ({ user, post, setPost }) => {
   const hostHotels = user?.Hotels
   const bookings = user?.Bookings
   const [book, setBook] = useState(0)
+  const [rev, setRev] = useState(0)
 
   const {
     isLoading,
@@ -27,17 +29,11 @@ const ProfileDetail = ({ user, post, setPost }) => {
   if (isLoading) {
     content = <Loader />
   } else if (isSuccess) {
-    content = <h1>Hola</h1>
+    content = console.log('Alojamientos cargados con éxito')
   } else if (isError) {
     content = <p>{error}</p>
   }
 
-  /* useEffect(() => {
-    if (hotelIdStatus === 'idle') {
-      dispatch(getHotels())
-    }
-  }, [])
- */
   function handleCreate (e) {
     e.preventDefault()
     setPost(!post)
@@ -58,15 +54,15 @@ const ProfileDetail = ({ user, post, setPost }) => {
         ? <div>
           <SliderHost className='profiledetail__slider' hotels={hostHotels} />
           <div className='profiledetail__divider' />
-          </div>
+        </div>
         : <h1>No tienes alojamientos en alquiler</h1>}
       <div className='profiledetail__divider' />
       {bookings?.length > 0
         ? <div>
-          {book !== 0 && <Bookings setBook={setBook} book={book} bookings={bookings} user={user} />}
-          {book === 0 && <SliderBooking hotels={hotels} user={user} bookings={bookings} setBook={setBook} book={book} />}
-
-        </div>
+          {book !== 0 && <Bookings setBook={setBook} book={book} bookings={bookings} user={user} rev={rev} setRev={setRev} />}
+          {book === 0 && rev === 0 && <SliderBooking hotels={hotels} user={user} bookings={bookings} setBook={setBook} book={book} />}
+          {rev !== 0 && <Reviews setRev={setRev} />}
+          </div>
         : <h1>No tienes Reservas</h1>}
     </div>
   )
