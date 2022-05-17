@@ -2,7 +2,7 @@ import { useRef } from 'react'
 
 import { addUser } from './services/usersAPI'
 
-export default function DFormUser () {
+export default function DFormUser ({ setOpen, setAlert }) {
   const formRef = useRef(null)
 
   const handleSubmit = (event) => {
@@ -19,10 +19,21 @@ export default function DFormUser () {
       repeatPass: formData.get('repeatPass')
     }
 
-    console.log(data)
-
-    addUser(data).then((response) => {
-      console.log(response)
+    addUser(data).then(() => {
+      setAlert({
+        active: true,
+        message: 'Usuario agregado correctamente',
+        type: 'success',
+        autoClose: false
+      })
+      setOpen(false)
+    }).catch((error) => {
+      setAlert({
+        active: true,
+        message: error.message,
+        type: 'error',
+        autoClose: false
+      })
     })
   }
 

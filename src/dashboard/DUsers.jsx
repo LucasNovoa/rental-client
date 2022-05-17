@@ -6,12 +6,17 @@ import DFormUser from './DFormUser'
 import { useState, useEffect } from 'react'
 import { PlusIcon } from '@heroicons/react/solid'
 
+import useAlert from '../hooks/useAlert'
+import DAlert from './DAlert'
+
 import DModal from './DModal'
 import axios from 'axios'
 
 export default function DUsers () {
   const [open, setOpen] = useState(false)
   const [users, setUsers] = useState([])
+
+  const { alert, setAlert, toggleAlert } = useAlert()
 
   const [currentPage, setCurrentPage] = useState(1)
   const [usersPerPage] = useState(15)
@@ -33,7 +38,7 @@ export default function DUsers () {
     } catch (error) {
       console.error(error)
     }
-  }, [])
+  }, [alert])
 
   return (
     <>
@@ -63,6 +68,7 @@ export default function DUsers () {
           paginateBack={paginateBack}
           paginateFront={paginateFront}
         />
+        <DAlert alert={alert} handleClose={toggleAlert} />
         <div className='-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8'>
           <div className='py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8'>
             <div className='shadow overflow-hidden border-b border-gray-200 sm:rounded-lg'>
@@ -134,7 +140,7 @@ export default function DUsers () {
         </div>
       </div>
       <DModal open={open} setOpen={setOpen}>
-        <DFormUser />
+        <DFormUser setOpen={setOpen} setAlert={setAlert} />
       </DModal>
     </>
   )
