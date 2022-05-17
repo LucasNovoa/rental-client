@@ -11,6 +11,7 @@ import { App } from './routes/App'
 
 store.dispatch(extendedApiSlice.endpoints.getHotels.initiate())
 store.dispatch(extendedApiSlice.endpoints.getCities.initiate())
+store.dispatch(extendedApiSlice.endpoints.getCountries.initiate())
 store.dispatch(extendedApiSliceUser.endpoints.getUsers.initiate())
 
 ReactDOM.createRoot(document.getElementById('root')).render(
