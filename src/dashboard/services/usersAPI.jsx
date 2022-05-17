@@ -26,4 +26,17 @@ const deleteUser = async (id) => {
   return response.data
 }
 
-export { addUser, deleteUser }
+const updateUser = async (id, body) => {
+  const config = {
+    headers: {
+      accept: '*/*',
+      'Content-Type': 'application/json'
+    }
+  }
+
+  const response = await axios.patch('https://rental-app-server.herokuapp.com/api/v1/users/' + id, body, config)
+
+  return response.data
+}
+
+export { addUser, deleteUser, updateUser }
