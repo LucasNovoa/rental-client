@@ -13,4 +13,17 @@ const addUser = async (body) => {
   return response.data
 }
 
-export { addUser }
+const deleteUser = async (id) => {
+  const config = {
+    headers: {
+      accept: '*/*',
+      'Content-Type': 'application/json'
+    }
+  }
+
+  const response = await axios.delete('https://rental-app-server.herokuapp.com/api/v1/users/' + id, config)
+
+  return response.data
+}
+
+export { addUser, deleteUser }

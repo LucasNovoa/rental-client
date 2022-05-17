@@ -3,6 +3,8 @@ import DHeader from './DHeader'
 import DPagination from './DPagination'
 import DFormUser from './DFormUser'
 
+import { deleteUser } from './services/usersAPI'
+
 import { useState, useEffect } from 'react'
 import { PlusIcon } from '@heroicons/react/solid'
 
@@ -39,6 +41,17 @@ export default function DUsers () {
       console.error(error)
     }
   }, [alert])
+
+  const handleDelete = (id) => {
+    deleteUser(id).then(() => {
+      setAlert({
+        active: true,
+        message: `Usuario de ID ${id} eliminado correctamente`,
+        type: 'error',
+        autoClose: true
+      })
+    })
+  }
 
   return (
     <>
@@ -127,9 +140,9 @@ export default function DUsers () {
                         </a>
                       </td>
                       <td className='px-6 py-4 whitespace-nowrap text-right text-sm font-medium'>
-                        <a href='#' className='text-indigo-600 hover:text-indigo-900'>
+                        <button onClick={() => handleDelete(person?.id)} className='text-indigo-600 hover:text-indigo-900'>
                           Eliminar
-                        </a>
+                        </button>
                       </td>
                     </tr>
                   ))}
