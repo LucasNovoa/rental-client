@@ -1,7 +1,14 @@
 .pagination {
+  margin-top: -30px;
   display: flex;
   align-items: center;
   font-size: 2rem;
+  width: 100%;
+  justify-content: space-evenly;
+  background-color: rgba(255, 255, 255, 0.645);
+  border-top: 1px solid rgba(0, 0, 0, 0.093);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.093);
+
   &__btnl {
     width: 50px;
     height: 50px;

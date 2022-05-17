@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import React, { useState } from 'react'
+import { useSelector } from 'react-redux'
 import './profileContainer.scss'
 import ProfileCard from '../../components/ProfileCard/ProfileCard'
 import ProfileDetail from '../../components/ProfileDetail/ProfileDetail'
 import CreateHotel from '../../components/CreateHotel/CreateHotel'
-import { getUser } from '../../redux/slices/userIdSlice'
+import { selectUserById, useGetUserDetailQuery } from '../../redux/services/usersServices'
+import Loader from '../../components/Loader/Loader'
 
 const ProfileContainer = ({ user }) => {
   const dispatch = useDispatch()
@@ -15,6 +16,34 @@ const ProfileContainer = ({ user }) => {
     dispatch(getUser(user?.id))
   }, [dispatch])
 
+  const {
+    data: userForId,
+    isLoading,
+    isSuccess,
+    isError,
+    error
+  } = useGetUserDetailQuery(user.id)
+
+  let content
+
+  if (isLoading) {
+    content = <Loader />
+  } else if (isSuccess) {
+    const { ids, entities } = userForId
+    const user = entities[ids[0]]
+    console.log(user)
+    content = (
+      <>
+        <ProfileCard user={user} />
+        {post === false &&
+          <ProfileDetail user={user} setPost={setPost} post={post} />}
+        {post === true && <CreateHotel className='profileContainer__create' userId={user.id} submit={handleCreate} />}
+      </>
+    )
+  } else if (isError) {
+    content = { error }
+  }
+
   function handleCreate (e) {
     e.preventDefault()
     setPost(!post)
@@ -22,10 +51,7 @@ const ProfileContainer = ({ user }) => {
 
   return (
     <section className='profileContainer'>
-      <ProfileCard user={currentUser?.userId} />
-      {post === false &&
-        <ProfileDetail user={currentUser?.userId} setPost={setPost} post={post} />}
-      {post === true && <CreateHotel className='profileContainer__create' userId={user.id} submit={handleCreate} />}
+      {content}
     </section>
   )
 }

@@ -54,8 +54,8 @@ const ProfileDetail = ({ user, post, setPost }) => {
       {post === false &&
         <button className='profiledetail__post' onClick={e => handleCreate(e)}>Publica tu alojamiento!</button>}
       <div className='profiledetail__divider' />
-      {!hotels && <Loader />}
-      {hostHotels?.length > 0
+      {content}
+      {hostHotels.length > 0
         ? <div>
           <SliderHost className='profiledetail__slider' hotels={hostHotels} />
           <div className='profiledetail__divider' />
@@ -66,8 +66,8 @@ const ProfileDetail = ({ user, post, setPost }) => {
         ? <div>
           {book !== 0 && <Bookings setBook={setBook} book={book} bookings={bookings} user={user} />}
           {book === 0 && <SliderBooking hotels={hotels} user={user} bookings={bookings} setBook={setBook} book={book} />}
-          </div>
-        : <h1>No tienes Reservas</h1>}
+
+        </div>}
     </div>
   )
 }

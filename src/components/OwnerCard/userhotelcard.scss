@@ -1,0 +1,18 @@
+.userhotelcard {
+  background-color: rgba(255, 255, 255, 0.645);
+  border: 1px solid rgba(0, 0, 0, 0.235);
+  margin: 0px 10px 40px 10px;
+  padding: 24px;
+  border-radius: 24px;
+  width: 90%;
+
+  &__data {
+    display: flex;
+    justify-content: space-between;
+    &__image {
+      width: 200px;
+      height: 200px;
+      border-radius: 100%;
+    }
+  }
+}
