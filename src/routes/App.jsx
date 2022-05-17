@@ -13,7 +13,11 @@ import { Hotels } from '../pages/Hotels'
 import Hotel from '../pages/Hotel'
 import Register from '../pages/Register'
 import Loader from '../components/Loader/Loader'
+
+import ProfileTest from '../pages/ProfileTest'
+
 import { Dashboard } from '../dashboard/Dashboard'
+
 import DUsers from '../dashboard/DUsers'
 import DHotels from '../dashboard/DHotels'
 
@@ -31,6 +35,7 @@ function App () {
       <BrowserRouter>
         <Layout>
           <Routes>
+            <Route path='/profile-test' element={<ProfileTest />} />
             <Route path='/' element={<Home />} />
             <Route path='/hotels/' element={<Hotels />} />
             <Route path='/profile' element={<Profile />} />
