@@ -17,7 +17,9 @@ export default function DFormUser ({ setOpen, setAlert }) {
       organization: formData.get('organization'),
       email: formData.get('email'),
       password: formData.get('password'),
-      repeatPass: formData.get('repeatPass')
+      repeatPass: formData.get('repeatPass'),
+      isDeleted: formData.get('isDeleted'),
+      isSuscribed: formData.get('isSuscribed')
     }
 
     addUser(data).then(() => {
