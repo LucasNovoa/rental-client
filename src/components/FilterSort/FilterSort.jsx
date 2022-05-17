@@ -1,66 +1,125 @@
 import './FilterSort.scss'
-import { AiFillStar } from 'react-icons/ai'
 import { useDispatch, useSelector } from 'react-redux'
-import { filter, selectAllFilters } from '../../redux/slices/filterSlice'
 import { useState } from 'react'
+import { BiSortAlt2 } from 'react-icons/bi'
 
 const FilterSort = () => {
   const dispatch = useDispatch()
-  const filters = useSelector(selectAllFilters)
 
-  const [price, setPrice] = useState('')
-  const [stars, setStars] = useState('')
+  const [price, setPrice] = useState({ min: 0, max: 99999 })
+  const [stars, setStars] = useState({ min: 1, max: 5 })
 
   const handlePriceChange = (e) => {
     e.preventDefault()
-    console.log(e.target.value)
-    if (e.target.value < 1 || !e.target.value) setPrice('999999')
-    else setPrice(e.target.value)
-    console.log(price)
-  }
-
-  const handlePriceClick = (e) => {
-    e.preventDefault()
-    dispatch(filter({ highestPrice: price }))
+    setPrice({ ...price, [e.target.name]: e.target.value })
   }
 
   const handleStarsChange = (e) => {
     e.preventDefault()
-    setStars(e.target.value)
+    setStars({ ...stars, [e.target.name]: e.target.value })
   }
 
-  const handleStarsClick = (e) => {
+  const handleReset = (e) => {
     e.preventDefault()
-    if (stars === 'All') dispatch(filter({ stars: '' }))
-    else dispatch(filter({ stars }))
+    setPrice({ min: 0, max: 99999 })
+    setStars({ min: 1, max: 5 })
   }
+
+  const handleFilter = (e) => {
+    e.preventDefault()
+  }
+
+  console.log('price: ', price, 'stars: ', stars)
 
   return (
-    <div className='container'>
-      <div className='container__filter'>
-        <div className='container__filter__price'>
-          <h5>Precio máximo</h5>
-          <input type='number' placeholder='100' min='0' onChange={handlePriceChange} />
-          <h5>U$S</h5>
+    <div>
+      <div className='container'>
+        <div className='container__filter'>
+          <div className='container__filter__price'>
+            <h5 className='container__filter__price__title'>Precio</h5>
+            <div className='container__filter__price__options'>
+              <div className='container__filter__price__options__minPrice'>
+                <h5>Min</h5>
+                <input name='min' type='number' placeholder='100' min='0' onChange={handlePriceChange} />
+                <h5>U$S</h5>
+              </div>
+              <div className='container__filter__price__options__maxPrice'>
+                <h5>Max</h5>
+                <input name='max' type='number' placeholder='100' min='0' onChange={handlePriceChange} />
+                <h5>U$S</h5>
+              </div>
+            </div>
+          </div>
+          <div className='container__filter__vl' />
+          <div className='container__filter__stars'>
+            <h5 className='container__filter__stars__title'>Estrellas</h5>
+            <div className='container__filter__stars__options'>
+              <div className='container__filter__stars__options__minStars'>
+                <h5>Min</h5>
+                <div className='container__filter__stars__options__minStars__select'>
+                  <select
+                    name='min'
+                    min={1}
+                    max={stars.max}
+                    onChange={handleStarsChange}
+                  >
+                    <option value='1'>1</option>
+                    <option value='2'>2</option>
+                    <option value='3'>3</option>
+                    <option value='4'>4</option>
+                    <option value='5'>5</option>
+                  </select>
+                </div>
+              </div>
+              <div className='container__filter__stars__options__maxStars'>
+                <h5>Max</h5>
+                <select
+                  defaultValue={5}
+                  min={stars.min}
+                  max={5}
+                  className='container__filter__stars__options__maxStars__select'
+                  name='max'
+                  onChange={handleStarsChange}
+                >
+                  <option value='1'>1</option>
+                  <option value='2'>2</option>
+                  <option value='3'>3</option>
+                  <option value='4'>4</option>
+                  <option value='5'>5</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div className='container__filter__btn'>
+            <button className='container__filter__btn__reset' onClick={handleReset}>Reset</button>
+            <button className='container__filter__btn__filtrar' onClick={handleFilter}>Filtrar</button>
+          </div>
         </div>
-        <button className='container__filter__price__btn' onClick={handlePriceClick}>Filtrar</button>
-        <div className='container__filter__stars'>
-          <h5>Estrellas</h5>
-          <select name='stars' onChange={handleStarsChange}>
-            <option value='All'>Todas las</option>
-            <option value='1'>1</option>
-            <option value='2'>2</option>
-            <option value='3'>3</option>
-            <option value='4'>4</option>
-            <option value='5'>5</option>
-          </select>
-          <AiFillStar />
-          <button className='container__filter__stars__btn' onClick={handleStarsClick}>Filtrar</button>
+        <div className='container__sort'>
+          <div className='container__sort__title'>
+            <h5>Ordenar</h5>
+            <BiSortAlt2 className='container__sort__title__icon' />
+          </div>
+          <div className='container__sort__options'>
+            <div className='container__sort__options__price'>
+              <h5 className='container__sort__options__price__title'>Precio</h5>
+              <select>
+                <option>Ordenar</option>
+                <option>Ascendente</option>
+                <option>Descendente</option>
+              </select>
+            </div>
+            <div className='container__sort__options__stars'>
+              <h5>Estrellas</h5>
+              <select>
+                <option>Ordenar</option>
+                <option>Ascendente</option>
+                <option>Descendente</option>
+              </select>
+            </div>
+          </div>
         </div>
       </div>
-      {/* <div>
-        <h5>Ordenar por</h5>
-      </div> */}
     </div>
   )
 }
