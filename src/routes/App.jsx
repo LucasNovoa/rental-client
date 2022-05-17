@@ -17,6 +17,8 @@ import { Dashboard } from '../dashboard/Dashboard'
 import DUsers from '../dashboard/DUsers'
 import DHotels from '../dashboard/DHotels'
 
+import DEditUser from '../dashboard/DEditUser'
+
 import { About } from '../pages/About'
 
 import { PasswordRecovery } from '../pages/PasswordRecovery'
@@ -39,8 +41,12 @@ function App () {
             <Route path='/about' element={<About />} />
             <Route path='/passwordRecovery' element={<PasswordRecovery />} />
             <Route path='/changePassword' element={<ChangePassword />} />
+
             <Route path='/dashboard' element={<Dashboard />} />
+
             <Route path='/dashboard/users' element={<DUsers />} />
+            <Route path='/dashboard/users/:id' element={<DEditUser />} />
+
             <Route path='/dashboard/hotels' element={<DHotels />} />
           </Routes>
         </Layout>
