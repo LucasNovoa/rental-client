@@ -2,7 +2,7 @@ import { useRef } from 'react'
 
 import { addUser } from './services/usersAPI'
 
-export default function DFormUser ({ setOpen, setAlert }) {
+export default function DFormUser ({ setOpen, setAlert, user }) {
   const formRef = useRef(null)
 
   const handleSubmit = (event) => {
@@ -18,9 +18,11 @@ export default function DFormUser ({ setOpen, setAlert }) {
       email: formData.get('email'),
       password: formData.get('password'),
       repeatPass: formData.get('repeatPass'),
-      isDeleted: formData.get('isDeleted'),
+      isBanned: formData.get('isBanned'),
       isSuscribed: formData.get('isSuscribed')
     }
+
+    console.log(data)
 
     addUser(data).then(() => {
       setAlert({
@@ -115,6 +117,24 @@ export default function DFormUser ({ setOpen, setAlert }) {
                 Repetir contraseña
               </label>
               <input type='password' name='repeatPass' id='repeatPass' className='mt-1 focus:ring-red-600 focus:border-red-600 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md' />
+            </div>
+            <div className='col-span-6'>
+              <label htmlFor='isBanned' className='inline-flex items-center'>
+                <input
+                  defaultChecked={user?.isBanned}
+                  type='checkbox' name='isBanned' id='isBanned' className='rounded bg-gray-200  border-transparent focus:border-transparent focus:bg-gray-200 text-gray-700 focus:ring-1 focus:ring-offset-2 focus:ring-gray-500'
+                />
+                <span className='ml-2'>Penalizado</span>
+              </label>
+            </div>
+            <div className='col-span-6'>
+              <label htmlFor='isSuscribed' className='inline-flex items-center'>
+                <input
+                  defaultChecked={user?.isSuscribed}
+                  type='checkbox' name='isSuscribed' id='isSuscribed' className='rounded bg-gray-200  border-transparent focus:border-transparent focus:bg-gray-200 text-gray-700 focus:ring-1 focus:ring-offset-2 focus:ring-gray-500'
+                />
+                <span className='ml-2'>Subscriptor</span>
+              </label>
             </div>
           </div>
         </div>
