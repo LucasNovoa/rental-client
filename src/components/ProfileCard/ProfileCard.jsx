@@ -16,24 +16,24 @@ function ProfileCard ({ user }) {
 
         {!on &&
           <>
-            <img className='profilecard__imageContainer__image' src={user.image} alt='img' />
+            <img className='profilecard__imageContainer__image' src={user?.image} alt='img' />
             <br />
             <a onClick={e => handleClick(e)}>Actualizar foto</a>
           </>}
         {on &&
-          <Picture setOn={setOn} />}
+          <Picture user={user} setOn={setOn} />}
       </div>
       <div className='profilecard__divider' />
       <div className='profilecard__data'>
-        {user.typePerson === 'legal' &&
+        {user?.typePerson === 'legal' &&
           <>
-            <p className='profilecard__data__name'>{user.organization}</p>
-            <p className='profilecard__data__email'>{user.email}</p>
+            <p className='profilecard__data__name'>{user?.organization}</p>
+            <p className='profilecard__data__email'>{user?.email}</p>
           </>}
-        {user.typePerson === 'natural' &&
+        {user?.typePerson === 'natural' &&
           <>
-            <p className='profilecard__data__name'>{user.firstName} {user.lastName}</p>
-            <p className='profilecard__data__email'>{user.email}</p>
+            <p className='profilecard__data__name'>{user?.firstName} {user?.lastName}</p>
+            <p className='profilecard__data__email'>{user?.email}</p>
           </>}
       </div>
     </div>

@@ -30,7 +30,8 @@
     "react-router": "6.3.0",
     "react-router-dom": "6.3.0",
     "sass": "1.51.0",
-    "sweetalert": "2.1.2"
+    "sweetalert": "2.1.2",
+    "tailwind": "^4.0.0"
   },
   "devDependencies": {
     "@types/react": "18.0.9",

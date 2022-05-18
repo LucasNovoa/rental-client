@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import ProfileFooter from '../components/ProfileFooter/ProfileFooter'
+import Footer from '../components/Footer/Footer'
 import Header from '../components/Header/Header'
 import ProfileContainer from '../containers/ProfileContainer/ProfileContainer'
 import Loader from '../components/Loader/Loader'
@@ -48,7 +48,7 @@ const Profile = () => {
       : <div className='Profile'>
         <Header />
         <ProfileContainer user={userInfo} />
-        <ProfileFooter />
+        <Footer />
       </div>
   )
 }
