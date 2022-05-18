@@ -28,7 +28,21 @@
         align-items: center;
         display: grid;
 
+        &__submit {             
+            background-color: #ff3f3f;
+            padding: 18px 24px 18px 24px;
+            color: black;
+            font-weight: 600;
+            border-radius: 76px;
+            border: 1px solid black;            
+        }
 
+        &__submit:hover {
+            cursor: pointer;
+            background-color: #ff3f3f;
+            transform: background-color 0.3s ease;
+            transform: translate(0, -2px);
+          }
 
         &__description {
             margin-left: 80px;
@@ -49,6 +63,7 @@
             span {
                 grid-column: 1;
                 text-align: center;
+                font-size: 1.2rem;
             }
 
             select {
@@ -67,20 +82,8 @@
             }
         }
 
-        &__submit { 
-            background-color: #ff3f3f;
-            padding: 18px 24px 18px 24px;
-            color: white;
-            font-weight: 600;
-            border-radius: 76px;
-            border: none;
-        }
+        
 
-        &__submit:hover {
-            cursor: pointer;
-            background-color: #ff3f3f;
-            transform: background-color 0.3s ease;
-            transform: translate(0, -2px);
-          }
+        
     }
 }

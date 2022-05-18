@@ -25,6 +25,8 @@ function useProvideAuth () {
       }
     }
 
+    console.log('Auth' + email, password)
+
     const { data: access_token } = await axios.post('https://rental-app-server.herokuapp.com/api/v1/auth/login', { email, password }, options)
 
     if (access_token) {
@@ -73,46 +75,11 @@ function useProvideAuth () {
     window.location.href = '/login'
   }
 
-  const signInGoogle = async () => {
-    const url = 'https://rental-app-server.herokuapp.com/api/v1/auth/google'
-
-    const strWindowFeatures = 'toolbar=no,menubar=no,scrollbars=yes,resizable=yes,top=100,left=100,width=400,height=600'
-
-    window.open(url, '_blank', strWindowFeatures)
-
-    const options = {
-      headers: {
-        accept: '*/*',
-        'Content-Type': 'application/json'
-      }
-    }
-
-    const { data: access_token } = await axios.get('https://rental-app-server.herokuapp.com/api/v1/auth/getGoogleUser', options)
-
-    if (access_token) {
-      const token = access_token.token
-      const userId = access_token.user.id
-      console.log(token, 'token')
-      console.log(userId, 'userId')
-
-      Cookie.set('token', token, { expires: 5 })
-
-      axios.defaults.headers.Authorization = `Bearer ${token}`
-
-      const { data: user } = await axios.get(`https://rental-app-server.herokuapp.com/api/v1/users/${userId}`)
-
-      setUser(user)
-
-      window.localStorage.setItem('user', JSON.stringify(user))
-    }
-  }
-
   return {
     user,
     signIn,
     logout,
     recovery,
-    changePass,
-    signInGoogle
+    changePass
   }
 }

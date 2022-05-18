@@ -13,10 +13,12 @@ import { Hotels } from '../pages/Hotels'
 import Hotel from '../pages/Hotel'
 import Register from '../pages/Register'
 import Loader from '../components/Loader/Loader'
+
 import { Dashboard } from '../dashboard/Dashboard'
+
 import DUsers from '../dashboard/DUsers'
 import DHotels from '../dashboard/DHotels'
-import Reviews from '../components/Reviews/Reviews.jsx'
+import Reviews from '../components/Review/Reviews.jsx'
 
 import DEditUser from '../dashboard/DEditUser'
 

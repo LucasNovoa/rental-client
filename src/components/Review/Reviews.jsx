@@ -114,7 +114,9 @@ function Reviews ({ setRev, setBook }) {
               <input className='reviews__form__label__input' placeholder='DD/MM/AAAA' name='stayedOn' onChange={e => handleChange(e)} />
             </label>
             <br />
+
             <button className='reviews__form__submit' type='submit' onClick={e => handleClick(e)}>Enviar Reseña</button>
+
           </form>
         </div>
       </section>

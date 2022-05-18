@@ -7,7 +7,7 @@ import Loader from '../Loader/Loader'
 import SliderBooking from '../SliderBooking/SliderBooking'
 import Bookings from '../Bookings/Bookings'
 import { selectAllHotels, useGetHotelsQuery } from '../../redux/services/hotelsServices'
-import Reviews from '../Reviews/Reviews.jsx'
+import Reviews from '../Review/Reviews.jsx'
 
 const ProfileDetail = ({ user, post, setPost }) => {
   const dispatch = useDispatch()
@@ -50,13 +50,14 @@ const ProfileDetail = ({ user, post, setPost }) => {
         <button className='profiledetail__post' onClick={e => handleCreate(e)}>Publica tu alojamiento!</button>}
       <div className='profiledetail__divider' />
       {content}
-      {hostHotels.length > 0
+      {hostHotels?.length > 0
         ? <div>
           <SliderHost className='profiledetail__slider' hotels={hostHotels} />
           <div className='profiledetail__divider' />
-        </div>
+          </div>
         : <h1>No tienes alojamientos en alquiler</h1>}
       <div className='profiledetail__divider' />
+
       {bookings?.length > 0
         ? <div>
           {book !== 0 && <Bookings setBook={setBook} book={book} bookings={bookings} user={user} rev={rev} setRev={setRev} />}
@@ -64,6 +65,8 @@ const ProfileDetail = ({ user, post, setPost }) => {
           {rev !== 0 && <Reviews setRev={setRev} />}
           </div>
         : <h1>No tienes Reservas</h1>}
+      <div className='profiledetail__divider' />
+
     </div>
   )
 }
