@@ -20,7 +20,10 @@ function Card ({ img, name, description, price, hosts, stars, filters = {} }) {
           <div className='card__content__divider' />
           <div className='card__content__info'>
             <div className='card__content__info__price'><strong>${price} </strong> / noche</div>
-            <button className='card__content__info__btn'>Más información!</button>
+            <div>
+              <br />
+              <button className='card__content__info__btn'>Más información</button>
+            </div>
           </div>
         </div>
       </Link>

@@ -137,9 +137,11 @@ const SearchBar = () => {
           <div className='searchBar__place'>
             <label><h5 className='searchBar__place__title'>Lugar</h5></label>
             <input
+              type='text'
+              autoComplete='off'
               name='city'
               className='searchBar__place__input'
-              placeholder='A dónde vas?'
+              placeholder='Elige un destino...'
               onFocus={handleFocus}
               onChange={handleCity}
               value={inputFilters.city}
@@ -187,19 +189,12 @@ const SearchBar = () => {
           <h5 className='searchBar__check__value'>{reservation.checkOut === 'Hasta...' ? reservation.checkOut : dateFormat(reservation.checkOut)}</h5>
         </button>
         <div>
-          <button className='searchBar__amount' onClick={handleAmountRender}>
-            <h5 className='searchBar__amount__title'>Huéspedes</h5>
-            <h5 className='searchBar__amount__value'>{amount}</h5>
-          </button>
-          {renderAmount &&
-            <div className='searchBar__amount__display'>
-              <h5 className='searchBar__amount__display__title'>Huéspedes</h5>
-              <div className='searchBar__amount__display__counter'>
-                <button name='-' onClick={handleAmount} className='searchBar__amount__display__counter__btn'>-</button>
-                <h5 className='searchBar__amount__display__counter__number'>{amount}</h5>
-                <button name='+' onClick={handleAmount} className='searchBar__amount__display__counter__btn'>+</button>
-              </div>
-            </div>}
+          <h5 className='searchBar__amount__title'>Huéspedes</h5>
+          <div className='searchBar__amount__title__counter'>
+            <button name='-' disabled={amount === 1} onClick={handleAmount} className='searchBar__amount__title__counter__btn'>-</button>
+            <h5 className='searchBar__amount__title__counter__number'>{amount}</h5>
+            <button name='+' disabled={amount > 7} onClick={handleAmount} className='searchBar__amount__title__counter__btn'>+</button>
+          </div>
         </div>
         <button className='searchBar__btn' onClick={handleSearch}>Buscar</button>
       </div>

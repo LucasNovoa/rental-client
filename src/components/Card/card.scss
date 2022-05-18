@@ -80,8 +80,26 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      flex-direction: column;
+
+      &__btn__active {
+          
+        outline: none;
+        background-color: #ff3f3f;
+        padding: 11px 22px;
+        color: white;
+        border-radius: 76px;
+        border: none;
+        margin-left: 20px;
+        margin-right: 20px;
+        font-size: 1.25rem;
+        cursor: pointer;
+        
+      }
 
       &__btn {
+        width: 210px;
+        text-align: center;
         padding: 18px 24px;
         font-size: 1.3rem;
         font-weight: 700;
@@ -89,7 +107,9 @@
         color: white;
         background-color: #ff3f3f;
         border: none;
-        border-radius: 96px;
+        border-radius: 76px;
+        cursor: pointer;
+        box-shadow: 0 2px 12px 0 rgb(20 20 43 / 20%);
       }
     }
   }

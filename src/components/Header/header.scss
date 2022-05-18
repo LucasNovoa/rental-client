@@ -47,7 +47,7 @@
   &__container {
     &__content {
       display: flex;
-      background-color: rgba(255, 255, 255, 0.645);
+      background-color: rgba(255, 255, 255, 0.8);
       align-items: center;
       justify-content: space-between;
       padding: 16px 22px 16px 38px;
@@ -56,7 +56,7 @@
       border: 1px solid rgba(0, 0, 0, 0.093);
 
       &__logo {
-        max-width: 200px;
+        width: 200px;
       }
 
       &__ul {
@@ -67,6 +67,8 @@
         font-size: 1rem;
 
         li {
+          font-size: 1.2rem;
+          font-weight: 400;
           margin-left: 32px;
           text-decoration: none;
           color: black;
@@ -79,19 +81,27 @@
         }
 
         &__btn {
+          outline: none;
           background-color: #ff3f3f;
-          padding: 18px 24px 18px 24px;
+          padding: 11px 22px;
           color: white;
-          font-weight: 600;
           border-radius: 76px;
           border: none;
+          margin-left: 20px;
+          margin-right: 20px;
+          font-size: 1.25rem;
+          cursor: pointer;
+          box-shadow: 0 2px 12px 0 rgb(20 20 43 / 40%);
         }
 
         &__btn:hover {
-          cursor: pointer;
+          background-color: #ca2626;
+          transform: scale(1.05)
+        }
+
+        &__btn:focus {
           background-color: #ff3f3f;
-          transform: background-color 0.3s ease;
-          transform: translate(0, -2px);
+          transform: scale(0.95)
         }
 
         &__bag:hover {
