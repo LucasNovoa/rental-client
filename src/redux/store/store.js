@@ -15,5 +15,7 @@ export const store = configureStore({
     reservation: reservationReducer,
     filters: filterReducer
   },
-  middleware: getDefaultMiddleware => getDefaultMiddleware().concat(apiSlice.middleware)
+  middleware: getDefaultMiddleware => getDefaultMiddleware({
+    serializableCheck: false
+  }).concat(apiSlice.middleware)
 })

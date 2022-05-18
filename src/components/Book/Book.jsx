@@ -2,9 +2,15 @@ import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { selectReservation } from '../../redux/slices/reservationSlice'
 import './book.scss'
+import axios from 'axios'
 
 function Book ({ setRes, res, bookHotel }) {
-  const { name, checkIn, checkOut, guests, cityName } = useSelector(selectReservation)
+  const reservation = useSelector(selectReservation)
+  const userJSON = JSON.parse(window.localStorage.getItem('user'))
+
+  const checkInDate = `${reservation.checkIn.getDate()}-${reservation.checkIn.getMonth()}-${reservation.checkIn.getFullYear()}`
+  const checkOutDate = `${reservation.checkOut.getDate()}-${reservation.checkOut.getMonth()}-${reservation.checkOut.getFullYear()}`
+
   const [pay, setPay] = useState(false)
 
   function handleClick (e) {
@@ -15,8 +21,17 @@ function Book ({ setRes, res, bookHotel }) {
     })
   }
 
+  const userId = Number(userJSON.id)
+  const hotelId = Number(bookHotel.id)
+
   function handleConfirm (e) {
     e.preventDefault()
+    axios.post('https://rental-app-server.herokuapp.com/api/v1/bookings', {
+      checkIn: checkInDate,
+      checkOut: checkOutDate,
+      UserId: 1,
+      HotelId: 2
+    })
     setPay(true)
     // aca iría el post del booking
   }
@@ -34,13 +49,13 @@ function Book ({ setRes, res, bookHotel }) {
       </div>
       <div className='booking__info'>
         <h2 className='booking__info__title'><strong>Resumen pre-reserva</strong></h2>
-        <h3 className='booking__info__hotel'><strong>{name}</strong></h3>
-        <p className='booking__info__p'><strong>Check-In:</strong> {checkIn}</p>
-        <p className='booking__info__p'><strong>Check-Out:</strong> {checkOut}</p>
-        <p className='booking__info__p'><strong>Ciudad:</strong> {cityName}</p>
+        <h3 className='booking__info__hotel'><strong>{reservation.name}</strong></h3>
+        <p className='booking__info__p'><strong>Check-In:</strong> {reservation.checkIn.toDateString()}</p>
+        <p className='booking__info__p'><strong>Check-Out:</strong> {reservation.checkOut.toDateString()}</p>
+        <p className='booking__info__p'><strong>Ciudad:</strong> {reservation.cityName}</p>
         <p className='booking__info__p'><strong>Estado:</strong> Pago Pendiente</p>
         <p className='booking__info__p'><strong>Precio por noche:</strong> ${bookHotel.price}</p>
-        <p className='booking__info__p'><strong>Cantidad de Noches:</strong> </p>
+        <p className='booking__info__p'><strong>Cantidad de Noches:</strong> {reservation.totalNights}</p>
         <div className='booking__info__btns'>
           {!pay &&
             <>

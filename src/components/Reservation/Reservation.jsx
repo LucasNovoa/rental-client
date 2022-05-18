@@ -7,28 +7,29 @@ import './Reservation.scss'
 import { useNavigate } from 'react-router-dom'
 import { selectAllCities } from '../../redux/services/hotelsServices'
 import { selectReservation, updateReservation } from '../../redux/slices/reservationSlice'
-
-const Reservation = ({ res, setRes, hotel, filters }) => {
-  const cities = useSelector(selectAllCities)
+import swal from 'sweetalert'
+const Reservation = ({ hotel, setRes, res }) => {
   const reservations = useSelector(selectReservation)
   const dispatch = useDispatch()
-  console.log(reservations)
+  const userJSON = window.localStorage.getItem('user')
+  const navigate = useNavigate()
+  console.log(!userJSON)
+  /* const cities = useSelector(selectAllCities)
+
+   */
+  /*
   const [results, setResults] = useState(false)
+  const [renderCalendar, setRenderCalendar] = useState(false)
   const [startDate, setStartDate] = useState(new Date())
   const [endDate, setEndDate] = useState(startDate)
   const [renderCalendar, setRenderCalendar] = useState(false)
   const [renderAmount, setRenderAmount] = useState(false)
   const [amount, setAmount] = useState(reservations.guests ?? 1)
 
-  const [place, setPlace] = useState(filters.cityName ?? '')
-  const [start, setStart] = useState(dateFormat(filters.checkIn ?? ''))
-  const [end, setEnd] = useState(dateFormat(filters.checkOut ?? ''))
-  const [guests, setGuests] = useState(filters.guests ? `${filters.guests} huéspedes` : 'Cuántos?')
-
-  useEffect(() => {
-    setStart(filters.checkIn ? dateFormat(filters.checkIn) : 'Desde...')
-    setEnd(filters.checkOut ? dateFormat(filters.checkOut) : 'Hasta...')
-  }, [filters])
+  const [place, setPlace] = useState()
+  const [start, setStart] = useState()
+  const [end, setEnd] = useState()
+  const [guests, setGuests] = useState()
 
   const cityId = cities.find(e => e.name === place) && cities.find(e => e.name === place).id
 
@@ -36,73 +37,58 @@ const Reservation = ({ res, setRes, hotel, filters }) => {
     startDate,
     endDate,
     key: 'selection'
-  }
-
-  const totalNights = end.split(' ')[0] - start.split(' ')[0]
-
-  const handleCalendarRender = () => {
-    setRenderAmount(false)
-    setResults(false)
-    setRenderCalendar(!renderCalendar)
-  }
-
-  /*   const handleAmountRender = () => {
-    setRenderCalendar(false)
-    setResults(false)
-    setRenderAmount(!renderAmount)
-  }
-
-  const handleAmount = (e) => {
-    if (e.target.name === '-') {
-      if (amount === 1) return
-      if (amount > 1) setAmount(amount - 1)
-      dispatch(updateReservation(amount - 1))
-    } else {
-      setAmount(amount + 1)
-      dispatch(updateReservation(amount + 1))
-    }
   } */
+
+  /*   const totalNights = end.split(' ')[0] - start.split(' ')[0]
+ */
 
   const handleSearch = (e) => {
     e.preventDefault()
-    setRes({
-      name: hotel.name,
-      cityName: hotel.City.name,
-      checkIn: start,
-      checkOut: end,
-      guests,
-      open: true,
-      nights: totalNights
-    })
+    let errors = ''
+    if (!userJSON) {
+      navigate('/login')
+    } else {
+      if (reservations.checkIn === 'Desde...') {
+        errors += 'Seleccione fecha de Check in... \n'
+      } else if (reservations.checkOut === 'Hasta...') {
+        errors += 'Selecciones fecha de Check out... \n'
+      }
+      if (errors.length >= 1) {
+        swal({
+          title: 'Verifique la información ingresada',
+          text: `${errors}`
+        })
+      } else {
+        const totalNights = reservations.checkOut.toDateString().split(' ')[2] - reservations.checkIn.toDateString().split(' ')[2]
+        dispatch(updateReservation({
+          totalNights
+        }))
+        setRes({
+          ...res,
+          open: true
+        })
+      }
+    }
   }
 
   return (
     <div className='reservationContainer'>
       <div className='reservation'>
         <div>
-          <button className='reservation__check' onClick={handleCalendarRender}>
+          <button className='reservation__check'>
             <h5 className='reservation__check__title'>Check-in</h5>
-            <h5 className='reservation__check__value'>{reservations.checkIn}</h5>
+            <h5 className='reservation__check__value'>{reservations.checkIn === 'Desde...' ? reservations.checkIn : dateFormat(reservations.checkIn)}</h5>
           </button>
         </div>
-        <button className='reservation__check' onClick={handleCalendarRender}>
+        <button className='reservation__check'>
           <h5 className='reservation__check__title'>Check-out</h5>
-          <h5 className='reservation__check__value'>{reservations.checkOut}</h5>
+          <h5 className='reservation__check__value'>{reservations.checkOut === 'Hasta...' ? reservations.checkOut : dateFormat(reservations.checkOut)}</h5>
         </button>
         <div>
           <button className='reservation__amount'>
             <h5 className='reservation__amount__title'>Huéspedes</h5>
             <h5 className='reservation__amount__value'>{reservations.guests}</h5>
           </button>
-          {renderAmount &&
-            <div className='reservation__amount__display'>
-              <h5 className='reservation__amount__display__title'>Huéspedes</h5>
-              <div className='reservation__amount__display__counter'>
-                <button name='-' className='reservation__amount__display__counter__btn'>-</button>
-                <h5 className='reservation__amount__display__counter__number'>{reservations.guests}</h5>
-                <button name='+' className='reservation__amount__display__counter__btn'>+</button>
-              </div>
-            </div>}
         </div>
         <button className='reservation__btn' onClick={handleSearch}>Reservar</button>
       </div>

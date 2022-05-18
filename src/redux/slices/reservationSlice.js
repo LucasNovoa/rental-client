@@ -6,6 +6,7 @@ const initialState = {
   checkIn: 'Desde...',
   checkOut: 'Hasta...',
   guests: 1,
+  totalNights: 1,
   open: false
 }
 

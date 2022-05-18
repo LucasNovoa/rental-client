@@ -1,8 +1,5 @@
 import React, { useState } from 'react'
-<<<<<<< HEAD
 import { useDispatch, useSelector } from 'react-redux'
-=======
->>>>>>> 326c60ec7fe447891f8b1aa2f5f09588591a0693
 import { useParams, useLocation } from 'react-router-dom'
 import Footer from '../components/Footer/Footer'
 import Header from '../components/Header/Header'
@@ -19,20 +16,14 @@ import Loader from '../components/Loader/Loader'
 import { useGetHotelsByNameQuery } from '../redux/services/hotelsServices'
 import OwnerCard from '../components/OwnerCard/OwnerCard'
 import Modal from 'react-modal'
-<<<<<<< HEAD
-import { updateReservation } from '../redux/slices/reservationSlice'
+import { updateReservation, selectReservation } from '../redux/slices/reservationSlice'
+import { selectFilters } from '../redux/slices/filtersSlice'
 
 const Hotel = () => {
   const location = useLocation()
   const dispatch = useDispatch()
-=======
-
-const Hotel = () => {
-  const location = useLocation()
->>>>>>> 326c60ec7fe447891f8b1aa2f5f09588591a0693
-  const filters = location.state
+  const filters = useSelector(selectFilters)
   const { name } = useParams()
-
   const [res, setRes] = useState({
     name,
     cityName: filters.city ?? '',
@@ -42,14 +33,9 @@ const Hotel = () => {
     open: false,
     nights: 1
   })
-<<<<<<< HEAD
 
   const decodeName = decodeURI(name)
 
-=======
-
-  const decodeName = decodeURI(name)
->>>>>>> 326c60ec7fe447891f8b1aa2f5f09588591a0693
   const {
     data: hotel,
     isLoading,
@@ -82,10 +68,9 @@ const Hotel = () => {
       <div>
         <HotelCard hotel={entities[ids]} />
         <Reservation
-          res={res}
-          setRes={setRes}
           hotel={entities[ids]}
-          filters={filters}
+          setRes={setRes}
+          res={res}
         />
         <div className='hotel__details'>
           <OwnerCard userId={entities[ids].UserId} />

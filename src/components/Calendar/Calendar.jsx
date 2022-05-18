@@ -6,11 +6,11 @@ import 'react-date-range/dist/styles.css'
 import 'react-date-range/dist/theme/default.css'
 import './Calendar.scss'
 
-const Calendar = ({ filters }) => {
+const Calendar = () => {
   const dispatch = useDispatch()
   const reservations = useSelector(selectReservation)
-  const [startDate, setStartDate] = useState(reservations.checkIn !== 'Desde...' ? reservations.checkIn : new Date())
-  const [endDate, setEndDate] = useState(reservations.checkOut !== 'Hasta...' ? reservations.checkOut : startDate)
+  const [startDate, setStartDate] = useState(reservations.checkIn !== 'Desde...' ? dateFormat(reservations.checkIn) : new Date())
+  const [endDate, setEndDate] = useState(reservations.checkOut !== 'Hasta...' ? dateFormat(reservations.checkOut) : startDate)
 
   const selectionRange = {
     startDate,
@@ -22,9 +22,10 @@ const Calendar = ({ filters }) => {
     setStartDate(ranges.selection.startDate)
     setEndDate(ranges.selection.endDate)
     dispatch(updateReservation({
-      checkIn: dateFormat(ranges.selection.startDate),
-      checkOut: dateFormat(ranges.selection.endDate)
+      checkIn: ranges.selection.startDate,
+      checkOut: ranges.selection.endDate
     }))
+    console.log(reservations)
   }
 
   return (

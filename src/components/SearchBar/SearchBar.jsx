@@ -16,7 +16,7 @@ const SearchBar = () => {
 
   const navigate = useNavigate()
   const dispatch = useDispatch()
-
+  console.log(dateFormat(reservation.checkIn))
   const handleSearch = async (e) => {
     e.preventDefault()
 
@@ -77,9 +77,10 @@ const SearchBar = () => {
     setStartDate(ranges.selection.startDate)
     setEndDate(ranges.selection.endDate)
     dispatch(updateReservation({
-      checkIn: dateFormat(ranges.selection.startDate),
-      checkOut: dateFormat(ranges.selection.endDate)
+      checkIn: ranges.selection.startDate,
+      checkOut: ranges.selection.endDate
     }))
+    console.log(reservation)
   }
 
   const handleCalendarRender = () => {
@@ -163,7 +164,7 @@ const SearchBar = () => {
         <div>
           <button className='searchBar__check' onClick={handleCalendarRender}>
             <h5 className='searchBar__check__title'>Check-in</h5>
-            <h5 className='searchBar__check__value'>{reservation.checkIn}</h5>
+            <h5 className='searchBar__check__value'>{reservation.checkIn === 'Desde...' ? reservation.checkIn : dateFormat(reservation.checkIn)}</h5>
           </button>
           <div>
             {renderCalendar &&
@@ -183,7 +184,7 @@ const SearchBar = () => {
         </div>
         <button className='searchBar__check' onClick={handleCalendarRender}>
           <h5 className='searchBar__check__title'>Check-out</h5>
-          <h5 className='searchBar__check__value'>{reservation.checkOut}</h5>
+          <h5 className='searchBar__check__value'>{reservation.checkOut === 'Hasta...' ? reservation.checkOut : dateFormat(reservation.checkOut)}</h5>
         </button>
         <div>
           <button className='searchBar__amount' onClick={handleAmountRender}>
