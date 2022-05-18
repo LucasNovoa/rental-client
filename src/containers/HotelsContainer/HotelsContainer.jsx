@@ -9,7 +9,7 @@ import './hotelscontainer.scss'
 
 export const HotelsContainer = () => {
   const filters = useSelector(selectFilters)
-  const { city, otherFilters } = filters
+  const { city, otherFilters, ranges } = filters
   const hotels = city !== '' ? useSelector(selectAllHotels).filter(hotel => hotel.City.name === city) : useSelector(selectAllHotels)
 
   const otherFilteredHotels = hotels.filter(function (hotel) {
@@ -17,8 +17,12 @@ export const HotelsContainer = () => {
       if (hotel[key] === undefined || hotel[key] != otherFilters[key]) { return false }
     }
     return true
+  }).filter(function (hotel) {
+    for (const key in ranges) {
+      if (hotel[key] < ranges[key].min || hotel[key] >= ranges[key].max) { return false }
+    } return true
   })
-  console.log(otherFilteredHotels)
+
   const {
     isLoading,
     isSuccess,
@@ -32,7 +36,7 @@ export const HotelsContainer = () => {
 
   useEffect(() => {
     setPage(0)
-  }, [otherFilteredHotels])
+  }, [filters])
 
   const filteredHotels = otherFilteredHotels?.slice(page * 8, page * 8 + 8)
   let content

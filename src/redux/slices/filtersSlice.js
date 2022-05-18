@@ -2,7 +2,11 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
   city: '',
-  otherFilters: {}
+  otherFilters: {},
+  ranges: {
+    price: { min: 0, max: 9999 },
+    stars: { min: 0, max: 5 }
+  }
 }
 
 const filtersSlice = createSlice({

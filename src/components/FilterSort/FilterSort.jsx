@@ -2,27 +2,50 @@ import './FilterSort.scss'
 import { useDispatch, useSelector } from 'react-redux'
 import { useState } from 'react'
 import { BiSortAlt2 } from 'react-icons/bi'
+import { selectFilters, updateFilters } from '../../redux/slices/filtersSlice'
 
 const FilterSort = () => {
   const dispatch = useDispatch()
-
+  const filters = useSelector(selectFilters)
   const [price, setPrice] = useState({ min: 0, max: 99999 })
   const [stars, setStars] = useState({ min: 1, max: 5 })
-
+  console.log(filters)
   const handlePriceChange = (e) => {
     e.preventDefault()
     setPrice({ ...price, [e.target.name]: e.target.value })
+    dispatch(updateFilters({
+      ...filters,
+      ranges: {
+        ...filters.ranges,
+        price
+      }
+    }))
+    console.log(filters)
   }
 
   const handleStarsChange = (e) => {
     e.preventDefault()
     setStars({ ...stars, [e.target.name]: e.target.value })
+    dispatch(updateFilters({
+      ...filters,
+      ranges: {
+        ...filters.ranges,
+        stars
+      }
+    }))
   }
 
   const handleReset = (e) => {
     e.preventDefault()
     setPrice({ min: 0, max: 99999 })
     setStars({ min: 1, max: 5 })
+    useDispatch(updateFilters({
+      ...filters,
+      ranges: {
+        price,
+        stars
+      }
+    }))
   }
 
   const handleFilter = (e) => {

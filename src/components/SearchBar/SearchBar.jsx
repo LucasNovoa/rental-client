@@ -16,8 +16,7 @@ const SearchBar = () => {
 
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  console.log(updateFilters)
-  console.log(updateReservation)
+
   const handleSearch = async (e) => {
     e.preventDefault()
 
