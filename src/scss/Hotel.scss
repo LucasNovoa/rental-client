@@ -2,7 +2,10 @@
   &__details {
     display: flex;
     flex-direction: column;
+    margin-top: 60px;
     margin-right: 300px;
+    margin-left: 8%;
+    align-items: center;
   }
 
   &__modal {
@@ -27,4 +30,9 @@
 
 .hotel__details {
   margin-bottom: 60px;
+}
+
+.hotel__container {
+  display: flex;
+  flex-direction: row-reverse;
 }

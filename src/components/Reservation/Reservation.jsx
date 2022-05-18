@@ -103,7 +103,6 @@ const Reservation = ({ res, setRes, hotel, filters }) => {
         </div>
         <button className='reservation__btn' onClick={handleSearch}>Reservar</button>
       </div>
-
     </div>
   )
 }
