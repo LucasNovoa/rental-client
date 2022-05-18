@@ -54,15 +54,15 @@ const ProfileDetail = ({ user, post, setPost }) => {
         ? <div>
           <SliderHost className='profiledetail__slider' hotels={hostHotels} />
           <div className='profiledetail__divider' />
-        </div>
+          </div>
         : <h1>No tienes alojamientos en alquiler</h1>}
       <div className='profiledetail__divider' />
       {bookings?.length > 0
         ? <div>
-          {book !== 0 && <Bookings setBook={setBook} book={book} bookings={bookings} user={user} rev={rev} setRev={setRev} />}
+          {book !== 0 && rev === 0 && <Bookings setBook={setBook} book={book} bookings={bookings} user={user} rev={rev} setRev={setRev} />}
           {book === 0 && rev === 0 && <SliderBooking hotels={hotels} user={user} bookings={bookings} setBook={setBook} book={book} />}
-          {rev !== 0 && <Reviews setRev={setRev} />}
-          </div>
+          {rev !== 0 && <Reviews setRev={setRev} book={book} user={user} setBook={setBook} />}
+        </div>
         : <h1>No tienes Reservas</h1>}
       <div className='profiledetail__divider' />
     </div>

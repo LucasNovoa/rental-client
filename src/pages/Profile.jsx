@@ -4,13 +4,17 @@ import Header from '../components/Header/Header'
 import ProfileContainer from '../containers/ProfileContainer/ProfileContainer'
 import Loader from '../components/Loader/Loader'
 import '../scss/profile.scss'
+import { useNavigate } from 'react-router'
 
 const Profile = () => {
+  const navigateTo = useNavigate()
   const [userInfo, setUserInfo] = useState(null)
 
   useEffect(() => {
     const userJSON = window.localStorage.getItem('user')
-    if (userJSON) {
+    if (!userJSON) {
+      navigateTo('/login')
+    } else if (userJSON) {
       const user = JSON.parse(userJSON)
 
       setUserInfo(user)

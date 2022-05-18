@@ -1,16 +1,20 @@
 import { useState } from 'react'
 import './reviews.scss'
+import { postReview } from '../../redux/slices/review.Slice'
+import { useDispatch } from 'react-redux'
 
-function Reviews ({ setRev, setBook }) {
+function Reviews ({ setRev, setBook, book }) {
+  const dispatch = useDispatch()
   const [review, setReview] = useState({
     description: '',
-    price: null,
-    facilites: null,
+    priceQualityRatio: null,
+    facilities: null,
     location: null,
     cleaning: null,
     attentionService: null,
     comfortable: null,
-    stayedOn: ''
+    stayedOn: '',
+    BookingId: book
   })
 
   function handleClose (e) {
@@ -28,6 +32,14 @@ function Reviews ({ setRev, setBook }) {
     })
   }
 
+  function handleSubmit (e) {
+    e.preventDefault()
+    console.log(review)
+    dispatch(postReview(review))
+    setBook(0)
+    setRev(0)
+  }
+
   return (
     console.log(review),
       <section className='reviews'>
@@ -36,20 +48,20 @@ function Reviews ({ setRev, setBook }) {
         <br />
         <div>
           <h2>Califique cada servicio del 1 al 5, siendo 1 muy malo, y 5 muy bueno</h2>
-          <form className='reviews__form'>
+          <form className='reviews__form' onSubmit={e => handleSubmit(e)}>
             <br />
             <label className='reviews__form__description'>
-              <textarea maxLength={200} placeholder='Deje su comentario...' />
+              <textarea name='description' maxLength={200} placeholder='Deje su comentario...' onChange={e => handleChange(e)} />
             </label>
             <br />
             <label className='reviews__form__label'>
-              <span>Precio: </span>
-              <select name='price' onChange={e => handleChange(e)}>
-                <option name='price' value={1}>1</option>
-                <option name='price' value={2}>2</option>
-                <option name='price' value={3}>3</option>
-                <option name='price' value={4}>4</option>
-                <option name='price' value={5}>5</option>
+              <span>Relación precio/calidad: </span>
+              <select name='priceQualityRatio' onChange={e => handleChange(e)}>
+                <option name='priceQualityRatio' value={1}>1</option>
+                <option name='priceQualityRatio' value={2}>2</option>
+                <option name='priceQualityRatio' value={3}>3</option>
+                <option name='priceQualityRatio' value={4}>4</option>
+                <option name='priceQualityRatio' value={5}>5</option>
               </select>
             </label>
             <br />
@@ -115,7 +127,7 @@ function Reviews ({ setRev, setBook }) {
             </label>
             <br />
 
-            <button className='reviews__form__submit' type='submit' onClick={e => handleClick(e)}>Enviar Reseña</button>
+            <button className='reviews__form__submit' type='submit' onClick={e => handleSubmit(e)}>Enviar Reseña</button>
 
           </form>
         </div>

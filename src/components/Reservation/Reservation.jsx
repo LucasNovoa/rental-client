@@ -4,11 +4,14 @@ import { DateRangePicker } from 'react-date-range'
 import 'react-date-range/dist/styles.css'
 import 'react-date-range/dist/theme/default.css'
 import './Reservation.scss'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router'
 import { selectAllCities } from '../../redux/services/hotelsServices'
+import swal from 'sweetalert'
 
 const Reservation = ({ res, setRes, hotel, filters }) => {
+  const navigateTo = useNavigate()
   const cities = useSelector(selectAllCities)
+  const userJSON = JSON.parse(window.localStorage.getItem('user'))
 
   const [results, setResults] = useState(false)
   const [startDate, setStartDate] = useState(new Date())
@@ -62,15 +65,25 @@ const Reservation = ({ res, setRes, hotel, filters }) => {
 
   const handleSearch = (e) => {
     e.preventDefault()
-    setRes({
-      name: hotel.name,
-      cityName: hotel.City.name,
-      checkIn: start,
-      checkOut: end,
-      guests,
-      open: true,
-      nights: totalNights
-    })
+    if (!userJSON) {
+      swal({
+        title: 'Error',
+        text: 'Para reservar debe estar logeado',
+        icon: 'error',
+        button: 'Ok!'
+      })
+      navigateTo('/login')
+    } else {
+      setRes({
+        name: hotel.name,
+        cityName: hotel.City.name,
+        checkIn: start,
+        checkOut: end,
+        guests,
+        open: true,
+        nights: totalNights
+      })
+    }
   }
 
   return (

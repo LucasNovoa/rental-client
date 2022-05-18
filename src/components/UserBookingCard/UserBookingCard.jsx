@@ -2,11 +2,11 @@ import './userbookingcard.scss'
 import React, { useState } from 'react'
 
 function Card ({ img, name, price, checkIn, checkOut, setBook, paid, id, book, canceled }) {
-  const arrivePre = checkIn.substring(0, 10)
-  const departPre = checkOut.substring(0, 10)
+  const arrive = dateFormat(checkIn)
+  const depart = dateFormat(checkOut)
 
-  const arrive = dateFormat(arrivePre)
-  const depart = dateFormat(departPre)
+  if (arrive.includes('-')) { arrive.replace('-', '/') }
+  if (depart.includes('-')) { depart.replace('-', '/') }
 
   function dateFormat (date) {
     const arr = date.toLocaleString('es-AR').split(' ')[0].split('/')
@@ -27,7 +27,7 @@ function Card ({ img, name, price, checkIn, checkOut, setBook, paid, id, book, c
       case '12': month = 'Dic'; break
     }
 
-    return arr[2] + ' ' + month + ' ' + arr[0]
+    return arr[0] + ' ' + month + ' ' + arr[2]
   }
 
   function handleClick () {
