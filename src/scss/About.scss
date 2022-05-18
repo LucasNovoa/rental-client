@@ -47,17 +47,18 @@
       border: 1px solid rgba(0, 0, 0, 0.122);
       border-radius: 20px;
       text-align: center;
-      height: 600px;
+      height: 800px;
       width: 600px;
       padding: 50px 7.5%;
 
       h2 {
-        font-size: 3.5rem;
+        font-size: 3rem;
         margin-bottom: 20px;
       }
       p {
-        font-size: 2rem;
-        line-height: 1.5;
+        font-size: 1.5rem;
+        line-height: 2;
+        overflow: hidden;
       }
     }
   }

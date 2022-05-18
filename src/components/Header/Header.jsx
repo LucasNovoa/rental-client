@@ -53,7 +53,7 @@ function Header () {
             }
 
             {
-              userInfo && <li><button className='header__container__content__ul__cerrarSesion' onClick={() => auth.logout()}>Cerrar Sesión</button></li>
+              userInfo && <li><button className='header__container__content__ul__cerrarSesion' onClick={() => auth.logOut()}>Cerrar Sesión</button></li>
             }
           </ul>
         </div>

@@ -5,6 +5,8 @@ import axios from 'axios'
 
 import Cookie from 'js-cookie'
 
+import { useAuth0 } from '@auth0/auth0-react'
+
 const AuthContext = createContext()
 
 export function ProviderAuth ({ children }) {
@@ -16,6 +18,7 @@ export const useAuth = () => useContext(AuthContext)
 
 function useProvideAuth () {
   const [user, setUser] = useState(null)
+  const { logout } = useAuth0()
 
   const signIn = async (email, password) => {
     const options = {
@@ -67,18 +70,18 @@ function useProvideAuth () {
     await axios.post('https://rental-app-server.herokuapp.com/api/v1/auth/change-password', { token, newPassword }, options)
   }
 
-  const logout = () => {
+  const logOut = () => {
     Cookie.remove('token')
     window.localStorage.removeItem('user')
     setUser(null)
     delete axios.defaults.headers.Authorization
-    window.location.href = '/login'
+    logout({ returnTo: window.location.origin })
   }
 
   return {
     user,
     signIn,
-    logout,
+    logOut,
     recovery,
     changePass
   }
