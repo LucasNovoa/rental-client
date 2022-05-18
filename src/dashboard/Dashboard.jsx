@@ -65,7 +65,7 @@ const Dashboard = () => {
   return (
     <>
       <DHeader />
-      <div className='max-w-7xl mx-auto py-6 sm:px-6 lg:px-8'>
+      <div className='max-w-7xl mx-auto py-6 sm:px-6 lg:px-8 dashboard'>
         <div className='flex w-1/2'>
           <DChart className='' chartData={usersData} titleText='Usuarios' />
           <DChart className='' chartData={usersData2} titleText='Usuarios' />

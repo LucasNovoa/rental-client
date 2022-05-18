@@ -24,7 +24,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         redirectUri='http://localhost:3000/profile'
       >
         <App />
-      </Auth0Provider>,
+      </Auth0Provider>
     </Provider>
   </React.StrictMode>
 )
