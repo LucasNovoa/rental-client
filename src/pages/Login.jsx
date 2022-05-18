@@ -10,6 +10,8 @@ import Header from '../components/Header/Header'
 
 import { useAuth } from '../hooks/useAuth'
 
+import swal from 'sweetalert'
+
 import '../scss/Login.scss'
 
 function Login () {
@@ -26,7 +28,14 @@ function Login () {
 
     auth.signIn(email, password).then(() => {
       navigate('/profile')
-    })
+    }).catch(() => swal({
+      text: 'Usuario o Contraseña incorrectos',
+      button: {
+        text: 'Reintentar',
+        closeModal: 'true'
+      },
+      icon: 'warning'
+    }))
   }
 
   return (
