@@ -1,0 +1,89 @@
+.reviews {
+    width: 30vw;
+    height: 90%;
+    border: 1px solid black;
+    border-radius: 25px;
+    padding: 15px 15px 15px 15px;
+    box-shadow: 0 5px 20px 0 rgb(20 20 43 / 20%);
+
+    &__close {
+        margin-left: 80%;
+        border: 1px solid black;
+        border-radius: 40px;
+        background-color: #ff3f3f;
+        color: #fff;
+        font-size: 18px;
+        line-height: 20px;
+        width: 80px;
+        height: 30px;
+        
+    }
+
+    h2 {
+        font-size: 1.4rem;
+        margin: 0 39px;
+    }
+
+    &__form {
+        align-items: center;
+        display: grid;
+
+        &__submit {             
+            background-color: #ff3f3f;
+            padding: 18px 24px 18px 24px;
+            color: black;
+            font-weight: 600;
+            border-radius: 76px;
+            border: 1px solid black;            
+        }
+
+        &__submit:hover {
+            cursor: pointer;
+            background-color: #ff3f3f;
+            transform: background-color 0.3s ease;
+            transform: translate(0, -2px);
+          }
+
+        &__description {
+            margin-left: 80px;
+            font-size: 1.6rem;
+
+            textarea {
+                width: 80%;
+                resize: none;
+                border-radius: 15px;
+            }
+            
+        }
+
+        &__label {
+            display: grid;
+            grid-template-columns: 60% 0 30%;
+
+            span {
+                grid-column: 1;
+                text-align: center;
+                font-size: 1.2rem;
+            }
+
+            select {
+                grid-column: 3;
+                width: fit-content;
+                height: fit-content;
+                align-self: center;
+            }
+
+            input {
+                grid-column: 3;
+                border: 1px solid grey;
+                height: 40px;
+                width: 100%;
+                align-self: center;
+            }
+        }
+
+        
+
+        
+    }
+}

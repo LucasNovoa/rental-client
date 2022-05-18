@@ -6,10 +6,13 @@ import Footer from '../components/Footer/Footer'
 import { SearchBar } from '../components/SearchBar/SearchBar'
 import Recommended from '../components/Recommended/Recommended'
 
+import Logout from '../components/Logout'
+
 function Home () {
   return (
     <div className='Home'>
       <Header />
+      <Logout />
       <SearchBar />
       <Presentation />
       <Recommended />

@@ -15,17 +15,17 @@ function SliderHost ({ hotels }) {
   }
 
   return (
-    <section className='slider'>
-      <div className='slider__container'>
-        <div className='slider__container__top'>
+    <section className='sliderHost'>
+      <div className='sliderHost__container'>
+        <div className='sliderHost__container__top'>
           <h2>Tus Alojamientos: </h2>
         </div>
-        <div className='slider__container__bottom'>
-          <AiOutlineArrowLeft className='slider__container__bottom__btnl' onClick={slideLeft} />
-          <div className='slider__container__bottom__cards' id='slider'>
+        <div className='sliderHost__container__bottom'>
+          <AiOutlineArrowLeft className='sliderHost__container__bottom__btnl' onClick={slideLeft} />
+          <div className='sliderHost__container__bottom__cards' id='slider'>
             {hotels.map((h) => <UserHotelCard img={h.mainImage} name={h.name} description={h.description} key={h.id} hosts={h.maxPax} stars={h.stars} />)}
           </div>
-          <AiOutlineArrowRight className='slider__container__bottom__btnr' onClick={slideRight} />
+          <AiOutlineArrowRight className='sliderHost__container__bottom__btnr' onClick={slideRight} />
         </div>
       </div>
     </section>

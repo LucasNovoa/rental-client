@@ -13,9 +13,12 @@ import { Hotels } from '../pages/Hotels'
 import Hotel from '../pages/Hotel'
 import Register from '../pages/Register'
 import Loader from '../components/Loader/Loader'
+
 import { Dashboard } from '../dashboard/Dashboard'
+
 import DUsers from '../dashboard/DUsers'
 import DHotels from '../dashboard/DHotels'
+import Reviews from '../components/Review/Reviews.jsx'
 
 import DEditUser from '../dashboard/DEditUser'
 
@@ -48,6 +51,7 @@ function App () {
             <Route path='/dashboard/users/:id' element={<DEditUser />} />
 
             <Route path='/dashboard/hotels' element={<DHotels />} />
+            <Route path='/reviews' element={<Reviews />} />
           </Routes>
         </Layout>
       </BrowserRouter>

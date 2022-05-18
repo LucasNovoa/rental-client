@@ -1,5 +1,6 @@
-import { createEntityAdapter, createSlice } from '@reduxjs/toolkit'
+import { createEntityAdapter, createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { apiSlice } from '../api/apiSlice'
+import axios from 'axios'
 
 const filteredHotelAdapter = createEntityAdapter()
 
@@ -22,7 +23,7 @@ export default hotelSlice.reducer */
 
 /* import axios from 'axios' */
 
-// const URI = 'https://rental-app-server.herokuapp.com/api/v1/hotels'
+const URI = 'https://rental-app-server.herokuapp.com/api/v1/hotels'
 
 /* const initialState = {
   hotels: [],
@@ -56,25 +57,11 @@ export const getFilteredHotels = createAsyncThunk(
   }
 )
 
-export const postHotel = createAsyncThunk(
-  'users/createHotel',
-  async (payload) => {
-    try {
-      const response = await axios.post(URI, payload)
-
-      return response.data
-    } catch (error) {
-      return error.message
-    }
-  }
-)
-
 const hotelsSlice = createSlice({
   name: 'hotels',
   initialState,
   reducers: {
     filterHotels: (state, action) => {
-
       const { city, checkIn, checkOut, guests, highestPrice, stars } = action.payload
       const lower = city && city.toLowerCase()
 
@@ -139,3 +126,16 @@ export const { filterHotels } = hotelsSlice.actions
 
 export default hotelsSlice.reducer
  */
+
+export const postHotel = createAsyncThunk(
+  'hotels/createHotel',
+  async (payload) => {
+    try {
+      const response = await axios.post(URI, payload)
+
+      return response.data
+    } catch (error) {
+      return error.message
+    }
+  }
+)
