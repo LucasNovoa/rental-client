@@ -25,6 +25,8 @@ function useProvideAuth () {
       }
     }
 
+    console.log('Auth' + email, password)
+
     const { data: access_token } = await axios.post('https://rental-app-server.herokuapp.com/api/v1/auth/login', { email, password }, options)
 
     if (access_token) {

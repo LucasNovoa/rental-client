@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 
-import { FcGoogle } from 'react-icons/fc'
+import LoginButton from '../components/LoginButton'
 
 import { useNavigate, Link } from 'react-router-dom'
 
@@ -49,6 +49,9 @@ function Login () {
         <Link to='/register'>Registrarme</Link>
 
       </form>
+
+      <LoginButton />
+
       <Footer />
     </section>
   )

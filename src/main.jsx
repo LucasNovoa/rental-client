@@ -20,7 +20,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <Auth0Provider
         domain='nicolas-cohen-dev.us.auth0.com'
         clientId='C6VewSCIzcAXlaXLvWxuERTPVDFmM8qK'
-        redirectUri={window.location.origin}
+        redirectUri='http://localhost:3000/profile'
       >
         <App />
       </Auth0Provider>,

@@ -55,3 +55,22 @@
     color: crimson;
   }
 }
+
+button.LoginButton {
+  color: black;
+  border: 1px solid black;
+  font-weight: 300;
+  background-color: white;
+  box-shadow: $shadow-04;
+  font-size: 1.3rem;
+  border-radius: 100px;
+  padding: 7px 21px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 30px auto;
+  outline: none;
+  svg {
+    margin-right: 14px;
+  }
+}
