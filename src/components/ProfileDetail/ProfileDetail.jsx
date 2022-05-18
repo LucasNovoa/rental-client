@@ -54,7 +54,7 @@ const ProfileDetail = ({ user, post, setPost }) => {
         ? <div>
           <SliderHost className='profiledetail__slider' hotels={hostHotels} />
           <div className='profiledetail__divider' />
-          </div>
+        </div>
         : <h1>No tienes alojamientos en alquiler</h1>}
       <div className='profiledetail__divider' />
 

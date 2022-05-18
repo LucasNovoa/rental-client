@@ -7,7 +7,9 @@ import Loader from '../../components/Loader/Loader'
 import { useGetHotelsQuery, selectAllHotels } from '../../redux/services/hotelsServices'
 
 function Slider () {
-  const hotels = useSelector(selectAllHotels)
+  const allHotels = useSelector(selectAllHotels)
+  // const hotels = useSelector(selectAllHotels)
+  const hotels = allHotels.filter(e => e.isBanned === false).filter(e => e.isDeleted === false)
 
   const {
     isLoading,
