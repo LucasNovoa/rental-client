@@ -1,16 +1,17 @@
+/* eslint-disable react/jsx-closing-tag-location */
 import { useEffect, useState } from 'react'
 import Footer from '../components/Footer/Footer'
 import Header from '../components/Header/Header'
 import ProfileContainer from '../containers/ProfileContainer/ProfileContainer'
 import Loader from '../components/Loader/Loader'
 import '../scss/profile.scss'
-import { useNavigate } from 'react-router'
 import { useAuth0 } from '@auth0/auth0-react'
 import { useAuth } from '../hooks/useAuth'
 import axios from 'axios'
+import { useNavigate } from 'react-router'
 
 const Profile = () => {
-  const navigateTo = useNavigate()
+  const navigate = useNavigate()
   const [userInfo, setUserInfo] = useState(null)
   const { user, isAuthenticated, isLoading } = useAuth0()
 
@@ -35,9 +36,7 @@ const Profile = () => {
 
   useEffect(() => {
     const userJSON = window.localStorage.getItem('user')
-    if (!userJSON) {
-      navigateTo('/login')
-    } else if (userJSON) {
+    if (userJSON) {
       const userLocal = JSON.parse(userJSON)
 
       setUserInfo(userLocal)
@@ -47,12 +46,12 @@ const Profile = () => {
   return (
 
     !userInfo
-      ? <Loader className='loader' />
+      ? <Loader className='loader' user={userInfo} />
       : <div className='Profile'>
         <Header />
         <ProfileContainer user={userInfo} />
         <Footer />
-        </div>
+      </div>
   )
 }
 
