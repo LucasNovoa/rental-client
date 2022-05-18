@@ -2,14 +2,15 @@
 import '../scss/register.scss'
 import { useDispatch } from 'react-redux'
 import React, { useState } from 'react'
-import { postUser } from '../redux/slices/userSlice'
 import Header from '../components/Header/Header'
 import '../scss/RegisterType.scss'
 import swal from 'sweetalert'
 import { useNavigate } from 'react-router-dom'
 import Footer from '../components/Footer/Footer'
+import { useAddNewUserQuery } from '../redux/services/usersServices'
 
 function Register () {
+  const [addNewUser, { isLoading }] = useAddNewUserQuery()
   const dispatch = useDispatch()
   const navigateTo = useNavigate()
   // eslint-disable-next-line no-unused-vars
@@ -41,7 +42,7 @@ function Register () {
     })
   }
 
-  function handleSubmit (e) {
+  async function handleSubmit (e) {
     e.preventDefault()
     if (input.typePerson === 'natural') {
       if (!input.email || !input.password || !input.firstName || !input.lastName || !input.repeatPass) {
@@ -52,22 +53,26 @@ function Register () {
           button: 'Ok!'
         })
       } else {
-        dispatch(postUser(input))
-        swal({
-          title: 'Éxito',
-          text: '¡Usuario creado con éxito!',
-          icon: 'success',
-          button: 'Ok!'
-        })
-        setInput({
-          firstName: '',
-          lastName: '',
-          email: '',
-          password: '',
-          repeatPass: '',
-          image: ''
-        })
-        navigateTo('/login')
+        try {
+          await addNewUser({ body: input })
+          swal({
+            title: 'Éxito',
+            text: '¡Usuario creado con éxito!',
+            icon: 'success',
+            button: 'Ok!'
+          })
+          setInput({
+            firstName: '',
+            lastName: '',
+            email: '',
+            password: '',
+            repeatPass: '',
+            image: ''
+          })
+          navigateTo('/login')
+        } catch (e) {
+          console.error(e)
+        }
       }
     } else if (input.typePerson === 'legal') {
       if (!input.email || !input.password || !input.organization || !input.repeatPass) {

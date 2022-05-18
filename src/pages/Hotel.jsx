@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { useParams, useLocation } from 'react-router-dom'
 import Footer from '../components/Footer/Footer'
 import Header from '../components/Header/Header'
@@ -15,12 +16,14 @@ import Loader from '../components/Loader/Loader'
 import { useGetHotelsByNameQuery } from '../redux/services/hotelsServices'
 import OwnerCard from '../components/OwnerCard/OwnerCard'
 import Modal from 'react-modal'
+import { updateReservation, selectReservation } from '../redux/slices/reservationSlice'
+import { selectFilters } from '../redux/slices/filtersSlice'
 
 const Hotel = () => {
   const location = useLocation()
-  const filters = location.state
+  const dispatch = useDispatch()
+  const filters = useSelector(selectFilters)
   const { name } = useParams()
-
   const [res, setRes] = useState({
     name,
     cityName: filters.city ?? '',
@@ -32,6 +35,7 @@ const Hotel = () => {
   })
 
   const decodeName = decodeURI(name)
+
   const {
     data: hotel,
     isLoading,
@@ -53,33 +57,37 @@ const Hotel = () => {
     content = <Loader />
   } else if (isSuccess) {
     const { ids, entities } = hotel
+
+    dispatch(updateReservation({
+      name: entities[ids].name,
+      cityName: entities[ids].City.name,
+      guests: entities[ids].guests
+    }))
+
     content = (
       <div>
         <HotelCard hotel={entities[ids]} />
-        <div className='hotel__container'>
-          <Reservation
-            res={res}
-            setRes={setRes}
-            hotel={entities[ids]}
-            filters={filters}
-          />
-          <div className='hotel__details'>
-            <OwnerCard userId={entities[ids].UserId} />
-            <>
-              <Calendar filters={filters} />
-              <Amenities hotels={entities[ids]} />
-              <Map width='50vw' height={400} hotels={[entities[ids]]} zoom='15' />
-              <Resenas data={datos} />
-            </>
-            <Modal
-              isOpen={res.open}
-              onRequestClose={closeModal}
-              className='hotel__modal'
-              overlayClassName='hotel__overlay'
-            >
-              <Book setRes={setRes} res={res} bookHotel={entities[ids]} />
-            </Modal>
-          </div>
+        <Reservation
+          hotel={entities[ids]}
+          setRes={setRes}
+          res={res}
+        />
+        <div className='hotel__details'>
+          <OwnerCard userId={entities[ids].UserId} />
+          <>
+            <Calendar filters={filters} />
+            <Amenities hotels={entities[ids]} />
+            <Map width='50vw' height={400} hotels={[entities[ids]]} zoom='15' />
+            <Resenas data={datos} />
+          </>
+          <Modal
+            isOpen={res.open}
+            onRequestClose={closeModal}
+            className='hotel__modal'
+            overlayClassName='hotel__overlay'
+          >
+            <Book setRes={setRes} res={res} bookHotel={entities[ids]} />
+          </Modal>
         </div>
       </div>
     )
