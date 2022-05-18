@@ -7,7 +7,7 @@ import Loader from '../Loader/Loader'
 import SliderBooking from '../SliderBooking/SliderBooking'
 import Bookings from '../Bookings/Bookings'
 import { selectAllHotels, useGetHotelsQuery } from '../../redux/services/hotelsServices'
-import Reviews from '../Reviews/Reviews.jsx'
+import Reviews from '../Review/Reviews.jsx'
 
 const ProfileDetail = ({ user, post, setPost }) => {
   const dispatch = useDispatch()
@@ -64,6 +64,7 @@ const ProfileDetail = ({ user, post, setPost }) => {
           {rev !== 0 && <Reviews setRev={setRev} />}
           </div>
         : <h1>No tienes Reservas</h1>}
+      <div className='profiledetail__divider' />
     </div>
   )
 }

@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import './picturean.scss'
 import './picture.scss'
 import axios from 'axios'
-import { clearPrewarmedResources } from 'mapbox-gl'
 
 export default function Picture ({ user, setOn }) {
   const [imagen, setImagen] = useState('')
@@ -17,15 +16,7 @@ export default function Picture ({ user, setOn }) {
 
   async function handleClick (e) {
     e.preventDefault()
-    // console.log(localStorage.getItem('user.image'))
     await axios.patch(URI, { image: imagen.imagen })
-
-    // localStorage.setItem('user.image', JSON.stringify(imagen.imagen))
-    // let image = ''
-    // localStorage.setItem('image', JSON.stringify(user))
-    // image = imagen.imagen
-    // console.log(image)
-
     setOn(false)
     window.location.reload()
   }
