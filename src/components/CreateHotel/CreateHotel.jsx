@@ -90,7 +90,7 @@ function CreateHotel ({ userId, submit }) {
         // await addNewHotel({ body: input })
         dispatch(postHotel(input))
         submit(e)
-        setTimeout(window.location.reload(), 2000)
+        // setTimeout(window.location.reload(), 2000)
 
         swal({
           title: 'Éxito',
@@ -226,15 +226,21 @@ function CreateHotel ({ userId, submit }) {
                   <br />
                   <input name='price' placeholder='Precio...' type='number' onChange={(e) => handleChange(e)} />
                 </label>
-                <label className='publication__form__check'>
+                <label className='publication__form__input'>
                   <span>Seleccione las Amenities: </span>
                   <br />
                   <br />
-                  <div className='publication__form__check'>
-                    {amenitiesList.map(e => (
-                      <><p>{e}</p><br /><input className='publication__form__check__box' key={e} type='checkbox' name='amenities' value={e} onChange={e => handleCheck(e)} /></>
+                  <select name='amenities' onChange={e => handleCheck(e)}>
+                    <option name='amenities' key='' value='all'>Amenities</option>
+                    {amenitiesList.map(g => (
+                      <option value={g} key={g}>{g}</option>
                     ))}
-                  </div>
+                    {/* {amenitiesList.map(e => (
+                      <><p>{e}</p><br /><input className='publication__form__check__box' key={e} type='checkbox' name='amenities' value={e} onChange={e => handleCheck(e)} /></>
+                    ))} */}
+                    {/* <p>{input.amenities?.map(e => e)}</p> */}
+                  </select>
+
                 </label>
               </>}
             {next === 4 &&

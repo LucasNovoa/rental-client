@@ -6,14 +6,14 @@ import { useNavigate } from 'react-router'
 function Bookings ({ setBook, book, bookings, rev, setRev }) {
   const hotel = bookings.find(e => e.id === book)
 
-  const arrivePre = hotel.checkIn.substring(0, 10)
-  const departPre = hotel.checkOut.substring(0, 10)
+  // const arrivePre = hotel.checkIn.substring(0, 10)
+  // const departPre = hotel.checkOut.substring(0, 10)
 
-  const arrive = dateFormat(arrivePre)
-  const depart = dateFormat(departPre)
+  const arrive = dateFormat(hotel.checkIn)
+  const depart = dateFormat(hotel.checkOut)
 
   function dateFormat (date) {
-    const arr = date.toLocaleString('es-AR').split(' ')[0].split('-')
+    const arr = date.toLocaleString('es-AR').split(' ')[0].split('/')
     let month = ''
 
     switch (arr[1]) {
@@ -31,7 +31,7 @@ function Bookings ({ setBook, book, bookings, rev, setRev }) {
       case '12': month = 'Dic'; break
     }
 
-    return arr[2] + ' ' + month + ' ' + arr[0]
+    return arr[0] + ' ' + month + ' ' + arr[2]
   }
 
   function handleClick (e) {
@@ -46,29 +46,30 @@ function Bookings ({ setBook, book, bookings, rev, setRev }) {
 
   function handleReview (e) {
     e.preventDefault()
-    setBook(0)
+    // setBook(0)
     setRev(1)
   }
 
   return (
-    <div className='bookingCard'>
-      <button className='bookingCard__close' onClick={e => handleClick(e)}> Cerrar </button>
-      <div className='bookingCard__image'>
-        <img className='bookingCard__image__img' src={hotel.mainImage} />
+    console.log(hotel.checkIn),
+      <div className='bookingCard'>
+        <button className='bookingCard__close' onClick={e => handleClick(e)}> Cerrar </button>
+        <div className='bookingCard__image'>
+          <img className='bookingCard__image__img' src={hotel.mainImage} />
+        </div>
+        <div className='bookingCard__info'>
+          <h1>{hotel.hotelName}</h1>
+          <p>Check-In: {arrive}</p>
+          <p>Check-Out: {depart}</p>
+          <p>Precio por noche: ${hotel.pricePerNight}</p>
+          <p>Estado: {hotel.paidOut === true ? 'Pago Completado' : 'Pago Pendiente'}</p>
+          <p>Método de pago: {hotel.payMethod}</p>
+          <p>Cantidad de Noches: {hotel.nights}</p>
+          {hotel.paidOut === false && hotel.isCancelled === false && <button className='bookingCard__info__pay' onClick={e => handlePay(e)}>Pagar ahora</button>}
+          {hotel.isCancelled === true && <p>RESERVA CANCELADA</p>}
+          {hotel.paidOut === true && hotel.isCancelled === false && <button setRev={setRev} className='bookingCard__info__pay' onClick={e => handleReview(e)}>Deja tu reseña!</button>}
+        </div>
       </div>
-      <div className='bookingCard__info'>
-        <h1>{hotel.hotelName}</h1>
-        <p>Check-In: {arrive}</p>
-        <p>Check-Out: {depart}</p>
-        <p>Precio por noche: ${hotel.pricePerNight}</p>
-        <p>Estado: {hotel.paidOut === true ? 'Pago Completado' : 'Pago Pendiente'}</p>
-        <p>Método de pago: {hotel.payMethod}</p>
-        <p>Cantidad de Noches: {hotel.nights}</p>
-        {hotel.paidOut === false && hotel.isCancelled === false && <button className='bookingCard__info__pay' onClick={e => handlePay(e)}>Pagar ahora</button>}
-        {hotel.isCancelled === true && <p>RESERVA CANCELADA</p>}
-        {hotel.paidOut === true && hotel.isCancelled === false && <button setRev={setRev} className='bookingCard__info__pay' onClick={e => handleReview(e)}>Deja tu reseña!</button>}
-      </div>
-    </div>
   )
 }
 

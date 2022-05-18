@@ -4,11 +4,13 @@ import Header from '../components/Header/Header'
 import ProfileContainer from '../containers/ProfileContainer/ProfileContainer'
 import Loader from '../components/Loader/Loader'
 import '../scss/profile.scss'
+import { useNavigate } from 'react-router'
 import { useAuth0 } from '@auth0/auth0-react'
 import { useAuth } from '../hooks/useAuth'
 import axios from 'axios'
 
 const Profile = () => {
+  const navigateTo = useNavigate()
   const [userInfo, setUserInfo] = useState(null)
   const { user, isAuthenticated, isLoading } = useAuth0()
 
@@ -33,8 +35,9 @@ const Profile = () => {
 
   useEffect(() => {
     const userJSON = window.localStorage.getItem('user')
-
-    if (userJSON) {
+    if (!userJSON) {
+      navigateTo('/login')
+    } else if (userJSON) {
       const userLocal = JSON.parse(userJSON)
 
       setUserInfo(userLocal)
@@ -49,7 +52,7 @@ const Profile = () => {
         <Header />
         <ProfileContainer user={userInfo} />
         <Footer />
-      </div>
+        </div>
   )
 }
 

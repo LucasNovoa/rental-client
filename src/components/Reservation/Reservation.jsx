@@ -4,7 +4,7 @@ import { DateRangePicker } from 'react-date-range'
 import 'react-date-range/dist/styles.css'
 import 'react-date-range/dist/theme/default.css'
 import './Reservation.scss'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router'
 import { selectAllCities } from '../../redux/services/hotelsServices'
 import { selectReservation, updateReservation } from '../../redux/slices/reservationSlice'
 import swal from 'sweetalert'
@@ -14,38 +14,15 @@ const Reservation = ({ hotel, setRes, res }) => {
   const userJSON = window.localStorage.getItem('user')
   const navigate = useNavigate()
   console.log(!userJSON)
-  /* const cities = useSelector(selectAllCities)
-
-   */
-  /*
-  const [results, setResults] = useState(false)
-  const [renderCalendar, setRenderCalendar] = useState(false)
-  const [startDate, setStartDate] = useState(new Date())
-  const [endDate, setEndDate] = useState(startDate)
-  const [renderCalendar, setRenderCalendar] = useState(false)
-  const [renderAmount, setRenderAmount] = useState(false)
-  const [amount, setAmount] = useState(reservations.guests ?? 1)
-
-  const [place, setPlace] = useState()
-  const [start, setStart] = useState()
-  const [end, setEnd] = useState()
-  const [guests, setGuests] = useState()
-
-  const cityId = cities.find(e => e.name === place) && cities.find(e => e.name === place).id
-
-  const selectionRange = {
-    startDate,
-    endDate,
-    key: 'selection'
-  } */
-
-  /*   const totalNights = end.split(' ')[0] - start.split(' ')[0]
- */
 
   const handleSearch = (e) => {
     e.preventDefault()
     let errors = ''
     if (!userJSON) {
+      swal({
+        title: 'Para reservar debe estar logeado',
+        icon: 'error'
+      })
       navigate('/login')
     } else {
       if (reservations.checkIn === 'Desde...') {
