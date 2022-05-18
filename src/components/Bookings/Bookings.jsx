@@ -4,6 +4,7 @@ import './bookings.scss'
 import { useNavigate } from 'react-router'
 
 function Bookings ({ setBook, book, bookings, rev, setRev }) {
+  // const navigateTo = useNavigate()
   const hotel = bookings.find(e => e.id === book)
 
   // const arrivePre = hotel.checkIn.substring(0, 10)

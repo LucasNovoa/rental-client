@@ -50,11 +50,11 @@ const ProfileDetail = ({ user, post, setPost }) => {
         <button className='profiledetail__post' onClick={e => handleCreate(e)}>Publica tu alojamiento!</button>}
       <div className='profiledetail__divider' />
       {content}
-      {hostHotels?.filter(e => e.isBanned === false).filter(e => e.isDeleted === false).length > 0
+      {hostHotels?.filter(e => e.isDeleted === false).length > 0
         ? <div>
           <SliderHost className='profiledetail__slider' hotels={hostHotels} />
           <div className='profiledetail__divider' />
-          </div>
+        </div>
         : user.role === 'customer'
           ? <h1>No tienes alojamientos en alquiler</h1>
           : user.role === 'owner' && <h1>Tus alojamientos se encuentran penalizados</h1>}
@@ -65,7 +65,7 @@ const ProfileDetail = ({ user, post, setPost }) => {
           {book !== 0 && rev === 0 && <Bookings setBook={setBook} book={book} bookings={bookings} user={user} rev={rev} setRev={setRev} />}
           {book === 0 && rev === 0 && <SliderBooking hotels={hotels} user={user} bookings={bookings} setBook={setBook} book={book} />}
           {rev !== 0 && <Reviews setRev={setRev} book={book} user={user} setBook={setBook} />}
-          </div>
+        </div>
         : <h1>No tienes Reservas</h1>}
       <div className='profiledetail__divider' />
 
