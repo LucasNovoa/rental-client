@@ -72,6 +72,8 @@ function useProvideAuth () {
 
   const logOut = () => {
     Cookie.remove('token')
+    const googleUser = window.localStorage.getItem('google')
+    if (googleUser) { window.localStorage.removeItem('google') }
     window.localStorage.removeItem('user')
     setUser(null)
     delete axios.defaults.headers.Authorization

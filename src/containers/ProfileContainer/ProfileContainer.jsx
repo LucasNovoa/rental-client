@@ -7,16 +7,8 @@ import CreateHotel from '../../components/CreateHotel/CreateHotel'
 import { selectUserById, useGetUserDetailQuery } from '../../redux/services/usersServices'
 import Loader from '../../components/Loader/Loader'
 
-import { useNavigate } from 'react-router'
-
 const ProfileContainer = ({ user }) => {
   const [post, setPost] = useState(false)
-
-  const navigateTo = useNavigate()
-
-  if (!user?.email) {
-    navigateTo('/login')
-  }
 
   const {
     data: userForId,

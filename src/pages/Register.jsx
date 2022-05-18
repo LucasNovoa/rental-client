@@ -7,10 +7,11 @@ import '../scss/RegisterType.scss'
 import swal from 'sweetalert'
 import { useNavigate } from 'react-router-dom'
 import Footer from '../components/Footer/Footer'
-import { useAddNewUserQuery } from '../redux/services/usersServices'
+// import { useAddNewUserQuery } from '../redux/services/usersServices'
+import { postUser } from '../redux/slices/userSlice'
 
 function Register () {
-  const [addNewUser, { isLoading }] = useAddNewUserQuery()
+  // const [addNewUser, { isLoading }] = useAddNewUserQuery()
   const dispatch = useDispatch()
   const navigateTo = useNavigate()
   // eslint-disable-next-line no-unused-vars
@@ -54,7 +55,8 @@ function Register () {
         })
       } else {
         try {
-          await addNewUser({ body: input })
+          // await addNewUser({ body: input })
+          dispatch(postUser(input))
           swal({
             title: 'Éxito',
             text: '¡Usuario creado con éxito!',
