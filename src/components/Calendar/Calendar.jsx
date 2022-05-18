@@ -9,8 +9,8 @@ import './Calendar.scss'
 const Calendar = () => {
   const dispatch = useDispatch()
   const reservations = useSelector(selectReservation)
-  const [startDate, setStartDate] = useState(reservations.checkIn !== 'Desde...' ? dateFormat(reservations.checkIn) : new Date())
-  const [endDate, setEndDate] = useState(reservations.checkOut !== 'Hasta...' ? dateFormat(reservations.checkOut) : startDate)
+  const [startDate, setStartDate] = useState(new Date())
+  const [endDate, setEndDate] = useState(startDate)
 
   const selectionRange = {
     startDate,
