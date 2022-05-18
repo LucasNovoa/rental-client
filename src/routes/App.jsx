@@ -13,6 +13,7 @@ import { Hotels } from '../pages/Hotels'
 import Hotel from '../pages/Hotel'
 import Register from '../pages/Register'
 import Loader from '../components/Loader/Loader'
+import { NotFound } from '../pages/NotFound.jsx'
 
 import { Dashboard } from '../dashboard/Dashboard'
 
@@ -52,6 +53,7 @@ function App () {
 
             <Route path='/dashboard/hotels' element={<DHotels />} />
             <Route path='/reviews' element={<RevPage />} />
+            <Route path='*' element={<NotFound />} />
           </Routes>
         </Layout>
       </BrowserRouter>
