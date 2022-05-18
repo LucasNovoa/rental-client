@@ -3,22 +3,36 @@ import { useSelector } from 'react-redux'
 import { selectReservation } from '../../redux/slices/reservationSlice'
 import './book.scss'
 import axios from 'axios'
+import { useNavigate } from 'react-router'
 
 function Book ({ setRes, res, bookHotel }) {
   const reservation = useSelector(selectReservation)
   const userJSON = JSON.parse(window.localStorage.getItem('user'))
+  const navigate = useNavigate()
 
-  const checkInDate = `${reservation.checkIn.getDate()}-${reservation.checkIn.getMonth()}-${reservation.checkIn.getFullYear()}`
-  const checkOutDate = `${reservation.checkOut.getDate()}-${reservation.checkOut.getMonth()}-${reservation.checkOut.getFullYear()}`
+  // const checkInDate = `${reservation.checkIn.getDate()}-${reservation.checkIn.getMonth()}-${reservation.checkIn.getFullYear()}`
+  // const checkOutDate = `${reservation.checkOut.getDate()}-${reservation.checkOut.getMonth()}-${reservation.checkOut.getFullYear()}`
+  const checkInDate = dateBack(reservation.checkIn)
+  const checkOutDate = dateBack(reservation.checkOut)
 
   const [pay, setPay] = useState(false)
+  const [linkMP, setLinkMP] = useState('')
 
-  function handleClick (e) {
+  function handleCancel (e) {
     e.preventDefault()
     setRes({
       ...res,
       open: false
     })
+  }
+
+  function handlePayLater (e) {
+    e.preventDefault()
+    setRes({
+      ...res,
+      open: false
+    })
+    navigate('/profile')
   }
 
   const userId = Number(userJSON.id)
@@ -29,18 +43,17 @@ function Book ({ setRes, res, bookHotel }) {
     axios.post('https://rental-app-server.herokuapp.com/api/v1/bookings', {
       checkIn: checkInDate,
       checkOut: checkOutDate,
-      UserId: 1,
-      HotelId: 2
-    })
+      UserId: userId,
+      HotelId: hotelId
+    }).then(r => setLinkMP(r.data.initPointMP))
     setPay(true)
-    // aca iría el post del booking
   }
+
+  console.log('userJSOON: ', hotelId)
 
   function handlePay (e) {
     e.preventDefault()
-    // window.open(`${hotel.initPointMP}`)
-    // aca habría que llamar al último elemento de Bookings del usuario, la propiedad initPointMP
-    // user.Bookings[user.Bookings.length - 1].initPointMP
+    window.open(linkMP)
   }
   return (
     <div className='booking'>
@@ -59,13 +72,13 @@ function Book ({ setRes, res, bookHotel }) {
         <div className='booking__info__btns'>
           {!pay &&
             <>
-              <button className='booking__info__btns__red' onClick={e => handleClick(e)}>Cancelar</button>
+              <button className='booking__info__btns__red' onClick={e => handleCancel(e)}>Cancelar</button>
               <button className='booking__info__btns__red' onClick={e => handleConfirm(e)}>Confirmar</button>
             </>}
           {pay &&
             <>
               <button className='booking__info__btns__red' onClick={e => handlePay(e)}> Pagar ahora </button>
-              <button className='booking__info__btns__red' onClick={e => handleClick(e)}> Pagar más tarde </button>
+              <button className='booking__info__btns__red' onClick={e => handlePayLater(e)}> Pagar más tarde </button>
             </>}
 
         </div>
@@ -75,3 +88,14 @@ function Book ({ setRes, res, bookHotel }) {
 }
 
 export default Book
+
+function dateBack (date) {
+  const yyyy = date.getFullYear()
+  let mm = date.getMonth() + 1 // Months start at 0!
+  let dd = date.getDate()
+
+  if (dd < 10) dd = `0${dd}`
+  if (mm < 10) mm = `0${mm}`
+
+  return `${dd}/${mm}/${yyyy}`
+}
