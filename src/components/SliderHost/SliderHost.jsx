@@ -23,7 +23,7 @@ function SliderHost ({ hotels }) {
         <div className='sliderHost__container__bottom'>
           <AiOutlineArrowLeft className='sliderHost__container__bottom__btnl' onClick={slideLeft} />
           <div className='sliderHost__container__bottom__cards' id='slider'>
-            {hotels.filter(e => e.isBanned === false).filter(e => e.isDeleted === false).map((h) => <UserHotelCard img={h.mainImage} name={h.name} description={h.description} key={h.id} hosts={h.maxPax} stars={h.stars} />)}
+            {hotels.map((h) => <UserHotelCard img={h.mainImage} name={h.name} description={h.description} key={h.id} hosts={h.maxPax} stars={h.stars} />)}
           </div>
           <AiOutlineArrowRight className='sliderHost__container__bottom__btnr' onClick={slideRight} />
         </div>
