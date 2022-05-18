@@ -21,7 +21,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <Auth0Provider
         domain='nicolas-cohen-dev.us.auth0.com'
         clientId='C6VewSCIzcAXlaXLvWxuERTPVDFmM8qK'
-        redirectUri='http://localhost:3000/profile'
+        redirectUri='https://rental-app-client.netlify.app/profile'
       >
         <App />
       </Auth0Provider>,
