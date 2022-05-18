@@ -35,9 +35,7 @@ const Profile = () => {
 
   useEffect(() => {
     const userJSON = window.localStorage.getItem('user')
-    if (!userJSON) {
-      navigateTo('/login')
-    } else if (userJSON) {
+    if (userJSON) {
       const userLocal = JSON.parse(userJSON)
 
       setUserInfo(userLocal)
