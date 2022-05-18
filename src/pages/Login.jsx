@@ -1,8 +1,9 @@
 import { useRef } from 'react'
 
-import { FcGoogle } from 'react-icons/fc'
+import LoginButton from '../components/LoginButton'
 
 import { useNavigate, Link } from 'react-router-dom'
+
 import Footer from '../components/Footer/Footer'
 
 import Header from '../components/Header/Header'
@@ -28,12 +29,6 @@ function Login () {
     })
   }
 
-  const handleGoogleSubmit = (event) => {
-    event.preventDefault()
-
-    auth.signInGoogle()
-  }
-
   return (
     <section className='bg'>
       <Header />
@@ -50,10 +45,13 @@ function Login () {
 
         <button className='buttonLoginPage' type='submit'>Ingresar</button>
 
-        <button className='buttonLoginPageGG' type='submit' onClick={() => auth.signInGoogle()}> <FcGoogle /> Ingresar con Google</button>
-        <Link to='/passwordRecovery'> Olvidé mi contraseña</Link>
+        <Link to='/passwordRecovery'>Olvidé mi contraseña</Link>
+        <Link to='/register'>Registrarme</Link>
 
       </form>
+
+      <LoginButton />
+
       <Footer />
     </section>
   )

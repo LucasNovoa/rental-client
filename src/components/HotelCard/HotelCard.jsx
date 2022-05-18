@@ -3,13 +3,26 @@ import './hotelcard.scss'
 import { FiShare2 } from 'react-icons/fi'
 import { MdFavoriteBorder } from 'react-icons/md'
 import Share from '../Share/Share'
+import { useNavigate } from 'react-router'
+import axios from 'axios'
 
 const HotelCard = ({ hotel }) => {
   const [share, setShare] = useState(false)
   const handleShare = () => {
     setShare(!share)
   }
+  const navigate = useNavigate()
+  const userJSON = window.localStorage.getItem('user')
 
+  const handleFavorites = () => {
+    if (!userJSON) {
+      navigate('/login')
+    } else {
+      axios.patch(`https://rental-app-server.herokuapp.com/api/v1/users/${userJSON.id}`, {
+        favHotels: [...hotel.id]
+      })
+    }
+  }
   return (
     <section className='hotelcard'>
       <div className='hotelcard__container'>
@@ -19,7 +32,7 @@ const HotelCard = ({ hotel }) => {
             <div className='hotelcard__container__data__title__anchors'>
               <a className='hotelcard__container__data__title__anchors__a' onClick={handleShare}><FiShare2 />Compartir</a>
               {share && <Share hotel={hotel} />}
-              <a className='hotelcard__container__data__title__anchors__a'><MdFavoriteBorder />Favoritos</a>
+              <a className='hotelcard__container__data__title__anchors__a' onClick={handleFavorites}><MdFavoriteBorder />Favoritos</a>
             </div>
           </div>
           <div className='hotelcard__container__data__sec'>

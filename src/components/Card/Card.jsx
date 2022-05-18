@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 
 function Card ({ img, name, description, price, hosts, stars, filters = {} }) {
   const encodeName = encodeURI(name)
-  console.log(encodeName)
+
   return (
     <div className='card'>
       <Link to={`/hotel/${encodeName}`} state={filters} className='link'>

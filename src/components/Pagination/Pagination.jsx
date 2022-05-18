@@ -16,7 +16,7 @@ function Pagination ({ page, setPage, maxPage }) {
   return (
     <div className='pagination'>
       <AiOutlineArrowLeft className='pagination__btnr' onClick={prevPage} />
-      <span>{page + 1} de {Math.floor(maxPage + 1)}</span>
+      <span>{page + 1} de {Math.round(maxPage + 1)}</span>
       <AiOutlineArrowRight className='pagination__btnl' onClick={nextPage} />
     </div>
   )
