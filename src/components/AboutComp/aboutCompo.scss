@@ -60,24 +60,31 @@
       &__pbottom {
         margin-bottom: 48px;
       }
+
       &__btn {
-        padding: 26px 38px;
-        margin-right: 26px;
-        font-size: 18px;
-        line-height: 20px;
-        color: #191919;
+        width: 240px;
+        outline: none;
+        color: black;
+        padding: 11px 22px;
         background-color: white;
-        border: 1px solid #eeeeee;
-        border-radius: 96px;
-        box-shadow: 0 2px 12px 0 rgb(20 20 43 / 8%);
+        border-radius: 76px;
+        border: none;
+        margin: 0 auto;
+        // margin-left: 50px;
+        // margin-right: 26px;
+        font-size: 1.25rem;
+        cursor: pointer;
+        box-shadow: 0 2px 12px 0 rgb(20 20 43 / 30%);
       }
 
       &__btn:hover {
-        cursor: pointer;
-        background-color: #ff3f3f;
-        color: white;
-        transition: background-color 0.3s ease;
-        transform: translate(0, -2px);
+        background-color: white;
+        transform: scale(1.05)
+      }
+
+      &__btn:focus {
+        background-color: white;
+        transform: scale(0.95)
       }
     }
   }

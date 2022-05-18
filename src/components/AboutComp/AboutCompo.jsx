@@ -21,9 +21,9 @@ function AboutCompo () {
         </div>
         <div className='about__container__data'>
           <h2 className='about__container__data__title'>¿Qué nos hace diferentes?</h2>
-          <p className='about__container__data__ptop'>Lorem ipsum dolor sit ame consectetur adipiscing elit at imperdiet vehicula sem in turpis convallis sit mauris dolorolmel adipiscing duis vulputate non odio eget sit.</p>
+          <p className='about__container__data__ptop'>Nuestra aplicación es pionera en brindar un servicio de alquiler de alojamiento tanto a hoteles, hostels, y residencias dedicadas al turismo, como a propietarios particulares que busquen rentar un alojamiento propio.</p>
           <div className='about__container__data__divider' />
-          <p className='about__container__data__pbottom'>Nisl suscipit adipiscing bibendum est et sollicitudin ac orci phasellus egestas tellus rutrum tristique nulla aliquet enim dsolor tortor parturient montes nascetur ridiculus mus mauris. In dictum non consectetur a erat nam.</p>
+          <p className='about__container__data__pbottom'>Hemos diseñado y desarrollado una plataforma que brinde soluciones simples, con una interfaz intuitiva, al alcance de todos los usuarios que quieran formar parte de nuestra comunidad.</p>
           <button className='about__container__data__btn'>Sobre Nosotros</button>
         </div>
       </div>

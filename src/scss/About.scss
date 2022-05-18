@@ -1,6 +1,7 @@
 @import "./vars";
 
 .About {
+
   &__Us {
     padding: 250px 0;
     height: 100vh;
@@ -21,15 +22,16 @@
       text-align: center;
 
       h1 {
-        font-size: 6rem;
-        margin-bottom: 20px;
+        margin-top: 50px;
+        margin-bottom: 10px;
+        font-size: 4rem;
       }
 
       p {
         width: 700px;
         margin: 0 auto;
         line-height: 2;
-        font-size: 2rem;
+        font-size: 1.7rem;
       }
     }
   }
@@ -43,20 +45,19 @@
       display: flex;
       flex-direction: column;
       justify-content: space-evenly;
-      margin: 15px;
+      margin: 15px auto;
       border: 1px solid rgba(0, 0, 0, 0.122);
       border-radius: 20px;
       text-align: center;
-      height: 800px;
-      width: 600px;
+      height: 70vh;
+      width: 40vw;
       padding: 50px 7.5%;
 
       h2 {
-        font-size: 3rem;
-        margin-bottom: 20px;
+        font-size: 2.5rem;
       }
       p {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
         line-height: 2;
         overflow: hidden;
       }
@@ -64,7 +65,7 @@
   }
 
   &__Images {
-    margin: 25px 15%;
+    margin: 105px 15%;
 
     display: flex;
 
