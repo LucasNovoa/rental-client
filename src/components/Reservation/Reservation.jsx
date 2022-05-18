@@ -21,7 +21,7 @@ const Reservation = ({ hotel, setRes, res }) => {
     if (!userJSON) {
       swal({
         title: 'Para reservar debe estar logeado',
-        icon: error
+        icon: 'error'
       })
       navigate('/login')
     } else {
