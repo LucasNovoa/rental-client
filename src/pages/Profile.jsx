@@ -37,7 +37,7 @@ const Profile = () => {
           button: {
             text: 'Registrarme'
           }
-        }).then(() => logout({ returnTo: 'http://localhost:3000/register' }))
+        }).then(() => logout({ returnTo: 'https://rental-app-client.netlify.app/register' }))
       })
     }
     awaitGoogle()
