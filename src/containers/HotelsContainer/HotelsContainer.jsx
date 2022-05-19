@@ -12,16 +12,17 @@ export const HotelsContainer = () => {
   const { city, otherFilters, ranges } = filters
   const hotels = city !== '' ? useSelector(selectAllHotels).filter(hotel => hotel.City.name === city) : useSelector(selectAllHotels)
 
-  const otherFilteredHotels = hotels.filter(function (hotel) {
-    for (const key in otherFilters) {
-      if (hotel[key] === undefined || hotel[key] != otherFilters[key]) { return false }
-    }
-    return true
-  }).filter(function (hotel) {
-    for (const key in ranges) {
-      if (hotel[key] < ranges[key].min || hotel[key] >= ranges[key].max) { return false }
-    } return true
-  })
+  const otherFilteredHotels = hotels
+  // .filter(function (hotel) {
+  //   for (const key in otherFilters) {
+  //     if (hotel[key] === undefined || hotel[key] != otherFilters[key]) { return false }
+  //   }
+  //   return true
+  // }).filter(function (hotel) {
+  //   for (const key in ranges) {
+  //     if (hotel[key] < ranges[key].min || hotel[key] >= ranges[key].max) { return false }
+  //   } return true
+  // })
 
   const {
     isLoading,
@@ -50,11 +51,12 @@ export const HotelsContainer = () => {
   }
 
   return (
-    <section className='hotelscontainer'>
-      <div className='hotelscontainer__cards'>
-        {content}
-      </div>
-      <Pagination page={page} setPage={setPage} maxPage={maxPage} />
-    </section>
+    console.log(hotels),
+      <section className='hotelscontainer'>
+        <div className='hotelscontainer__cards'>
+          {content}
+        </div>
+        <Pagination page={page} setPage={setPage} maxPage={maxPage} />
+      </section>
   )
 }
