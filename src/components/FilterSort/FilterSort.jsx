@@ -4,55 +4,50 @@ import { useState } from 'react'
 import { BiSortAlt2 } from 'react-icons/bi'
 import { selectFilters, updateFilters } from '../../redux/slices/filtersSlice'
 
-const FilterSort = () => {
-  const dispatch = useDispatch()
-  const filters = useSelector(selectFilters)
-  const [price, setPrice] = useState({ min: 0, max: 99999 })
+const FilterSort = ({ less, setLess, cap, setCap, setFilterPrice, minStars, maxStars, setMinStars, setMaxStars, setFilterStars }) => {
   const [stars, setStars] = useState({ min: 1, max: 5 })
-  console.log(filters)
-  const handlePriceChange = (e) => {
+
+  function handleLess (e) {
     e.preventDefault()
-    setPrice({ ...price, [e.target.name]: e.target.value })
-    dispatch(updateFilters({
-      ...filters,
-      ranges: {
-        ...filters.ranges,
-        price
-      }
-    }))
-    console.log(filters)
+    setLess(e.target.value)
   }
 
-  const handleStarsChange = (e) => {
+  function handleCap (e) {
     e.preventDefault()
-    setStars({ ...stars, [e.target.name]: e.target.value })
-    dispatch(updateFilters({
-      ...filters,
-      ranges: {
-        ...filters.ranges,
-        stars
-      }
-    }))
+    setCap(e.target.value)
   }
 
-  const handleReset = (e) => {
+  function handleMinStars (e) {
     e.preventDefault()
-    setPrice({ min: 0, max: 99999 })
-    setStars({ min: 1, max: 5 })
-    useDispatch(updateFilters({
-      ...filters,
-      ranges: {
-        price,
-        stars
-      }
-    }))
+    setMinStars(e.target.value)
   }
 
-  const handleFilter = (e) => {
+  function handleMaxStars (e) {
     e.preventDefault()
+    setMaxStars(e.target.value)
   }
 
-  console.log('price: ', price, 'stars: ', stars)
+  function handleReset (e) {
+    e.preventDefault()
+    setLess(1)
+    setCap(50000)
+    setMaxStars(1)
+    setMinStars(5)
+    setFilterPrice({ min: less, max: cap })
+    setFilterStars({ min: less, max: less })
+  }
+
+  function handleFilter (e) {
+    e.preventDefault()
+    setFilterPrice({
+      min: less || 1,
+      max: cap || 500000
+    })
+    setFilterStars({
+      min: minStars || 1,
+      max: maxStars || 5
+    })
+  }
 
   return (
     <div>
@@ -63,12 +58,12 @@ const FilterSort = () => {
             <div className='containerFS__filter__price__options'>
               <div className='containerFS__filter__price__options__minPrice'>
                 <h5>Min</h5>
-                <input name='min' type='number' placeholder='100' min='0' onChange={handlePriceChange} />
+                <input name='min' type='number' placeholder='100' min='0' onChange={e => handleLess(e)} />
                 <h5>U$S</h5>
               </div>
               <div className='containerFS__filter__price__options__maxPrice'>
                 <h5>Max</h5>
-                <input name='max' type='number' placeholder='100' min='0' onChange={handlePriceChange} />
+                <input name='max' type='number' placeholder='100' min='0' onChange={e => handleCap(e)} />
                 <h5>U$S</h5>
               </div>
             </div>
@@ -84,7 +79,7 @@ const FilterSort = () => {
                     name='min'
                     min={1}
                     max={stars.max}
-                    onChange={handleStarsChange}
+                    onChange={e => handleMinStars(e)}
                   >
                     <option value='1'>1</option>
                     <option value='2'>2</option>
@@ -102,7 +97,7 @@ const FilterSort = () => {
                   max={5}
                   className='containerFS__filter__stars__options__maxStars__select'
                   name='max'
-                  onChange={handleStarsChange}
+                  onChange={e => handleMaxStars(e)}
                 >
                   <option value='1'>1</option>
                   <option value='2'>2</option>
@@ -114,7 +109,7 @@ const FilterSort = () => {
             </div>
           </div>
           <div className='containerFS__filter__btn'>
-            <button className='containerFS__filter__btn__reset' onClick={handleReset}>Reset</button>
+            <button className='containerFS__filter__btn__reset' onClick={e => handleReset(e)}>Reset</button>
             <button className='containerFS__filter__btn__filtrar' onClick={handleFilter}>Filtrar</button>
           </div>
         </div>
