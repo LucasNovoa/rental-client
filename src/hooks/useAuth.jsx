@@ -70,22 +70,6 @@ function useProvideAuth () {
     await axios.post('https://rental-app-server.herokuapp.com/api/v1/auth/change-password', { token, newPassword }, options)
   }
 
-  const createGoogleUser = async (user) => {
-    const newUserGoogle = {
-      typePerson: 'natural',
-      firstName: user.given_name,
-      lastName: user.family_name,
-      email: user.email,
-      password: user.sub,
-      repeatPass: user.sub,
-      image: user.picture
-    }
-
-    const { data: newUser } = await axios.post('https://rental-app-server.herokuapp.com/api/v1/users', newUserGoogle)
-
-    await signIn(newUser.email, newUser.password)
-  }
-
   const logOut = () => {
     Cookie.remove('token')
     const googleUser = window.localStorage.getItem('google')
@@ -101,7 +85,6 @@ function useProvideAuth () {
     signIn,
     logOut,
     recovery,
-    changePass,
-    createGoogleUser
+    changePass
   }
 }
