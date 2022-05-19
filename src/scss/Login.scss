@@ -1,6 +1,7 @@
 @import "./vars";
 
 .Login {
+  height: 80vh;
   width: 400px;
   margin: 0 auto;
   margin-top: 155px;
@@ -13,6 +14,11 @@
 
   box-shadow: $shadow-05;
 
+  p {
+    font-size: 1.2rem;
+    margin-top: 10px
+  }
+
   &__Label {
     display: flex;
     flex-direction: column;
@@ -21,27 +27,28 @@
 
     span {
       font-weight: bold;
-      font-size: 1.4rem;
-      margin-bottom: 30px;
+      font-size: 1.2rem;
+      margin-bottom: 25px;
     }
     input {
-      font-size: 1.4rem;
+      font-size: 1.2rem;
       box-shadow: $shadow-03;
-      padding: 7px 14px;
+      padding: 6px 14px;
       border-radius: 100px;
       border: 1px solid black;
     }
   }
 
   button {
+    width: 180px;
     outline: none;
     background-color: #ff3f3f;
     padding: 11px 22px;
     color: white;
     border-radius: 76px;
     border: none;
-    margin-left: 30%;
-    margin-top: 20px;
+    margin-left: 24%;
+    margin-top: 40px;
     margin-bottom: 20px;
     font-size: 1.25rem;
     cursor: pointer;
@@ -69,22 +76,36 @@
 }
 
 button.LoginButton {
+  width: 200px;
+  height: 50px;
+  display:flex;
+  outline: none;
   color: black;
-  border: 1px solid black;
-  font-weight: 300;
+  padding: 11px 22px;
   background-color: white;
-  box-shadow: $shadow-04;
-  font-size: 1.3rem;
-  border-radius: 100px;
-  padding: 7px 21px;
-  display: flex;
+  border-radius: 76px;
+  border: none;
+  margin-left: 43%;
+  margin-bottom: 50px;
+  font-size: 1.25rem;
+  cursor: pointer;
+  box-shadow: 0 2px 12px 0 rgb(20 20 43 / 30%);
+  line-height: 15px;
   align-items: center;
   justify-content: center;
-  margin: 30px auto;
-  outline: none;
-  svg {
-    margin-right: 14px;
+
+  p {
+    margin-left: 5px;
   }
-  cursor: pointer;
   
+}
+
+button.LoginButton:hover {
+  background-color: white;
+  transform: scale(1.05)
+}
+
+button.LoginButton:focus {
+  background-color: white;
+  transform: scale(0.95)
 }
