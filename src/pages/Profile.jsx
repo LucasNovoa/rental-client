@@ -8,13 +8,12 @@ import '../scss/profile.scss'
 import { useAuth0 } from '@auth0/auth0-react'
 import { useAuth } from '../hooks/useAuth'
 import axios from 'axios'
-import { useNavigate } from 'react-router'
 import swal from 'sweetalert'
 
 const Profile = () => {
   // const navigate = useNavigate()
   const [userInfo, setUserInfo] = useState(null)
-  const { user, isAuthenticated, isLoading, logout } = useAuth0()
+  const { user, logout } = useAuth0()
 
   const auth = useAuth()
   if (user) {
@@ -30,7 +29,15 @@ const Profile = () => {
       await axios.get(`https://rental-app-server.herokuapp.com/api/v1/users?email=${userGoogle?.email}`).then((res) => {
         auth.signIn(res?.data.email, 'rental')
       }).catch(() => {
-        auth.createGoogleUser(userGoogle)
+        window.localStorage.removeItem('google')
+        swal({
+          title: 'Debes Registrarte',
+          text: 'Debes Registrarte para Ingresar con Google',
+          icon: 'warning',
+          button: {
+            text: 'Registrarme'
+          }
+        }).then(() => logout({ returnTo: 'http://localhost:3000/register' }))
       })
     }
     awaitGoogle()

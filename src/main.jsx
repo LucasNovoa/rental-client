@@ -19,9 +19,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store}>
       <Auth0Provider
-        domain='nicolas-cohen-dev.us.auth0.com'
-        clientId='C6VewSCIzcAXlaXLvWxuERTPVDFmM8qK'
-        redirectUri='http://localhost:3000/profile'
+        domain='rental-app-server.us.auth0.com'
+        clientId='A48MeN1jWshoLE2ejzP6eU16gb2DYGIV'
+        redirectUri='http://rental-app-client.netlify.app/profile'
       >
         <App />
       </Auth0Provider>
