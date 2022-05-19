@@ -54,8 +54,8 @@ function Login () {
 
         <button className='buttonLoginPage' type='submit'>Ingresar</button>
 
-        <Link to='/passwordRecovery'>Olvidé mi contraseña</Link>
-        <Link to='/register'>Registrarme</Link>
+        <Link to='/passwordRecovery'><p>Olvidé mi contraseña</p></Link>
+        <Link to='/register'><p>Registrarme</p></Link>
 
       </form>
 

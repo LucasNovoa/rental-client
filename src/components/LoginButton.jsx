@@ -4,7 +4,12 @@ import { FcGoogle } from 'react-icons/fc'
 const LoginButton = () => {
   const { loginWithRedirect } = useAuth0()
 
-  return <button className='LoginButton' onClick={() => loginWithRedirect()}><FcGoogle />Iniciar Sesión</button>
+  return (
+    <button className='LoginButton' onClick={() => loginWithRedirect()}>
+      <FcGoogle className='icon' />
+      <p>Iniciar Sesión</p>
+    </button>
+  )
 }
 
 export default LoginButton

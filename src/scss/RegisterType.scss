@@ -37,15 +37,28 @@
     }
 
     button {
-      padding: 18px 28px;
-      margin-right: 25px;
-      margin-left: 25px;
-      border: none;
-      border-radius: 40px;
+      outline: none;
       background-color: #ff3f3f;
-      color: #fff;
-      font-size: 18px;
-      line-height: 20px;
+      padding: 11px 22px;
+      color: white;
+      border-radius: 76px;
+      border: none;
+      margin-left: 20px;
+      margin-right: 20px;
+      font-size: 1.25rem;
+      cursor: pointer;
+      box-shadow: 0 2px 12px 0 rgb(20 20 43 / 40%);
     }
+
+    button:hover {
+      background-color: #ca2626;
+      transform: scale(1.05)
+    }
+
+    button:focus {
+      background-color: #ff3f3f;
+      transform: scale(0.95)
+    }
+
   }
 }
