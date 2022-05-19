@@ -27,14 +27,15 @@ export default function Picture ({ user, setOn }) {
   }
 
   return (
-    <section className='cd-intro'>
-      <div className='cd-intro-content bouncy'>
-        <h1>Foto de perfil: </h1>
-        <input type='text' name='image' placeholder='Ingrese URL de la imagen' onChange={e => handleChange(e)} />
-        <br />
-        {!imagen && <button class='button fadeIn' type='submit' onClick={e => handleClose(e)}>Cancelar</button>}
-        {imagen && <button class='button fadeIn' type='submit' onClick={e => handleClick(e)}>Confirmar</button>}
-      </div>
-    </section>
+    console.log(imagen),
+      <section className='cd-intro'>
+        <div className='cd-intro-content bouncy'>
+          <h1>Foto de perfil: </h1>
+          <input type='text' name='image' placeholder='Ingrese URL de la imagen' onChange={e => handleChange(e)} />
+          <br />
+          {!imagen && <button class='button fadeIn' type='submit' onClick={e => handleClose(e)}>Cancelar</button>}
+          {imagen && <button class='button fadeIn' type='submit' onClick={e => handleClick(e)}>Confirmar</button>}
+        </div>
+      </section>
   )
 }

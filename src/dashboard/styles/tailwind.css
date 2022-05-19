@@ -1,9 +1,9 @@
 /* @tailwind base; */
-@tailwind components;
+/* @tailwind components;
 @tailwind utilities;
 
 .dashboard {
-    -webkit-appearance: button; /* 1 */
-  background-color: transparent; /* 2 */
-  background-image: none; /* 2 */
-}
+    -webkit-appearance: button; 
+  background-color: transparent; 
+  background-image: none; 
+} */

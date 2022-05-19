@@ -13,16 +13,41 @@
 }
 
 .button {
+  outline: none;
   background-color: #ff3f3f;
-  padding: 8px 20px 8px 20px;
-  color: black;
-  font-weight: 600;
+  padding: 7px 14px;
+  color: white;
   border-radius: 76px;
-  border: 1px solid gray;
+  border: none;
   margin-left: 25%;
-  font-size: 1.4rem;
-  animation: fadeIn 1s
+  margin-right: 20px;
+  font-size: 1.25rem;
+  cursor: pointer;
+  box-shadow: 0 2px 12px 0 rgb(20 20 43 / 40%);
+  animation: fadeIn 2s
 }
+
+.button:hover {
+  background-color: #ca2626;
+  transform: scale(1.05)
+}
+
+.button:focus {
+  background-color: #ff3f3f;
+  transform: scale(0.95)
+}
+
+// .button {
+//   background-color: #ff3f3f;
+//   padding: 8px 20px 8px 20px;
+//   color: black;
+//   font-weight: 600;
+//   border-radius: 76px;
+//   border: 1px solid gray;
+//   margin-left: 25%;
+//   font-size: 1.4rem;
+//   animation: fadeIn 1s
+// }
 
 @keyframes fadeIn {
   from {
@@ -31,10 +56,6 @@
   to {
     opacity: 1;
   }
-}
-
-.button:hover {
-  cursor: pointer;
 }
 
 .bouncy.cd-intro-content h1 {
@@ -49,7 +70,7 @@
   position: center;
   width: 15vw;
   height: 40px;
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   border: 1px solid grey;
   margin: 10px auto;
   border-radius: 15px;

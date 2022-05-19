@@ -19,26 +19,26 @@ function CreateHotel ({ userId, submit }) {
   const [next, setNext] = useState(1)
 
   const [input, setInput] = useState({
-    name: 'Hotel',
-    description: 'Hotel Default',
-    stars: 3,
-    price: 250,
-    CountryId: 1,
-    CityId: 2,
-    address: 'Prueba 1234',
-    latitude: -34.8018600249921,
-    longitude: -58.391113872821535,
-    guests: 5,
-    children: 2,
+    name: '',
+    description: '',
+    stars: null,
+    price: null,
+    CountryId: null,
+    CityId: null,
+    address: '',
+    latitude: null,
+    longitude: null,
+    guests: null,
+    children: null,
     amenities: [],
-    email: 'prueba@mail.com',
-    phone: '11 4444 5555',
-    web: 'prueba.com.ar',
-    mainImage: 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/327308851.jpg?k=812d27fb80553a7a0231e05a076568937a18b87cb33ec7a3a1f3feb0cc89b4f1&o=&hp=1',
-    roomImage: 'https://t-cf.bstatic.com/xdata/images/hotel/max1024x768/111155493.jpg?k=112aa23f3de8bb180d37bf1380442dbb42daaef09b8c5279822d5df413d60b70&o=&hp=1',
-    barImage: 'https://t-cf.bstatic.com/xdata/images/hotel/max1024x768/111155847.jpg?k=15f4e83547e57e407eb13f95a491272b69854eb3412fb9ae839370198d7e9ffd&o=&hp=1',
-    amenitiesImage: 'https://t-cf.bstatic.com/xdata/images/hotel/max1024x768/111160486.jpg?k=49be336a9fdb24c9550c4d19cde31147bb475913525b907c612e6079e3e90445&o=&hp=1',
-    otherImage: 'https://t-cf.bstatic.com/xdata/images/hotel/max1024x768/111161887.jpg?k=f40f9e8069050aadccfca8f6c6de541ef2f3dda9a203ac0052290703d49fed98&o=&hp=1',
+    email: '',
+    phone: '',
+    web: '',
+    mainImage: '',
+    roomImage: '',
+    barImage: '',
+    amenitiesImage: '',
+    otherImage: '',
     UserId: userId
   })
 
@@ -100,26 +100,26 @@ function CreateHotel ({ userId, submit }) {
         })
 
         setInput({
-          name: 'Hotel',
-          description: 'Hotel Default',
-          stars: 3,
-          price: 250,
-          CountryId: 2,
-          CityId: 2,
-          address: 'Prueba 1234',
-          latitude: 0,
-          longitude: 0,
-          guests: 5,
-          children: 2,
+          name: '',
+          description: '',
+          stars: null,
+          price: null,
+          CountryId: null,
+          CityId: null,
+          address: '',
+          latitude: null,
+          longitude: null,
+          guests: null,
+          children: null,
           amenities: [],
-          email: 'prueba@mail.com',
-          phone: '11 4444 5555',
-          web: 'prueba.com.ar',
-          mainImage: 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/327308851.jpg?k=812d27fb80553a7a0231e05a076568937a18b87cb33ec7a3a1f3feb0cc89b4f1&o=&hp=1',
-          roomImage: 'https://t-cf.bstatic.com/xdata/images/hotel/max1024x768/111155493.jpg?k=112aa23f3de8bb180d37bf1380442dbb42daaef09b8c5279822d5df413d60b70&o=&hp=1',
-          barImage: 'https://t-cf.bstatic.com/xdata/images/hotel/max1024x768/111155847.jpg?k=15f4e83547e57e407eb13f95a491272b69854eb3412fb9ae839370198d7e9ffd&o=&hp=1',
-          amenitiesImage: 'https://t-cf.bstatic.com/xdata/images/hotel/max1024x768/111160486.jpg?k=49be336a9fdb24c9550c4d19cde31147bb475913525b907c612e6079e3e90445&o=&hp=1',
-          otherImage: 'https://t-cf.bstatic.com/xdata/images/hotel/max1024x768/111161887.jpg?k=f40f9e8069050aadccfca8f6c6de541ef2f3dda9a203ac0052290703d49fed98&o=&hp=1',
+          email: '',
+          phone: '',
+          web: '',
+          mainImage: '',
+          roomImage: '',
+          barImage: '',
+          amenitiesImage: '',
+          otherImage: '',
           UserId: userId
 
         })
@@ -232,16 +232,15 @@ function CreateHotel ({ userId, submit }) {
                   <br />
                   <select name='amenities' onChange={e => handleCheck(e)}>
                     <option name='amenities' key='' value='all'>Amenities</option>
-                    {amenitiesList.map(g => (
+                    {amenitiesList.filter(e => !input.amenities.includes(e)).map(g => (
                       <option value={g} key={g}>{g}</option>
                     ))}
-                    {/* {amenitiesList.map(e => (
-                      <><p>{e}</p><br /><input className='publication__form__check__box' key={e} type='checkbox' name='amenities' value={e} onChange={e => handleCheck(e)} /></>
-                    ))} */}
-                    {/* <p>{input.amenities?.map(e => e)}</p> */}
                   </select>
-
                 </label>
+                {input.amenities[0] &&
+                  <label className='publication__form__amenitiesList'>
+                    <p>{input.amenities + ','}</p>
+                  </label>}
               </>}
             {next === 4 &&
               <>

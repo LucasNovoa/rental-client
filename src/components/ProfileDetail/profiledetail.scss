@@ -48,18 +48,28 @@
     border: 1px solid rgba(162, 162, 162, 0.325);
   }
 
+
   &__post {
-    position:relative;
-    top: -100px;
-    margin-left: 70%;
-    height: 60px;
-    width: 15vw;
-    min-width:fit-content;
-    border: 1px white;
-    border-radius: 40px;
+    outline: none;
     background-color: #ff3f3f;
-    color: #fff;
-    font-size: 18px;
-    line-height: 20px;
+    padding: 11px 22px;
+    color: white;
+    border-radius: 76px;
+    border: none;
+    margin-left: 70%;
+    margin-right: 20px;
+    font-size: 1.25rem;
+    cursor: pointer;
+    box-shadow: 0 2px 12px 0 rgb(20 20 43 / 40%);
+  }
+
+  &__post:hover {
+    background-color: #ca2626;
+    transform: scale(1.05)
+  }
+
+  &__post:focus {
+    background-color: #ff3f3f;
+    transform: scale(0.95)
   }
 }
