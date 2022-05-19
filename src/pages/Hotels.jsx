@@ -13,13 +13,15 @@ export const Hotels = () => {
   const [minStars, setMinStars] = useState(null)
   const [maxStars, setMaxStars] = useState(null)
   const [filterStars, setFilterStars] = useState({ min: null, max: null })
+  const [sortPrice, setSortPrice] = useState(null)
+  const [sortStars, setSortStars] = useState(null)
 
   return (
     <div className='hotels'>
       <Header />
       <SearchBar />
-      <FilterSort less={less} setLess={setLess} cap={cap} setCap={setCap} setFilterPrice={setFilterPrice} minStars={minStars} setMinStars={setMinStars} maxStars={maxStars} setMaxStars={setMaxStars} setFilterStars={setFilterStars} />
-      <HotelsContainer less={less} setLess={setLess} cap={cap} setCap={setCap} filterPrice={filterPrice} minStars={minStars} setMinStars={setMinStars} maxStars={setMaxStars} setMaxStars={setMaxStars} filterStars={filterStars} />
+      <FilterSort less={less} setLess={setLess} cap={cap} setCap={setCap} setFilterPrice={setFilterPrice} minStars={minStars} setMinStars={setMinStars} maxStars={maxStars} setMaxStars={setMaxStars} setFilterStars={setFilterStars} setSortPrice={setSortPrice} setSortStars={setSortStars} />
+      <HotelsContainer less={less} setLess={setLess} cap={cap} setCap={setCap} filterPrice={filterPrice} minStars={minStars} setMinStars={setMinStars} maxStars={setMaxStars} setMaxStars={setMaxStars} filterStars={filterStars} sortPrice={sortPrice} sortStars={sortStars} />
       <Footer />
     </div>
   )

@@ -123,7 +123,7 @@ function Reviews ({ setRev, setBook, book }) {
             <label className='reviews__form__label'>
               <span>Fecha de ingreso: </span>
 
-              <input className='reviews__form__label__input' placeholder='DD/MM/AAAA' name='stayedOn' onChange={e => handleChange(e)} />
+              <input className='reviews__form__label__input' placeholder='DD/MM/AAAA' maxLength={10} name='stayedOn' onChange={e => handleChange(e)} />
             </label>
             <br />
 

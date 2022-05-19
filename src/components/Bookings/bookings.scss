@@ -29,16 +29,22 @@
         grid-column: 2;
         grid-row: 1;
         width: 90px;
-        margin-left:auto;
+        margin-left:85%;
+        margin-top: 5px;
         background-color: #ff3f3f;
         padding: 15px 20px 15px 20px;
         color: white;
         font-size: 1.1rem;
-        font-weight: 600;
         border-radius: 56px;
         border: none;
         line-height: 1px;
         text-align: center;
+        cursor: pointer;
+    }
+
+    &__close:hover {
+        background-color: #ca2626;
+        transform: scale(1.05)
     }
 
     &__image {
@@ -61,17 +67,29 @@
         &__pay {
             grid-column: 2;
             grid-row: 2;
-            width: fit-content;
-            margin-left:40%;
+            outline: none;
             background-color: #ff3f3f;
-            padding: 15px 20px 15px 20px;
+            padding: 8px 16px;
             color: white;
-            font-size: 1.1rem;
-            font-weight: 600;
-            border-radius: 56px;
+            border-radius: 76px;
             border: none;
-            line-height: 1px;
-            text-align: left;
-        }
+            margin-left: 37%;
+            margin-right: 20px;
+            font-size: 1.25rem;
+            cursor: pointer;
+            box-shadow: 0 2px 12px 0 rgb(20 20 43 / 40%);
+          }
+  
+          &__pay:hover {
+            background-color: #ca2626;
+            transform: scale(1.05)
+          }
+  
+          &__pay:focus {
+            background-color: #ff3f3f;
+            transform: scale(0.95)
+          }
+
+        
     }
 }

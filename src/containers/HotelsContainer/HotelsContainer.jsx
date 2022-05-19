@@ -7,7 +7,7 @@ import { selectAllHotels, useGetHotelsQuery } from '../../redux/services/hotelsS
 import { selectFilters } from '../../redux/slices/filtersSlice'
 import './hotelscontainer.scss'
 
-export const HotelsContainer = ({ less, setLess, cap, setCap, filterPrice, filterStars }) => {
+export const HotelsContainer = ({ less, setLess, cap, setCap, filterPrice, filterStars, sortPrice, sortStars }) => {
   const filters = useSelector(selectFilters)
   const { city, otherFilters, ranges } = filters
   const hotels = city !== '' ? useSelector(selectAllHotels).filter(hotel => hotel.City.name === city) : useSelector(selectAllHotels)
@@ -44,12 +44,55 @@ export const HotelsContainer = ({ less, setLess, cap, setCap, filterPrice, filte
   }, [filters])
 
   if (filterPrice.min && filterPrice.max) {
-    console.log('hola')
     otherFilteredHotels = otherFilteredHotels.filter(e => e.price >= filterPrice.min).filter(e => e.price <= filterPrice.max)
   }
 
   if (filterStars.min && filterStars.max) {
     otherFilteredHotels = otherFilteredHotels.filter(e => e.stars >= filterStars.min).filter(e => e.stars <= filterStars.max)
+  }
+
+  if (sortPrice === 'desc') {
+    otherFilteredHotels.sort(function (a, b) {
+      if (a.price > b.price) {
+        return 1
+      }
+      if (a.price < b.price) {
+        return -1
+      }
+      return 0
+    })
+  } else if (sortPrice === 'asc') {
+    otherFilteredHotels.sort(function (a, b) {
+      if (a.price < b.price) {
+        return 1
+      }
+      if (a.price > b.price) {
+        return -1
+      }
+      return 0
+    })
+  }
+
+  if (sortStars === 'desc') {
+    otherFilteredHotels.sort(function (a, b) {
+      if (a.stars > b.stars) {
+        return 1
+      }
+      if (a.stars < b.stars) {
+        return -1
+      }
+      return 0
+    })
+  } else if (sortStars === 'asc') {
+    otherFilteredHotels.sort(function (a, b) {
+      if (a.stars < b.stars) {
+        return 1
+      }
+      if (a.stars > b.stars) {
+        return -1
+      }
+      return 0
+    })
   }
 
   const filteredHotels = otherFilteredHotels?.slice(page * 8, page * 8 + 8)
@@ -66,7 +109,7 @@ export const HotelsContainer = ({ less, setLess, cap, setCap, filterPrice, filte
   const maxPage = otherFilteredHotels.length / 10
 
   return (
-    console.log(filterPrice),
+    console.log(filterPrice, ' ', filterStars),
       <section className='hotelscontainer'>
         <div className='hotelscontainer__cards'>
           {content}

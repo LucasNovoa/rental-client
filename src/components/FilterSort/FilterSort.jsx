@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { BiSortAlt2 } from 'react-icons/bi'
 import { selectFilters, updateFilters } from '../../redux/slices/filtersSlice'
 
-const FilterSort = ({ less, setLess, cap, setCap, setFilterPrice, minStars, maxStars, setMinStars, setMaxStars, setFilterStars }) => {
+const FilterSort = ({ less, setLess, cap, setCap, setFilterPrice, minStars, maxStars, setMinStars, setMaxStars, setFilterStars, setSortStars, setSortPrice }) => {
   const [stars, setStars] = useState({ min: 1, max: 5 })
 
   function handleLess (e) {
@@ -29,12 +29,8 @@ const FilterSort = ({ less, setLess, cap, setCap, setFilterPrice, minStars, maxS
 
   function handleReset (e) {
     e.preventDefault()
-    setLess(1)
-    setCap(50000)
-    setMaxStars(1)
-    setMinStars(5)
-    setFilterPrice({ min: less, max: cap })
-    setFilterStars({ min: less, max: less })
+    setFilterPrice({ min: 1, max: 500000 })
+    setFilterStars({ min: 1, max: 5 })
   }
 
   function handleFilter (e) {
@@ -47,6 +43,18 @@ const FilterSort = ({ less, setLess, cap, setCap, setFilterPrice, minStars, maxS
       min: minStars || 1,
       max: maxStars || 5
     })
+  }
+
+  function handleSortPrice (e) {
+    e.preventDefault()
+    setSortStars('')
+    setSortPrice(e.target.value)
+  }
+
+  function handleSortStars (e) {
+    e.preventDefault()
+    setSortPrice('')
+    setSortStars(e.target.value)
   }
 
   return (
@@ -121,18 +129,18 @@ const FilterSort = ({ less, setLess, cap, setCap, setFilterPrice, minStars, maxS
           <div className='containerFS__sort__options'>
             <div className='containerFS__sort__options__price'>
               <h5 className='containerFS__sort__options__price__title'>Precio</h5>
-              <select>
+              <select onChange={e => handleSortPrice(e)}>
                 <option>Ordenar</option>
-                <option>Ascendente</option>
-                <option>Descendente</option>
+                <option value='asc'>Ascendente</option>
+                <option value='desc'>Descendente</option>
               </select>
             </div>
             <div className='containerFS__sort__options__stars'>
               <h5>Estrellas</h5>
-              <select>
+              <select onChange={e => handleSortStars(e)}>
                 <option>Ordenar</option>
-                <option>Ascendente</option>
-                <option>Descendente</option>
+                <option value='asc'>Ascendente</option>
+                <option value='desc'>Descendente</option>
               </select>
             </div>
           </div>
