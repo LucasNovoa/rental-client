@@ -17,7 +17,6 @@ const Profile = () => {
   const { user, isAuthenticated, isLoading, logout } = useAuth0()
 
   const auth = useAuth()
-
   if (user) {
     window.localStorage.setItem('google', JSON.stringify(user))
   }
@@ -31,15 +30,7 @@ const Profile = () => {
       await axios.get(`https://rental-app-server.herokuapp.com/api/v1/users?email=${userGoogle?.email}`).then((res) => {
         auth.signIn(res?.data.email, 'rental')
       }).catch(() => {
-        window.localStorage.removeItem('google')
-        swal({
-          title: 'Debes Registrarte',
-          text: 'Debes Registrarte para Ingresar con Google',
-          icon: 'warning',
-          button: {
-            text: 'Registrarme'
-          }
-        }).then(() => logout({ returnTo: 'http://localhost:3000/register' }))
+        auth.createGoogleUser(userGoogle)
       })
     }
     awaitGoogle()
