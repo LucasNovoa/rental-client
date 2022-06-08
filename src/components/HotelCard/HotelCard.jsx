@@ -18,7 +18,7 @@ const HotelCard = ({ hotel }) => {
     if (!userJSON) {
       navigate('/login')
     } else {
-      axios.patch(`https://rental-app-server.herokuapp.com/api/v1/users/${userJSON.id}`, {
+      axios.patch(`https://rental-x-server.herokuapp.com/api/v1/users/${userJSON.id}`, {
         favHotels: [...hotel.id]
       })
     }

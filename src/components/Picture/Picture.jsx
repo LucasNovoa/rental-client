@@ -5,7 +5,7 @@ import axios from 'axios'
 
 export default function Picture ({ user, setOn }) {
   const [imagen, setImagen] = useState('')
-  const URI = `https://rental-app-server.herokuapp.com/api/v1/users/${user.id}`
+  const URI = `https://rental-x-server.herokuapp.com/api/v1/users/${user.id}`
 
   function handleChange (e) {
     e.preventDefault()

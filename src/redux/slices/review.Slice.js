@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
 
-const URI = 'https://rental-app-server.herokuapp.com/api/v1/reviews'
+const URI = 'https://rental-x-server.herokuapp.com/api/v1/reviews'
 
 export const postReview = createAsyncThunk(
   'reviews/newReview',

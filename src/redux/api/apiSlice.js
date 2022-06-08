@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
-const URI = 'https://rental-app-server.herokuapp.com/api/v1'
+const URI = 'https://rental-x-server.herokuapp.com/api/v1'
 
 export const apiSlice = createApi({
   reducerPath: 'api',

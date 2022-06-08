@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
 
-const URI = 'https://rental-app-server.herokuapp.com/api/v1/cities'
+const URI = 'https://rental-x-server.herokuapp.com/api/v1/cities'
 
 const initialState = {
   cities: [],

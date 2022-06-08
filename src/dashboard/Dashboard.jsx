@@ -6,8 +6,8 @@ import './styles/tailwind.css'
 import useFetch from '../hooks/useFetch'
 
 const Dashboard = () => {
-  const users = useFetch('https://rental-app-server.herokuapp.com/api/v1/users')
-  const hotels = useFetch('https://rental-app-server.herokuapp.com/api/v1/hotels')
+  const users = useFetch('https://rental-x-server.herokuapp.com/api/v1/users')
+  const hotels = useFetch('https://rental-x-server.herokuapp.com/api/v1/hotels')
 
   const typePerson = users?.map((user) => user.typePerson.toUpperCase())
   const rolePerson = users?.map((user) => user.role.toUpperCase())

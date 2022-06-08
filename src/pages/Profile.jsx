@@ -26,7 +26,7 @@ const Profile = () => {
   if (userGoogleJSON && !userJSON) {
     const awaitGoogle = async () => {
       const userGoogle = JSON.parse(userGoogleJSON)
-      await axios.get(`https://rental-app-server.herokuapp.com/api/v1/users?email=${userGoogle?.email}`).then((res) => {
+      await axios.get(`https://rental-x-server.herokuapp.com/api/v1/users?email=${userGoogle?.email}`).then((res) => {
         auth.signIn(res?.data.email, 'rental')
       }).catch(() => {
         window.localStorage.removeItem('google')
