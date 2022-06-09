@@ -70,15 +70,14 @@
         border-radius: 76px;
         border: none;
         margin: 0 auto;
-        // margin-left: 50px;
-        // margin-right: 26px;
         font-size: 1.25rem;
         cursor: pointer;
-        box-shadow: 0 2px 12px 0 rgb(20 20 43 / 30%);
+        box-shadow: 0 2px 12px 0 rgb(20 20 43 / 50%);
       }
 
       &__btn:hover {
-        background-color: white;
+        background-color: #ff3f3f;
+        color: #ffffff;
         transform: scale(1.05)
       }
 

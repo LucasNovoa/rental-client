@@ -7,7 +7,7 @@
 
     &__title {
       max-width: 718px;
-      font-size: 62px;
+      font-size: 40px;
       line-height: 1.161em;
       font-weight: 700;
       margin-top: 0px;
@@ -26,19 +26,20 @@
           height: 80px;
           outline: none;
           color: black;
-          padding: 11px 22px;
+          padding: 11px 10px;
           background-color: white;
           border-radius: 76px;
           border: none;
-          margin-left: 20px;
-          margin-right: 20px;
-          font-size: 1.25rem;
+          margin-left: 10px;
+          margin-right: 10px;
+          font-size: 1.1rem;
           cursor: pointer;
-          box-shadow: 0 2px 12px 0 rgb(20 20 43 / 30%);
+          box-shadow: 0 2px 12px 0 rgb(20 20 43 / 50%);
         }
 
         &__btn__inactive:hover {
-          background-color: white;
+          background-color: #ff3f3f;
+          color: #ffffff;
           transform: scale(1.05)
         }
 
@@ -52,12 +53,12 @@
           width: 240px;
           outline: none;
           background-color: #ff3f3f;
-          padding: 11px 22px;
+          padding: 11px 10px;
           color: white;
           border-radius: 76px;
           border: none;
-          margin-left: 20px;
-          margin-right: 20px;
+          margin-left: 10px;
+          margin-right: 10px;
           font-size: 1.25rem;
           cursor: pointer;
           box-shadow: 0 2px 12px 0 rgb(20 20 43 / 20%);
