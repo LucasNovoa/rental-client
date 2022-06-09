@@ -4,8 +4,6 @@ import LoginButton from '../components/LoginButton'
 
 import { useNavigate, Link } from 'react-router-dom'
 
-import Footer from '../components/Footer/Footer'
-
 import Header from '../components/Header/Header'
 
 import { useAuth } from '../hooks/useAuth'
@@ -43,12 +41,12 @@ function Login () {
       <Header />
       <form className='Login' onSubmit={handleSubmit}>
         <label className='Login__Label' htmlFor='email-address'>
-          <span>Correo Electrónico</span>
+          <span>Correo Electrónico:</span>
           <input type='email' name='' required placeholder='Correo Electrónico' ref={emailRef} />
         </label>
 
         <label className='Login__Label' htmlFor='password'>
-          <span>Contraseña</span>
+          <span>Contraseña:</span>
           <input type='password' name='' required placeholder='Contraseña' ref={passwordRef} />
         </label>
 
@@ -57,11 +55,8 @@ function Login () {
         <Link to='/passwordRecovery'><p>Olvidé mi contraseña</p></Link>
         <Link to='/register'><p>Registrarme</p></Link>
 
+        <LoginButton />
       </form>
-
-      <LoginButton />
-
-      <Footer />
     </section>
   )
 }
