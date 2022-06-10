@@ -113,6 +113,7 @@
         &__userLogo {
           border-radius: 100%;
           transform: scale(0.8);
+          border: 1px solid #000000;
         }
         &__userLogo:hover {
           opacity: 90%;

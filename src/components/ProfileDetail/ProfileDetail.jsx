@@ -45,9 +45,9 @@ const ProfileDetail = ({ user, post, setPost }) => {
         <h1 className='profiledetail__title'>¡Hola {user?.firstName} {user?.lastName}!</h1>}
       {user?.organization &&
         <h1 className='profiledetail__title'>¡Hola {user?.organization}!</h1>}
-      {user?.role === 'owner' ? <h3>Propietario</h3> : <h3>Huésped</h3>}
+      {user?.role === 'owner' ? <h4>(Propietario)</h4> : <h4>(Huésped)</h4>}
       {post === false &&
-        <button className='profiledetail__post' onClick={e => handleCreate(e)}>Publica tu alojamiento!</button>}
+        <button className='profiledetail__post' onClick={e => handleCreate(e)}>¡Publica tu alojamiento!</button>}
       <div className='profiledetail__divider' />
       {content}
       {hostHotels?.filter(e => e.isDeleted === false).length > 0

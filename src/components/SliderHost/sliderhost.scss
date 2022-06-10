@@ -52,7 +52,7 @@
 
       &__cards {
         // min-width: 85%;
-        // width: 90%;
+        width: 90%;
         // white-space: nowrap;
         // height: 500px;
         position: relative;
@@ -68,7 +68,7 @@
       &__btnl {
         width: 50px;
         height: 50px;
-        background: white;
+        background: rgb(0, 0, 0);
         border-radius: 100%;
         opacity: 0.2;
         text-align: center;
@@ -80,7 +80,7 @@
         width: 50px;
         height: 50px;
         font-size: 30px;
-        background: white;
+        background: rgb(0, 0, 0);
         border-radius: 100%;
         opacity: 0.2;
         text-align: center;

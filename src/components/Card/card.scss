@@ -1,10 +1,11 @@
 .card {
   display: inline-block;
   border-radius: 24px;
+  border: none;
   box-shadow: 0 2px 12px 0 rgb(20 20 43 / 8%);
-  width: 388px;
+  width: 400px;
   height: 700px;
-  margin: 5px;
+  margin-right: 25px;
   background-color: white;
 
   .link {
@@ -13,8 +14,8 @@
   }
 
   &__image {
-    width: 100%;
-    height: 220px;
+    min-width: 400px;
+    height: 250px;
     border: 0;
     object-fit: cover;
     vertical-align: middle;
@@ -22,20 +23,20 @@
   }
 
   &__content {
-    padding: 32px 24px 28px 24px;
+    padding: 20px;
 
     &__title {
       text-align: center;
-      font-size: 1.3rem;
-      margin-bottom: 8px;
+      font-size: 1.4rem;
+      margin-bottom: 10px;
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
     }
 
     &__description {
-      height: 100px;
-      margin-bottom: 16px;
+      min-height: fit-content;
+      margin-bottom: 15px;
       color: #5d5d5d;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -45,25 +46,26 @@
 
     &__badges {
       display: flex;
-      align-items: stretch;
-      justify-content: start;
+      align-items: center;
+      justify-content: center;
 
       &__stars {
         display: flex;
         width: 70px;
         justify-content: space-evenly;
         align-items: center;
-        padding: 14px;
+        padding: 12px;
         margin-right: 14px;
-        font-size: 1rem;
+        font-size: 1.2rem;
         line-height: 20px;
-        color: #191919;
+        // color: #191919;
+        color: #e0e004e7;
         border: 1px solid #eeeeee;
         border-radius: 96px;
       }
 
       &__huesp {
-        padding: 14px;
+        padding: 12px;
         margin-right: 14px;
         font-size: 1rem;
         line-height: 20px;
@@ -82,22 +84,20 @@
       font-size: 1.2rem;
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: space-evenly;
       flex-direction: column;
 
       &__btn__active {
-          
         outline: none;
         background-color: #ff3f3f;
-        padding: 11px 22px;
+        padding: 10px 20px;
         color: white;
         border-radius: 76px;
         border: none;
-        margin-left: 20px;
-        margin-right: 20px;
-        font-size: 1.25rem;
+        // margin-left: 20px;
+        // margin-right: 20px;
+        font-size: 1rem;
         cursor: pointer;
-        
       }
 
       &__btn {
@@ -120,6 +120,6 @@
 
 .card:hover {
   cursor: pointer;
-  box-shadow: 0 2px 12px 0 rgb(20 20 43 / 40%);
-  transform: scale(1.01);
+  // box-shadow: 10px 20px 10px 0 rgba(81, 81, 82, 0.5);
+  transform: scale(.98);
 }

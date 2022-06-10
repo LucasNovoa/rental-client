@@ -57,9 +57,14 @@
       min-width: 100%;
 
       &__cards {
-        min-width: 100%;
-        width: 500px;
-        white-space: nowrap;
+        // min-width: 100%;
+        background-color: #b81b1b;
+        box-shadow: 20px 20px 35px 0 rgb(255 63 63);
+        border-radius: 20px;
+        min-width: 500px;
+        padding: 40px;
+        white-space: wrap;
+        text-align: justify;
         height: 100%;
         position: relative;
         display: flex;
@@ -67,6 +72,13 @@
         overflow-x: scroll;
         scroll-behavior: smooth;
         transform: scale(0.8);
+      }
+
+      #slider:first-child:hover {
+        transform: scale(.98);
+      }
+      #slider:last-child:hover {
+        transform: scale(.98);
       }
       ::-webkit-scrollbar {
         display: none;

@@ -55,8 +55,9 @@
       text-align: left;
       margin-bottom: 8px;
       overflow: hidden;
-      white-space: nowrap;
+      white-space: wrap;
       text-overflow: ellipsis;
+      font-size: 18px;
     }
 
     &__description {
@@ -70,8 +71,8 @@
 
     &__badges {
       display: flex;
-      align-items: stretch;
-      justify-content: start;
+      align-items: center;
+      justify-content: center;
 
       &__ul {
         list-style-type: none;
@@ -91,7 +92,8 @@
         margin-right: 14px;
         font-size: 1.5rem;
         line-height: 20px;
-        color: #191919;
+        // color: #191919;
+        color: #e0e004e7;
         border: 1px solid #eeeeee;
         border-radius: 96px;
       }
@@ -161,7 +163,7 @@
       text-align: left;
       margin-bottom: 8px;
       overflow: hidden;
-      white-space: nowrap;
+      white-space: wrap;
       text-overflow: ellipsis;
     }
 
@@ -170,14 +172,14 @@
       margin-bottom: 16px;
       color: #5d5d5d;
       overflow: hidden;
-      white-space: nowrap;
+      white-space: wrap;
       text-overflow: ellipsis;
     }
 
     &__badges {
       display: flex;
-      align-items: stretch;
-      justify-content: start;
+      align-items: center;
+      justify-content: center;
 
       &__ul {
         list-style-type: none;
@@ -197,7 +199,8 @@
         margin-right: 14px;
         font-size: 1.5rem;
         line-height: 20px;
-        color: #191919;
+        // color: #191919;
+        color: #e0e004e7;
         border: 1px solid #eeeeee;
         border-radius: 96px;
       }
@@ -281,14 +284,14 @@
         margin-bottom: 16px;
         color: #5d5d5d;
         overflow: hidden;
-        white-space: nowrap;
+        white-space: wrap;
         text-overflow: ellipsis;
       }
   
       &__badges {
         display: flex;
-        align-items: stretch;
-        justify-content: start;
+        align-items: center;
+        justify-content: center;
   
         &__ul {
           list-style-type: none;
@@ -298,7 +301,9 @@
             margin-right: 14px;
             font-size: 1.6rem;
             line-height: 20px;
-            color: #191919;
+            // color: #191919;
+            color: #e0e004e7;
+
             // border: 1px solid #eeeeee;
             // border-radius: 96px;
           }

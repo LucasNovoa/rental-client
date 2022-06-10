@@ -36,12 +36,12 @@ function Header () {
             </Link>
 
             {
-                          !userInfo
-                            ? <Link to='/register'>
-                              <li>Registrarse</li>
-                              </Link>
-                            : <Link to='/profile'><li><img className='header__container__content__ul__userLogo' src={`https://ui-avatars.com/api/?name=${userInfo?.firstName || userInfo?.organization}`} alt='' /></li></Link>
-                        }
+              !userInfo
+                ? <Link to='/register'>
+                  <li>Registrarse</li>
+                  </Link>
+                : <Link to='/profile'><li><img className='header__container__content__ul__userLogo' src={`https://ui-avatars.com/api/?name=${userInfo?.firstName || userInfo?.organization}`} alt='' /></li></Link>
+            }
             {
               !userInfo
                 ? <Link to='/login'>
