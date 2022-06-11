@@ -1,16 +1,16 @@
 .cards {
     display: inline-block;
-    border: 1px solid #fff;
     border-radius: 24px;
     box-shadow: 0 2px 12px 0 rgb(20 20 43 / 8%);
-    width: 250px;
-    height: 375px;
+    width: 350px;
+    height: 350px;
     margin: 5px;
-    background-color: #ffffff;
+    background-color: #ffffff1f;
+    backdrop-filter: blur(6px) grayscale(20%);
   
     .link {
       text-decoration: none;
-      color: black;
+      color: #ffffff;
     }
 
     p {
@@ -18,8 +18,8 @@
     }
   
     &__image {
-      width: 100%;
-      height: 220px;
+      min-width: 350px;
+      height: 200px;
       border: 0;
       object-fit: cover;
       vertical-align: middle;
@@ -27,24 +27,25 @@
     }
   
     &__content {
-      padding: 32px 24px 28px 24px;
+      padding: 20px;
   
       &__title {
-        text-align: left;
-        margin-bottom: 8px;
-        overflow: hidden;
-        white-space: wrap;
-        text-overflow: ellipsis;
-        font-size: 18px;
-      }
-  
-      &__description {
-        height: 100px;
-        margin-bottom: 16px;
-        color: #5d5d5d;
+        text-align: center;
+        margin-bottom: 10px;
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
+        font-size: 1.4rem;
+      }
+  
+      &__description {
+        min-height: fit-content;
+        margin-bottom: 15px;
+        color: #ffffff;
+        overflow: hidden;
+        white-space: wrap;
+        text-overflow: ellipsis;
+        display: flex;
       }
   
       &__badges {
@@ -109,6 +110,7 @@
   .cards:hover {
     transform: scale(.98);
     cursor: pointer;
+    backdrop-filter: none;
   }
 
 .banned {

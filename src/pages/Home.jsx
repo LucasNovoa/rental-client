@@ -13,8 +13,8 @@ function Home () {
       <SearchBar />
       <Presentation />
       <Recommended />
-      <AboutCompo />
       <Slider />
+      <AboutCompo />
       <Footer />
     </div>
   )

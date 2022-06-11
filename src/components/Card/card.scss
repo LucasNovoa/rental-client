@@ -6,11 +6,12 @@
   width: 400px;
   height: 700px;
   margin-right: 25px;
-  background-color: white;
+  background-color: #ffffff1f;
+  backdrop-filter: blur(6px) grayscale(20%);
 
   .link {
     text-decoration: none;
-    color: black;
+    color: #ffffff;
   }
 
   &__image {
@@ -37,7 +38,8 @@
     &__description {
       min-height: fit-content;
       margin-bottom: 15px;
-      color: #5d5d5d;
+      // color: #5d5d5d;
+      color: #ffffff;
       overflow: hidden;
       text-overflow: ellipsis;
       display: flex;
@@ -69,7 +71,8 @@
         margin-right: 14px;
         font-size: 1rem;
         line-height: 20px;
-        color: #191919;
+        // color: #191919;
+        color: #ffffff;
         border: 1px solid #eeeeee;
         border-radius: 96px;
       }
@@ -101,7 +104,7 @@
       }
 
       &__btn {
-        width: 210px;
+        width: fit-content;
         text-align: center;
         padding: 18px 24px;
         font-size: 1.3rem;
@@ -118,8 +121,21 @@
   }
 }
 
+.card:first-child:hover {
+  cursor: pointer;
+  transform: scale(.98);
+  backdrop-filter: none;
+}
+
 .card:hover {
   cursor: pointer;
   // box-shadow: 10px 20px 10px 0 rgba(81, 81, 82, 0.5);
   transform: scale(.98);
+  backdrop-filter: none;
+}
+
+.card:last-child:hover {
+  cursor: pointer;
+  transform: scale(.98);
+  backdrop-filter: none;
 }

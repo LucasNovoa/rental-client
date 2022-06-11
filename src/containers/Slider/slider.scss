@@ -1,18 +1,28 @@
 .slider {
-  margin-top: 0px;
+  margin-top: 60px;
   padding-bottom: 0;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 5%;
+  // margin-bottom: 5%;
 
   &__container {
-    padding: 0 24px;
+    padding: 10px 44px;
     width: 100%;
     margin: 0 auto;
+    background-image: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.4),
+      rgba(0, 0, 0, 0.5),
+      black
+    ),
+    url("../../assets/notFound.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
 
     &__top {
+      margin-top: 10px;
       width: 100%;
       display: flex;
       align-items: center;
@@ -20,6 +30,7 @@
 
       h2 {
         font-size: 40px;
+        color: #ffffff;
       }
 
       &__btn {
@@ -58,11 +69,12 @@
 
       &__cards {
         // min-width: 100%;
-        background-color: #b81b1b;
-        box-shadow: 20px 20px 35px 0 rgb(255 63 63);
+        // background-color: #b81b1b;
+        // box-shadow: 20px 20px 35px 0 rgb(255 63 63);
+        // box-shadow: 20px 20px 35px 0 rgb(255 255 255);
         border-radius: 20px;
         min-width: 500px;
-        padding: 40px;
+        // padding: 10px;
         white-space: wrap;
         text-align: justify;
         height: 100%;
@@ -72,10 +84,10 @@
         overflow-x: scroll;
         scroll-behavior: smooth;
         transform: scale(0.8);
-      }
 
+      }
       #slider:first-child:hover {
-        transform: scale(.98);
+      transform: scale(.98);
       }
       #slider:last-child:hover {
         transform: scale(.98);
@@ -91,8 +103,6 @@
         //   rgba(255, 255, 255, 0)
         // );
         z-index: 1;
-        height: 100%;
-        width: 30%;
         position: absolute;
         display: flex;
         align-items: center;
@@ -107,8 +117,6 @@
         //   rgb(255, 255, 255)
         // );
         z-index: 1;
-        height: 100%;
-        width: 30%;
         position: absolute;
         right: 0;
         display: flex;

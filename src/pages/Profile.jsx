@@ -59,7 +59,7 @@ const Profile = () => {
       : <div className='Profile'>
         <Header />
         <ProfileContainer user={userInfo} />
-        <Footer />
+        {/* <Footer /> */}
       </div>
   )
 }
