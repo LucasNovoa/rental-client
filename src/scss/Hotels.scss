@@ -5,8 +5,9 @@
       rgba(0, 0, 0, 0),
       rgb(0, 0, 0)
     ),
-    url("../assets/hotelsbg.jpg");
-  background-size: 100% auto;
-  background-position: 0 -300px;
+    url("../assets/footerbg.jpg");
+  background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
+  background-attachment: fixed;
 }
