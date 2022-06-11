@@ -133,7 +133,7 @@ function CreateHotel ({ userId, submit }) {
     console.log(input),
       <>
         <div className='publication'>
-          <h1>Nuevo Alojamiento</h1>
+          <h1 className='publication__title'>Nuevo Alojamiento</h1>
           <form className='publication__form' onSubmit={e => handleSubmit(e)}>
             <br />
             <br />

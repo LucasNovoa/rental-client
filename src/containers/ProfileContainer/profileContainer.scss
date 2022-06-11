@@ -47,26 +47,26 @@
     max-height: 90%;
     margin: 0 auto;
     margin-right: 200px;
-    background-size: 100%, cover;
+    background-color: #ffffff1f;
+    // background-size: 100%, cover;
     display: grid;
     grid-template-rows: 10% 82% 50px;
     grid-template-columns: 20% 60% 20%;
 
-    h1 {
+    &__title {
       grid-row: 1;
       grid-column: 2;
       font-size: 40px;
       line-height: 1.161em;
       font-weight: 700;
-      color: black;
+      color: #ffffff;
       margin-top: 10px;
-      margin-bottom: 10px;
-      margin-left: 18%
+      margin-left: -162px;
     }
 
     &__form {
-      width: 80%;
-      margin-left: 5%;
+      width: 90%;
+      // margin-left: 5%;
       box-shadow: 0 32px 72px 0 rgb(20 20 43 / 24%);
       border: 2px solid grey;
       border-radius: 15px;
@@ -224,14 +224,16 @@
     grid-row: 1;
     grid-column: 3;
     border: none;
-    border-radius: 40px;
     background-color: #ff3f3f;
     color: #fff;
     font-size: 18px;
     line-height: 20px;
-    max-width: 30px;
-    max-height: 30px;
-    cursor: pointer
+    width: 100px;
+    height: 50px;
+    cursor: pointer;
+    margin-left: 120px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
   }
 
   &__quit:hover {
