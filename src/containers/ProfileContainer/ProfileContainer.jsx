@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
 import './profileContainer.scss'
 import ProfileCard from '../../components/ProfileCard/ProfileCard'
 import ProfileDetail from '../../components/ProfileDetail/ProfileDetail'
 import CreateHotel from '../../components/CreateHotel/CreateHotel'
-import { selectUserById, useGetUserDetailQuery } from '../../redux/services/usersServices'
+import { useGetUserDetailQuery } from '../../redux/services/usersServices'
 import Loader from '../../components/Loader/Loader'
 
 const ProfileContainer = ({ user }) => {
@@ -25,14 +24,18 @@ const ProfileContainer = ({ user }) => {
   } else if (isSuccess) {
     const { ids, entities } = userForId
     const user = entities[ids[0]]
-    console.log(user)
     content = (
-      <>
+      <section className='profileContainer'>
         <ProfileCard user={user} />
-        {post === false &&
-          <ProfileDetail user={user} setPost={setPost} post={post} />}
-        {post === true && <CreateHotel className='profileContainer__create' userId={user.id} submit={handleCreate} />}
-      </>
+        {
+          post === false &&
+            <ProfileDetail user={user} setPost={setPost} post={post} />
+        }
+        {
+          post === true &&
+            <CreateHotel className='profileContainer__create' userId={user.id} submit={handleCreate} />
+        }
+      </section>
     )
   } else if (isError) {
     content = { error }
@@ -43,11 +46,7 @@ const ProfileContainer = ({ user }) => {
     setPost(!post)
   }
 
-  return (
-    <section className='profileContainer'>
-      {content}
-    </section>
-  )
+  return (content)
 }
 
 export default ProfileContainer

@@ -1,6 +1,5 @@
 /* eslint-disable react/jsx-closing-tag-location */
 import { useEffect, useState } from 'react'
-import Footer from '../components/Footer/Footer'
 import Header from '../components/Header/Header'
 import ProfileContainer from '../containers/ProfileContainer/ProfileContainer'
 import Loader from '../components/Loader/Loader'
@@ -11,7 +10,6 @@ import axios from 'axios'
 import swal from 'sweetalert'
 
 const Profile = () => {
-  // const navigate = useNavigate()
   const [userInfo, setUserInfo] = useState(null)
   const { user, logout } = useAuth0()
 
@@ -53,13 +51,11 @@ const Profile = () => {
   }, [userJSON])
 
   return (
-
     !userInfo
       ? <Loader className='loader' user={userInfo} />
       : <div className='Profile'>
         <Header />
         <ProfileContainer user={userInfo} />
-        {/* <Footer /> */}
       </div>
   )
 }

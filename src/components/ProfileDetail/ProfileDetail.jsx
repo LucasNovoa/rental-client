@@ -41,34 +41,44 @@ const ProfileDetail = ({ user, post, setPost }) => {
 
   return (
     <div className='profiledetail'>
-      {!user?.organization &&
-        <h1 className='profiledetail__title'>¡Hola {user?.firstName} {user?.lastName}!</h1>}
-      {user?.organization &&
-        <h1 className='profiledetail__title'>¡Hola {user?.organization}!</h1>}
-      {user?.role === 'owner' ? <h4>(Propietario)</h4> : <h4>(Huésped)</h4>}
-      {post === false &&
-        <button className='profiledetail__post' onClick={e => handleCreate(e)}>¡Publica tu alojamiento!</button>}
+      {
+        !user?.organization &&
+          <h1 className='profiledetail__title'>¡Hola {user?.firstName} {user?.lastName}!</h1>
+      }
+      {
+        user?.organization &&
+          <h1 className='profiledetail__title'>¡Hola {user?.organization}!</h1>
+      }
+      {
+        user?.role === 'owner' ? <h4>(Propietario)</h4> : <h4>(Huésped)</h4>
+      }
+      {
+        post === false &&
+          <button className='profiledetail__post' onClick={e => handleCreate(e)}>¡Publica tu alojamiento!</button>
+      }
       <div className='profiledetail__divider' />
       {content}
-      {hostHotels?.filter(e => e.isDeleted === false).length > 0
-        ? <div>
-          <SliderHost className='profiledetail__slider' hotels={hostHotels} />
-          <div className='profiledetail__divider' />
-        </div>
-        : user.role === 'customer'
-          ? <h1>No tienes alojamientos en alquiler</h1>
-          : user.role === 'owner' && <h1>Tus alojamientos se encuentran penalizados</h1>}
+      {
+        hostHotels?.filter(e => e.isDeleted === false).length > 0
+          ? <div>
+            <SliderHost className='profiledetail__slider' hotels={hostHotels} />
+            <div className='profiledetail__divider' />
+            </div>
+          : user.role === 'customer'
+            ? <h1>No tienes alojamientos en alquiler</h1>
+            : user.role === 'owner' && <h1>Tus alojamientos se encuentran penalizados</h1>
+      }
       <div className='profiledetail__divider' />
-
-      {bookings?.length > 0
-        ? <div>
-          {book !== 0 && rev === 0 && <Bookings setBook={setBook} book={book} bookings={bookings} user={user} rev={rev} setRev={setRev} />}
-          {book === 0 && rev === 0 && <SliderBooking hotels={hotels} user={user} bookings={bookings} setBook={setBook} book={book} />}
-          {rev !== 0 && <Reviews setRev={setRev} book={book} user={user} setBook={setBook} />}
-        </div>
-        : <h1>No tienes Reservas</h1>}
+      {
+        bookings?.length > 0
+          ? <div>
+            {book !== 0 && rev === 0 && <Bookings setBook={setBook} book={book} bookings={bookings} user={user} rev={rev} setRev={setRev} />}
+            {book === 0 && rev === 0 && <SliderBooking hotels={hotels} user={user} bookings={bookings} setBook={setBook} book={book} />}
+            {rev !== 0 && <Reviews setRev={setRev} book={book} user={user} setBook={setBook} />}
+          </div>
+          : <h1>No tienes Reservas</h1>
+      }
       <div className='profiledetail__divider' />
-
     </div>
   )
 }

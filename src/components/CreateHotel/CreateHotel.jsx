@@ -1,13 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux'
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import swal from 'sweetalert'
-import { selectAllCities, selectAllCountries, useAddHotelMutation } from '../../redux/services/hotelsServices.js'
+import { selectAllCities, selectAllCountries } from '../../redux/services/hotelsServices.js'
 import { postHotel } from '../../redux/slices/hotelSlice'
 
 function CreateHotel ({ userId, submit }) {
   const dispatch = useDispatch()
-
-  const [addNewHotel, { isLoading }] = useAddHotelMutation()
 
   const amenitiesList = ['WiFi', 'TV', 'Calefacción', 'Chimenea', 'Cocina', 'Estacionamiento', 'Jacuzzi', 'Sala de Juegos', 'Refrigerador', 'Alquiler de Autos', 'Ascensor', 'Bañera', 'Cama King Size', 'Cócteles', 'Desayunos', 'Botones', 'Piscina', 'Servicio a la habitación']
 
@@ -15,7 +13,6 @@ function CreateHotel ({ userId, submit }) {
 
   const cities = useSelector(selectAllCities)
 
-  const [errors, setErrors] = useState({})
   const [next, setNext] = useState(1)
 
   const [input, setInput] = useState({
@@ -135,8 +132,6 @@ function CreateHotel ({ userId, submit }) {
         <div className='publication'>
           <h1 className='publication__title'>Nuevo Alojamiento</h1>
           <form className='publication__form' onSubmit={e => handleSubmit(e)}>
-            <br />
-            <br />
             {next === 1 &&
               <>
                 <label className='publication__form__input'>
@@ -164,7 +159,6 @@ function CreateHotel ({ userId, submit }) {
                   <br />
                   <input name='web' placeholder='Web...' type='text' onChange={(e) => handleChange(e)} />
                 </label>
-
               </>}
             {next === 2 &&
               <>
@@ -229,7 +223,6 @@ function CreateHotel ({ userId, submit }) {
                 <label className='publication__form__input'>
                   <span>Seleccione las Amenities: </span>
                   <br />
-                  <br />
                   <select name='amenities' onChange={e => handleCheck(e)}>
                     <option name='amenities' key='' value='all'>Amenities</option>
                     {amenitiesList.filter(e => !input.amenities.includes(e)).map(g => (
@@ -277,12 +270,9 @@ function CreateHotel ({ userId, submit }) {
             <button className='publication__next' type='submit' onClick={e => handleNext(e)}>Siguiente</button>}
           {next === 4 &&
             <button className='publication__submit' type='submit' onClick={e => handleSubmit(e)}>Publicar</button>}
-
           <button className='publication__quit' type='submit' onClick={e => handleQuit(e)}> X </button>
         </div>
-
       </>
-
   )
 }
 
