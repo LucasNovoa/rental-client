@@ -24,7 +24,7 @@ function AboutCompo () {
           <p className='about__container__data__ptop'>Nuestra aplicación es pionera en brindar un servicio de alquiler de alojamiento tanto a hoteles, hostels, y residencias dedicadas al turismo, como a propietarios particulares que busquen rentar un alojamiento propio.</p>
           <div className='about__container__data__divider' />
           <p className='about__container__data__pbottom'>Hemos diseñado y desarrollado una plataforma que brinde soluciones simples, con una interfaz intuitiva, al alcance de todos los usuarios que quieran formar parte de nuestra comunidad.</p>
-          <button className='about__container__data__btn'>Sobre Nosotros</button>
+          {/* <button className='about__container__data__btn'>Sobre Nosotros</button> */}
         </div>
       </div>
     </section>

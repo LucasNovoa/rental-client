@@ -59,7 +59,8 @@ export default function Footer () {
               <div className='footer__container__top__grid__social'>
                 <a
                   href='https://facebook.com/'
-                  className='footer__container__top__grid__social__href'
+                  target='_blank'
+                  className='footer__container__top__grid__social__href' rel='noreferrer'
                 >
                   <div className='social-icon-font'>
                     <FaFacebookF className='icon' />
@@ -67,7 +68,8 @@ export default function Footer () {
                 </a>
                 <a
                   href='https://twitter.com/'
-                  className='footer__container__top__grid__social__href'
+                  target='_blank'
+                  className='footer__container__top__grid__social__href' rel='noreferrer'
                 >
                   <div className='social-icon-font'>
                     <FaTwitter className='icon' />
@@ -75,7 +77,8 @@ export default function Footer () {
                 </a>
                 <a
                   href='https://www.instagram.com/'
-                  className='footer__container__top__grid__social__href'
+                  target='_blank'
+                  className='footer__container__top__grid__social__href' rel='noreferrer'
                 >
                   <div className='social-icon-font'>
                     <FaInstagram className='icon' />
@@ -83,7 +86,8 @@ export default function Footer () {
                 </a>
                 <a
                   href='https://youtube.com/'
-                  className='footer__container__top__grid__social__href'
+                  target='_blank'
+                  className='footer__container__top__grid__social__href' rel='noreferrer'
                 >
                   <div className='social-icon-font'>
                     <FaYoutube className='icon' />
@@ -113,14 +117,14 @@ export default function Footer () {
                       Acerca de ...
                     </a>
                   </li>
-                  <li className='footer__container__top__grid__listCont__ul1__li5'>
+                  {/* <li className='footer__container__top__grid__listCont__ul1__li5'>
                     <a
                       href='/contact'
                       className='footer__container__top__grid__listCont__ul1__li5__href'
                     >
                       Contáctanos
                     </a>
-                  </li>
+                  </li> */}
                   <li className='footer__container__top__grid__listCont__ul1__li6'>
                     <a
                       href='/hotels'
@@ -139,7 +143,7 @@ export default function Footer () {
                   </li>
                   <li className='login'>
                     <a
-                      href='/template-pages/changelog'
+                      href='/login'
                       className='footer__container__top__grid__ul2__li6__href'
                     >
                       Ingresar
@@ -156,7 +160,8 @@ export default function Footer () {
               <div className='footer__container__top__grid__ulInstagram'>
                 <a
                   href='https://www.instagram.com/'
-                  className='footer__container__top__grid__ulInstagram__href1'
+                  target='_blank'
+                  className='footer__container__top__grid__ulInstagram__href1' rel='noreferrer'
                 >
                   <img
                     src='https://assets.website-files.com/61f981dc0f719d75a5d78239/61fae5bb9a4f153c395996b4_instagram-footer-image-1-rental-webflow-ecommerce-template.jpg'
@@ -166,7 +171,8 @@ export default function Footer () {
                 </a>
                 <a
                   href='https://www.instagram.com/'
-                  className='footer__container__top__grid__ulInstagram__href2'
+                  target='_blank'
+                  className='footer__container__top__grid__ulInstagram__href2' rel='noreferrer'
                 >
                   <img
                     src='https://assets.website-files.com/61f981dc0f719d75a5d78239/61fae5bd99cd1482459f5a18_instagram-footer-image-2-rental-webflow-ecommerce-template.jpg'
@@ -176,7 +182,8 @@ export default function Footer () {
                 </a>
                 <a
                   href='https://www.instagram.com/'
-                  className='footer__container__top__grid__ulInstagram__href3'
+                  target='_blank'
+                  className='footer__container__top__grid__ulInstagram__href3' rel='noreferrer'
                 >
                   <img
                     src='https://assets.website-files.com/61f981dc0f719d75a5d78239/61fae5bdf1a790368e70ba6a_instagram-footer-image-3-rental-webflow-ecommerce-template.jpg'
@@ -186,7 +193,8 @@ export default function Footer () {
                 </a>
                 <a
                   href='https://www.instagram.com/'
-                  className='footer__container__top__grid__ulInstagram__href4'
+                  target='_blank'
+                  className='footer__container__top__grid__ulInstagram__href4' rel='noreferrer'
                 >
                   <img
                     src='https://assets.website-files.com/61f981dc0f719d75a5d78239/61fae5bc4b2dee4295767ada_instagram-footer-image-4-rental-webflow-ecommerce-template.jpg'
@@ -196,7 +204,8 @@ export default function Footer () {
                 </a>
                 <a
                   href='https://www.instagram.com/'
-                  className='footer__container__top__grid__ulInstagram__href5'
+                  target='_blank'
+                  className='footer__container__top__grid__ulInstagram__href5' rel='noreferrer'
                 >
                   <img
                     src='https://assets.website-files.com/61f981dc0f719d75a5d78239/61fae5bdc1dfb22fd4ef26fa_instagram-footer-image-5-rental-webflow-ecommerce-template.jpg'
@@ -206,7 +215,8 @@ export default function Footer () {
                 </a>
                 <a
                   href='https://www.instagram.com/'
-                  className='footer__container__top__grid__ulInstagram__href6'
+                  target='_blank'
+                  className='footer__container__top__grid__ulInstagram__href6' rel='noreferrer'
                 >
                   <img
                     src='https://assets.website-files.com/61f981dc0f719d75a5d78239/61fae5bbdbd7a3ef87e031c8_instagram-footer-image-6-rental-webflow-ecommerce-template.jpg'
@@ -233,7 +243,7 @@ export default function Footer () {
                   </div>
                 </div>
                 <div className='footer__container__newsWrapper__wrapper__start__usuarios'>
-                  Únase a nuestra comunidad !
+                  Únase a nuestra comunidad!
                 </div>
               </div>
             </div>

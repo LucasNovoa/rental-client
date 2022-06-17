@@ -5,6 +5,7 @@ import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai'
 import { useSelector } from 'react-redux'
 import Loader from '../../components/Loader/Loader'
 import { useGetHotelsQuery, selectAllHotels } from '../../redux/services/hotelsServices'
+import { Link } from 'react-router-dom'
 
 function Slider () {
   const allHotels = useSelector(selectAllHotels)
@@ -23,7 +24,7 @@ function Slider () {
   if (isLoading) {
     content = <Loader />
   } else if (isSuccess) {
-    content = hotels.filter(h => h.stars === 5).slice(0, 10).map((h) => <Card img={h.mainImage} name={h.name} description={h.description} price={h.price} key={h.id} hosts={h.maxPax} stars={h.stars} />)
+    content = hotels.filter(h => h.stars === 5).slice(0, 10).map((h) => <Card img={h.mainImage} name={h.name} description={h.description} price={h.price} key={h.id} hosts={h.guests} stars={h.stars} />)
   } else if (isError) {
     content = <p>{error}</p>
   }
@@ -43,7 +44,7 @@ function Slider () {
       <div className='slider__container'>
         <div className='slider__container__top'>
           <h2>Hoteles mejor puntuados</h2>
-          <button className='slider__container__top__btn'>Ver todos</button>
+          <Link to='/hotels' className='slider__container__top__btn'>Ver todos</Link>
         </div>
         <div className='slider__container__bottom'>
           <div className='bgfadel'>

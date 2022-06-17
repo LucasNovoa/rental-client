@@ -1,6 +1,7 @@
 @import "./vars";
 .bg {
   width: 100%;
+  height: 100vh;
   background-image: linear-gradient(
       180deg,
       rgba(0, 0, 0, 0.4) 4%,
@@ -16,21 +17,23 @@
 }
 
 .Login {
-  height: 100%;
-  width: 400px;
+  display: flex;
+  flex-direction: column;
+  height: 46rem;
+  width: 40rem;
   margin: 0 auto;
-  margin-top: 155px;
-  margin-bottom: 80px;
-
-  padding: 0 30px;
+  margin-top: 12rem;
+  padding: 5rem;
+  padding-top: 0;
 
   border: 1px solid rgb(255, 255, 255);
-  border-radius: 24px;
+  border-radius: 1rem;
 
   box-shadow: $shadow-05;
+  backdrop-filter: blur(1rem);
 
   p {
-    font-size: 1.2rem;
+    font-size: 1rem;
     margin-top: 10px;
     margin-bottom: 9px;
   }
@@ -44,30 +47,36 @@
     span {
       color: #ffffff;
       font-weight: bold;
-      font-size: 1.2rem;
-      margin-bottom: 25px;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      margin-top: 1rem;
     }
     input {
-      font-size: 1.2rem;
+      height: 4rem;
+      font-size: 1.1rem;
       box-shadow: $shadow-03;
       padding: 6px 14px;
-      border-radius: 100px;
+      border-radius: 1rem;
+      margin-bottom: -2rem;
       border: 1px solid black;
     }
   }
 
   button {
-    width: 180px;
+    width: 20rem;
+    height: 800rem;
     outline: none;
     background-color: #ff3f3f;
-    padding: 11px 22px;
+    padding: 1rem;
     color: white;
-    border-radius: 76px;
+    border-radius: 1rem;
     border: none;
-    margin-left: 24%;
-    margin-top: 40px;
-    margin-bottom: 20px;
-    font-size: 1.25rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 6rem;
+    margin-left: 18%;
+    font-size: 1.1rem;
     cursor: pointer;
     box-shadow: 0 2px 12px 0 rgb(20 20 43 / 20%);
   }
@@ -86,29 +95,34 @@
     display: block;
     text-align: center;
     text-decoration: underline;
-    font-size: 1.4rem;
-    margin-bottom: 30px;
+    margin-top: 1rem;
     color: #fdfdff;
+  }
+
+  a:hover {
+    color: #ff3f3f;
+    transform: scale(1.2);
   }
 }
 
 button.LoginButton {
-  width: 190px;
-  height: 50px;
+  width: 20rem;
   display:flex;
   outline: none;
   color: black;
-  padding: 11px 5px;
+  padding: 1rem;
   background-color: white;
-  border-radius: 76px;
+  border-radius: 1rem;
   border: none;
-  margin-bottom: 50px;
-  font-size: 1.25rem;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
   cursor: pointer;
   box-shadow: 0 2px 12px 0 rgb(20 20 43 / 30%);
   line-height: 15px;
   align-items: center;
   justify-content: center;
+  margin-left: 18%;
 
   .icon {
     margin-left: -5px;
@@ -116,12 +130,13 @@ button.LoginButton {
 
   p {
     margin-left: 5px;
+    font-size: 0.9rem;
   }
   
 }
 
 button.LoginButton:hover {
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.9);
   transform: scale(1.05)
 }
 

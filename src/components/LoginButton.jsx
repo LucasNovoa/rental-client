@@ -7,7 +7,7 @@ const LoginButton = () => {
   return (
     <button className='LoginButton' onClick={() => loginWithRedirect()}>
       <FcGoogle className='icon' />
-      <p>Iniciar Sesión</p>
+      <p>Iniciar Sesión con Google</p>
     </button>
   )
 }

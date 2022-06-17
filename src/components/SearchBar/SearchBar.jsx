@@ -16,19 +16,6 @@ const SearchBar = () => {
 
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  console.log(dateFormat(reservation.checkIn))
-  const handleSearch = async (e) => {
-    e.preventDefault()
-
-    await dispatch(updateReservation({
-      cityName: place
-    }))
-    await dispatch(updateFilters({
-      ...inputFilters
-    }))
-    navigate('/hotels', { replace: true })
-    console.log('clic')
-  }
 
   const [results, setResults] = useState(false)
   const [startDate, setStartDate] = useState(new Date())
@@ -51,6 +38,21 @@ const SearchBar = () => {
     key: 'selection'
   }
 
+  console.log(reservation, filters, inputFilters)
+
+  const handleSearch = (e) => {
+    e.preventDefault()
+
+    dispatch(updateReservation({
+      cityName: place
+    }))
+    dispatch(updateFilters({
+      ...inputFilters
+    }))
+    navigate('/hotels', { replace: true })
+    console.log('clic')
+  }
+
   const handleCity = (e) => {
     setInputFilters({
       ...inputFilters,
@@ -60,7 +62,7 @@ const SearchBar = () => {
       setResults(false)
     } else {
       const filter = cities?.filter(el => el.name.toLowerCase().includes(e.target.value.toLowerCase()))
-      setResults(filter.splice(0, 5))
+      setResults(filter.splice(0, 15))
     }
   }
 
@@ -71,6 +73,9 @@ const SearchBar = () => {
       ...inputFilters,
       city: e.target.value
     })
+    dispatch(updateReservation({
+      cityName: e.target.value
+    }))
   }
 
   const handleSelect = ranges => {
@@ -80,7 +85,7 @@ const SearchBar = () => {
       checkIn: ranges.selection.startDate,
       checkOut: ranges.selection.endDate
     }))
-    console.log(reservation)
+    // console.log(reservation)
   }
 
   const handleCalendarRender = () => {
@@ -150,16 +155,18 @@ const SearchBar = () => {
           <div>
             {results &&
               <div className='searchBar__place__results'>
-                {results?.map(e =>
-                  <div key={e.name}>
-                    <button
-                      className='searchBar__place__results__name'
-                      value={e.name}
-                      onClick={handlePlaceSelect}
-                    >{e.name}
-                    </button>
-                  </div>
-                )}
+                {results.length
+                  ? results.map(e =>
+                    <div key={e.name}>
+                      <button
+                        className='searchBar__place__results__name'
+                        value={e.name}
+                        onClick={handlePlaceSelect}
+                      >{e.name}
+                      </button>
+                    </div>
+                  )
+                  : <p className='searchBar__place__results__name'>No hay resultados...</p>}
               </div>}
           </div>
         </div>

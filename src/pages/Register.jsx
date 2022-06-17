@@ -175,7 +175,7 @@ function Register () {
             </div>
           </div>
         </section>}
-      <Footer />
+      {/* <Footer /> */}
     </>
   )
 }

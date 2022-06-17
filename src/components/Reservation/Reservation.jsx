@@ -15,6 +15,10 @@ const Reservation = ({ hotel, setRes, res }) => {
   const navigate = useNavigate()
   console.log(!userJSON)
 
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   const handleSearch = (e) => {
     e.preventDefault()
     let errors = ''

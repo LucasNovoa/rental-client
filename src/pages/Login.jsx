@@ -53,9 +53,8 @@ function Login () {
         <button className='buttonLoginPage' type='submit'>Ingresar</button>
 
         <Link to='/passwordRecovery'><p>Olvidé mi contraseña</p></Link>
-        <Link to='/register'><p>Registrarme</p></Link>
-
         <LoginButton />
+        <Link to='/register'><p>Aún no tengo cuenta...</p></Link>
       </form>
     </section>
   )

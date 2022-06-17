@@ -40,7 +40,8 @@ export const HotelsContainer = ({ less, setLess, cap, setCap, filterPrice, filte
   const [page, setPage] = useState(0)
 
   useEffect(() => {
-    setPage(0)
+    setPage(1)
+    window.scrollTo(0, 0)
   }, [filters])
 
   if (filterPrice.min && filterPrice.max) {
@@ -54,20 +55,20 @@ export const HotelsContainer = ({ less, setLess, cap, setCap, filterPrice, filte
   if (sortPrice === 'desc') {
     otherFilteredHotels.sort(function (a, b) {
       if (a.price > b.price) {
-        return 1
+        return -1
       }
       if (a.price < b.price) {
-        return -1
+        return 1
       }
       return 0
     })
   } else if (sortPrice === 'asc') {
     otherFilteredHotels.sort(function (a, b) {
       if (a.price < b.price) {
-        return 1
+        return -1
       }
       if (a.price > b.price) {
-        return -1
+        return 1
       }
       return 0
     })
@@ -76,20 +77,20 @@ export const HotelsContainer = ({ less, setLess, cap, setCap, filterPrice, filte
   if (sortStars === 'desc') {
     otherFilteredHotels.sort(function (a, b) {
       if (a.stars > b.stars) {
-        return 1
+        return -1
       }
       if (a.stars < b.stars) {
-        return -1
+        return 1
       }
       return 0
     })
   } else if (sortStars === 'asc') {
     otherFilteredHotels.sort(function (a, b) {
       if (a.stars < b.stars) {
-        return 1
+        return -1
       }
       if (a.stars > b.stars) {
-        return -1
+        return 1
       }
       return 0
     })
@@ -106,7 +107,7 @@ export const HotelsContainer = ({ less, setLess, cap, setCap, filterPrice, filte
     content = <p>{error}</p>
   }
 
-  const maxPage = otherFilteredHotels.length / 10
+  const maxPage = Math.floor(otherFilteredHotels.length / 8)
 
   return (
     console.log(filterPrice, ' ', filterStars),
