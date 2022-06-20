@@ -12,7 +12,7 @@ export const HotelsContainer = ({ less, setLess, cap, setCap, filterPrice, filte
   const { city, otherFilters, ranges } = filters
   const hotels = city !== '' ? useSelector(selectAllHotels).filter(hotel => hotel.City.name === city) : useSelector(selectAllHotels)
 
-  let otherFilteredHotels = hotels
+  let otherFilteredHotels = filters.otherFilters.guests ? hotels.filter((h) => h.guests >= filters.otherFilters.guests) : hotels
 
   // let otherFilteredHotels = hotels.sort(function (a, b) {
   //   if (a.price < b.price) {

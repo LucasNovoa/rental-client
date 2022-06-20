@@ -51,8 +51,8 @@ const HotelCard = ({ hotel }) => {
           <div className='hotelcard__container__data__sec'>
             <p className='hotelcard__container__data__sec__span'>{hotel.description}</p>
             <div className='hotelcard__container__data__sec__buttons'>
-              <p className='hotelcard__container__data__sec__span'>{hotel.stars} ★ {hotel.City.name}, {hotel.Country.name}</p>
-              <p className='hotelcard__container__data__sec__span'>Capacidad máx. {hotel.guests} huéspedes</p>
+              <p className='hotelcard__container__data__sec__span'>✔ {hotel.stars} ★ {hotel.City.name}, {hotel.Country.name}</p>
+              <p className='hotelcard__container__data__sec__span'>✔ Capacidad máx. {hotel.guests} huéspedes</p>
             </div>
           </div>
         </div>
