@@ -60,8 +60,8 @@ const Hotel = () => {
 
     dispatch(updateReservation({
       name: entities[ids].name,
-      cityName: entities[ids].City.name,
-      guests: entities[ids].guests
+      cityName: entities[ids].City.name
+      // guests: entities[ids].guests
     }))
 
     content = (
@@ -83,6 +83,7 @@ const Hotel = () => {
           <Modal
             isOpen={res.open}
             onRequestClose={closeModal}
+            ariaHideApp={false}
             className='hotel__modal'
             overlayClassName='hotel__overlay'
           >

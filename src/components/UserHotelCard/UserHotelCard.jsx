@@ -3,8 +3,9 @@ import React from 'react'
 import { AiFillStar } from 'react-icons/ai'
 import { Link } from 'react-router-dom'
 
-function Card ({ img, name, guests, stars, banned }) {
+function Card ({ img, name, hosts, stars, banned }) {
   const filters = {}
+  console.log({ img, name, hosts, stars, banned })
   return (
     <div className={banned === false ? 'cards' : 'banned'}>
       <Link to={`/hotel/${name}`} state={filters} className='link'>
@@ -15,7 +16,7 @@ function Card ({ img, name, guests, stars, banned }) {
             {banned === false &&
               <>
                 <div className='cards__content__badges__stars'>{stars}<AiFillStar /> </div>
-                <div className='cards__content__badges__huesp'>{guests} Huespedes</div>
+                <div className='cards__content__badges__huesp'>{hosts} Huespedes</div>
               </>}
             {banned === true &&
               <div className='cards__content__badges__huesp'><p> Hotel inhabilitado </p></div>}

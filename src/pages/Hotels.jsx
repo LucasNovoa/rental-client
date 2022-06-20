@@ -22,7 +22,7 @@ export const Hotels = () => {
       <SearchBar />
       <FilterSort less={less} setLess={setLess} cap={cap} setCap={setCap} setFilterPrice={setFilterPrice} minStars={minStars} setMinStars={setMinStars} maxStars={maxStars} setMaxStars={setMaxStars} setFilterStars={setFilterStars} setSortPrice={setSortPrice} setSortStars={setSortStars} />
       <HotelsContainer less={less} setLess={setLess} cap={cap} setCap={setCap} filterPrice={filterPrice} minStars={minStars} setMinStars={setMinStars} maxStars={setMaxStars} setMaxStars={setMaxStars} filterStars={filterStars} sortPrice={sortPrice} sortStars={sortStars} />
-      {/* <Footer /> */}
+      <Footer />
     </div>
   )
 }

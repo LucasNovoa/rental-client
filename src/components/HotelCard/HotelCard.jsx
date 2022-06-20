@@ -4,6 +4,7 @@ import { FiShare2 } from 'react-icons/fi'
 import { MdFavoriteBorder } from 'react-icons/md'
 import Share from '../Share/Share'
 import { useNavigate } from 'react-router'
+import swal from 'sweetalert'
 import axios from 'axios'
 
 const HotelCard = ({ hotel }) => {
@@ -16,10 +17,22 @@ const HotelCard = ({ hotel }) => {
 
   const handleFavorites = () => {
     if (!userJSON) {
-      navigate('/login')
+      swal({
+        title: 'Error',
+        text: '¡Debes loguearte para agregar a tu listado de Favoritos!',
+        icon: 'warning',
+        button: 'Ok!'
+      })
+      // navigate('/login')
     } else {
-      axios.patch(`https://rental-x-server.herokuapp.com/api/v1/users/${userJSON.id}`, {
-        favHotels: [...hotel.id]
+      axios.patch(`https://rental-x-server.herokuapp.com/api/v1/users/${JSON.parse(userJSON).id}`, {
+        favHotels: [hotel.id]
+      })
+      swal({
+        title: 'Éxito',
+        text: '¡Hospedaje agregado a tu listado de Favoritos!',
+        icon: 'success',
+        button: 'Ok!'
       })
     }
   }
@@ -39,6 +52,7 @@ const HotelCard = ({ hotel }) => {
             <p className='hotelcard__container__data__sec__span'>{hotel.description}</p>
             <div className='hotelcard__container__data__sec__buttons'>
               <p className='hotelcard__container__data__sec__span'>{hotel.stars} ★ {hotel.City.name}, {hotel.Country.name}</p>
+              <p className='hotelcard__container__data__sec__span'>Capacidad máx. {hotel.guests} huéspedes</p>
             </div>
           </div>
         </div>

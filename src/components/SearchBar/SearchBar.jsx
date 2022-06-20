@@ -22,13 +22,13 @@ const SearchBar = () => {
   const [endDate, setEndDate] = useState(startDate)
   const [renderCalendar, setRenderCalendar] = useState(false)
   const [renderAmount, setRenderAmount] = useState(false)
-  const [amount, setAmount] = useState(1)
+  const [amount, setAmount] = useState(reservation.guests)
   const [place, setPlace] = useState(filters.city)
 
   const [inputFilters, setInputFilters] = useState({
-    city: '',
+    city: place,
     otherFilters: {
-      guests: 1
+      guests: filters.otherFilters.guests
     }
   })
 
@@ -38,12 +38,13 @@ const SearchBar = () => {
     key: 'selection'
   }
 
-  console.log(reservation, filters, inputFilters)
+  console.log('RESERVATION: ', reservation, 'FILTERS: ', filters, 'INPUT: ', inputFilters)
 
   const handleSearch = (e) => {
     e.preventDefault()
 
     dispatch(updateReservation({
+      ...reservation,
       cityName: place
     }))
     dispatch(updateFilters({
@@ -199,7 +200,7 @@ const SearchBar = () => {
           <h5 className='searchBar__amount__title'>Huéspedes</h5>
           <div className='searchBar__amount__title__counter'>
             <button name='-' disabled={amount === 1} onClick={handleAmount} className='searchBar__amount__title__counter__btn'>-</button>
-            <h5 className='searchBar__amount__title__counter__number'>{amount}</h5>
+            <h5 className='searchBar__amount__title__counter__number'>{reservation.guests}</h5>
             <button name='+' disabled={amount > 7} onClick={handleAmount} className='searchBar__amount__title__counter__btn'>+</button>
           </div>
         </div>

@@ -2,6 +2,7 @@
   max-width: fit-content;
   padding: 24px;
   color: #ffffff;
+  min-height: 81.15vh;
 
   ul {
     list-style-type: none;
@@ -49,7 +50,7 @@
   }
   
   &__divider {
-    width: 100%;
+    width: 90rem;
     margin: 32px 0 24px 0;
     border: 1px solid rgba(162, 162, 162, 0.325);
   }

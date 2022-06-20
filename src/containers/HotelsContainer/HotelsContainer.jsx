@@ -12,23 +12,25 @@ export const HotelsContainer = ({ less, setLess, cap, setCap, filterPrice, filte
   const { city, otherFilters, ranges } = filters
   const hotels = city !== '' ? useSelector(selectAllHotels).filter(hotel => hotel.City.name === city) : useSelector(selectAllHotels)
 
-  let otherFilteredHotels = hotels.sort(function (a, b) {
-    if (a.price < b.price) {
-      return 1
-    }
-    if (a.price > b.price) {
-      return -1
-    }
-    return 0
-  }).sort(function (a, b) {
-    if (a.stars < b.stars) {
-      return 1
-    }
-    if (a.stars > b.stars) {
-      return -1
-    }
-    return 0
-  })
+  let otherFilteredHotels = hotels
+
+  // let otherFilteredHotels = hotels.sort(function (a, b) {
+  //   if (a.price < b.price) {
+  //     return 1
+  //   }
+  //   if (a.price > b.price) {
+  //     return -1
+  //   }
+  //   return 0
+  // }).sort(function (a, b) {
+  //   if (a.stars < b.stars) {
+  //     return 1
+  //   }
+  //   if (a.stars > b.stars) {
+  //     return -1
+  //   }
+  //   return 0
+  // })
 
   const {
     isLoading,
@@ -40,7 +42,7 @@ export const HotelsContainer = ({ less, setLess, cap, setCap, filterPrice, filte
   const [page, setPage] = useState(0)
 
   useEffect(() => {
-    setPage(1)
+    setPage(0)
     window.scrollTo(0, 0)
   }, [filters])
 
@@ -110,12 +112,20 @@ export const HotelsContainer = ({ less, setLess, cap, setCap, filterPrice, filte
   const maxPage = Math.floor(otherFilteredHotels.length / 8)
 
   return (
-    console.log(filterPrice, ' ', filterStars),
-      <section className='hotelscontainer'>
-        <div className='hotelscontainer__cards'>
-          {content}
-        </div>
-        <Pagination page={page} setPage={setPage} maxPage={maxPage} />
-      </section>
+  // console.log(filterPrice, ' ', filterStars),
+    <section className='hotelscontainer'>
+      {/* <div className='hotelscontainer__map'>
+        <Map
+          width='67.5vw'
+          zoom={10}
+          height={400}
+          hotels={filteredHotels}
+        />
+      </div> */}
+      <div className='hotelscontainer__cards'>
+        {content}
+      </div>
+      <Pagination page={page} setPage={setPage} maxPage={maxPage} />
+    </section>
   )
 }

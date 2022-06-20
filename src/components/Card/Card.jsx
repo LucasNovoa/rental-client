@@ -1,14 +1,17 @@
 import './card.scss'
 import React from 'react'
+import { useSelector } from 'react-redux'
 import { AiFillStar } from 'react-icons/ai'
 import { Link } from 'react-router-dom'
+import { selectReservation } from '../../redux/slices/reservationSlice'
 
 function Card ({ img, name, description, price, hosts, stars, filters = {} }) {
   const encodeName = encodeURI(name)
-
+  const reservation = useSelector(selectReservation)
+  // console.log('soy filters ======', name, hosts, filters)
   return (
     <div className='card'>
-      <Link to={`/hotel/${encodeName}`} state={filters} className='link'>
+      <Link to={`/hotel/${encodeName}`} state={reservation} className='link'>
         <img src={img} alt='img' className='card__image' />
         <div className='card__content'>
           <h3 className='card__content__title'>{name}</h3>

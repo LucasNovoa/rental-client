@@ -31,28 +31,33 @@
           font-size: 62px;
           line-height: 1.161em;
           font-weight: 700;
-          color: #ffffff;
+          width: 60rem;
+          color: rgba(255, 255, 255, 0.95);
           margin-top: 0px;
           margin-bottom: 16px;
         }
 
         &__anchors {
-          width: 20%;
+          width: 26%;
           display: flex;
-          justify-content: space-between;
+          justify-content: flex-end;
           cursor: pointer;
 
           &__a {
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: flex-end;
             width: 42%;
           }
           a {
-            color: white;
-            font-size: 18px;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.25rem;
             line-height: 1.667em;
             font-weight: 400;
+          }
+          &__a:hover {
+            color: white;
+            font-size: 1.4rem;
           }
         }
       }
@@ -72,7 +77,8 @@
         &__buttons {
           width: 50%;
           display: flex;
-          align-items: center;
+          flex-direction: column;
+          align-items: flex-start;
           justify-content: space-between;
         }
       }

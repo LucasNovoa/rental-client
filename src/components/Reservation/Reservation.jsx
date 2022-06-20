@@ -13,7 +13,8 @@ const Reservation = ({ hotel, setRes, res }) => {
   const dispatch = useDispatch()
   const userJSON = window.localStorage.getItem('user')
   const navigate = useNavigate()
-  console.log(!userJSON)
+  // console.log(!userJSON)
+  console.log(reservations)
 
   useEffect(() => {
     window.scrollTo(0, 0)
