@@ -30,7 +30,7 @@ function useProvideAuth () {
 
     console.log('Auth' + email, password)
 
-    const { data: access_token } = await axios.post('https://rental-x-server.herokuapp.com/api/v1/auth/login', { email, password }, options)
+    const { data: access_token } = await axios.post('https://rental-bookings-server.herokuapp.com/api/v1/auth/login', { email, password }, options)
 
     if (access_token) {
       const token = access_token.token
@@ -40,7 +40,7 @@ function useProvideAuth () {
 
       axios.defaults.headers.Authorization = `Bearer ${token}`
 
-      const { data: user } = await axios.get(`https://rental-x-server.herokuapp.com/api/v1/users/${userId}`)
+      const { data: user } = await axios.get(`https://rental-bookings-server.herokuapp.com/api/v1/users/${userId}`)
 
       setUser(user)
 
@@ -56,7 +56,7 @@ function useProvideAuth () {
       }
     }
 
-    await axios.post('https://rental-x-server.herokuapp.com/api/v1/auth/recovery', { email }, options)
+    await axios.post('https://rental-bookings-server.herokuapp.com/api/v1/auth/recovery', { email }, options)
   }
 
   const changePass = async (token, newPassword) => {
@@ -67,7 +67,7 @@ function useProvideAuth () {
       }
     }
 
-    await axios.post('https://rental-x-server.herokuapp.com/api/v1/auth/change-password', { token, newPassword }, options)
+    await axios.post('https://rental-bookings-server.herokuapp.com/api/v1/auth/change-password', { token, newPassword }, options)
   }
 
   const logOut = () => {

@@ -23,7 +23,7 @@ export default hotelSlice.reducer */
 
 /* import axios from 'axios' */
 
-const URI = 'https://rental-x-server.herokuapp.com/api/v1/hotels'
+const URI = 'https://rental-bookings-server.herokuapp.com/api/v1/hotels'
 
 /* const initialState = {
   hotels: [],

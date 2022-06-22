@@ -8,7 +8,7 @@ const addUser = async (body) => {
     }
   }
 
-  const response = await axios.post('https://rental-x-server.herokuapp.com/api/v1/users', body, config)
+  const response = await axios.post('https://rental-bookings-server.herokuapp.com/api/v1/users', body, config)
 
   return response.data
 }
@@ -21,7 +21,7 @@ const deleteUser = async (id) => {
     }
   }
 
-  const response = await axios.delete('https://rental-x-server.herokuapp.com/api/v1/users/' + id, config)
+  const response = await axios.delete('https://rental-bookings-server.herokuapp.com/api/v1/users/' + id, config)
 
   return response.data
 }
@@ -34,7 +34,7 @@ const updateUser = async (id, body) => {
     }
   }
 
-  const response = await axios.patch('https://rental-x-server.herokuapp.com/api/v1/users/' + id, body, config)
+  const response = await axios.patch('https://rental-bookings-server.herokuapp.com/api/v1/users/' + id, body, config)
 
   return response.data
 }

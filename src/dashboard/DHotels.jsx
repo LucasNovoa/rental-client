@@ -23,7 +23,7 @@ export default function DHotels () {
 
   useEffect(() => {
     async function getHotels () {
-      const response = await axios.get('https://rental-x-server.herokuapp.com/api/v1/hotels')
+      const response = await axios.get('https://rental-bookings-server.herokuapp.com/api/v1/hotels')
       setHotels(response.data)
     }
     try {

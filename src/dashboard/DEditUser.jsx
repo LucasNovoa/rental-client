@@ -12,7 +12,7 @@ const DEditUser = () => {
 
   useEffect(() => {
     async function getUser () {
-      const response = await axios.get('https://rental-x-server.herokuapp.com/api/v1/users/' + id)
+      const response = await axios.get('https://rental-bookings-server.herokuapp.com/api/v1/users/' + id)
       setUser(response.data)
     }
     getUser()

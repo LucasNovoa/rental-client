@@ -40,7 +40,7 @@ function Book ({ setRes, res, bookHotel }) {
 
   function handleConfirm (e) {
     e.preventDefault()
-    axios.post('https://rental-x-server.herokuapp.com/api/v1/bookings', {
+    axios.post('https://rental-bookings-server.herokuapp.com/api/v1/bookings', {
       checkIn: checkInDate,
       checkOut: checkOutDate,
       UserId: userId,

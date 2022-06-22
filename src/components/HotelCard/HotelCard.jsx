@@ -25,7 +25,7 @@ const HotelCard = ({ hotel }) => {
       })
       // navigate('/login')
     } else {
-      axios.patch(`https://rental-x-server.herokuapp.com/api/v1/users/${JSON.parse(userJSON).id}`, {
+      axios.patch(`https://rental-bookings-server.herokuapp.com/api/v1/users/${JSON.parse(userJSON).id}`, {
         favHotels: [hotel.id]
       })
       swal({

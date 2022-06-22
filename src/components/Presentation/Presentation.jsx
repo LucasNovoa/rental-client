@@ -1,13 +1,14 @@
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import './presentation.scss'
 import { updateFilters } from '../../redux/slices/filtersSlice'
+import { selectReservation, updateReservation } from '../../redux/slices/reservationSlice'
 
 function Presentation () {
   const dispatch = useDispatch()
   const navigate = useNavigate()
-
+  const reservation = useSelector(selectReservation)
   const handleClick = (e) => {
     e.preventDefault()
     dispatch(updateFilters({
@@ -15,6 +16,14 @@ function Presentation () {
       otherFilters: {
         guests: 1
       }
+    }))
+    dispatch(updateReservation({
+      ...reservation,
+      name: '',
+      cityName: '',
+      guests: 1,
+      open: false,
+      nights: 1
     }))
     navigate('/hotels', { replace: true })
   }

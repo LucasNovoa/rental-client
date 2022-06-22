@@ -49,6 +49,7 @@ const Reservation = ({ hotel, setRes, res }) => {
           ...res,
           open: true
         })
+        window.scrollTo(0, 0)
       }
     }
   }

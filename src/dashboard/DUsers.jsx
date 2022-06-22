@@ -32,7 +32,7 @@ export default function DUsers () {
 
   useEffect(() => {
     async function getUsers () {
-      const response = await axios.get('https://rental-x-server.herokuapp.com/api/v1/users')
+      const response = await axios.get('https://rental-bookings-server.herokuapp.com/api/v1/users')
       setUsers(response.data)
     }
     try {

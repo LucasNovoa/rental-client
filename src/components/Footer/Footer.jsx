@@ -20,7 +20,7 @@ export default function Footer () {
   const handleSubmit = (e) => {
     e.preventDefault()
     if (mail.includes('@')) {
-      axios.post('https://rental-x-server.herokuapp.com/api/v1/suscriptors', { email: mail })
+      axios.post('https://rental-bookings-server.herokuapp.com/api/v1/suscriptors', { email: mail })
       swal({
         text: 'Te suscribiste con éxito!',
         button: 'Ok!',
