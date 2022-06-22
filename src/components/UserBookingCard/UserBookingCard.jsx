@@ -38,28 +38,28 @@ function Card ({ img, name, price, checkIn, checkOut, setBook, paid, id, book, c
 
     <div className={paid === true ? 'bookingcard' : 'pending'}>
       <div onClick={handleClick} id={id} className='link'>
-        <img src={img} alt='img' id={id} className='card__image' />
+        <img src={img} alt='img' id={id} className={paid === true ? 'bookingcard__image' : 'pending__image'} />
         <div className='bookingcard__content'>
           <h2 className='bookingcard__content__title'>{name}</h2>
           <div className='bookingcard__content__badges'>
             <ul className='bookingcard__content__badges__ul'>
               {paid === false && canceled === false &&
                 <>
-                  <li className='pending__content__badges__ul__book'><p>Pendiente de Pago</p></li>
+                  <li><p className='pending__content__badges__ul__book'>PAGAR</p></li>
                   <li><div className='pending__content__badges__ul__book'>Check-In: {arrive}</div></li>
                   <li><div className='pending__content__badges__ul__book'>Check-Out: {depart}</div></li>
                 </>}
               {paid === true &&
                 <>
-                  <li className='bookingcard__content__badges__ul__book'><p>Precio por noche: ${price}</p></li>
                   <li><div className='bookingcard__content__badges__ul__book'>Check-In: {arrive}</div></li>
                   <li><div className='bookingcard__content__badges__ul__book'>Check-Out: {depart}</div></li>
+                  <li><p className='bookingcard__content__badges__ul__book'>Precio por noche: ${price}</p></li>
                 </>}
               {canceled === true &&
                 <>
-                  <li className='bookingcard__content__badges__book'><p>CANCELADO</p></li>
-                  <li><div className='bookingcard__content__badges__ul__book'>Check-In: {arrive}</div></li>
-                  <li><div className='bookingcard__content__badges__ul__book'>Check-Out: {depart}</div></li>
+                  <li><p className='pending__content__badges__book'>CANCELADA</p></li>
+                  <li><div className='pending__content__badges__ul__book'>Check-In: {arrive}</div></li>
+                  <li><div className='pending__content__badges__ul__book'>Check-Out: {depart}</div></li>
                 </>}
             </ul>
           </div>
