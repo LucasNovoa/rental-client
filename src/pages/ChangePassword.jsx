@@ -32,21 +32,21 @@ const ChangePassword = () => {
   }
 
   return (
-    <>
+    <section className='cp'>
       <Header />
       <div className='ChangePassword'>
         <div className='ChangePassword__Container'>
-          <h1>Nueva contraseña</h1>
-          <p>Ingresa la nueva contraseña con la que quieres acceder a la aplicación.</p>
+          <h1>Cambiar contraseña</h1>
+          <p>¡Elige una nueva contraseña para ingresar a Rental App!</p>
           <form action='' onSubmit={handleSubmit}>
-            <label htmlFor=''>Nueva Contraseña</label>
-            <input type='password' placeholder='Escribe tu Nueva Contraseña' ref={passRef} />
+            {/* <label htmlFor=''>Nueva Contraseña</label> */}
+            <input type='password' placeholder='Ingresa tu Nueva Contraseña...' ref={passRef} />
             <button type='submit'>Confirmar</button>
           </form>
         </div>
       </div>
-      <Footer />
-    </>
+      {/* <Footer /> */}
+    </section>
 
   )
 }

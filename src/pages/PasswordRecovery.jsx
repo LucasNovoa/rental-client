@@ -36,21 +36,21 @@ const PasswordRecovery = () => {
   }
 
   return (
-    <>
+    <section className='pr'>
       <Header />
       <div className='PasswordRecovery'>
         <div className='PasswordRecovery__Container'>
           <h1>Recuperar Contraseña</h1>
-          <p>Informa el correo electrónico usado para crear tu cuenta.</p>
+          <p>¡Te enviaremos un correo con el link para cambiar tu contraseña!</p>
           <form action='' onSubmit={handleSubmit}>
-            <label htmlFor=''>Correo Electrónico</label>
-            <input type='text' placeholder='Escribe tu Correo Electrónico' ref={emailRef} />
+            {/* <label htmlFor=''>Correo Electrónico</label> */}
+            <input type='text' placeholder='Ingresa aquí tu Correo Electrónico...' ref={emailRef} />
             <button type='submit'>Confirmar</button>
           </form>
         </div>
       </div>
-      <Footer />
-    </>
+      {/* <Footer /> */}
+    </section>
 
   )
 }

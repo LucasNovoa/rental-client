@@ -64,7 +64,7 @@
 
   button {
     width: 20rem;
-    height: 800rem;
+    min-height: 4rem;
     outline: none;
     background-color: #ff3f3f;
     padding: 1rem;
@@ -74,8 +74,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 6rem;
+    margin-top: 8rem;
     margin-left: 18%;
+    margin-bottom: 3.5rem;
     font-size: 1.1rem;
     cursor: pointer;
     box-shadow: 0 2px 12px 0 rgb(20 20 43 / 20%);
