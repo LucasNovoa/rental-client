@@ -1,32 +1,28 @@
 import React, { useRef } from 'react'
-
 import Header from '../components/Header/Header'
-
 import { useNavigate, useSearchParams } from 'react-router-dom'
-
 import Footer from '../components/Footer/Footer'
-
 import { useAuth } from '../hooks/useAuth'
-
 import '../scss/ChangePassword.scss'
+import swal from 'sweetalert'
 
 const ChangePassword = () => {
   const [searchParams, setSearchParams] = useSearchParams()
-
   const auth = useAuth()
-
   const token = searchParams.get('token')
-
   const navigate = useNavigate()
-
   const passRef = useRef(null)
 
   const handleSubmit = (event) => {
     event.preventDefault()
-
     const password = passRef.current.value
-
     auth.changePass(token, password).then(() => {
+      swal({
+        title: 'Éxito',
+        text: '¡Listo, ingresa con tu nueva Contraseña!',
+        icon: 'success',
+        button: 'Ok!'
+      })
       navigate('/login')
     })
   }
