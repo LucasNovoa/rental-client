@@ -92,7 +92,7 @@
 
       &__btnr:hover {
         cursor: pointer;
-        background-color: #ff3f3f;
+        background-color: rgba(255, 63, 63, 0.8);
         color: white;
         transition: background-color 0.3s ease;
         transform: translate(0, -2px);
@@ -103,7 +103,7 @@
         border: none;
         opacity: 1;
         cursor: pointer;
-        background-color: #ff3f3f;
+        background-color: rgba(255, 63, 63, 0.8);
         color: white;
         transition: background-color 0.3s ease;
         transform: translate(0, -2px);
