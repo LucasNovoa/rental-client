@@ -7,6 +7,7 @@
   margin: 0 auto;
   margin-bottom: 70px;
   display: flex;
+  border-radius: 1.5rem;
 
   &__image {
     border: none;
@@ -31,16 +32,17 @@
     text-align: left;
 
     &__title {
-      margin-bottom: 10px;
+      margin-bottom: 2rem;
       text-indent: 0;
     }
 
     &__hotel {
-      margin-bottom: 10px;
+      margin-bottom: 1.2rem;
       text-indent: 8px;
     }
 
     &__p {
+      margin-top: 0.5rem;
       text-indent: 0;
       display: flex;
       width: 100%;
@@ -48,7 +50,7 @@
     }
 
     &__btns {
-      margin-top: 20px;
+      margin-top: 2.3rem;
       display: flex;
       width: 100%;
       justify-content: space-evenly;

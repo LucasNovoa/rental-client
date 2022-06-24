@@ -1,10 +1,11 @@
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router'
+import { Link } from 'react-router-dom'
 // import { DateRangePicker } from 'react-date-range'
 import 'react-date-range/dist/styles.css'
 import 'react-date-range/dist/theme/default.css'
 import './Reservation.scss'
-import { useNavigate } from 'react-router'
 // import { selectAllCities } from '../../redux/services/hotelsServices'
 import { selectReservation, updateReservation } from '../../redux/slices/reservationSlice'
 import swal from 'sweetalert'
@@ -13,9 +14,13 @@ moment().format('dddd, MMMM Do YYYY, h:mm:ss a')
 
 const Reservation = ({ hotel, setRes, res }) => {
   const reservations = useSelector(selectReservation)
-  const dispatch = useDispatch()
   const userJSON = window.localStorage.getItem('user')
+  const reservationFrom = moment(reservations.checkIn)
+  const reservationTo = moment(reservations.checkOut)
+  const totalNights = reservationTo.diff(reservationFrom, 'days')
+  const dispatch = useDispatch()
   const navigate = useNavigate()
+  const [amount, setAmount] = useState(reservations.guests)
   // console.log(!userJSON)
   // console.log(reservations)
 
@@ -44,10 +49,6 @@ const Reservation = ({ hotel, setRes, res }) => {
           text: `${errors}`
         })
       } else {
-        const reservationFrom = moment(reservations.checkIn)
-        const reservationTo = moment(reservations.checkOut)
-        const totalNights = reservationTo.diff(reservationFrom, 'days')
-        console.log('======LUCAS', moment(reservationFrom).toObject(), reservationTo, 'TN==>', totalNights)
         dispatch(updateReservation({
           totalNights
         }))
@@ -57,6 +58,23 @@ const Reservation = ({ hotel, setRes, res }) => {
         })
         window.scrollTo(0, 0)
       }
+    }
+  }
+
+  const handleAmount = (e) => {
+    if (e.target.name === '-') {
+      if (amount === 1) return
+      if (amount > 1) {
+        setAmount(amount - 1)
+        dispatch(updateReservation({
+          guests: amount - 1
+        }))
+      }
+    } else {
+      setAmount(amount + 1)
+      dispatch(updateReservation({
+        guests: amount + 1
+      }))
     }
   }
 
@@ -73,13 +91,18 @@ const Reservation = ({ hotel, setRes, res }) => {
           <h5 className='reservation__check__title'>Check-out</h5>
           <h5 className='reservation__check__value'>{reservations.checkOut === 'Hasta...' ? reservations.checkOut : dateFormat(reservations.checkOut)}</h5>
         </button>
-        <div>
-          <button className='reservation__amount'>
-            <h5 className='reservation__amount__title'>Huéspedes</h5>
-            <h5 className='reservation__amount__value'>{reservations.guests}</h5>
-          </button>
+        <div className='reservation__amount'>
+          <h5 className='reservation__amount__title'>Huéspedes</h5>
+          <div className='reservation__amount__guests'>
+            <button name='-' disabled={reservations.guests === 1} onClick={handleAmount} className='reservation__amount__guests__btn'>-</button>
+            <h5 className='reservation__amount__guests__value'>{reservations.guests}</h5>
+            <button name='+' disabled={reservations.guests === hotel.guests} onClick={handleAmount} className='reservation__amount__guests__btn'>+</button>
+          </div>
         </div>
-        <button className='reservation__btn' onClick={handleSearch}>Reservar</button>
+        <div className='reservation__btns'>
+          <Link to='/hotels' className='reservation__btns__btn'>Volver</Link>
+          <button className='reservation__btns__btn' onClick={handleSearch}>Reservar</button>
+        </div>
       </div>
     </div>
   )

@@ -21,7 +21,7 @@ const SearchBar = () => {
   const [startDate, setStartDate] = useState(new Date())
   const [endDate, setEndDate] = useState(startDate)
   const [renderCalendar, setRenderCalendar] = useState(false)
-  const [renderAmount, setRenderAmount] = useState(false)
+  // const [renderAmount, setRenderAmount] = useState(false)
   const [amount, setAmount] = useState(reservation.guests)
   const [place, setPlace] = useState(filters.city)
 
@@ -38,7 +38,7 @@ const SearchBar = () => {
     key: 'selection'
   }
 
-  console.log('RESERVATION: ', reservation, 'FILTERS: ', filters, 'INPUT: ', inputFilters)
+  // console.log('RESERVATION: ', reservation, 'FILTERS: ', filters, 'INPUT: ', inputFilters)
 
   const handleSearch = (e) => {
     e.preventDefault()
@@ -51,7 +51,7 @@ const SearchBar = () => {
       ...inputFilters
     }))
     navigate('/hotels', { replace: true })
-    console.log('clic')
+    // console.log('clic')
   }
 
   const handleCity = (e) => {
@@ -90,20 +90,18 @@ const SearchBar = () => {
   }
 
   const handleCalendarRender = () => {
-    setRenderAmount(false)
     setResults(false)
     setRenderCalendar(!renderCalendar)
   }
 
-  const handleAmountRender = () => {
-    setRenderCalendar(false)
-    setResults(false)
-    setRenderAmount(!renderAmount)
-  }
+  // const handleAmountRender = () => {
+  //   setRenderCalendar(false)
+  //   setResults(false)
+  //   setRenderAmount(!renderAmount)
+  // }
 
   const handleFocus = () => {
     setRenderCalendar(false)
-    setRenderAmount(false)
   }
 
   const handleAmount = (e) => {

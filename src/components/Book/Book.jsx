@@ -61,14 +61,15 @@ function Book ({ setRes, res, bookHotel }) {
         <img src={bookHotel.mainImage} />
       </div>
       <div className='booking__info'>
-        <h2 className='booking__info__title'><strong>Resumen pre-reserva</strong></h2>
-        <h3 className='booking__info__hotel'><strong>{reservation.name}</strong></h3>
+        <h2 className='booking__info__title'><strong>Resumen Pre-Reserva</strong></h2>
+        <h3 className='booking__info__hotel'><strong>Hospedaje: {reservation.name}</strong></h3>
+        <p className='booking__info__p'><strong>Ciudad:</strong> {reservation.cityName}</p>
         <p className='booking__info__p'><strong>Check-In:</strong> {reservation.checkIn.toDateString()}</p>
         <p className='booking__info__p'><strong>Check-Out:</strong> {reservation.checkOut.toDateString()}</p>
-        <p className='booking__info__p'><strong>Ciudad:</strong> {reservation.cityName}</p>
-        <p className='booking__info__p'><strong>Estado:</strong> Pago Pendiente</p>
-        <p className='booking__info__p'><strong>Precio por noche:</strong> ${bookHotel.price}</p>
+        <p className='booking__info__p'><strong>Precio por noche:</strong> USD {bookHotel.price}</p>
         <p className='booking__info__p'><strong>Cantidad de Noches:</strong> {reservation.totalNights}</p>
+        <p className='booking__info__p'><strong>Monto a Pagar:</strong> USD {reservation.totalNights * bookHotel.price}</p>
+        <p className='booking__info__p'><strong>Estado:</strong> Pago Pendiente</p>
         <div className='booking__info__btns'>
           {!pay &&
             <>

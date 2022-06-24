@@ -16,14 +16,14 @@
   flex-direction: column;
   position: absolute;
   top: 135%;
-  right: 10%;
+  right: 6%;
   transform: translate(-50%, -50%);
   align-items: center;
   background-color: white;
-  height: 295px;
-  width: 14rem;
+  height: 20rem;
+  width: 18rem;
   padding: 25px;
-  border-radius: 30px;
+  border-radius: 1.5rem;
   box-shadow: 0 2px 12px 0 rgba(20, 20, 43, 0.164);
   transform: scale(1.15);
 
@@ -80,71 +80,66 @@
       font-size: 1rem;
     }
 
-    &__value {
-      font-size: 0.9rem;
-    }
-
-    &__display {
+    &__guests {
       display: flex;
-      position: absolute;
-      top: 132px;
-      left: 65%;
-      transform: translate(-62%, 100%);
-      padding: 20px 25px 20px 25px;
-      background-color: white;
-      border-radius: 20px;
-      gap: 20px;
-      box-shadow: 0 2px 12px 0 rgba(20, 20, 43, 0.164);
+      justify-content: space-between;
+      align-items: center;
+      width: 6rem;
+      margin-top: 0.5rem;
 
-      &__title {
-        font-size: 1rem;
+      &__value {
+        font-size: 0.9rem;
       }
 
-      &__counter {
-        display: flex;
+      &__btn {
+        font-size: 1rem;
+        font-weight: 500;
+        border: none;
+        border-radius: 10px;
+        width: 27px;
+        height: 27px;
+        background: #eff2f7;
+        margin-top: 0.2rem;
+      }
 
-        &__number {
-          font-size: 0.9rem;
-          width: 30px;
-          text-align: center;
-        }
-
-        &__btn {
-          font-size: 1.3rem;
-          font-weight: 500;
-          border: none;
-          border-radius: 5px;
-          width: 24px;
-          height: 24px;
-          background: #eff2f7;
-        }
-        &__btn:hover {
-          background: #e1e7f0;
-          cursor: pointer;
-        }
+      &__btn:hover {
+        background: #e1e7f0;
+        cursor: pointer;
       }
     }
   }
+
   &__amount:hover {
-    cursor: pointer;
+    cursor: default;
   }
 
-  &__btn {
-    background-color: rgb(255, 63, 63, 0.9);
-    box-shadow: 0 2px 12px 0 rgba(20, 20, 43, 0.264);
-    padding: 18px 24px 18px 24px;
-    color: white;
-    font-size: 1rem;
-    border-radius: 76px;
-    border: none;
-  }
-
-  &__btn:hover {
-    cursor: pointer;
-    background-color: rgb(255, 63, 63);
-    transform: background-color 0.3s ease;
-    transform: translate(0, -2px);
-    font-size: 1.1rem;
+  &__btns {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    width: 14rem;
+    height: 4.7rem;
+    
+    &__btn {
+      width: 6rem;
+      height: 3rem;
+      padding: 1rem;
+      background-color: rgb(255, 63, 63, 0.95);
+      box-shadow: 0 2px 12px 0 rgba(20, 20, 43, 0.264);
+      color: white;
+      font-size: 0.85rem;
+      font-weight: 500;
+      border-radius: 76px;
+      border: none;
+      text-decoration: none;
+    }
+  
+    &__btn:hover {
+      cursor: pointer;
+      background-color: #ca2626;
+      transform: scale(1.05)  
+    }  
   }
 }
 
