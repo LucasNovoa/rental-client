@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { DateRangePicker } from 'react-date-range'
+// import { DateRangePicker } from 'react-date-range'
 import 'react-date-range/dist/styles.css'
 import 'react-date-range/dist/theme/default.css'
 import './Reservation.scss'
 import { useNavigate } from 'react-router'
-import { selectAllCities } from '../../redux/services/hotelsServices'
+// import { selectAllCities } from '../../redux/services/hotelsServices'
 import { selectReservation, updateReservation } from '../../redux/slices/reservationSlice'
 import swal from 'sweetalert'
 import moment from 'moment'
@@ -17,7 +17,7 @@ const Reservation = ({ hotel, setRes, res }) => {
   const userJSON = window.localStorage.getItem('user')
   const navigate = useNavigate()
   // console.log(!userJSON)
-  console.log(reservations)
+  // console.log(reservations)
 
   useEffect(() => {
     window.scrollTo(0, 0)

@@ -1,5 +1,6 @@
 import './Footer.scss'
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import image from '../../assets/favicon.jpg'
 import { FaFacebookF, FaTwitter, FaInstagram, FaYoutube } from 'react-icons/fa'
 import axios from 'axios'
@@ -102,20 +103,20 @@ export default function Footer () {
               <div className='footer__container__top__grid__listCont'>
                 <ul className='footer__container__top__grid__listCont__ul1'>
                   <li className='footer__container__top__grid__listCont__ul1__li1'>
-                    <a
-                      href='/'
+                    <Link
+                      to='/'
                       className='footer__container__top__grid__listCont__ul1__li1__href'
                     >
                       Inicio
-                    </a>
+                    </Link>
                   </li>
                   <li className='footer__container__top__grid__listCont__ul1__li2'>
-                    <a
-                      href='/about'
+                    <Link
+                      to='/about'
                       className='footer__container__top__grid__listCont__ul1__li2__href'
                     >
                       Acerca de ...
-                    </a>
+                    </Link>
                   </li>
                   {/* <li className='footer__container__top__grid__listCont__ul1__li5'>
                     <a
@@ -126,28 +127,28 @@ export default function Footer () {
                     </a>
                   </li> */}
                   <li className='footer__container__top__grid__listCont__ul1__li6'>
-                    <a
-                      href='/hotels'
+                    <Link
+                      to='/hotels'
                       className='footer__container__top__grid__listCont__ul1__li6__href'
                     >
                       Ver Hoteles
-                    </a>
+                    </Link>
                   </li>
                   <li className='footer__container__top__grid__ul2__li6'>
-                    <a
-                      href='/register'
+                    <Link
+                      to='/register'
                       className='footer__container__top__grid__ul2__li6__href'
                     >
                       Registrarse
-                    </a>
+                    </Link>
                   </li>
                   <li className='login'>
-                    <a
-                      href='/login'
+                    <Link
+                      to='/login'
                       className='footer__container__top__grid__ul2__li6__href'
                     >
                       Ingresar
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>

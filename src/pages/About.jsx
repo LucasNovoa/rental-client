@@ -1,15 +1,18 @@
-import Header from '../components/Header/Header'
-
+import { useEffect } from 'react'
 import about3 from '../assets/images/about-us3.jpg'
 import about4 from '../assets/images/about-us4.jpg'
 import about5 from '../assets/images/about-us5.jpg'
 import about6 from '../assets/images/about-us6.jpg'
-
+import Header from '../components/Header/Header'
 import Footer from '../components/Footer/Footer'
 
 import '../scss/About.scss'
 
 function About () {
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   return (
     <>
       <Header />

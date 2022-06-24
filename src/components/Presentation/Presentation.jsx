@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import './presentation.scss'
@@ -9,6 +9,11 @@ function Presentation () {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const reservation = useSelector(selectReservation)
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   const handleClick = (e) => {
     e.preventDefault()
     dispatch(updateFilters({
