@@ -1,7 +1,7 @@
 .searchBar {
   display: flex;
   position: absolute;
-  top: 30%;
+  top: 28%;
   left: 50%;
   transform: translate(-50%, -50%);
   align-items: center;
@@ -9,7 +9,7 @@
   font-size: 1.2rem;
   background-color: rgba(255, 255, 255, 0.8);
   padding: 11px 22px;
-  border-radius: 100px;
+  border-radius: 1rem;
   box-shadow: 0 2px 12px 0 rgba(20, 20, 43, 0.164);
   z-index: 1;
 
@@ -22,12 +22,13 @@
     color: black;
     font-size: 1.2rem;
     padding: 11px 22px;
+    width: 23rem;
 
     &__title {
       font-weight: 400;
       font-size: 1.2rem;
       margin-bottom: 5px;
-      margin-left: 40px;
+      margin-left: 8rem;
     }
 
     &__input {
@@ -55,8 +56,8 @@
 
     &__results {
       position: absolute;
-      width: 18rem;
-      top: 100px;
+      width: 21rem;
+      top: 109px;
       left: 20px;
       background-color: white;
       border-radius: 1rem;
@@ -69,7 +70,7 @@
         background-color: white;
         border: none;
         font-weight: 200;
-        color: #7f7e7e;
+        color: #a5a3a3;
       }
       &__name:hover {
         cursor: pointer;
@@ -85,8 +86,9 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     border: none;
-    width: 150px;
+    width: 11rem;
 
     &__title {
       margin-bottom: 5px;
@@ -104,7 +106,7 @@
 
     &__calendar {
       position: absolute;
-      top: 21rem;
+      top: 20.8rem;
       left: 50%;
       transform: translate(-50%, -50%);
       padding: 15px 25px 0px 25px;
@@ -127,13 +129,13 @@
     align-items: center;
     background-color: transparent;
     border: none;
-    width: 130px; 
+    width: 190px;
 
     &__title {
-      margin-bottom: 5px;
+      margin-bottom: 2px;
       color: black;
       font-weight: 520;
-      font-size: 1.2rem;
+      font-size: 1.15rem;
 
       &__counter {
         display: flex;
@@ -142,7 +144,8 @@
         color: #3a3a3a;
 
         &__number {
-          font-weight: 400;
+          font-weight: 600;
+          color: #7f7e7e;
           font-size: 1.2rem;
           width: 30px;
           text-align: center;
@@ -203,9 +206,9 @@
     color: white;
     border-radius: 76px;
     border: none;
-    margin-left: 50px;
-    // margin-right: 20px;
-    font-size: 1.25rem;
+    margin-left: 20px;
+    margin-right: 20px;
+    font-size: 1.1rem;
     cursor: pointer;
     box-shadow: 0 2px 12px 0 rgb(20 20 43 / 40%);
     

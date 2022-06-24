@@ -8,6 +8,9 @@ import { useNavigate } from 'react-router'
 import { selectAllCities } from '../../redux/services/hotelsServices'
 import { selectReservation, updateReservation } from '../../redux/slices/reservationSlice'
 import swal from 'sweetalert'
+import moment from 'moment'
+moment().format('dddd, MMMM Do YYYY, h:mm:ss a')
+
 const Reservation = ({ hotel, setRes, res }) => {
   const reservations = useSelector(selectReservation)
   const dispatch = useDispatch()
@@ -25,7 +28,7 @@ const Reservation = ({ hotel, setRes, res }) => {
     let errors = ''
     if (!userJSON) {
       swal({
-        title: 'Para reservar debe estar logeado',
+        title: 'Para reservar debe estar logueado',
         icon: 'error'
       })
       navigate('/login')
@@ -41,7 +44,10 @@ const Reservation = ({ hotel, setRes, res }) => {
           text: `${errors}`
         })
       } else {
-        const totalNights = reservations.checkOut.toDateString().split(' ')[2] - reservations.checkIn.toDateString().split(' ')[2]
+        const reservationFrom = moment(reservations.checkIn)
+        const reservationTo = moment(reservations.checkOut)
+        const totalNights = reservationTo.diff(reservationFrom, 'days')
+        console.log('======LUCAS', moment(reservationFrom).toObject(), reservationTo, 'TN==>', totalNights)
         dispatch(updateReservation({
           totalNights
         }))
@@ -100,5 +106,5 @@ function dateFormat (date) {
     case '12': month = 'Dic'; break
   }
 
-  return arr[0] + ' ' + month + ' ' + arr[2]
+  return arr[0] + ' ' + month + ' ' + arr[2].slice(0, 4)
 }

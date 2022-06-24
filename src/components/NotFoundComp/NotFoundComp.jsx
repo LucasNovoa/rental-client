@@ -11,7 +11,7 @@ const NotFound = () => {
         >
           <div className='NotFound__container__min__404'>404</div>
           <h2 className='NotFound__container__min__text'>
-            Oops! Hotel no encontrado
+            Oops! Algo salió mal...
           </h2>
           <p className='NotFound__container__min__text2'>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do

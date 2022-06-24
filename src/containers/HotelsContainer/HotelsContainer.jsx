@@ -104,7 +104,7 @@ export const HotelsContainer = ({ less, setLess, cap, setCap, filterPrice, filte
   if (isLoading) {
     content = <Loader />
   } else if (isSuccess) {
-    content = filteredHotels.map((h) => <Card img={h.mainImage} name={h.name} description={h.description} price={h.price} key={h.id} hosts={h.guests} stars={h.stars} filters={filters} />)
+    content = filteredHotels.length ? filteredHotels.map((h) => <Card img={h.mainImage} name={h.name} description={h.description} price={h.price} key={h.id} hosts={h.guests} stars={h.stars} filters={filters} />) : <h2 className='hotelscontainer__empty'>No hay hospedajes disponibles que coincidan con tu búsqueda...</h2>
   } else if (isError) {
     content = <p>{error}</p>
   }

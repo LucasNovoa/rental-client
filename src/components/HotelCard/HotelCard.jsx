@@ -3,7 +3,7 @@ import './hotelcard.scss'
 import { FiShare2 } from 'react-icons/fi'
 import { MdFavoriteBorder } from 'react-icons/md'
 import Share from '../Share/Share'
-import { useNavigate } from 'react-router'
+// import { useNavigate } from 'react-router'
 import swal from 'sweetalert'
 import axios from 'axios'
 
@@ -12,7 +12,7 @@ const HotelCard = ({ hotel }) => {
   const handleShare = () => {
     setShare(!share)
   }
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
   const userJSON = window.localStorage.getItem('user')
 
   const handleFavorites = () => {

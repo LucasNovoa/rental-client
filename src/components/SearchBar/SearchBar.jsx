@@ -107,6 +107,8 @@ const SearchBar = () => {
   }
 
   const handleAmount = (e) => {
+    setRenderCalendar(false)
+    setResults(false)
     if (e.target.name === '-') {
       if (amount === 1) return
       if (amount > 1) setAmount(amount - 1)
@@ -173,7 +175,7 @@ const SearchBar = () => {
         </div>
         <div>
           <button className='searchBar__check' onClick={handleCalendarRender}>
-            <h5 className='searchBar__check__title'>Check-in</h5>
+            <h5 className='searchBar__check__title'>Check In</h5>
             <h5 className='searchBar__check__value'>{reservation.checkIn === 'Desde...' ? reservation.checkIn : dateFormat(reservation.checkIn)}</h5>
           </button>
           <div>
@@ -193,10 +195,10 @@ const SearchBar = () => {
           </div>
         </div>
         <button className='searchBar__check' onClick={handleCalendarRender}>
-          <h5 className='searchBar__check__title'>Check-out</h5>
+          <h5 className='searchBar__check__title'>Check Out</h5>
           <h5 className='searchBar__check__value'>{reservation.checkOut === 'Hasta...' ? reservation.checkOut : dateFormat(reservation.checkOut)}</h5>
         </button>
-        <div>
+        <div className='searchBar__amount'>
           <h5 className='searchBar__amount__title'>Huéspedes</h5>
           <div className='searchBar__amount__title__counter'>
             <button name='-' disabled={amount === 1} onClick={handleAmount} className='searchBar__amount__title__counter__btn'>-</button>
@@ -229,6 +231,6 @@ function dateFormat (date) {
     case '12': month = 'Dic'; break
   }
 
-  return arr[0] + ' ' + month + ' ' + arr[2]
+  return arr[0] + ' ' + month + ' ' + arr[2].slice(0, 4)
 }
 export { SearchBar }
