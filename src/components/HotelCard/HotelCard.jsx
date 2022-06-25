@@ -18,10 +18,10 @@ const HotelCard = ({ hotel }) => {
   const handleFavorites = () => {
     if (!userJSON) {
       swal({
-        title: 'Error',
-        text: '¡Debes loguearte para agregar a tu listado de Favoritos!',
+        title: '¡Atención!',
+        text: 'Debes loguearte para agregar a tu listado de Favoritos',
         icon: 'warning',
-        button: 'Ok!'
+        button: 'OK'
       })
       // navigate('/login')
     } else {
@@ -29,10 +29,10 @@ const HotelCard = ({ hotel }) => {
         favHotels: [hotel.id]
       })
       swal({
-        title: 'Éxito',
+        title: 'Hecho',
         text: '¡Hospedaje agregado a tu listado de Favoritos!',
         icon: 'success',
-        button: 'Ok!'
+        button: 'OK'
       })
     }
   }

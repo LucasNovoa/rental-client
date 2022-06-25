@@ -53,7 +53,7 @@ function Book ({ setRes, res, bookHotel }) {
 
   function handlePay (e) {
     e.preventDefault()
-    window.open(linkMP)
+    window.open(linkMP, '_self')
   }
   return (
     <div className='booking'>
@@ -66,9 +66,9 @@ function Book ({ setRes, res, bookHotel }) {
         <p className='booking__info__p'><strong>Ciudad:</strong> {reservation.cityName}</p>
         <p className='booking__info__p'><strong>Check-In:</strong> {reservation.checkIn.toDateString()}</p>
         <p className='booking__info__p'><strong>Check-Out:</strong> {reservation.checkOut.toDateString()}</p>
-        <p className='booking__info__p'><strong>Precio por noche:</strong> USD {bookHotel.price}</p>
         <p className='booking__info__p'><strong>Cantidad de Noches:</strong> {reservation.totalNights}</p>
-        <p className='booking__info__p'><strong>Monto a Pagar:</strong> USD {reservation.totalNights * bookHotel.price}</p>
+        <p className='booking__info__p'><strong>Precio por noche:</strong> USD {bookHotel.price},00</p>
+        <p className='booking__info__p'><strong>Monto Total a Pagar:</strong> USD {reservation.totalNights * bookHotel.price},00</p>
         <p className='booking__info__p'><strong>Estado:</strong> Pago Pendiente</p>
         <div className='booking__info__btns'>
           {!pay &&

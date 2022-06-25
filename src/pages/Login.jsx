@@ -1,15 +1,9 @@
 import { useRef } from 'react'
-
-import LoginButton from '../components/LoginButton'
-
+// import LoginButton from '../components/LoginButton'
 import { useNavigate, Link } from 'react-router-dom'
-
 import Header from '../components/Header/Header'
-
 import { useAuth } from '../hooks/useAuth'
-
 import swal from 'sweetalert'
-
 import '../scss/Login.scss'
 
 function Login () {
@@ -27,6 +21,7 @@ function Login () {
     auth.signIn(email, password).then(() => {
       navigate('/profile')
     }).catch(() => swal({
+      title: 'Atención!',
       text: 'Usuario o Contraseña incorrectos',
       button: {
         text: 'Reintentar',

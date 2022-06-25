@@ -27,7 +27,7 @@ const PasswordRecovery = () => {
     auth.recovery(email).then(() => {
       swal({
         title: 'Éxito',
-        text: '¡Revisa tu email!',
+        text: '¡Revisa tu casilla de correo!',
         icon: 'success',
         button: 'Ok!'
       })

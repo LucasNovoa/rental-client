@@ -32,19 +32,23 @@
     text-align: left;
 
     &__title {
-      margin-bottom: 2rem;
-      text-indent: 0;
+      margin-bottom: 1.1rem;
+      font-size: 1.7rem;
+      text-align: center;
+      color: rgba(0, 0, 0, 0.7);
     }
 
     &__hotel {
       margin-bottom: 1.2rem;
-      text-indent: 8px;
+      text-align: center;
+      color: rgba(0, 0, 0, 0.65);
     }
 
     &__p {
       margin-top: 0.5rem;
       text-indent: 0;
       display: flex;
+      color: rgba(0, 0, 0, 0.6);
       width: 100%;
       justify-content: space-between;
     }
@@ -58,20 +62,20 @@
       &__red {
         padding: 26px 38px;
         margin-right: 26px;
-        font-size: 18px;
+        font-size: 1rem;
         line-height: 20px;
         color: white;
-        background-color: #ff3f3f;
+        background-color: rgb(255, 63, 63, 0.95);
+        box-shadow: 0 2px 12px 0 rgba(20, 20, 43, 0.264);
         border: none;
         border-radius: 96px;
       }
 
       &__red:hover {
         cursor: pointer;
-        background-color: #ff3f3f;
-        transform: background-color 0.3s ease;
-        transform: translate(0, -2px);
-      }
+        background-color: #ca2626;
+        transform: scale(1.05)  
+        }
 
       &__white {
         padding: 26px 38px;

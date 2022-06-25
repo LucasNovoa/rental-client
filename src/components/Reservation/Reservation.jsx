@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate } from 'react-router'
+// import { useNavigate } from 'react-router'
 import { Link } from 'react-router-dom'
 // import { DateRangePicker } from 'react-date-range'
 import 'react-date-range/dist/styles.css'
@@ -19,7 +19,7 @@ const Reservation = ({ hotel, setRes, res }) => {
   const reservationTo = moment(reservations.checkOut)
   const totalNights = reservationTo.diff(reservationFrom, 'days')
   const dispatch = useDispatch()
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
   const [amount, setAmount] = useState(reservations.guests)
   // console.log(!userJSON)
   // console.log(reservations)
@@ -33,20 +33,22 @@ const Reservation = ({ hotel, setRes, res }) => {
     let errors = ''
     if (!userJSON) {
       swal({
-        title: 'Para reservar debe estar logueado',
-        icon: 'error'
+        title: '¡Atención!',
+        text: 'Para reservar debes estar logueado',
+        icon: 'warning'
       })
-      navigate('/login')
+      // navigate('/login')
     } else {
       if (reservations.checkIn === 'Desde...') {
-        errors += 'Seleccione fecha de Check in... \n'
-      } else if (reservations.checkOut === 'Hasta...') {
-        errors += 'Selecciones fecha de Check out... \n'
+        errors += 'Selecciona fecha de Check In... \n'
+      } else if (reservations.checkOut === reservations.checkIn) {
+        errors += 'Selecciona fecha de Check Out... \n'
       }
       if (errors.length >= 1) {
         swal({
-          title: 'Verifique la información ingresada',
-          text: `${errors}`
+          title: '¡Atención!',
+          text: `${errors}`,
+          icon: 'warning'
         })
       } else {
         dispatch(updateReservation({

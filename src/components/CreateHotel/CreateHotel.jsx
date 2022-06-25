@@ -77,10 +77,10 @@ function CreateHotel ({ userId, submit }) {
     e.preventDefault()
     if (!input.name || !input.description || !input.stars || !input.price || !input.CountryId || !input.CityId || !input.address || !input.latitude || !input.longitude || !input.guests || !input.children || !input.amenities[0] || !input.email || !input.phone || !input.web || !input.mainImage || !input.roomImage || !input.amenitiesImage || !input.barImage || !input.otherImage) {
       swal({
-        title: 'Error',
+        title: '¡Atención!',
         text: 'Complete la información faltante',
-        icon: 'error',
-        button: 'Ok!'
+        icon: 'warning',
+        button: 'OK'
       })
     } else {
       try {
@@ -90,10 +90,10 @@ function CreateHotel ({ userId, submit }) {
         // setTimeout(window.location.reload(), 2000)
 
         swal({
-          title: 'Éxito',
-          text: '¡Usuario alojamiento publicado éxito!',
+          title: 'Felicitaciones',
+          text: '¡Alojamiento publicado exitosamente!',
           icon: 'success',
-          button: 'Ok!'
+          button: 'OK'
         })
 
         setInput({

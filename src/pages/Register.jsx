@@ -6,7 +6,7 @@ import Header from '../components/Header/Header'
 import '../scss/RegisterType.scss'
 import swal from 'sweetalert'
 import { useNavigate } from 'react-router-dom'
-import Footer from '../components/Footer/Footer'
+// import Footer from '../components/Footer/Footer'
 import { postUser } from '../redux/slices/userSlice'
 
 function Register () {
@@ -46,10 +46,10 @@ function Register () {
     if (input.typePerson === 'natural') {
       if (!input.email || !input.password || !input.firstName || !input.lastName || !input.repeatPass) {
         swal({
-          title: 'Error',
+          title: '¡Atención!',
           text: 'Complete la información faltante',
-          icon: 'error',
-          button: 'Ok!'
+          icon: 'warning',
+          button: 'OK'
         })
       } else {
         try {
@@ -58,7 +58,7 @@ function Register () {
             title: 'Éxito',
             text: '¡Usuario creado con éxito!',
             icon: 'success',
-            button: 'Ok!'
+            button: 'OK'
           })
           setInput({
             firstName: '',
@@ -76,10 +76,10 @@ function Register () {
     } else if (input.typePerson === 'legal') {
       if (!input.email || !input.password || !input.organization || !input.repeatPass) {
         swal({
-          title: 'Error',
+          title: '¡Atención!',
           text: 'Complete la información faltante',
-          icon: 'error',
-          button: 'Ok!'
+          icon: 'warning',
+          button: 'OK'
         })
       } else {
         dispatch(postUser(input))
@@ -87,7 +87,7 @@ function Register () {
           title: 'Éxito',
           text: '¡Usuario creado con éxito!',
           icon: 'success',
-          button: 'Ok!'
+          button: 'OK'
         })
         setInput({
           organization: '',

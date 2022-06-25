@@ -23,14 +23,16 @@ export default function Footer () {
     if (mail.includes('@')) {
       axios.post('https://rental-bookings-server.herokuapp.com/api/v1/suscriptors', { email: mail })
       swal({
-        text: 'Te suscribiste con éxito!',
+        title: 'Felicitaciones',
+        text: '¡Te suscribiste con éxito!',
         button: 'Ok!',
         icon: 'success'
       })
     } else {
       swal({
+        title: '¡Atención!',
         text: 'Ingresa un email válido',
-        button: 'Ok',
+        button: 'OK',
         icon: 'warning'
       })
     }

@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import Header from '../components/Header/Header'
 import { useNavigate, useSearchParams } from 'react-router-dom'
-import Footer from '../components/Footer/Footer'
+// import Footer from '../components/Footer/Footer'
 import { useAuth } from '../hooks/useAuth'
 import '../scss/ChangePassword.scss'
 import swal from 'sweetalert'
@@ -21,7 +21,7 @@ const ChangePassword = () => {
         title: 'Éxito',
         text: '¡Listo, ingresa con tu nueva Contraseña!',
         icon: 'success',
-        button: 'Ok!'
+        button: 'OK'
       })
       navigate('/login')
     })
@@ -35,7 +35,6 @@ const ChangePassword = () => {
           <h1>Cambiar contraseña</h1>
           <p>¡Elige una nueva contraseña para ingresar a Rental App!</p>
           <form action='' onSubmit={handleSubmit}>
-            {/* <label htmlFor=''>Nueva Contraseña</label> */}
             <input type='password' placeholder='Ingresa tu Nueva Contraseña...' ref={passRef} />
             <button type='submit'>Confirmar</button>
           </form>

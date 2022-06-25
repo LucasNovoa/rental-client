@@ -29,7 +29,7 @@ const Profile = () => {
       }).catch(() => {
         window.localStorage.removeItem('google')
         swal({
-          title: 'Debes Registrarte',
+          title: '¡Atención!',
           text: 'Debes Registrarte para Ingresar con Google',
           icon: 'warning',
           button: {
