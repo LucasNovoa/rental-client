@@ -201,7 +201,7 @@ const SearchBar = () => {
           <div className='searchBar__amount__title__counter'>
             <button name='-' disabled={amount === 1} onClick={handleAmount} className='searchBar__amount__title__counter__btn'>-</button>
             <h5 className='searchBar__amount__title__counter__number'>{reservation.guests}</h5>
-            <button name='+' disabled={amount > 7} onClick={handleAmount} className='searchBar__amount__title__counter__btn'>+</button>
+            <button name='+' disabled={amount > 5} onClick={handleAmount} className='searchBar__amount__title__counter__btn'>+</button>
           </div>
         </div>
         <button className='searchBar__btn' onClick={handleSearch}>Buscar</button>

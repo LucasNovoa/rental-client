@@ -1,8 +1,9 @@
 import './profiledetail.scss'
 import SliderHost from '../SliderHost/SliderHost'
 /* import { selectAllHotels, getHotels, getHotelsStatus } from '../../redux/slices/hotelSlice'
- */import React, { useEffect, useState } from 'react'
+ */import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { Link } from 'react-router-dom'
 import Loader from '../Loader/Loader'
 import SliderBooking from '../SliderBooking/SliderBooking'
 import Bookings from '../Bookings/Bookings'
@@ -54,7 +55,10 @@ const ProfileDetail = ({ user, post, setPost }) => {
       }
       {
         post === false &&
-          <button className='profiledetail__post' onClick={e => handleCreate(e)}>¡Publica tu alojamiento!</button>
+          <div className='profiledetail__btns'>
+            <Link to='/hotels' className='profiledetail__btns__search'>Explorar Alojamientos</Link>
+            <button className='profiledetail__btns__post' onClick={e => handleCreate(e)}>¡Publica el tuyo!</button>
+          </div>
       }
       <div className='profiledetail__divider' />
       {content}
@@ -63,7 +67,7 @@ const ProfileDetail = ({ user, post, setPost }) => {
           ? <div>
             <SliderHost className='profiledetail__slider' hotels={hostHotels} />
             <div className='profiledetail__divider' />
-            </div>
+          </div>
           : user.role === 'customer'
             ? <h1>No tienes alojamientos en alquiler</h1>
             : user.role === 'owner' && <h1>Tus alojamientos se encuentran penalizados</h1>
@@ -75,7 +79,7 @@ const ProfileDetail = ({ user, post, setPost }) => {
             {book !== 0 && rev === 0 && <Bookings setBook={setBook} book={book} bookings={bookings} user={user} rev={rev} setRev={setRev} />}
             {book === 0 && rev === 0 && <SliderBooking hotels={hotels} user={user} bookings={bookings} setBook={setBook} book={book} />}
             {rev !== 0 && <Reviews setRev={setRev} book={book} user={user} setBook={setBook} />}
-          </div>
+            </div>
           : <h1>No tienes Reservas</h1>
       }
       <div className='profiledetail__divider' />
