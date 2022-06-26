@@ -141,13 +141,13 @@ const SearchBar = () => {
       <div className='searchBar'>
         <div>
           <div className='searchBar__place'>
-            <label><h5 className='searchBar__place__title'>Lugar</h5></label>
+            <label><h5 className='searchBar__place__title'>Destino</h5></label>
             <input
               type='text'
               autoComplete='off'
               name='city'
               className='searchBar__place__input'
-              placeholder='Elige un destino...'
+              placeholder='Elige una ciudad...'
               onFocus={handleFocus}
               onChange={handleCity}
               value={inputFilters.city}

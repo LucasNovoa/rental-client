@@ -12,10 +12,11 @@
         gap: 30px;
         padding: 10px 25px;
         box-shadow: 0 2px 12px 0 rgb(20 20 43 / 16%);
-        border-radius: 20px;
+        border-radius: 2rem;
         align-items: center;
         // background-color: white;
         background-color: rgba(255, 255, 255, 0.8);
+        height: 105px;
 
         &__price {
 
@@ -36,7 +37,7 @@
                     gap: 5px;
 
                     input {
-                        width: 80px;
+                        width: 70px;
                         padding: 5px 0px 5px 10px;
                         border-radius: 10px;
                         border-color: #b5b5b5;
@@ -50,7 +51,7 @@
                     gap: 5px;
 
                     input {
-                        width: 80px;
+                        width: 70px;
                         padding: 5px 0px 5px 10px;
                         border-radius: 10px;
                         border-color: #b5b5b5;
@@ -85,8 +86,9 @@
 
                     select {
                         border-radius: 10px;
-                        padding: 5px 40px 5px 15px;
+                        padding: 5px;
                         border-color: #b5b5b5;
+                        width: 60px;
                     }
                 }
 
@@ -98,7 +100,8 @@
                     select {
                         border-color: #b5b5b5;
                         border-radius: 10px;
-                        padding: 5px 40px 5px 15px;
+                        padding: 5px;
+                        width: 60px;
                     }
                 }
             }
@@ -108,7 +111,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-evenly;
-            gap: 5px;
+            gap: 0.8rem;
 
             &__reset {
                 width: 80px;
@@ -153,16 +156,19 @@
         gap: 18px;
         padding: 10px 25px;
         box-shadow: 0 2px 12px 0 rgb(20 20 43 / 16%);
-        border-radius: 20px;
+        border-radius: 2rem;
         background-color: rgba(255, 255, 255, 0.8);
+        height: 105px;
 
         &__title {
             display: flex;
             font-weight: 550;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             color: #5d5d5d;
             align-items: center;
             gap: 5px;
+            margin-top: 0.5rem;
+            margin-bottom: -0.5rem;
 
             &__icon {
                 font-size: 1.3rem;
@@ -179,7 +185,7 @@
                 gap: 10px;
 
                 select {
-                    width: 140px;
+                    width: 130px;
                     padding: 5px 0px 5px 10px;
                     border-radius: 10px;
                     border-color: #b5b5b5;
@@ -192,7 +198,7 @@
                 gap: 10px;
 
                 select {
-                    width: 140px;
+                    width: 130px;
                     padding: 5px 0px 5px 10px;
                     border-radius: 10px;
                     border-color: #b5b5b5;

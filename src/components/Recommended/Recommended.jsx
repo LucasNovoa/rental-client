@@ -44,6 +44,7 @@ export default function Recommended () {
         className='recommended__map'
         width='80vw'
         height={400}
+        zoom={12}
         hotels={filteredHotels}
       />
     )

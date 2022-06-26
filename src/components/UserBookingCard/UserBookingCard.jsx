@@ -1,7 +1,11 @@
 import './userbookingcard.scss'
 import React from 'react'
+import { selectAllHotels } from '../../redux/services/hotelsServices'
+import { useSelector } from 'react-redux'
 
 function Card ({ img, name, price, checkIn, checkOut, setBook, paid, id, book, canceled, cityName }) {
+  const hotel = useSelector(selectAllHotels).filter(h => h.name === name)
+
   const arrive = dateFormat(checkIn)
   const depart = dateFormat(checkOut)
 
@@ -40,30 +44,24 @@ function Card ({ img, name, price, checkIn, checkOut, setBook, paid, id, book, c
       <div onClick={handleClick} id={id} className='link'>
         <img src={img} alt='img' id={id} className={paid === true && canceled === false ? 'bookingcard__image' : 'pending__image'} />
         <div className='bookingcard__content'>
-          <span className='bookingcard__content__title'>▸ Código de Reserva 00{id} ◂</span>
-          <h4 className='bookingcard__content__title'>{name}</h4>
-          <span className='bookingcard__content__title'>{cityName}</span>
+          <span className='bookingcard__content__res'>▸ Código de Reserva 00{id} ◂</span>
+          <p className='bookingcard__content__title'>{name}</p>
+          <span className='bookingcard__content__place'>{hotel[0].City.name}, {hotel[0].Country.name}</span>
+          <div className='bookingcard__content__check'>Check-In: {arrive}</div>
+          <div className='bookingcard__content__check'>Check-Out: {depart}</div>
           <div className='bookingcard__content__badges'>
-            <ul className='bookingcard__content__badges__ul'>
-              {paid === true && canceled === false &&
-                <>
-                  <li><div className='bookingcard__content__badges__ul__book'>Check-In: {arrive}</div></li>
-                  <li><div className='bookingcard__content__badges__ul__book'>Check-Out: {depart}</div></li>
-                  <li><p className='bookingcard__content__badges__ul__book'>Precio por noche: ${price}</p></li>
-                </>}
-              {paid === false && canceled === false &&
-                <>
-                  <li><p className='pending__content__badges__ul__book'>PAGAR</p></li>
-                  <li><div className='pending__content__badges__ul__book'>Check-In: {arrive}</div></li>
-                  <li><div className='pending__content__badges__ul__book'>Check-Out: {depart}</div></li>
-                </>}
-              {canceled === true && (paid === true || paid === false) &&
-                <>
-                  <li><p className='pending__content__badges__ul__book'>CANCELADA</p></li>
-                  <li><div className='pending__content__badges__ul__book'>Check-In: {arrive}</div></li>
-                  <li><div className='pending__content__badges__ul__book'>Check-Out: {depart}</div></li>
-                </>}
-            </ul>
+            {/* {paid === true && canceled === false &&
+              <>
+                <p className='bookingcard__content__badges__book'>Precio por noche: ${price}</p>
+              </>} */}
+            {paid === false && canceled === false &&
+              <>
+                <p className='pending__content__badges__book'>PAGAR</p>
+              </>}
+            {canceled === true && (paid === true || paid === false) &&
+              <>
+                <p className='pending__content__badges__book'>CANCELADA</p>
+              </>}
           </div>
         </div>
       </div>

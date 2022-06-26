@@ -3,6 +3,7 @@
   position: absolute;
   top: 28%;
   left: 50%;
+  width: 72.5rem;
   transform: translate(-50%, -50%);
   align-items: center;
   justify-content: center;
@@ -28,7 +29,7 @@
       font-weight: 400;
       font-size: 1.2rem;
       margin-bottom: 5px;
-      margin-left: 8rem;
+      // margin-left: 1rem;
     }
 
     &__input {

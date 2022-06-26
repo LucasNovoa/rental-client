@@ -1,8 +1,8 @@
 import './FilterSort.scss'
-import { useDispatch, useSelector } from 'react-redux'
+// import { useDispatch, useSelector } from 'react-redux'
 import { useState } from 'react'
 import { BiSortAlt2 } from 'react-icons/bi'
-import { selectFilters, updateFilters } from '../../redux/slices/filtersSlice'
+// import { selectFilters, updateFilters } from '../../redux/slices/filtersSlice'
 
 const FilterSort = ({ less, setLess, cap, setCap, setFilterPrice, minStars, maxStars, setMinStars, setMaxStars, setFilterStars, setSortStars, setSortPrice }) => {
   const [stars, setStars] = useState({ min: 1, max: 5 })
@@ -66,13 +66,13 @@ const FilterSort = ({ less, setLess, cap, setCap, setFilterPrice, minStars, maxS
             <div className='containerFS__filter__price__options'>
               <div className='containerFS__filter__price__options__minPrice'>
                 <h5>Min</h5>
-                <input name='min' type='number' placeholder='100' min='0' onChange={e => handleLess(e)} />
-                <h5>U$S</h5>
+                <input name='min' type='number' placeholder='0...' min='0' max='9999' onChange={e => handleLess(e)} />
+                <h5>USD</h5>
               </div>
               <div className='containerFS__filter__price__options__maxPrice'>
                 <h5>Max</h5>
-                <input name='max' type='number' placeholder='100' min='0' onChange={e => handleCap(e)} />
-                <h5>U$S</h5>
+                <input name='max' type='number' placeholder='500...' min='0' max='9999' onChange={e => handleCap(e)} />
+                <h5>USD</h5>
               </div>
             </div>
           </div>

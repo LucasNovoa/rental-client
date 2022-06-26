@@ -1,9 +1,9 @@
 .cards {
     display: inline-block;
-    border-radius: 24px;
+    border-radius: 1rem;
     box-shadow: 0 2px 12px 0 rgb(20 20 43 / 8%);
     width: 350px;
-    height: 350px;
+    height: 380px;
     margin: 5px;
     background-color: #ffffff1f;
     backdrop-filter: blur(6px) grayscale(20%);
@@ -14,7 +14,7 @@
     }
 
     p {
-      font-size: 1.3rem;
+      font-size: 1.4rem;
     }
   
     &__image {
@@ -23,7 +23,7 @@
       border: 0;
       object-fit: cover;
       vertical-align: middle;
-      border-radius: 24px 24px 0 0;
+      border-radius: 1rem 1rem 0 0;
     }
   
     &__content {
@@ -31,11 +31,19 @@
   
       &__title {
         text-align: center;
-        margin-bottom: 10px;
+        margin-top: 0.5rem;
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
-        font-size: 1.4rem;
+      }
+
+      &__place {
+        display: flex;
+        justify-content: center;
+        margin-top: -0.4rem;
+        margin-bottom: 1rem;
+        font-size: 0.8rem;
+        color: rgba(255, 255, 255, 0.5);
       }
   
       &__description {
@@ -72,12 +80,12 @@
           line-height: 20px;
           // color: #191919;
           color: #e0e004e7;
-          border: 1px solid #eeeeee;
+          border: 1px solid rgba(238, 238, 238, 0.5);
           border-radius: 96px;
         }
 
         &__huesp{
-            font-size: 1.2rem;
+            font-size: 1rem;
         }
   
       }
@@ -113,117 +121,12 @@
     backdrop-filter: none;
   }
 
-// .banned {
-//     display: inline-block;
-//     border-radius: 24px;
-//     box-shadow: 0 2px 12px 0 rgb(20 20 43 / 8%);
-//     width: 350px;
-//     height: 350px;
-//     margin: 5px;
-//     background-color: #ffffff1f;
-//     backdrop-filter: blur(6px) grayscale(20%);
-
-//     .link {
-//       text-decoration: none;
-//       color: #ffffff;
-//     }
-
-//     p {
-//       font-size: 1.3rem;
-//     }
-  
-//     &__image {
-//       min-width: 350px;
-//       height: 200px;
-//       border: 0;
-//       object-fit: cover;
-//       vertical-align: middle;
-//       border-radius: 24px 24px 0 0;
-//     }
-  
-//     &__content {
-//       padding: 32px 24px 28px 24px;
-  
-//       &__title {
-//         text-align: left;
-//         margin-bottom: 8px;
-//         overflow: hidden;
-//         white-space: wrap;
-//         text-overflow: ellipsis;
-//       }
-  
-//       &__description {
-//         height: 100px;
-//         margin-bottom: 16px;
-//         color: #5d5d5d;
-//         overflow: hidden;
-//         white-space: wrap;
-//         text-overflow: ellipsis;
-//       }
-  
-//       &__badges {
-//         display: flex;
-//         align-items: center;
-//         justify-content: center;
-
-//         &__ul {
-//           list-style-type: none;
-          
-//           &__book {
-//             font-size: 1.2rem;
-//           }
-//         }
-  
-//         &__stars {
-
-//           display: flex;
-//           width: 70px;
-//           justify-content: space-evenly;
-//           align-items: center;
-//           padding: 14px;
-//           margin-right: 14px;
-//           font-size: 1.5rem;
-//           line-height: 20px;
-//           // color: #191919;
-//           color: #e0e004e7;
-//           border: 1px solid #eeeeee;
-//           border-radius: 96px;
-//         }
-  
-//       }
-  
-//       &__divider {
-//         margin: 32px 0 24px 0;
-//         border: 1px solid rgba(162, 162, 162, 0.325);
-//       }
-  
-//       &__info {
-//         font-size: 1.8rem;
-//         display: flex;
-//         align-items: center;
-//         justify-content: space-between;
-  
-//         &__btn {
-//           padding: 18px 24px;
-//           font-size: 1.6rem;
-//           font-weight: 700;
-//           line-height: 20px;
-//           color: white;
-//           background-color: #ff3f3f;
-//           border: none;
-//           border-radius: 96px;
-//         }
-//       }
-//     }
-//   }
-  
-
   .banned {
     display: inline-block;
     border-radius: 24px;
     box-shadow: 0 2px 12px 0 rgb(20 20 43 / 8%);
     width: 350px;
-    height: 350px;
+    height: 380px;
     margin: 5px;
     background-color: #ffffff1f;
     opacity: 0.5;
@@ -244,7 +147,7 @@
       border: 0;
       object-fit: cover;
       vertical-align: middle;
-      border-radius: 24px 24px 0 0;
+      border-radius: 1rem 1rem 0 0;
     }
   
     &__content {
@@ -252,11 +155,20 @@
   
       &__title {
         text-align: center;
-        margin-bottom: 10px;
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
         font-size: 1.4rem;
+        margin-top: 0.5rem;
+      }
+
+      &__place {
+        display: flex;
+        justify-content: center;
+        margin-top: -0.4rem;
+        margin-bottom: 1rem;
+        font-size: 0.8rem;
+        color: rgba(255, 255, 255, 0.5);
       }
   
       &__description {
@@ -288,7 +200,7 @@
           justify-content: space-evenly;
           align-items: center;
           padding: 14px;
-          margin-right: 14px;
+          margin-left: 2rem;
           font-size: 1.25rem;
           line-height: 20px;
           // color: #191919;
@@ -301,14 +213,16 @@
           display: flex;
           justify-content: flex-end;
           margin-top: -2.6rem;
-          margin-right: 1rem;
-          font-size: 1.2rem;
+          margin-right: 2rem;
+          font-size: 1rem;
         }
 
         &__banned {
           color: #ff3f3f;
-          font-size: 14rem;
-          margin-top: -6rem;
+          margin-top: -10rem;
+          background-color: rgba(255, 255, 255, 0.6);
+          border-radius: 1rem;
+          padding: 1rem;
         }
   
       }
