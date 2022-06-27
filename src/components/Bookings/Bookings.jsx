@@ -61,12 +61,13 @@ function Bookings ({ setBook, book, bookings, rev, setRev }) {
         <h1>{hotel.hotelName}</h1>
         <p>Check-In: {arrive}</p>
         <p>Check-Out: {depart}</p>
-        <p>Precio por noche: ${hotel.pricePerNight}</p>
-        <p>Estado: {hotel.paidOut === true ? 'Pago Completado' : 'Pago Pendiente'}</p>
-        <p>Método de pago: {hotel.payMethod}</p>
         <p>Cantidad de Noches: {hotel.nights}</p>
+        <p>Precio por noche: USD {hotel.pricePerNight},00</p>
+        <p>Precio Total: USD {hotel.pricePerNight * hotel.nights},00</p>
+        <p>Método de pago: {hotel.payMethod}</p>
+        <p>Estado: {hotel.paidOut === true ? 'Pago Completado' : 'Pago Pendiente'}</p>
         {hotel.paidOut === false && hotel.isCancelled === false && <button className='bookingCard__info__pay' onClick={e => handlePay(e)}>Pagar ahora</button>}
-        {hotel.isCancelled === true && <p>RESERVA CANCELADA</p>}
+        {hotel.isCancelled === true && <p className='bookingCard__info__cancel'>RESERVA CANCELADA</p>}
         {hotel.paidOut === true && hotel.isCancelled === false && <button setRev={setRev} className='bookingCard__info__pay' onClick={e => handleReview(e)}>Deja tu reseña!</button>}
       </div>
     </div>

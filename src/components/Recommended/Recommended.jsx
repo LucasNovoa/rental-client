@@ -26,6 +26,10 @@ export default function Recommended () {
   const [button4, setButton4] = useState('recommended__places__btn__inactive')
 
   const handleClick = (e) => {
+    window.scrollTo({
+      top: 940,
+      behavior: 'smooth'
+    })
     if (e.target.name === place1 && selectedPlace !== place1) {
       setSelectedPlace(place1)
       setButton1('recommended__places__btn__active')

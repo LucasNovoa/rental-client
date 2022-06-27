@@ -7,6 +7,7 @@ import axios from 'axios'
 import swal from 'sweetalert'
 
 export default function Footer () {
+  const userJSON = window.localStorage.getItem('user')
   const [mail, setMail] = useState({
     email: ''
   })
@@ -36,6 +37,10 @@ export default function Footer () {
         icon: 'warning'
       })
     }
+  }
+
+  const handleClick = (e) => {
+    if (userJSON) e.preventDefault()
   }
 
   return (
@@ -139,6 +144,7 @@ export default function Footer () {
                   <li className='footer__container__top__grid__ul2__li6'>
                     <Link
                       to='/register'
+                      onClick={handleClick}
                       className='footer__container__top__grid__ul2__li6__href'
                     >
                       Registrarse
@@ -147,6 +153,7 @@ export default function Footer () {
                   <li className='login'>
                     <Link
                       to='/login'
+                      onClick={handleClick}
                       className='footer__container__top__grid__ul2__li6__href'
                     >
                       Ingresar
