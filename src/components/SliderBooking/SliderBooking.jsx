@@ -6,12 +6,12 @@ import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai'
 function SliderHost ({ bookings, book, setBook }) {
   const slideLeft = (e) => {
     const slid = document.getElementById('sliderBooking')
-    slid.scrollLeft -= 500
+    slid.scrollLeft -= 1080
   }
 
   const slideRight = (e) => {
     const slid = document.getElementById('sliderBooking')
-    slid.scrollLeft += 500
+    slid.scrollLeft += 1080
   }
 
   return (

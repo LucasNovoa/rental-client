@@ -12,7 +12,7 @@
   justify-content: center;
 
   &__data {
-    max-width: 718px;
+    max-width: 618px;
     display: block;
     text-align: center;
 
@@ -26,8 +26,8 @@
     }
 
     &__description {
-      color: white;
-      font-size: 18px;
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 1.2rem;
       line-height: 1.667em;
       font-weight: 400;
       margin-bottom: 48px;

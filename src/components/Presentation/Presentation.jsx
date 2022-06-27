@@ -37,7 +37,7 @@ function Presentation () {
     <section className='presentation'>
       <div className='presentation__data'>
         <h1 className='presentation__data__title'>Encuentra tu alojamiento ideal</h1>
-        <p className='presentation__data__description'>Te conectamos con miles de personas alrededor del mundo para que lo consigas!</p>
+        <p className='presentation__data__description'>Buscas alojamiento en Argentina, Brasil, Chile o Uruguay? Te conectamos con personas y empresas para que lo consigas!</p>
         <div className='presentation__data__buttonRow'>
           {/* <Link to='/hotels'> */}
           <button className='presentation__data__buttonRow__red' onClick={handleClick}>Explorar Alojamientos</button>

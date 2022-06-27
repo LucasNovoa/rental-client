@@ -11,7 +11,8 @@
       line-height: 1.161em;
       font-weight: 700;
       margin-top: 0px;
-      margin-bottom: 16px;
+      margin-bottom: 2rem;
+      color: rgba(0, 0, 0, 0.7);
     }
 
     &__places {
@@ -23,7 +24,7 @@
 
         &__btn__inactive {
           width: 240px;
-          height: 80px;
+          height: 52px;
           outline: none;
           color: black;
           padding: 11px 10px;
@@ -38,8 +39,8 @@
         }
 
         &__btn__inactive:hover {
-          background-color: #ff3f3f;
-          color: #ffffff;
+          // background-color: #ff3f3f;
+          // color: #ffffff;
           transform: scale(1.05)
         }
 
@@ -49,7 +50,7 @@
         }
 
         &__btn__active {
-          height: 80px;
+          height: 62px;
           width: 240px;
           outline: none;
           background-color: #ff3f3f;
@@ -59,9 +60,9 @@
           border: none;
           margin-left: 10px;
           margin-right: 10px;
-          font-size: 1.25rem;
+          font-size: 1.1rem;
           cursor: pointer;
-          box-shadow: 0 2px 12px 0 rgb(20 20 43 / 20%);
+          box-shadow: 0 2px 12px 0 rgb(20 20 43 / 50%);
         }
 
         &__btn__active:hover {
@@ -71,7 +72,7 @@
 
         &__btn__active:focus {
           background-color: #ff3f3f;
-          transform: scale(0.95)
+          // transform: scale(0.95)
         }
         
     }

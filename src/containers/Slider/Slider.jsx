@@ -24,19 +24,19 @@ function Slider () {
   if (isLoading) {
     content = <Loader />
   } else if (isSuccess) {
-    content = hotels.filter(h => h.stars === 5).slice(0, 10).map((h) => <Card img={h.mainImage} name={h.name} description={h.description} price={h.price} key={h.id} hosts={h.guests} stars={h.stars} />)
+    content = hotels.filter(h => h.stars === 5 && h.price > 500).slice(0, 30).map((h) => <Card img={h.mainImage} name={h.name} description={h.description} price={h.price} key={h.id} hosts={h.guests} stars={h.stars} />)
   } else if (isError) {
     content = <p>{error}</p>
   }
 
   const slideLeft = (e) => {
     const slid = document.getElementById('slider')
-    slid.scrollLeft -= 700
+    slid.scrollLeft -= 1700
   }
 
   const slideRight = (e) => {
     const slid = document.getElementById('slider')
-    slid.scrollLeft += 700
+    slid.scrollLeft += 1700
   }
 
   return (
