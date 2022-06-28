@@ -1,17 +1,18 @@
 .reviews {
-    width: 30vw;
-    height: 90%;
-    border: 1px solid black;
-    border-radius: 25px;
-    padding: 15px 15px 15px 15px;
+    width: 70%;
+    height: 27.75rem;
+    border: 2px solid rgb(229, 225, 225);
+    border-radius: 1.5rem;
+    // padding: 15px 15px 15px 15px;
     box-shadow: 0 5px 20px 0 rgb(20 20 43 / 20%);
+    backdrop-filter: blur(8px) grayScale(50%);
 
     &__close {
         grid-column: 2;
         grid-row: 1;
         width: 90px;
-        margin-left:80%;
-        // margin-top: 5px;
+        margin-left:90%;
+        margin-top: 10px;
         background-color: #ff3f3f;
         padding: 15px 20px 15px 20px;
         color: white;
@@ -30,8 +31,8 @@
     }
 
     h2 {
-        font-size: 1.4rem;
-        margin: 0 39px;
+        font-size: 1.2rem;
+        margin-top: -3rem;
         text-align: center
     }
 

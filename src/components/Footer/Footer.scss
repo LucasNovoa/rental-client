@@ -389,7 +389,17 @@
 
             &__href:hover {
               color: #ff3f3f !important;
-              // cursor: default;
+            }
+
+            &__logged {
+              color: rgba(255, 255, 255, 0.5) !important;
+              text-decoration: none !important;
+              background-color: transparent !important;
+            }
+
+            &__logged:hover {
+              color: rgba(255, 255, 255, 0.2) !important;
+              cursor: default;
             }
           }
         }

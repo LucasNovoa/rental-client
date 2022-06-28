@@ -145,7 +145,7 @@ export default function Footer () {
                     <Link
                       to='/register'
                       onClick={handleClick}
-                      className='footer__container__top__grid__ul2__li6__href'
+                      className={!userJSON ? 'footer__container__top__grid__ul2__li6__href' : 'footer__container__top__grid__ul2__li6__logged'}
                     >
                       Registrarse
                     </Link>
@@ -154,7 +154,7 @@ export default function Footer () {
                     <Link
                       to='/login'
                       onClick={handleClick}
-                      className='footer__container__top__grid__ul2__li6__href'
+                      className={!userJSON ? 'footer__container__top__grid__ul2__li6__href' : 'footer__container__top__grid__ul2__li6__logged'}
                     >
                       Ingresar
                     </Link>
