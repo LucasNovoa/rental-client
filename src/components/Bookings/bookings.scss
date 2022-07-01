@@ -14,10 +14,12 @@
     grid-template-rows: 5% 95% 0;
     padding-bottom: 0;
     overflow: hidden;
+    white-space: nowrap;
     backdrop-filter: blur(8px) grayScale(50%);
 
-    h1{
+    h2{
         text-align: center;
+        color: rgba(255, 255, 255, 0.9);
     }
 
     p {
@@ -27,6 +29,7 @@
     }
 
     &__close {
+        z-index: 1;
         grid-column: 2;
         grid-row: 1;
         width: 90px;
@@ -63,9 +66,10 @@
         grid-column: 2;
         grid-row: 2;
         align-self: center;
-        margin-top: -1.2rem;
+        margin-top: 2rem;
         width: 85%;
         height: 26.5rem;
+        color: rgba(255, 255, 255, 0.7);
         // margin: 0 30px
 
         &__pay {
@@ -77,10 +81,11 @@
             color: white;
             border-radius: 76px;
             border: none;
-            margin-top: 1rem;
-            margin-left: 37%;
+            width: 11rem;
+            margin-top: 0.9rem;
+            margin-left: 13rem;
             margin-right: 20px;
-            font-size: 1.25rem;
+            font-size: 1.1rem;
             cursor: pointer;
             box-shadow: 0 2px 12px 0 rgb(20 20 43 / 40%);
           }
@@ -95,6 +100,13 @@
             transform: scale(0.95)
           }
 
+          &__pay:disabled {
+            background-color: darkgrey;
+            transform: scale(1);
+            cursor: not-allowed;
+            opacity: 0.85;
+          }
+
           &__cancel {
             grid-column: 2;
             grid-row: 2;
@@ -102,10 +114,11 @@
             background-color: rgba(133, 112, 112,0.9);
             padding: 8px 16px;
             color: #ca2626;
-            border-radius: 1rem;
+            border-radius: 75px;
             border: none;
             margin-top: 1rem;
-            // margin-left: 37%;
+            width: 18rem;
+            margin-left: 9.5rem;
             // margin-right: 20px;
             font-size: 1.25rem;
             box-shadow: 0 2px 12px 0 rgb(20 20 43 / 40%);

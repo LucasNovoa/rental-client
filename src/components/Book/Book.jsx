@@ -1,22 +1,35 @@
-import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
+import React, { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { selectReservation } from '../../redux/slices/reservationSlice'
 import './book.scss'
-import axios from 'axios'
 import { useNavigate } from 'react-router'
+import { getBookings, postBooking } from '../../redux/slices/book.Slice'
 
 function Book ({ setRes, res, bookHotel }) {
   const reservation = useSelector(selectReservation)
   const userJSON = JSON.parse(window.localStorage.getItem('user'))
   const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const checkInDate = dateBack(reservation.checkIn)
+  const checkOutDate = dateBack(reservation.checkOut)
+  const userId = Number(userJSON.id)
+  const hotelId = Number(bookHotel.id)
+  const [book, setBook] = useState({
+    checkIn: checkInDate,
+    checkOut: checkOutDate,
+    UserId: userId,
+    HotelId: hotelId
+  })
 
   // const checkInDate = `${reservation.checkIn.getDate()}-${reservation.checkIn.getMonth()}-${reservation.checkIn.getFullYear()}`
   // const checkOutDate = `${reservation.checkOut.getDate()}-${reservation.checkOut.getMonth()}-${reservation.checkOut.getFullYear()}`
-  const checkInDate = dateBack(reservation.checkIn)
-  const checkOutDate = dateBack(reservation.checkOut)
 
   const [pay, setPay] = useState(false)
   const [linkMP, setLinkMP] = useState('')
+
+  // useEffect(() => {
+  //   dispatch(getBookings())
+  // }, [])
 
   function handleCancel (e) {
     e.preventDefault()
@@ -35,21 +48,13 @@ function Book ({ setRes, res, bookHotel }) {
     navigate('/profile')
   }
 
-  const userId = Number(userJSON.id)
-  const hotelId = Number(bookHotel.id)
-
   function handleConfirm (e) {
     e.preventDefault()
-    axios.post('https://rental-bookings-server.herokuapp.com/api/v1/bookings', {
-      checkIn: checkInDate,
-      checkOut: checkOutDate,
-      UserId: userId,
-      HotelId: hotelId
-    }).then(r => setLinkMP(r.data.initPointMP))
+    dispatch(postBooking(book)).then(r => {
+      setLinkMP(r.payload.data.initPointMP)
+    })
     setPay(true)
   }
-
-  console.log('userJSOON: ', hotelId)
 
   function handlePay (e) {
     e.preventDefault()

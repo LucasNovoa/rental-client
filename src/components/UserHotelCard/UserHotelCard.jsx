@@ -8,7 +8,7 @@ import { selectAllHotels } from '../../redux/services/hotelsServices'
 function Card ({ img, name, hosts, stars, banned }) {
   const filters = {}
   const hotel = useSelector(selectAllHotels).filter(h => h.name === name)
-  console.log({ img, name, hosts, stars, banned })
+  // console.log({ img, name, hosts, stars, banned })
   return (
     <div className={banned === false ? 'cards' : 'banned'}>
       <Link to={`/hotel/${name}`} state={filters} className='link'>
@@ -29,6 +29,7 @@ function Card ({ img, name, hosts, stars, banned }) {
                 <div className='banned__content__badges__banned'><p> ∷ Pendiente Habilitación ∷ </p></div>
               </div>}
           </div>
+          <span className={banned === false ? 'cards__content__go' : 'banned__content__go'}>☰ ver detalle</span>
         </div>
       </Link>
     </div>

@@ -1,23 +1,22 @@
 import { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import './reviews.scss'
-import { selectReservation } from '../../redux/slices/reservationSlice'
 import { postReview } from '../../redux/slices/review.Slice'
 
-function Reviews ({ setRev, setBook, book }) {
+function Reviews ({ setRev, setBook, book, userBookings }) {
   const dispatch = useDispatch()
-  const reservation = useSelector(selectReservation)
+  const reviewedBook = userBookings.find(b => b.id === book)
   const monthNames = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
-  const [month, year] = [monthNames[reservation.checkOut.getMonth()], reservation.checkOut.getFullYear()]
+  const [day, month, year] = [reviewedBook.checkOut.slice(0, 2), monthNames[reviewedBook.checkOut.slice(3, 5) && reviewedBook.checkOut.slice(4, 5) - 1], reviewedBook.checkOut.slice(6, 10)]
   const stayedOn = `${month} ${year}`
   const [review, setReview] = useState({
     description: '',
-    priceQualityRatio: null,
-    facilities: null,
-    location: null,
-    cleaning: null,
-    attentionService: null,
-    comfortable: null,
+    priceQualityRatio: 1,
+    facilities: 1,
+    location: 1,
+    cleaning: 1,
+    attentionService: 1,
+    comfortable: 1,
     stayedOn,
     BookingId: book
   })
@@ -28,12 +27,21 @@ function Reviews ({ setRev, setBook, book }) {
     setBook(0)
   }
 
-  function handleChange (e) {
+  function handleChangeDesc (e) {
     e.preventDefault()
     // setBook(book)
     setReview({
       ...review,
       [e.target.name]: e.target.value
+    })
+  }
+
+  function handleChange (e) {
+    e.preventDefault()
+    // setBook(book)
+    setReview({
+      ...review,
+      [e.target.name]: +e.target.value
     })
   }
 
@@ -45,17 +53,17 @@ function Reviews ({ setRev, setBook, book }) {
     setRev(0)
   }
 
-  return (console.log(review, stayedOn, reservation, book),
+  return (
     <section className='reviews'>
       <button className='reviews__close' onClick={e => handleClose(e)}> Cerrar </button>
       <br />
       <br />
       <div>
-        <h2>Califique cada servicio del 1 al 5, siendo 1 muy malo, y 5 muy bueno</h2>
+        <p>Califique cada ítem de 1 a 5, siendo 1 muy malo y 5 muy bueno!</p>
         <form className='reviews__form' onSubmit={e => handleSubmit(e)}>
           <br />
           <label className='reviews__form__description'>
-            <textarea name='description' maxLength={200} placeholder='Deje su comentario...' onChange={e => handleChange(e)} />
+            <textarea name='description' maxLength={200} placeholder='Deje su comentario...' onChange={e => handleChangeDesc(e)} />
           </label>
           <br />
           <label className='reviews__form__label'>
@@ -131,7 +139,7 @@ function Reviews ({ setRev, setBook, book }) {
           </label>
           <br /> */}
 
-          <button className='reviews__form__submit' disabled={reservation.checkOut < new Date()} type='submit' onClick={e => handleSubmit(e)}>Enviar Reseña</button>
+          <button className='reviews__form__submit' type='submit' onClick={e => handleSubmit(e)}>Enviar Reseña</button>
 
         </form>
       </div>

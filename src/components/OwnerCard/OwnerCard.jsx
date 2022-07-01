@@ -5,7 +5,7 @@ import { selectUserById } from '../../redux/services/usersServices'
 
 const OwnerCard = ({ userId }) => {
   const user = useSelector(state => selectUserById(state, userId))
-  console.log(userId)
+
   return (
     <div className='userhotelcard'>
       <div className='userhotelcard__data'>

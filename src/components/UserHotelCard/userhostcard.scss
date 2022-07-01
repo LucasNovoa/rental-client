@@ -86,8 +86,16 @@
 
         &__huesp{
             font-size: 1rem;
+            color: rgba(255, 255, 255, 0.6);
         }
-  
+      }
+
+      &__go {
+        display: flex;
+        justify-content: center;
+        margin-top: 0.5rem;
+        font-size: 0.7rem;
+        color: rgba(255, 255, 255, 0.6);  
       }
   
       &__divider {
@@ -225,6 +233,14 @@
           padding: 1rem;
         }
   
+      }
+
+      &__go {
+        display: flex;
+        justify-content: center;
+        margin-top: 3.8rem;
+        font-size: 0.7rem;
+        color: rgba(255, 255, 255, 0.6);  
       }
   
       &__divider {

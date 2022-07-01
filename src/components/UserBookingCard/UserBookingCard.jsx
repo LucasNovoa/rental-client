@@ -49,6 +49,7 @@ function Card ({ img, name, price, checkIn, checkOut, setBook, paid, id, book, c
           <span className='bookingcard__content__place'>{hotel[0].City.name}, {hotel[0].Country.name}</span>
           <div className='bookingcard__content__check'>Check-In: {arrive}</div>
           <div className='bookingcard__content__check'>Check-Out: {depart}</div>
+          <span className='bookingcard__content__go'>☰ ver detalle</span>
           <div className='bookingcard__content__badges'>
             {/* {paid === true && canceled === false &&
               <>

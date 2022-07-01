@@ -10,7 +10,7 @@ function Card ({ img, name, description, price, hosts, stars, filters = {} }) {
   const encodeName = encodeURI(name)
   const reservation = useSelector(selectReservation)
   const hotel = useSelector(selectAllHotels).filter((h) => h.name === name)
-  console.log('soy filters ======', name, hosts, filters, 'hotel:', hotel[0])
+  // console.log('soy filters ======', name, hosts, filters, 'hotel:', hotel[0])
   return (
     <div className='card'>
       <Link to={`/hotel/${encodeName}`} state={reservation} className='link'>

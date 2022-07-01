@@ -44,8 +44,7 @@
       }
 
       &__title {
-        display: flex;
-        justify-content: center;
+        text-align: center;
         margin-top: -0.2rem;
         margin-bottom: 8px;
         font-size: 1.4rem;
@@ -66,7 +65,16 @@
       &__check {
         padding: 0.2rem;
         text-align: center;
-        font-size: 1rem;
+        font-size: 0.95rem;
+        color: rgb(180, 180, 180);
+      }
+
+      &__go {
+        display: flex;
+        justify-content: center;
+        margin-top: 0.5rem;
+        font-size: 0.7rem;
+        color: rgba(255, 255, 255, 0.8);
       }
   
       &__description {
@@ -196,7 +204,7 @@
            &__book {
             height: 4.75rem;
             color: #ff3f3f;
-            margin-top: -15rem;
+            margin-top: -16.5rem;
             background-color: rgba(255, 255, 255, 0.6);
             border-radius: 1rem;
             padding: 1rem;

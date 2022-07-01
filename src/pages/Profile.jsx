@@ -8,6 +8,7 @@ import { useAuth0 } from '@auth0/auth0-react'
 import { useAuth } from '../hooks/useAuth'
 import axios from 'axios'
 import swal from 'sweetalert'
+import { useGetHotelsQuery } from '../redux/services/hotelsServices'
 
 const Profile = () => {
   const [userInfo, setUserInfo] = useState(null)
@@ -50,13 +51,39 @@ const Profile = () => {
     }
   }, [userJSON])
 
-  return (
-    !userInfo
-      ? <Loader className='loader' user={userInfo} />
-      : <div className='Profile'>
-        <Header />
-        <ProfileContainer user={userInfo} />
-      </div>
+  const {
+    isLoading,
+    isSuccess,
+    isError,
+    error
+  } = useGetHotelsQuery()
+
+  let content
+
+  if (isLoading) {
+    content = <Loader />
+  } else if (isSuccess) {
+    content = (
+      !userInfo
+        ? <Loader className='loader' user={userInfo} />
+        : (
+          <div className='Profile'>
+            <Header />
+            <ProfileContainer user={userInfo} />
+          </div>
+          )
+    )
+  } else if (isError) {
+    content = <p>{error}</p>
+  }
+
+  return (content
+  // !userInfo
+  //   ? <Loader className='loader' user={userInfo} />
+  //   : <div className='Profile'>
+  //     <Header />
+  //     <ProfileContainer user={userInfo} />
+  //   </div>
   )
 }
 

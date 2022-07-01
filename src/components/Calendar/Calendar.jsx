@@ -25,7 +25,6 @@ const Calendar = () => {
       checkIn: ranges.selection.startDate,
       checkOut: ranges.selection.endDate
     }))
-    console.log(reservations)
   }
 
   return (

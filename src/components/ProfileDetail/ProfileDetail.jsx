@@ -14,7 +14,7 @@ const ProfileDetail = ({ user, post, setPost }) => {
   const dispatch = useDispatch()
   const hotels = useSelector(selectAllHotels)
   const hostHotels = user?.Hotels
-  const bookings = user?.Bookings
+  const userBookings = user?.Bookings
   const [book, setBook] = useState(0)
   const [rev, setRev] = useState(0)
 
@@ -42,6 +42,7 @@ const ProfileDetail = ({ user, post, setPost }) => {
 
   return (
     <div className='profiledetail'>
+      {content}
       {
         !user?.organization &&
           <h1 className='profiledetail__title'>¡Hola {user?.firstName} {user?.lastName}!</h1>
@@ -61,13 +62,12 @@ const ProfileDetail = ({ user, post, setPost }) => {
           </div>
       }
       <div className='profiledetail__divider' />
-      {content}
       {
-        bookings?.length > 0
+        userBookings?.length > 0
           ? <div>
-            {book !== 0 && rev === 0 && <Bookings setBook={setBook} book={book} bookings={bookings} user={user} rev={rev} setRev={setRev} />}
-            {book === 0 && rev === 0 && <SliderBooking hotels={hotels} user={user} bookings={bookings} setBook={setBook} book={book} />}
-            {rev !== 0 && <Reviews setRev={setRev} book={book} user={user} setBook={setBook} />}
+            {book !== 0 && rev === 0 && <Bookings setBook={setBook} book={book} userBookings={userBookings} user={user} rev={rev} setRev={setRev} />}
+            {book === 0 && rev === 0 && <SliderBooking hotels={hotels} user={user} userBookings={userBookings} setBook={setBook} book={book} />}
+            {rev !== 0 && <Reviews setRev={setRev} book={book} userBookings={userBookings} user={user} setBook={setBook} />}
             </div>
           : <p className='profiledetail__alert'>Aún no realizaste Reservas...</p>
       }

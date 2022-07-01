@@ -30,15 +30,16 @@
         transform: scale(1.05)
     }
 
-    h2 {
+    p {
         font-size: 1.2rem;
-        margin-top: -3rem;
+        margin-top: -2rem;
         text-align: center
     }
 
     &__form {
         align-items: center;
-        display: grid;
+        display: flex;
+        flex-wrap: wrap;
 
         &__pay {
             grid-column: 2;
@@ -59,12 +60,12 @@
           
 
         &__submit {         
-            width: 60%;    
+            width: 11rem;    
             outline: none;
             background-color: #ff3f3f;
             padding: 8px 16px;
             color: white;
-            font-size: 1.25rem;
+            font-size: 1.1rem;
             border-radius: 76px;
             border: none;
             margin: 0 auto;
@@ -73,6 +74,7 @@
 
         &__submit:hover {
             background-color: #ca2626;
+            cursor: pointer;
             transform: scale(1.05)
           }
 
@@ -82,31 +84,32 @@
           }  
 
         &__description {
-            margin-left: 80px;
+            margin: 1rem 7rem 1rem 5rem;
             font-size: 1.6rem;
 
             textarea {
-                width: 80%;
+                width: 50rem;
                 resize: none;
                 border-radius: 15px;
-                font-size: 1.2rem;
+                font-size: 1.1rem;
                 padding: 10px 10px
             }
             
         }
 
         &__label {
-            display: grid;
-            grid-template-columns: 60% 0 30%;
+            display: flex;
+            flex-direction: row;
+            width: 20rem;
+            margin: 0 0 1.5rem 7rem ;
 
             span {
-                grid-column: 1;
-                text-align: center;
+                text-align: start;
                 font-size: 1.2rem;
+                width: 16.5rem;
             }
 
             select {
-                grid-column: 3;
                 width: 40px;
                 height: 30px;
                 align-self: center;
@@ -114,7 +117,6 @@
             }
 
             input {
-                grid-column: 3;
                 border: 1px solid grey;
                 height: 40px;
                 width: 100%;
